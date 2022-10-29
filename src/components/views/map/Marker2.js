@@ -1,4 +1,5 @@
 /*global kakao*/
+//여러 마커에서 마지막 인덱스만 클릭이벤트되는거 수정
 
 //기본 적인 기능으로 지도 표시 마커 표시 기능.
 import axios from "axios";
@@ -84,16 +85,6 @@ const Marker2 = () => {
           };
         })(infowindow, marker1)
       );
-      positions.forEach(function (position) {
-        console.log(position.latlng, position.content);
-      });
-
-      // // /marker click event
-      // const makeClickListener = (map, marker1, infowindow) => {
-      //   return function () {
-      //     infowindow.open(map, marker1);
-      //   };
-      // };
     }
 
     //마커가 지도 위에 표시 되도록 설정합니다.
