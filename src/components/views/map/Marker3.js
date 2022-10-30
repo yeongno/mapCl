@@ -5,8 +5,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { GET_USERS } from "../../../config/UserConfig";
 const Marker3 = () => {
-  const [Users, setUsers] = useState(null);
-
   useEffect(() => {
     // 마커를 담을 배열입니다
     var markers = [];
@@ -31,9 +29,9 @@ const Marker3 = () => {
 
     // 키워드 검색을 요청하는 함수입니다
     function searchPlaces() {
-      var keyword = document.getElementById("keyword").value;
+      var keyword = document.getElementById("keyword")?.value;
 
-      if (!keyword.replace(/^\s+|\s+$/g, "")) {
+      if (!keyword?.replace(/^\s+|\s+$/g, "")) {
         alert("키워드를 입력해주세요!");
         return false;
       }
@@ -230,7 +228,9 @@ const Marker3 = () => {
 
   return (
     <div>
-      <div id="map" style={{ width: "100vw", height: "100vw" }}></div>
+      <div id="map" style={{ width: "500px", height: "500px" }}></div>
+      <input id="keyword" style={{ width: "100px", height: "100px" }}></input>
+      <div id="placelist"></div>
     </div>
   );
 };
