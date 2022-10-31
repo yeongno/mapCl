@@ -1,16 +1,20 @@
 /*global kakao*/
 
-//해당 마커 클릭 시 인포 윈도우 띄우고 해당 마커 close 하면 닫기
+//services.places를 이용하여 여러 정보 데이터 가져오기 및 키워드 입력
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG, POST_LATLNG1 } from "../../../config/clientConfig";
-const Map4 = () => {
+import InfoWindow1 from "./InfoWindow1";
+const Map5 = () => {
     const [UserName, setUserName] = useState([]);
     const [LatLng, setLatLng] = useState([]);
     const [positions, setPositions] = useState([]);
     const [isOpen, setIsOpen] = useState(null) 
     const [isClose, setIsClose] = useState(null) 
+    const [markers, setMarkers] = useState([])
+    const [map, setMap] = useState()
+    const [info, setInfo] = useState()
     useEffect(() => {
         //유저 데이터
         axios.get(GET_USERS).then((res) => {
@@ -22,6 +26,37 @@ const Map4 = () => {
             setPositions(res.data.LatLng1);
         });
       }, []);
+      useEffect(() => {
+        // if (!map) return
+        const ps = new kakao.maps.services.Places()
+        console.log(ps)
+    
+        ps.keywordSearch("이태원 맛집", (data, status, _pagination) => {
+          if (status === kakao.maps.services.Status.OK) {
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+            // LatLngBounds 객체에 좌표를 추가합니다
+            const bounds = new kakao.maps.LatLngBounds()
+            let markers = []
+    
+            for (var i = 0; i < data.length; i++) {
+              // @ts-ignore
+              markers.push({
+                position: {
+                  lat: data[i].y,
+                  lng: data[i].x,
+                },
+                content: data[i].place_name,
+              })
+              // @ts-ignore
+              bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+            }
+            setMarkers(markers)
+    
+            // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+            map.setBounds(bounds)
+          }
+        })
+      }, [map])
       const EventMarkerContainer = ({ position, content, index }) => {
         const map = useMap()
         const [isVisible, setIsVisible] = useState(false)
@@ -48,6 +83,7 @@ const Map4 = () => {
           </MapMarker> */}
           <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
          position={position}
+         zIndex="-1"
         clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
         // onClick={() => setIsOpen(true)}
         onClick={()=>{onWindow(index)}}
@@ -55,7 +91,7 @@ const Map4 = () => {
         {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
         {/* 인포윈도우에 표출될 내용으로 HTML 문자열이나 React Component가 가능합니다 */}
         {(isOpen === index) && index !==isClose && (
-            <div style={{ minWidth: "150px" }}>
+            <div style={{ minWidth: "150px"  }}>
             <img
               alt="close"
               width="14"
@@ -69,7 +105,7 @@ const Map4 = () => {
               }}
               onClick={()=>{offWindow(index)}}
             />
-            <div style={{ padding: "5px", color: "#000" }}>Hello World!</div>
+            <InfoWindow1 />
           </div>
          
         )}
@@ -102,6 +138,17 @@ const Map4 = () => {
           content={value.title}
         />
       ))}
+    {markers.map((marker) => (
+        <MapMarker
+          key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+          position={marker.position}
+          onClick={() => setInfo(marker)}
+        >
+          {info &&info.content === marker.content && (
+            <div style={{color:"#000"}}>{marker.content}</div>
+          )}
+        </MapMarker>
+      ))}
       </Map>
             </div>
         );
@@ -116,4 +163,4 @@ const Map4 = () => {
       )
 };
 
-export default Map4;
+export default Map5;

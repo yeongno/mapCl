@@ -5,7 +5,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG, POST_LATLNG1 } from "../../../config/clientConfig";
-const Map4 = () => {
+import InfoWindow1 from "./InfoWindow1";
+const Sample = () => {
     const [UserName, setUserName] = useState([]);
     const [LatLng, setLatLng] = useState([]);
     const [positions, setPositions] = useState([]);
@@ -48,6 +49,7 @@ const Map4 = () => {
           </MapMarker> */}
           <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
          position={position}
+         zIndex="-1"
         clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
         // onClick={() => setIsOpen(true)}
         onClick={()=>{onWindow(index)}}
@@ -55,7 +57,7 @@ const Map4 = () => {
         {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
         {/* 인포윈도우에 표출될 내용으로 HTML 문자열이나 React Component가 가능합니다 */}
         {(isOpen === index) && index !==isClose && (
-            <div style={{ minWidth: "150px" }}>
+            <div style={{ minWidth: "150px"  }}>
             <img
               alt="close"
               width="14"
@@ -69,7 +71,7 @@ const Map4 = () => {
               }}
               onClick={()=>{offWindow(index)}}
             />
-            <div style={{ padding: "5px", color: "#000" }}>Hello World!</div>
+            <InfoWindow1 />
           </div>
          
         )}
@@ -116,4 +118,4 @@ const Map4 = () => {
       )
 };
 
-export default Map4;
+export default Sample;
