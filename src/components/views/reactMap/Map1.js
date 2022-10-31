@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import { Map } from "react-kakao-maps-sdk";
 const Map1 = () => {
+    
     const defaultMap = ()=>{
         return (
           <Map // 지도를 표시할 Container

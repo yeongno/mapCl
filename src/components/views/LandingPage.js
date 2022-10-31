@@ -9,6 +9,7 @@ import Marker5 from "./map/Marker5";
 import MarkerCluster from "./map/MarkerCluster";
 import Nomal from "./map/nomal";
 import Map1 from "./reactMap/Map1";
+import Map2 from "./reactMap/Map2";
 
 function LandingPage() {
   return (
@@ -20,7 +21,8 @@ function LandingPage() {
       {/* <Marker5 /> */}
       {/* <Nomal /> */}
       {/* <MarkerCluster /> */}
-      <Map1 />
+      {/* <Map1 /> */}
+      <Map2 />
       {/* <Outlet /> */}
 
     </div>
