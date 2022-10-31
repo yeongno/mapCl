@@ -1,6 +1,6 @@
 /*global kakao*/
 
-//더미데이터를 가져와 여러 마크 표시
+//더미데이터를 가져와 여러 마크 이벤트 처리. click, hover
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Map, MapMarker, useMap } from "react-kakao-maps-sdk";
@@ -64,8 +64,6 @@ const Map3 = () => {
       ))}
       </Map>
             </div>
-        
-          
         );
         
       }

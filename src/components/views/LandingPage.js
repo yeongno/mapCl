@@ -11,6 +11,7 @@ import Nomal from "./map/nomal";
 import Map1 from "./reactMap/Map1";
 import Map2 from "./reactMap/Map2";
 import Map3 from "./reactMap/Map3";
+import Map4 from "./reactMap/Map4";
 
 function LandingPage() {
   return (
@@ -24,7 +25,9 @@ function LandingPage() {
       {/* <MarkerCluster /> */}
       {/* <Map1 /> */}
       {/* <Map2 /> */}
-      <Map3 />
+      {/* <Map3 /> */}
+      <Map4 />
+
 
       {/* <Outlet /> */}
 
