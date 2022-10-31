@@ -30,6 +30,7 @@ const Map4 = () => {
             setIsClose(index)
         }
         const onWindow=(index)=>{
+          setIsClose(null)
           console.log(index)
           setIsOpen(index)
       }
