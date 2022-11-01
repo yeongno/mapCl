@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG, POST_LATLNG1 } from "../../../config/clientConfig";
 import InfoWindow1 from "./InfoWindow1";
-const Map5 = () => {
+const Map6 = () => {
   const [UserName, setUserName] = useState([]);
   const [LatLng, setLatLng] = useState([]);
   const [positions, setPositions] = useState([]);
@@ -16,7 +16,7 @@ const Map5 = () => {
   const [map, setMap] = useState()
   const [info, setInfo] = useState()
   const [keyword, setKeyword] = useState()
-  const [keyword1, setKeyword1] = useState()
+  const [keyword1, setKeyword1] = useState("강남")
     
     useEffect(() => {
         //유저 데이터
@@ -28,71 +28,59 @@ const Map5 = () => {
         axios.get(POST_LATLNG1).then((res) => {
             setPositions(res.data.LatLng1);
         });
-        var container = document.getElementById("map"); // 지도를 표시할 div
-        var options = {
-          center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488), //지도의 중심좌표
-          level: 3, //지도의 확대 레벨
-        };
-      
-        var map = new kakao.maps.Map(container, options);
-        setMap(map);
+
       }, []);
       useEffect(() => {
-        // if (!map) return
-        const ps = new kakao.maps.services.Places()
-        console.log(ps)
-    
-        ps.keywordSearch(keyword1, (data, status, _pagination) => {
-          if (status === kakao.maps.services.Status.OK) {
-            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-            // LatLngBounds 객체에 좌표를 추가합니다
-            const bounds = new kakao.maps.LatLngBounds()
-            let markers = []
-    
-            for (var i = 0; i < data.length; i++) {
-              // @ts-ignore
-              markers.push({
-                position: {
-                  lat: data[i].y,
-                  lng: data[i].x,
-                },
-                content: data[i].place_name,
-              })
-              // @ts-ignore
-              bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
-            }
-            setMarkers(markers)
-    
-            // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-            map.setBounds(bounds)
-          }
-        })
-      }, [map,keyword1])
+        // EventMarkerContainer();
+
+      }, [keyword1]);
 
       const EventMarkerContainer = ({ position, content, index }) => {
-        const map = useMap()
-        const [isVisible, setIsVisible] = useState(false)
+        const map = useMap();
+
         const offWindow=(index)=>{
-            console.log(index)
             setIsClose(index)
         }
         const onWindow=(index)=>{
           setIsClose(null)
-          console.log(index)
           setIsOpen(index)
       }
+         if (!map) return
+         const ps = new kakao.maps.services.Places()
+         const key = keyword1
+         return
+         ps.keywordSearch(key, (data, status, _pagination) => {
+           if (status === kakao.maps.services.Status.OK) {
+             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+             // LatLngBounds 객체에 좌표를 추가합니다
+             const bounds = new kakao.maps.LatLngBounds()
+             let markers = []
+     
+             for (var i = 0; i < data.length; i++) {
+               // @ts-ignore
+               markers.push({
+                 position: {
+                   lat: data[i].y,
+                   lng: data[i].x,
+                 },
+                 content: data[i].place_name,
+               })
+               // @ts-ignore
+               bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+             }
+             setMarkers(markers)
+            //  console.log(map)
+    
+             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+             map.setBounds(bounds)
+            //  if(key !== keyword1){
+            //   return
+            //  }
+           }
+         })
         return (
  
           <div>
-         {/* <MapMarker
-            position={position} // 마커를 표시할 위치
-            // @ts-ignore
-            onClick={(marker) => map.panTo(marker.getPosition())}
-            onMouseOver={() => setIsVisible(true)}
-            onMouseOut={() => setIsVisible(false)}
-          >
-            {isVisible && content}
-          </MapMarker> */}
           <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
          position={position}
          zIndex="-1"
@@ -134,16 +122,15 @@ const Map5 = () => {
         setKeyword1(e.target.value)
       }
     }
-    console.log(keyword1)
     const defaultMap = ()=>{
+    
         return (
             <div>
                   <Map // 지도를 표시할 Container
-                  id="map"
             center={{
               // 지도의 중심좌표
-              // lat: 33.450705,
-              // lng: 126.570677,
+              lat: 33.450705,
+              lng: 126.570677,
             }}
             style={{
               // 지도의 크기
@@ -185,4 +172,4 @@ const Map5 = () => {
       )
 };
 
-export default Map5;
+export default Map6;
