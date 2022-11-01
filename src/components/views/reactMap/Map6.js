@@ -1,175 +1,171 @@
-/*global kakao*/
+//맵 위에 컨트롤러들 세팅 및 각각 마커 변경 이벤트
 
-//services.places를 이용하여 여러 정보 데이터 가져오기 및 키워드 입력
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
-import { GET_USERS, POST_LATLNG, POST_LATLNG1 } from "../../../config/clientConfig";
-import InfoWindow1 from "./InfoWindow1";
-const Map6 = () => {
-  const [UserName, setUserName] = useState([]);
-  const [LatLng, setLatLng] = useState([]);
-  const [positions, setPositions] = useState([]);
-  const [isOpen, setIsOpen] = useState(null) 
-  const [isClose, setIsClose] = useState(null) 
-  const [markers, setMarkers] = useState([])
-  const [map, setMap] = useState()
-  const [info, setInfo] = useState()
-  const [keyword, setKeyword] = useState()
-  const [keyword1, setKeyword1] = useState("강남")
-    
-    useEffect(() => {
-        //유저 데이터
-        axios.get(GET_USERS).then((res) => {
-          setUserName(res.data.Users);
-        });
-    
-        //마커 위치
-        axios.get(POST_LATLNG1).then((res) => {
-            setPositions(res.data.LatLng1);
-        });
+import { useEffect, useState } from "react"
+import { Map, MapMarker } from "react-kakao-maps-sdk"
 
-      }, []);
-      useEffect(() => {
-        // EventMarkerContainer();
+const Map6 =()=>{
+// 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+  const markerImageSrc =
+    "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png"
 
-      }, [keyword1]);
+  const imageSize = { width: 22, height: 26 }
+  const spriteSize = { width: 36, height: 98 }
 
-      const EventMarkerContainer = ({ position, content, index }) => {
-        const map = useMap();
+  // 커피숍 마커가 표시될 좌표 배열입니다
+  const coffeePositions = [
+    { lat: 37.499590490909185, lng: 127.0263723554437 },
+    { lat: 37.499427948430814, lng: 127.02794423197847 },
+    { lat: 37.498553760499505, lng: 127.02882598822454 },
+    { lat: 37.497625593121384, lng: 127.02935713582038 },
+    { lat: 37.49646391248451, lng: 127.02675574250912 },
+    { lat: 37.49629291770947, lng: 127.02587362608637 },
+    { lat: 37.49754540521486, lng: 127.02546694890695 },
+  ]
+  const coffeeOrigin = { x: 10, y: 0 }
 
-        const offWindow=(index)=>{
-            setIsClose(index)
-        }
-        const onWindow=(index)=>{
-          setIsClose(null)
-          setIsOpen(index)
-      }
-         if (!map) return
-         const ps = new kakao.maps.services.Places()
-         const key = keyword1
-         return
-         ps.keywordSearch(key, (data, status, _pagination) => {
-           if (status === kakao.maps.services.Status.OK) {
-             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-             // LatLngBounds 객체에 좌표를 추가합니다
-             const bounds = new kakao.maps.LatLngBounds()
-             let markers = []
-     
-             for (var i = 0; i < data.length; i++) {
-               // @ts-ignore
-               markers.push({
-                 position: {
-                   lat: data[i].y,
-                   lng: data[i].x,
-                 },
-                 content: data[i].place_name,
-               })
-               // @ts-ignore
-               bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
-             }
-             setMarkers(markers)
-            //  console.log(map)
-    
-             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-             map.setBounds(bounds)
-            //  if(key !== keyword1){
-            //   return
-            //  }
-           }
-         })
-        return (
- 
-          <div>
-          <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
-         position={position}
-         zIndex="-1"
-        clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        // onClick={() => setIsOpen(true)}
-        onClick={()=>{onWindow(index)}}
-      >
-        {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
-        {/* 인포윈도우에 표출될 내용으로 HTML 문자열이나 React Component가 가능합니다 */}
-        {(isOpen === index) && index !==isClose && (
-            <div style={{ minWidth: "150px"  }}>
-            <img
-              alt="close"
-              width="14"
-              height="13"
-              src="https://t1.daumcdn.net/localimg/localimages/07/mapjsapi/2x/bt_close.gif"
-              style={{
-                position: "absolute",
-                right: "5px",
-                top: "5px",
-                cursor: "pointer",
-              }}
-              onClick={()=>{offWindow(index)}}
-            />
-            <InfoWindow1 />
-          </div>
-         
-        )}
-      </MapMarker>
-          </div>
-        )
-      }
-    const onKeyword = (e)=>{
-      setKeyword(e.target.Value)
+  // 편의점 마커가 표시될 좌표 배열입니다
+  const storePositions = [
+    { lat: 37.497535461505684, lng: 127.02948149502778 },
+    { lat: 37.49671536281186, lng: 127.03020491448352 },
+    { lat: 37.496201943633714, lng: 127.02959405469642 },
+    { lat: 37.49640072567703, lng: 127.02726459882308 },
+    { lat: 37.49640098874988, lng: 127.02609983175294 },
+    { lat: 37.49932849491523, lng: 127.02935780247945 },
+    { lat: 37.49996818951873, lng: 127.02943721562295 },
+  ]
+  const storeOrigin = { x: 10, y: 36 }
 
+  // 주차장 마커가 표시될 좌표 배열입니다
+  const carparkPositions = [
+    { lat: 37.49966168796031, lng: 127.03007039430118 },
+    { lat: 37.499463762912974, lng: 127.0288828824399 },
+    { lat: 37.49896834100913, lng: 127.02833986892401 },
+    { lat: 37.49893267508434, lng: 127.02673400572665 },
+    { lat: 37.49872543597439, lng: 127.02676785815386 },
+    { lat: 37.49813096097184, lng: 127.02591949495914 },
+    { lat: 37.497680616783086, lng: 127.02518427952202 },
+  ]
+  const carparkOrigin = { x: 10, y: 72 }
+
+  const [selectedCategory, setSelectedCategory] = useState("coffee")
+
+  useEffect(() => {
+    const coffeeMenu = document.getElementById("coffeeMenu")
+    const storeMenu = document.getElementById("storeMenu")
+    const carparkMenu = document.getElementById("carparkMenu")
+
+    if (selectedCategory === "coffee") {
+      // 커피숍 카테고리를 선택된 스타일로 변경하고
+      coffeeMenu.className = "menu_selected"
+
+      // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
+      storeMenu.className = ""
+      carparkMenu.className = ""
+    } else if (selectedCategory === "store") {
+      // 편의점 카테고리가 클릭됐을 때
+
+      // 편의점 카테고리를 선택된 스타일로 변경하고
+      coffeeMenu.className = ""
+      storeMenu.className = "menu_selected"
+      carparkMenu.className = ""
+    } else if (selectedCategory === "carpark") {
+      // 주차장 카테고리가 클릭됐을 때
+
+      // 주차장 카테고리를 선택된 스타일로 변경하고
+      coffeeMenu.className = ""
+      storeMenu.className = ""
+      carparkMenu.className = "menu_selected"
     }
-    const onKeyword1 =(e)=>{
-      if(e.key==='Enter'){
-        setKeyword1(e.target.value)
-      }
-    }
-    const defaultMap = ()=>{
-    
-        return (
-            <div>
-                  <Map // 지도를 표시할 Container
-            center={{
-              // 지도의 중심좌표
-              lat: 33.450705,
-              lng: 126.570677,
-            }}
-            style={{
-              // 지도의 크기
-              width: "100%",
-              height: "450px",
-            }}
-            level={3} // 지도의 확대 레벨
-          >
-             {positions.map((value, index) => (
-        <EventMarkerContainer
-          key={`EventMarkerContainer-${value.latlng.lat}-${value.latlng.lng}`}
-          index = {index}
-          position={value.latlng}
-          content={value.title}
-        />
-      ))}
-    {markers.map((marker) => (
-        <MapMarker
-          key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
-          position={marker.position}
-          onClick={() => setInfo(marker)}
+  }, [selectedCategory])
+
+  return (
+    <>
+      {/* <CategoryMarkerStyle /> */}
+      <div id="mapwrap">
+
+        <Map // 지도를 표시할 Container
+          id={`map`}
+          center={{
+            // 지도의 중심좌표
+            lat: 37.498004414546934,
+            lng: 127.02770621963765,
+          }}
+          style={{
+            // 지도의 크기
+            position:"absolute",
+            width: "100%",
+            height: "450px",
+          }}
+          level={3} // 지도의 확대 레벨
         >
-          {info &&info.content === marker.content && (
-            <div style={{color:"#000"}}>{marker.content}</div>
-          )}
-        </MapMarker>
-      ))}
-      </Map>
-            </div>
-        );
-        
-      }
-      return (
-        <div>
-            {defaultMap()}
-            <input type="text" name=""  onChange={onKeyword} onKeyDown={onKeyword1}>{keyword}</input> 
+      <input style={{position:"absolute", zIndex:"21"}} value="sdf">
+          </input>
+          {selectedCategory === "coffee" &&
+            coffeePositions.map((position) => (
+              <MapMarker
+                key={`coffee-${position.lat},${position.lng}`}
+                position={position}
+                image={{
+                  src: markerImageSrc,
+                  size: imageSize,
+                  options: {
+                    spriteSize: spriteSize,
+                    spriteOrigin: coffeeOrigin,
+                  },
+                }}
+              />
+            ))}
+          {selectedCategory === "store" &&
+            storePositions.map((position) => (
+              <MapMarker
+                key={`store-${position.lat},${position.lng}`}
+                position={position}
+                image={{
+                  src: markerImageSrc,
+                  size: imageSize,
+                  options: {
+                    spriteSize: spriteSize,
+                    spriteOrigin: storeOrigin,
+                  },
+                }}
+              />
+            ))}
+          {selectedCategory === "carpark" &&
+            carparkPositions.map((position) => (
+              <MapMarker
+                key={`carpark-${position.lat},${position.lng}`}
+                position={position}
+                image={{
+                  src: markerImageSrc,
+                  size: imageSize,
+                  options: {
+                    spriteSize: spriteSize,
+                    spriteOrigin: carparkOrigin,
+                  },
+                }}
+              >
+              </MapMarker>
+            ))}
+        </Map>
+        {/* 지도 위에 표시될 마커 카테고리 */}
+        <div className="category" style={{display:"flex", position:"absolute", zIndex:"21"}}>
+          <ul>
+            <li id="coffeeMenu" onClick={() => setSelectedCategory("coffee")}>
+              <span className="ico_comm ico_coffee"></span>
+              커피숍
+            </li>
+            <li id="storeMenu" onClick={() => setSelectedCategory("store")}>
+              <span className="ico_comm ico_store"></span>
+              편의점
+            </li>
+            <li id="carparkMenu" onClick={() => setSelectedCategory("carpark")}>
+              <span className="ico_comm ico_carpark"></span>
+              주차장
+            </li>
+          </ul>
         </div>
-        
-      )
-};
-
+      </div>
+    </>
+  )
+}
 export default Map6;

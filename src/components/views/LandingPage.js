@@ -13,6 +13,7 @@ import Map2 from "./reactMap/Map2";
 import Map3 from "./reactMap/Map3";
 import Map4 from "./reactMap/Map4";
 import Map5 from "./reactMap/Map5";
+import Map6 from "./reactMap/Map6";
 import Sample from "./reactMap/Sample";
 
 function LandingPage() {
@@ -29,7 +30,8 @@ function LandingPage() {
       {/* <Map2 /> */}
       {/* <Map3 /> */}
       {/* <Map4 /> */}
-      <Map5 />
+      {/* <Map5 /> */}
+      <Map6 />
       {/* <Sample /> */}
 
       {/* <Outlet /> */}
