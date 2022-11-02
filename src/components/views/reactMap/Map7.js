@@ -1,12 +1,12 @@
 /*global kakao*/
 
-// 여러 정보 데이터 가져오기 및 키워드 입력 현재 위치는 불러원 마커의 첫번째 위치를 중심값으로 설정 
+// 마크 위치에 바로 요소 값 띄우기
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG, POST_LATLNG1 } from "../../../config/clientConfig";
 import InfoWindow1 from "./InfoWindow1";
-const Map5 = () => {
+const Map7 = () => {
   const [UserName, setUserName] = useState([]);
   const [LatLng, setLatLng] = useState([]);
   const [positions, setPositions] = useState([]);
@@ -151,6 +151,7 @@ const Map5 = () => {
             level={3} // 지도의 확대 레벨
           >
              {markers.map((marker, index) => (
+              <div key={index}>
                         <EventMarkerContainer
           key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
           position={marker.position}
@@ -158,7 +159,17 @@ const Map5 = () => {
           content = {marker.content}
 
         />
-    
+
+        {/* 마크 위치에 바로 요소 띄우기 */}
+        <CustomOverlayMap
+        position={            marker.position        }>
+        <div className="label" style={{color: "#000"}}>
+          <span className="left"></span>
+          <span className="center">{marker.content}</span>
+          <span className="right"></span>
+        </div>
+        </CustomOverlayMap>
+              </div>
 
       ))}
        
@@ -176,4 +187,4 @@ const Map5 = () => {
       )
 };
 
-export default Map5;
+export default Map7;

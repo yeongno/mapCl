@@ -98,7 +98,7 @@ const Map6 =()=>{
           }}
           level={3} // 지도의 확대 레벨
         >
-      <input style={{position:"absolute", zIndex:"21"}} value="sdf">
+      <input style={{position:"absolute", zIndex:"21"}} >
           </input>
           {selectedCategory === "coffee" &&
             coffeePositions.map((position) => (
