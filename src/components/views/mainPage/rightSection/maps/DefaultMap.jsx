@@ -4,9 +4,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
-import { GET_USERS, POST_LATLNG, POST_LATLNG1 } from "../../../config/clientConfig";
-import InfoWindow1 from "./InfoWindow1";
-const Map7 = () => {
+import { GET_USERS, POST_LATLNG1 } from "../../../../../config/clientConfig";
+const DefaultMap = () => {
   const [UserName, setUserName] = useState([]);
   const [LatLng, setLatLng] = useState([]);
   const [positions, setPositions] = useState([]);
@@ -147,6 +146,7 @@ const Map7 = () => {
               // 지도의 크기
               width: "100%",
               height: "450px",
+              position:"absolute",
             }}
             level={3} // 지도의 확대 레벨
           >
@@ -179,10 +179,12 @@ const Map7 = () => {
       return (
         <div>
             {defaultMap()}
-            <input type="text" name=""  onChange={onKeyword} onKeyDown={onKeyword1}>{keyword}</input> 
+            <input type="text" name=""  onChange={onKeyword} onKeyDown={onKeyword1} style={{position:"absolute"
+              ,zIndex:"21"
+            }}>{keyword}</input> 
         </div>
         
       )
 };
 
-export default Map7;
+export default DefaultMap;

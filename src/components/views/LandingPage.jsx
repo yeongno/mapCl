@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import Header from "./header/Header";
 import Marker from "./map/Marker";
 import Marker2 from "./map/Marker2";
 import Marker3 from "./map/Marker3";
@@ -18,7 +19,13 @@ import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
 
 function LandingPage() {
+  const navigate = useNavigate();
+  useEffect(() => {
+        navigate("/mainpage")
+  }, [])
+  
   return (
+    
     <div>
       {/* <Marker /> */}
       {/* <Marker2 /> */}
@@ -33,10 +40,10 @@ function LandingPage() {
       {/* <Map4 /> */}
       {/* <Map5 /> */}
       {/* <Map6 /> */}
-      <Map7 />
+      {/* <Map7 /> */}
       {/* <Sample /> */}
-
-      {/* <Outlet /> */}
+      <Header />
+      <Outlet />
 
     </div>
   );
