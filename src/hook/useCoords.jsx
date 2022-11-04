@@ -1,0 +1,42 @@
+
+import React, { useEffect, useState } from 'react';
+
+/**
+ * 현재 위치를 리턴 해주는 훅
+ * @returns {latitude, longitude, isLoad}
+ * @type {
+ * latitude : number | null
+ * longitude : number | null
+ * isLoad : boolean | true
+ * }
+ * 선언 값
+ * const {latitude,longitude} = useCoords()
+ * 
+ * 세팅 값
+ * const [state, setState] = useState({
+    center: {
+      lat: latitude,
+      lng: longitude,
+    }
+  }) 
+ */
+const useCoords=() =>{
+  const [coords, setCoords] = useState({
+    latitude:null,
+    longitude: null,
+    isLoaded: true,
+  });
+
+  const onSuccess = ({
+    coords: { latitude, longitude }
+}) => {
+    setCoords({ latitude, longitude });
+};
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(onSuccess)
+  },[])
+
+  return coords;
+}
+export default useCoords;

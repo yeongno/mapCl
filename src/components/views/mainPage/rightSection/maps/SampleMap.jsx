@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker, StaticMap, useMap } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG1 } from "../../../../../config/clientConfig";
+import useCoords from "../../../../../hook/useCoords";
 import EventMarkerContainer from "./EventContainer";
 import EventMarkerContainer1 from "./EventContainer1";
 const SampleMap = () => {
@@ -15,7 +16,9 @@ const SampleMap = () => {
   const [isClose, setIsClose] = useState(null) 
   const [markers, setMarkers] = useState([])
   const [markers1, setMarkers1] = useState([])
-
+  const { geolocation } = navigator;
+ 
+  const {latitude,longitude} = useCoords()
   //leftSection에서 받아온 redux mapType값
   const [map, setMap] = useState()
   
@@ -25,11 +28,11 @@ const SampleMap = () => {
 
   //키 컨펌 한 키워드
   const [keyword1, setKeyword1] = useState("강남")
-
+  console.log(latitude,longitude)
   //지도의 위치
   const [state, setState] = useState({
     // 지도의 초기 위치
-    center: { lat: 33.452613, lng: 126.570888 },
+    center: { lat: latitude, lng: longitude },
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: false,
   })

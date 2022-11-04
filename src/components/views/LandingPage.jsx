@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useGeolocated } from "react-geolocated";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./header/Header";
 import Marker from "./map/Marker";
@@ -19,10 +20,7 @@ import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
 
 function LandingPage() {
-  const navigate = useNavigate();
-  useEffect(() => {
-        navigate("/mainpage")
-  }, [])
+
   
   return (
     
