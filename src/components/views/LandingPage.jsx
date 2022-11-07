@@ -20,7 +20,11 @@ import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
 
 function LandingPage() {
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/mainpage")
+  }, [])
+  
   
   return (
     

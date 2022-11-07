@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 /**
  * 현재 위치를 리턴 해주는 훅
@@ -7,7 +6,7 @@ import React, { useEffect, useState } from 'react';
  * @type {
  * latitude : number | null
  * longitude : number | null
- * isLoad : boolean | true
+ * isLoaded : boolean | true
  * }
  * 선언 값
  * const {latitude,longitude} = useCoords()
@@ -20,23 +19,22 @@ import React, { useEffect, useState } from 'react';
     }
   }) 
  */
-const useCoords=() =>{
+const useCoords = () => {
   const [coords, setCoords] = useState({
-    latitude:null,
+    latitude: null,
     longitude: null,
-    isLoaded: true,
+    isLoaded: false,
   });
 
-  const onSuccess = ({
-    coords: { latitude, longitude }
-}) => {
+  const onSuccess = ({ coords: { latitude, longitude } }) => {
     setCoords({ latitude, longitude });
-};
+  };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(onSuccess)
-  },[])
+    navigator.geolocation.getCurrentPosition(onSuccess);
+  }, []);
+  console.log("use", coords);
 
   return coords;
-}
+};
 export default useCoords;
