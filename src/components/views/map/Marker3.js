@@ -3,9 +3,9 @@
 //기본 적인 기능으로 지도 표시 마커 표시 기능.
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Map } from "react-kakao-maps-sdk";
 import { GET_USERS } from "../../../config/UserConfig";
 const Marker3 = () => {
-
   useEffect(() => {
     // 마커를 담을 배열입니다
     var markers = [];

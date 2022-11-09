@@ -22,12 +22,10 @@ import Sample from "./reactMap/Sample";
 function LandingPage() {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/mainpage")
-  }, [])
-  
-  
+    navigate("/mapPage");
+  }, []);
+
   return (
-    
     <div>
       {/* <Marker /> */}
       {/* <Marker2 /> */}
@@ -46,7 +44,6 @@ function LandingPage() {
       {/* <Sample /> */}
       <Header />
       <Outlet />
-
     </div>
   );
 }

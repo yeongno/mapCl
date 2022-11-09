@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import LandingPage from "./views/LandingPage";
-import MainPage from "./views/mainPage/MainPage";
-import DefaultMap from "./views/mainPage/rightSection/maps/common/DefaultMap";
-import RelationMap from "./views/mainPage/rightSection/maps/RelationMap";
-import SampleMap from "./views/mainPage/rightSection/maps/SampleMap";
+import MapPage from "./views/mapPage/MapPage";
+import DefaultMap from "./views/mapPage/rightSection/maps/common/DefaultMap";
+import RelationMap from "./views/mapPage/rightSection/maps/RelationMap";
+import SampleMap from "./views/mapPage/rightSection/maps/SampleMap";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -14,10 +14,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />}>
-          <Route path="/mainPage" element={<MainPage />}>
-            <Route path="/mainPage/defaultMap" element={<DefaultMap />} />
-            <Route path="/mainPage/relationMap" element={<RelationMap />} />
-            <Route path="/mainPage/testMap" element={<SampleMap />} />
+          <Route path="/mapPage" element={<MapPage />}>
+            <Route path="/mapPage/defaultMap" element={<DefaultMap />} />
+            <Route path="/mapPage/relationMap" element={<RelationMap />} />
+            <Route path="/mapPage/testMap" element={<SampleMap />} />
           </Route>
         </Route>
       </Routes>
