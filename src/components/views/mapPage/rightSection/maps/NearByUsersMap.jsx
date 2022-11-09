@@ -1,20 +1,15 @@
-/*global kakao*/
-
-// 마크 위치에 바로 요소 값 띄우기
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG1 } from "../../../../../config/clientConfig";
 import useCoords from "../../../../../hook/useCoords";
 import EventMarkerContainer from "./common/EventContainer";
-import EventMarkerContainer1 from "./EventContainer1";
 import { POST_NEARBYUSERS } from "./../../../../../config/tempClientConfig";
 const NearByUsersMap = () => {
   const [markers, setMarkers] = useState([]);
 
+  //현재 실제 위치
   const { latitude, longitude, isLoaded } = useCoords();
-  //leftSection에서 받아온 redux mapType값
-  const [map, setMap] = useState();
 
   //지도의 위치
   const [state, setState] = useState({
@@ -24,12 +19,79 @@ const NearByUsersMap = () => {
     isPanto: false,
   });
 
+  //현재 맵 중심 정보
+  const [preCenter, setPreCenter] = useState({
+    center: {
+      lat: latitude,
+      lng: longitude,
+    },
+  });
+
+  //지도 중심좌표가 움직인 정도를 알기 위한 값
+  const [tmpCenter, setTmpCenter] = useState({
+    center: {
+      lat: latitude,
+      lng: longitude,
+    },
+  });
+
+  //설정 값만큼 움직였을 경우 데이터를 불러오기 위한 플래그 값
+  const [onChanged, setOnChanged] = useState(0);
+
   useEffect(() => {
     //초기 중심 위치 설정
     setState({
       center: { lat: latitude, lng: longitude },
       isPanto: true,
     });
+
+    //현재 위치 값을 설정한 훅이 초기 값이 바로 설정이 안됨으로 임의로 초기 값 설정
+    if (onChanged === 0 && latitude) {
+      setTmpCenter({
+        center: {
+          lat: latitude,
+          lng: longitude,
+        },
+      });
+      setOnChanged(onChanged + 1);
+    }
+    //약 150미터
+    let mem = 0.00165628926738;
+
+    //위도 변경 약 400미터 마다 업데이트
+    if (
+      preCenter.center.lat >= tmpCenter.center.lat + mem ||
+      preCenter.center.lat <= tmpCenter.center.lat - mem
+    ) {
+      console.log("mem", tmpCenter);
+      setOnChanged(onChanged + 1);
+      setTmpCenter({
+        center: {
+          lat: preCenter.center.lat,
+          lng: preCenter.center.lng,
+        },
+      });
+    }
+    //경도 변경 약 400미터 마다 업데이트
+    if (
+      preCenter.center.lng >= tmpCenter.center.lng + mem ||
+      preCenter.center.lng <= tmpCenter.center.lng - mem
+    ) {
+      console.log("mem", tmpCenter);
+      setOnChanged(onChanged + 1);
+      setTmpCenter({
+        center: {
+          lat: preCenter.center.lat,
+          lng: preCenter.center.lng,
+        },
+      });
+    }
+  }, [latitude, preCenter]);
+
+  //tmpCenter 업데이트 되면 데이터 불러옴
+  useEffect(() => {
+    console.log("mem12", tmpCenter);
+
     let markers = [];
     //더미데이터 markers에 등록
     axios.get(POST_NEARBYUSERS).then((res) => {
@@ -44,9 +106,8 @@ const NearByUsersMap = () => {
       }
       setMarkers(markers);
     });
-  }, [map, latitude]);
+  }, [onChanged]);
 
-  console.log("markers", markers);
   const defaultMap = () => {
     return (
       <div>
@@ -61,6 +122,15 @@ const NearByUsersMap = () => {
             position: "absolute",
           }}
           level={3} // 지도의 확대 레벨
+          onCenterChanged={(map) =>
+            setPreCenter({
+              level: map.getLevel(),
+              center: {
+                lat: map.getCenter().getLat(),
+                lng: map.getCenter().getLng(),
+              },
+            })
+          }
         >
           <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
             position={{
@@ -90,7 +160,7 @@ const NearByUsersMap = () => {
               {/* 마크 위치에 바로 요소 띄우기 */}
               <CustomOverlayMap position={marker.position}>
                 <div className="label" style={{ color: "yellow" }}>
-                  <div>{marker.content}1</div>
+                  <div>{marker.content}</div>
                 </div>
               </CustomOverlayMap>
             </div>

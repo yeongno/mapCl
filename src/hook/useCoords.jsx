@@ -33,7 +33,6 @@ const useCoords = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(onSuccess);
   }, []);
-  console.log("use", coords);
 
   return coords;
 };
