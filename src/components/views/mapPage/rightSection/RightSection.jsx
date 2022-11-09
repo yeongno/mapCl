@@ -30,6 +30,9 @@ function RightSection() {
     TEST_MAP() {
       navigate("/mapPage/testMap");
     },
+    NEAR_MAP() {
+      navigate("/mapPage/nearMap");
+    },
   };
 
   //해당 맵 스위치 코드

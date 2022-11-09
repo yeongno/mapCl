@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./views/LandingPage";
 import MapPage from "./views/mapPage/MapPage";
 import DefaultMap from "./views/mapPage/rightSection/maps/common/DefaultMap";
+import NearByUsersMap from "./views/mapPage/rightSection/maps/NearByUsersMap";
 import RelationMap from "./views/mapPage/rightSection/maps/RelationMap";
 import SampleMap from "./views/mapPage/rightSection/maps/SampleMap";
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/mapPage/defaultMap" element={<DefaultMap />} />
             <Route path="/mapPage/relationMap" element={<RelationMap />} />
             <Route path="/mapPage/testMap" element={<SampleMap />} />
+            <Route path="/mapPage/nearMap" element={<NearByUsersMap />} />
           </Route>
         </Route>
       </Routes>

@@ -1,0 +1,228 @@
+{
+  "list": [
+    {
+      "user": [
+        {
+          "userId": 1,
+          "name": "name1",
+          "email": "email1"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48438078007725,
+          "lng": 126.92844048631517
+        }
+      ],
+      "interests": ["TENNIS"]
+    },
+    {
+      "user": [
+        {
+          "userId": 2,
+          "name": "name2",
+          "email": "email2"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.485349867202686,
+          "lng": 126.92927626160154
+        }
+      ],
+      "interests": ["BACKEND"]
+    },
+    {
+      "user": [
+        {
+          "userId": 3,
+          "name": "name3",
+          "email": "email3"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.485349867202686,
+          "lng": 126.92927626160154
+        }
+      ],
+      "interests": ["TENNIS"]
+    },
+    {
+      "user": [
+        {
+          "userId": 4,
+          "name": "name4",
+          "email": "email4"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.485349867202686,
+          "lng": 126.92927626160154
+        }
+      ],
+      "interests": ["TV"]
+    },
+    {
+      "user": [
+        {
+          "userId": 5,
+          "name": "name5",
+          "email": "email5"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.485349867202686,
+          "lng": 126.92927626160154
+        }
+      ],
+      "interests": ["GAME"]
+    },
+    {
+      "user": [
+        {
+          "userId": 6,
+          "name": "name6",
+          "email": "email6"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.485349867202686,
+          "lng": 126.92976919300712
+        }
+      ],
+      "interests": ["TV"]
+    },
+    {
+      "user": [
+        {
+          "userId": 7,
+          "name": "name7",
+          "email": "email7"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48418786056502,
+          "lng": 126.92976919300712
+        }
+      ],
+      "interests": ["BOOK"]
+    },
+    {
+      "user": [
+        {
+          "userId": 8,
+          "name": "name8",
+          "email": "email8"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48393212824762,
+          "lng": 126.93156717187337
+        }
+      ],
+      "interests": ["COMPUTER"]
+    },
+    {
+      "user": [
+        {
+          "userId": 9,
+          "name": "name9",
+          "email": "email9"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.483463571344366,
+          "lng": 126.9315110668925
+        }
+      ],
+      "interests": ["BOOK"]
+    },
+    {
+      "user": [
+        {
+          "userId": 10,
+          "name": "name10",
+          "email": "email10"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48285984348161,
+          "lng": 126.93142116696315
+        }
+      ],
+      "interests": ["TENNIS"]
+    },
+    {
+      "user": [
+        {
+          "userId": 11,
+          "name": "name11",
+          "email": "email11"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48369898927458,
+          "lng": 126.93353471597482
+        }
+      ],
+      "interests": ["PHONE"]
+    },
+    {
+      "user": [
+        {
+          "userId": 12,
+          "name": "name12",
+          "email": "email12"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48332888275036,
+          "lng": 126.93231394756299
+        }
+      ],
+      "interests": ["TALKING"]
+    },
+    {
+      "user": [
+        {
+          "userId": 13,
+          "name": "name13",
+          "email": "email13"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48287804043879,
+          "lng": 126.93172642256134
+        }
+      ],
+      "interests": ["TENNIS"]
+    },
+    {
+      "user": [
+        {
+          "userId": 14,
+          "name": "name14",
+          "email": "email14"
+        }
+      ],
+      "location": [
+        {
+          "lat": 37.48267971398136,
+          "lng": 126.93154570143736
+        }
+      ],
+      "interests": ["WALKING"]
+    }
+  ]
+}
