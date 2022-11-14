@@ -86,12 +86,10 @@ const DefaultMap = () => {
   //마커의 이벤트 처리하기 위한 함수
   const EventMarkerContainer = ({ position, content, index }) => {
     const offWindow = (index) => {
-      console.log(index);
       setIsClose(index);
     };
     const onWindow = (index) => {
       setIsClose(null);
-      console.log(index);
       setIsOpen(index);
     };
 

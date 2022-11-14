@@ -4,10 +4,15 @@ import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 import { GET_USERS, POST_LATLNG1 } from "../../../../../config/clientConfig";
 import useCoords from "../../../../../hook/useCoords";
 import EventMarkerContainer from "./common/EventContainer";
-import { POST_NEARBYUSERS } from "./../../../../../config/tempClientConfig";
-const NearByUsersMap = () => {
+import {
+  GET_MYUSERINFO,
+  POST_NEARBYUSERS,
+} from "./../../../../../config/tempClientConfig";
+import { MyLocation } from "./common/MyLocation";
+import MR_Interested from "./common/MR_Interested";
+const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
-
+  const [position, setPosition] = useState();
   //현재 실제 위치
   const { latitude, longitude, isLoaded } = useCoords();
 
@@ -34,9 +39,10 @@ const NearByUsersMap = () => {
       lng: longitude,
     },
   });
-
+  MyLocation();
   //설정 값만큼 움직였을 경우 데이터를 불러오기 위한 플래그 값
   const [onChanged, setOnChanged] = useState(0);
+  useEffect(() => {}, [position]);
 
   useEffect(() => {
     //초기 중심 위치 설정
@@ -86,17 +92,17 @@ const NearByUsersMap = () => {
     }
   }, [latitude, preCenter]);
 
-  //tmpCenter 업데이트 되면 데이터 불러옴
+  //tmpCenter 업데이트 되면 선호 지역 데이터 불러옴
   useEffect(() => {
     let markers = [];
     //더미데이터 markers에 등록
-    axios.get(POST_NEARBYUSERS).then((res) => {
-      for (var i = 0; i < res.data.list.length; i++) {
+    axios.get(GET_MYUSERINFO).then((res) => {
+      for (var i = 0; i < res.data.user[0].priority.length; i++) {
         // @ts-ignore
         markers.push({
           position: {
-            lat: res.data.list[i].location[0].lat,
-            lng: res.data.list[i].location[0].lng,
+            lat: res.data.user[0].priority[i].lat,
+            lng: res.data.user[0].priority[i].lng,
           },
         });
       }
@@ -117,6 +123,12 @@ const NearByUsersMap = () => {
             height: "450px",
             position: "absolute",
           }}
+          onClick={(_t, mouseEvent) =>
+            setPosition({
+              lat: mouseEvent.latLng.getLat(),
+              lng: mouseEvent.latLng.getLng(),
+            })
+          }
           level={3} // 지도의 확대 레벨
           onCenterChanged={(map) =>
             setPreCenter({
@@ -142,11 +154,13 @@ const NearByUsersMap = () => {
             }}
             zIndex="-1"
             clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-          ></MapMarker>
+          >
+            내 위치
+          </MapMarker>
           ;
           {markers.map((marker, index) => (
             <div key={index}>
-              <EventMarkerContainer
+              <MR_Interested
                 key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
                 position={marker.position}
                 index={index}
@@ -155,8 +169,8 @@ const NearByUsersMap = () => {
 
               {/* 마크 위치에 바로 요소 띄우기 */}
               <CustomOverlayMap position={marker.position}>
-                <div className="label" style={{ color: "yellow" }}>
-                  <div>{marker.content}</div>
+                <div className="label" style={{ color: "black" }}>
+                  <div>{index + 1}</div>
                 </div>
               </CustomOverlayMap>
             </div>
@@ -168,4 +182,4 @@ const NearByUsersMap = () => {
   return <div>{defaultMap()}</div>;
 };
 
-export default NearByUsersMap;
+export default InterestedMap;

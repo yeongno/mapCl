@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useGeolocated } from "react-geolocated";
+import { useDispatch } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
+import { GET_MYUSERINFO } from "../../config/tempClientConfig";
+import { tmpLogin } from "../../redux/_actions/user_action";
 import Header from "./header/Header";
 import Marker from "./map/Marker";
 import Marker2 from "./map/Marker2";
@@ -19,10 +22,16 @@ import Map6 from "./reactMap/Map6";
 import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
 
-function LandingPage() {
+function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     navigate("/mapPage");
+  }, []);
+  useEffect(() => {
+    dispatch(tmpLogin()).then((response) => {
+      console.log("ss", response);
+    });
   }, []);
 
   return (

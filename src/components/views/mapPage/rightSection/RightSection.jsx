@@ -33,6 +33,9 @@ function RightSection() {
     NEAR_MAP() {
       navigate("/mapPage/nearMap");
     },
+    INTERESTED_MAP() {
+      navigate("/mapPage/interestedMap");
+    },
   };
 
   //해당 맵 스위치 코드

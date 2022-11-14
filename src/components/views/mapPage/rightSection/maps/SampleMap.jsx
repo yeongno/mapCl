@@ -36,7 +36,6 @@ const SampleMap = () => {
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: false,
   });
-  console.log("assa", latitude);
   useEffect(() => {
     //유저 데이터
     axios.get(GET_USERS).then((res) => {
@@ -110,8 +109,6 @@ const SampleMap = () => {
   };
 
   const defaultMap = () => {
-    console.log("sddsa", state);
-
     return (
       <div>
         <Map // 지도를 표시할 Container

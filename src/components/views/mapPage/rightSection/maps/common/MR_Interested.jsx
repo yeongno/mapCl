@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { MapMarker } from "react-kakao-maps-sdk";
+import InterestedInfo from "./InterestedInfo/InterestedInfo";
 
 //마커의 이벤트 처리하기 위한 함수
-const MR_NearByUsers = ({ position, content, index }) => {
+const MR_Interested = ({ position, content, index }) => {
   const [isOpen, setIsOpen] = useState(null);
   const [isClose, setIsClose] = useState(null);
   const offWindow = (index) => {
@@ -50,7 +51,7 @@ const MR_NearByUsers = ({ position, content, index }) => {
                 offWindow(index);
               }}
             />
-            {content}
+            <InterestedInfo />
           </div>
         )}
       </MapMarker>
@@ -58,4 +59,4 @@ const MR_NearByUsers = ({ position, content, index }) => {
   );
 };
 
-export default MR_NearByUsers;
+export default MR_Interested;

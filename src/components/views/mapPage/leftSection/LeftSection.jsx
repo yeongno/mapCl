@@ -21,6 +21,10 @@ function LeftSection() {
   const onNear = () => {
     dispatch(turnMap("NEAR_MAP"));
   };
+
+  const onInterested = () => {
+    dispatch(turnMap("INTERESTED_MAP"));
+  };
   return (
     <div className="leftSection-container">
       <div className="leftSection-btnContainer">
@@ -35,6 +39,9 @@ function LeftSection() {
         </button>
         <button className="btn__right--test" onClick={onNear}>
           Near
+        </button>
+        <button className="btn__right--test" onClick={onInterested}>
+          Interested Spot
         </button>
       </div>
     </div>

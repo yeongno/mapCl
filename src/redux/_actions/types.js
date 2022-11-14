@@ -10,3 +10,6 @@ export const REPLY_SET = "reply_set";
 export const REPLY_GET = "reply_get";
 
 export const TURNMAP = "turn_map";
+
+export const SET_TOKEN = "set_token";
+export const DELETE_TOKEN = "delete_token";

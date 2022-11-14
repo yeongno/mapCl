@@ -16,20 +16,17 @@ const Marker = () => {
   useEffect(() => {
     //유저 데이터
     axios.get(GET_USERS).then((res) => {
-      console.log(res.data.Users);
       setUserName(res.data.Users);
     });
 
     //마커 위치
     axios.get(POST_LATLNG).then((res) => {
-      console.log(res.data.LatLng);
       setLatLng(res.data.LatLng);
     });
   }, []);
   useEffect(() => {
     //LatLng에 있는 데이터 를 가져와서 positions에 넣을 데이터 등록
     LatLng.map((location, index) => {
-      console.log(location);
       setPositions(
         (positions[index] = {
           title: location.title,

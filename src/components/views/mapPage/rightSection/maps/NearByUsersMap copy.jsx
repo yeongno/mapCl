@@ -46,7 +46,6 @@ const NearByUsersMap = () => {
     });
   }, [map, latitude]);
 
-  console.log("markers", markers);
   const defaultMap = () => {
     return (
       <div>

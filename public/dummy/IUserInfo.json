@@ -5,7 +5,13 @@
         {
           "userId": 1,
           "name": "name1",
-          "email": "email1"
+          "email": "email1",
+          "priority1": [
+            {
+              "lat": 37.48438078007725,
+              "lng": 126.92844048631517
+            }
+          ]
         }
       ],
       "location": [
@@ -21,7 +27,13 @@
         {
           "userId": 2,
           "name": "name2",
-          "email": "email2"
+          "email": "email2",
+          "priority1": [
+            {
+              "lat": 37.485349867202686,
+              "lng": 126.92927626160154
+            }
+          ]
         }
       ],
       "location": [
@@ -37,7 +49,13 @@
         {
           "userId": 3,
           "name": "name3",
-          "email": "email3"
+          "email": "email3",
+          "priority1": [
+            {
+              "lat": 37.485349867202686,
+              "lng": 126.92927626160154
+            }
+          ]
         }
       ],
       "location": [
@@ -53,7 +71,13 @@
         {
           "userId": 4,
           "name": "name4",
-          "email": "email4"
+          "email": "email4",
+          "priority1": [
+            {
+              "lat": 37.485349867202686,
+              "lng": 126.92927626160154
+            }
+          ]
         }
       ],
       "location": [
@@ -69,7 +93,13 @@
         {
           "userId": 5,
           "name": "name5",
-          "email": "email5"
+          "email": "email5",
+          "priority1": [
+            {
+              "lat": 37.485349867202686,
+              "lng": 126.92927626160154
+            }
+          ]
         }
       ],
       "location": [
@@ -85,7 +115,13 @@
         {
           "userId": 6,
           "name": "name6",
-          "email": "email6"
+          "email": "email6",
+          "priority1": [
+            {
+              "lat": 37.485349867202686,
+              "lng": 126.92976919300712
+            }
+          ]
         }
       ],
       "location": [
@@ -101,7 +137,13 @@
         {
           "userId": 7,
           "name": "name7",
-          "email": "email7"
+          "email": "email7",
+          "priority1": [
+            {
+              "lat": 37.48418786056502,
+              "lng": 126.92976919300712
+            }
+          ]
         }
       ],
       "location": [
@@ -117,7 +159,13 @@
         {
           "userId": 8,
           "name": "name8",
-          "email": "email8"
+          "email": "email8",
+          "priority1": [
+            {
+              "lat": 37.48393212824762,
+              "lng": 126.93156717187337
+            }
+          ]
         }
       ],
       "location": [
@@ -133,7 +181,13 @@
         {
           "userId": 9,
           "name": "name9",
-          "email": "email9"
+          "email": "email9",
+          "priority1": [
+            {
+              "lat": 37.483463571344366,
+              "lng": 126.9315110668925
+            }
+          ]
         }
       ],
       "location": [
@@ -149,7 +203,13 @@
         {
           "userId": 10,
           "name": "name10",
-          "email": "email10"
+          "email": "email10",
+          "priority1": [
+            {
+              "lat": 37.48285984348161,
+              "lng": 126.93142116696315
+            }
+          ]
         }
       ],
       "location": [
@@ -165,7 +225,13 @@
         {
           "userId": 11,
           "name": "name11",
-          "email": "email11"
+          "email": "email11",
+          "priority1": [
+            {
+              "lat": 37.48369898927458,
+              "lng": 126.93353471597482
+            }
+          ]
         }
       ],
       "location": [
@@ -181,7 +247,13 @@
         {
           "userId": 12,
           "name": "name12",
-          "email": "email12"
+          "email": "email12",
+          "priority1": [
+            {
+              "lat": 37.48332888275036,
+              "lng": 126.93231394756299
+            }
+          ]
         }
       ],
       "location": [
@@ -197,7 +269,13 @@
         {
           "userId": 13,
           "name": "name13",
-          "email": "email13"
+          "email": "email13",
+          "priority1": [
+            {
+              "lat": 37.48287804043879,
+              "lng": 126.93172642256134
+            }
+          ]
         }
       ],
       "location": [
@@ -213,7 +291,13 @@
         {
           "userId": 14,
           "name": "name14",
-          "email": "email14"
+          "email": "email14",
+          "priority1": [
+            {
+              "lat": 37.48267971398136,
+              "lng": 126.93154570143736
+            }
+          ]
         }
       ],
       "location": [
