@@ -10,11 +10,25 @@ import {
 } from "./../../../../../config/tempClientConfig";
 import { MyLocation } from "./common/MyLocation";
 import MR_Interested from "./common/MR_Interested";
+import { useSelector } from "react-redux";
+import { useLocationInfo } from "../../../../../hook/useMyInfo";
 const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
   const [position, setPosition] = useState();
   //현재 실제 위치
   const { latitude, longitude, isLoaded } = useCoords();
+  const location = useLocationInfo();
+  console.log("location", location.lat);
+
+  //선호 지역 클릭 시 현재 위치 이동
+  useEffect(() => {
+    setState({
+      center: {
+        lat: location?.lat,
+        lng: location?.lng,
+      },
+    });
+  }, [location]);
 
   //지도의 위치
   const [state, setState] = useState({

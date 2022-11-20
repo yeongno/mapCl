@@ -1,11 +1,10 @@
-.body-container{
-    display:flex;
-    width: 100%;
-    .body-leftSection{
-        width: 10%;
-    }
-    .body-rightSection{
-        width: 90%
-
-    }
+.body-container {
+  display: flex;
+  width: 100%;
+  .body-leftSection {
+    width: 30%;
+  }
+  .body-rightSection {
+    width: 70%;
+  }
 }

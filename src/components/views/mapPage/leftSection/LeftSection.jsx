@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { turnMap } from "../../../../redux/_actions/turn_action";
-import "../../../styles/mapPage/LeftSection.scss";
+import FavoriteGroup from "./FavoriteGroup/FavoriteGroup";
 
 function LeftSection() {
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ function LeftSection() {
         <button className="btn__right--test" onClick={onInterested}>
           Interested Spot
         </button>
+        <FavoriteGroup />
       </div>
     </div>
   );

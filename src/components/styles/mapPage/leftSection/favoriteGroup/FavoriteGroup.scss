@@ -1,0 +1,23 @@
+.favoriteGroup-accordian {
+  .favoriteGroup-panel {
+    display: block;
+    max-height: 0px;
+    overflow: hidden;
+    .firstPriority-section {
+      display: flex;
+      .firstPriority-icoSection {
+      }
+      .firstPriority-nickSection {
+      }
+      .firstPriority-ctrSection {
+        display: flex;
+        .firstPriority-ctrSection__btn--add {
+        }
+        .firstPriority-ctrSection__btn--delete {
+        }
+        .firstPriority-ctrSection__btn--modify {
+        }
+      }
+    }
+  }
+}
