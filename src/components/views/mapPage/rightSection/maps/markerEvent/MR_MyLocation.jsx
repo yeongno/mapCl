@@ -6,8 +6,8 @@ import { useLocationInfo } from "../../../../../../hook/useMyInfo";
 function MR_MyLocation(props) {
   //현재 실제 위치
   const { latitude, longitude, isLoaded } = useCoords();
-  const [nowLatitude, setNowLatitude] = useState();
-  const [nowLongitude, setNowLongitude] = useState();
+  const [nowLatitude, setNowLatitude] = useState(latitude);
+  const [nowLongitude, setNowLongitude] = useState(longitude);
   useEffect(() => {
     setNowLatitude(latitude);
     setNowLongitude(longitude);
@@ -16,8 +16,8 @@ function MR_MyLocation(props) {
   return (
     <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
       position={{
-        lat: latitude,
-        lng: longitude,
+        lat: nowLatitude,
+        lng: nowLongitude,
       }}
       image={{
         src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다

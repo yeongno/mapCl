@@ -103,7 +103,6 @@ const NearByUsersMap = () => {
       setMarkers(markers);
     });
   }, [onChanged]);
-  console.log("near", state);
 
   const defaultMap = () => {
     return (

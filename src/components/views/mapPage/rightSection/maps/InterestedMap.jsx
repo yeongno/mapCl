@@ -15,7 +15,7 @@ const InterestedMap = () => {
 
   //키워드 마커
   const [keyMarkers, setKeyMarkers] = useState();
-  const [position1, setPosition] = useState();
+  const [position, setPosition] = useState();
   //현재 실제 위치
   const location = useLocationInfo();
   const MyInfo = useMyInfo();
@@ -36,16 +36,6 @@ const InterestedMap = () => {
     },
   });
 
-  //  선호 지역 클릭 시 현재 위치 이동
-  useEffect(() => {
-    setState({
-      center: {
-        lat: location?.lat,
-        lng: location?.lng,
-      },
-    });
-  }, [location]);
-
   //지도 중심좌표가 움직인 정도를 알기 위한 값
   const [tmpCenter, setTmpCenter] = useState({
     center: {
@@ -56,21 +46,27 @@ const InterestedMap = () => {
   //설정 값만큼 움직였을 경우 데이터를 불러오기 위한 플래그 값
   const [onChanged, setOnChanged] = useState(0);
 
+  //  선호 지역 클릭 시 현재 위치 이동
   useEffect(() => {
-    //초기 중심 위치 설정
     setState({
-      center: { lat: latitude, lng: longitude },
-      isPanto: true,
+      center: {
+        lat: location?.lat,
+        lng: location?.lng,
+      },
     });
-    //중심 위치를 설정 못 할시 한번 더 세팅
-    setTimeout(() => {
-      setState({
-        center: { lat: latitude, lng: longitude },
-        isPanto: true,
-      });
-    }, 100);
+  }, [location]);
 
-    //현재 위치 값을 설정한 훅이 초기 값이 바로 설정이 안됨으로 임의로 초기 값 설정
+  //todo 추후에 redux로 내 위치 값 가져와서 지정 usecoords 훅 사용 예정
+  useEffect(() => {
+    if (!latitude) {
+      setState({
+        center: { lat: latitude + 0.000001, lng: longitude },
+        isPanto: false,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     if (onChanged === 0 && latitude) {
       setTmpCenter({
         center: {
@@ -138,7 +134,7 @@ const InterestedMap = () => {
           isPanto={state.isPanto}
           style={{
             // 지도의 크기
-            width: "100%",
+            width: "50rem",
             height: "450px",
             position: "absolute",
           }}
@@ -160,7 +156,11 @@ const InterestedMap = () => {
           }
         >
           {preCenter && (
-            <MR_MyLocation latitude={latitude} longitude={longitude} />
+            <MR_MyLocation
+              latitude={latitude}
+              longitude={longitude}
+              setState={setState}
+            />
           )}
           {keyMarkers && <MR_Search keyMarkers={keyMarkers} />}
 
