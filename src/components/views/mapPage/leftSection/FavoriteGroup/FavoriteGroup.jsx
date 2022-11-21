@@ -26,7 +26,6 @@ function FavoriteGroup() {
     }
   }, [MyInfo]);
   const onActive = () => {
-    console.log("aaa", btn_Ref.current);
     const Ref_style = window.getComputedStyle(panel_Ref.current);
     if (Ref_style.getPropertyValue("max-Height") === "0px") {
       panel_Ref.current.style.maxHeight = "fit-Content";
@@ -63,7 +62,12 @@ function FavoriteGroup() {
         </div>
         <div className="secondPriority-section">
           <div className="secondPriority-icoSection"></div>
-          <div className="secondPriority-nickSection">
+          <div
+            className="secondPriority-nickSection"
+            onClick={() => {
+              dispatch(setLocation(secondPriority?.lat, secondPriority?.lng));
+            }}
+          >
             {secondPriority?.nickName}
           </div>
           <div className="secondPriority-ctrSection">

@@ -11,16 +11,21 @@ import {
 import { MyLocation } from "./common/MyLocation";
 import MR_Interested from "./common/MR_Interested";
 import { useSelector } from "react-redux";
-import { useLocationInfo } from "../../../../../hook/useMyInfo";
+import useMyInfo, { useLocationInfo } from "../../../../../hook/useMyInfo";
+import SearchBar from "./common/SearchBar";
+import MR_Search from "./markerEvent/MR_Search";
 const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
+
+  //키워드 마커
+  const [keyMarkers, setKeyMarkers] = useState([]);
   const [position, setPosition] = useState();
   //현재 실제 위치
   const { latitude, longitude, isLoaded } = useCoords();
   const location = useLocationInfo();
-  console.log("location", location.lat);
+  const MyInfo = useMyInfo();
 
-  //선호 지역 클릭 시 현재 위치 이동
+  //  선호 지역 클릭 시 현재 위치 이동
   useEffect(() => {
     setState({
       center: {
@@ -106,6 +111,7 @@ const InterestedMap = () => {
     }
   }, [latitude, preCenter]);
 
+  console.log("keymaker", keyMarkers);
   //tmpCenter 업데이트 되면 선호 지역 데이터 불러옴
   useEffect(() => {
     let markers = [];
@@ -133,7 +139,7 @@ const InterestedMap = () => {
           isPanto={state.isPanto}
           style={{
             // 지도의 크기
-            width: "100%",
+            width: "60rem",
             height: "450px",
             position: "absolute",
           }}
@@ -171,7 +177,8 @@ const InterestedMap = () => {
           >
             내 위치
           </MapMarker>
-          ;
+          <MR_Search keyMarkers={keyMarkers} />
+
           {markers.map((marker, index) => (
             <div key={index}>
               <MR_Interested
@@ -193,7 +200,12 @@ const InterestedMap = () => {
       </div>
     );
   };
-  return <div>{defaultMap()}</div>;
+  return (
+    <div>
+      {defaultMap()}
+      <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
+    </div>
+  );
 };
 
 export default InterestedMap;
