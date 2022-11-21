@@ -1,39 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
-import { GET_USERS, POST_LATLNG1 } from "../../../../../config/clientConfig";
 import useCoords from "../../../../../hook/useCoords";
-import EventMarkerContainer from "./common/EventContainer";
-import {
-  GET_MYUSERINFO,
-  POST_NEARBYUSERS,
-} from "./../../../../../config/tempClientConfig";
-import { MyLocation } from "./common/MyLocation";
+import { GET_MYUSERINFO } from "./../../../../../config/tempClientConfig";
 import MR_Interested from "./common/MR_Interested";
-import { useSelector } from "react-redux";
 import useMyInfo, { useLocationInfo } from "../../../../../hook/useMyInfo";
 import SearchBar from "./common/SearchBar";
 import MR_Search from "./markerEvent/MR_Search";
+import MR_MyLocation from "./markerEvent/MR_MyLocation";
 const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
+  const { latitude, longitude, isLoaded } = useCoords();
 
   //키워드 마커
-  const [keyMarkers, setKeyMarkers] = useState([]);
-  const [position, setPosition] = useState();
+  const [keyMarkers, setKeyMarkers] = useState();
+  const [position1, setPosition] = useState();
   //현재 실제 위치
-  const { latitude, longitude, isLoaded } = useCoords();
   const location = useLocationInfo();
   const MyInfo = useMyInfo();
-
-  //  선호 지역 클릭 시 현재 위치 이동
-  useEffect(() => {
-    setState({
-      center: {
-        lat: location?.lat,
-        lng: location?.lng,
-      },
-    });
-  }, [location]);
 
   //지도의 위치
   const [state, setState] = useState({
@@ -51,6 +35,16 @@ const InterestedMap = () => {
     },
   });
 
+  //  선호 지역 클릭 시 현재 위치 이동
+  useEffect(() => {
+    setState({
+      center: {
+        lat: location?.lat,
+        lng: location?.lng,
+      },
+    });
+  }, [location]);
+
   //지도 중심좌표가 움직인 정도를 알기 위한 값
   const [tmpCenter, setTmpCenter] = useState({
     center: {
@@ -58,10 +52,8 @@ const InterestedMap = () => {
       lng: longitude,
     },
   });
-  MyLocation();
   //설정 값만큼 움직였을 경우 데이터를 불러오기 위한 플래그 값
   const [onChanged, setOnChanged] = useState(0);
-  useEffect(() => {}, [position]);
 
   useEffect(() => {
     //초기 중심 위치 설정
@@ -69,6 +61,12 @@ const InterestedMap = () => {
       center: { lat: latitude, lng: longitude },
       isPanto: true,
     });
+    setTimeout(() => {
+      setState({
+        center: { lat: latitude, lng: longitude },
+        isPanto: true,
+      });
+    }, 100);
 
     //현재 위치 값을 설정한 훅이 초기 값이 바로 설정이 안됨으로 임의로 초기 값 설정
     if (onChanged === 0 && latitude) {
@@ -129,6 +127,7 @@ const InterestedMap = () => {
       setMarkers(markers);
     });
   }, [onChanged]);
+  console.log("ins", state);
 
   const defaultMap = () => {
     return (
@@ -139,7 +138,7 @@ const InterestedMap = () => {
           isPanto={state.isPanto}
           style={{
             // 지도의 크기
-            width: "60rem",
+            width: "100%",
             height: "450px",
             position: "absolute",
           }}
@@ -149,7 +148,7 @@ const InterestedMap = () => {
               lng: mouseEvent.latLng.getLng(),
             })
           }
-          level={3} // 지도의 확대 레벨
+          level={4} // 지도의 확대 레벨
           onCenterChanged={(map) =>
             setPreCenter({
               level: map.getLevel(),
@@ -160,7 +159,7 @@ const InterestedMap = () => {
             })
           }
         >
-          <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
+          {/* <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
             position={{
               lat: latitude,
               lng: longitude,
@@ -176,8 +175,12 @@ const InterestedMap = () => {
             clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
           >
             내 위치
-          </MapMarker>
-          <MR_Search keyMarkers={keyMarkers} />
+          </MapMarker> */}
+          {preCenter && (
+            <MR_MyLocation latitude={latitude} longitude={longitude} />
+          )}
+          {/* <MR_MyLocation latitude={latitude} longitude={longitude} /> */}
+          {keyMarkers && <MR_Search keyMarkers={keyMarkers} />}
 
           {markers.map((marker, index) => (
             <div key={index}>
