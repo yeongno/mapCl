@@ -8,6 +8,7 @@ import useMyInfo, { useLocationInfo } from "../../../../../hook/useMyInfo";
 import SearchBar from "./common/SearchBar";
 import MR_Search from "./markerEvent/MR_Search";
 import MR_MyLocation from "./markerEvent/MR_MyLocation";
+import MoveMyLocation from "./common/MoveMyLocation";
 const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
   const { latitude, longitude, isLoaded } = useCoords();
@@ -61,6 +62,7 @@ const InterestedMap = () => {
       center: { lat: latitude, lng: longitude },
       isPanto: true,
     });
+    //중심 위치를 설정 못 할시 한번 더 세팅
     setTimeout(() => {
       setState({
         center: { lat: latitude, lng: longitude },
@@ -109,7 +111,6 @@ const InterestedMap = () => {
     }
   }, [latitude, preCenter]);
 
-  console.log("keymaker", keyMarkers);
   //tmpCenter 업데이트 되면 선호 지역 데이터 불러옴
   useEffect(() => {
     let markers = [];
@@ -127,7 +128,6 @@ const InterestedMap = () => {
       setMarkers(markers);
     });
   }, [onChanged]);
-  console.log("ins", state);
 
   const defaultMap = () => {
     return (
@@ -159,27 +159,9 @@ const InterestedMap = () => {
             })
           }
         >
-          {/* <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
-            position={{
-              lat: latitude,
-              lng: longitude,
-            }}
-            image={{
-              src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-              size: {
-                width: 24,
-                height: 35,
-              }, // 마커이미지의 크기입니다
-            }}
-            zIndex="-1"
-            clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-          >
-            내 위치
-          </MapMarker> */}
           {preCenter && (
             <MR_MyLocation latitude={latitude} longitude={longitude} />
           )}
-          {/* <MR_MyLocation latitude={latitude} longitude={longitude} /> */}
           {keyMarkers && <MR_Search keyMarkers={keyMarkers} />}
 
           {markers.map((marker, index) => (
@@ -207,6 +189,7 @@ const InterestedMap = () => {
     <div>
       {defaultMap()}
       <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
+      <MoveMyLocation setState={setState} />
     </div>
   );
 };
