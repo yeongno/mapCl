@@ -9,13 +9,14 @@ import SearchBar from "./common/SearchBar";
 import MR_Search from "./markerEvent/MR_Search";
 import MR_MyLocation from "./markerEvent/MR_MyLocation";
 import MoveMyLocation from "./common/MoveMyLocation";
+import MR_ClickMap from "./markerEvent/MR_ClickMap";
 const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
   const { latitude, longitude, isLoaded } = useCoords();
 
   //키워드 마커
   const [keyMarkers, setKeyMarkers] = useState();
-  const [position, setPosition] = useState();
+  const [onPosition, setOnPosition] = useState();
   //현재 실제 위치
   const location = useLocationInfo();
   const MyInfo = useMyInfo();
@@ -127,19 +128,23 @@ const InterestedMap = () => {
 
   const defaultMap = () => {
     return (
-      <div>
+      <div
+        style={{
+          background: "black",
+        }}
+      >
         <Map // 지도를 표시할 Container
           // id="map"
           center={state.center}
           isPanto={state.isPanto}
           style={{
             // 지도의 크기
-            width: "50rem",
+            width: "100%",
             height: "450px",
             position: "absolute",
           }}
           onClick={(_t, mouseEvent) =>
-            setPosition({
+            setOnPosition({
               lat: mouseEvent.latLng.getLat(),
               lng: mouseEvent.latLng.getLng(),
             })
@@ -155,6 +160,7 @@ const InterestedMap = () => {
             })
           }
         >
+          //내 위치 마커
           {preCenter && (
             <MR_MyLocation
               latitude={latitude}
@@ -162,8 +168,10 @@ const InterestedMap = () => {
               setState={setState}
             />
           )}
+          //검색 마커
           {keyMarkers && <MR_Search keyMarkers={keyMarkers} />}
-
+          //지도 클릭
+          {onPosition && <MR_ClickMap onPosition={onPosition} />}
           {markers.map((marker, index) => (
             <div key={index}>
               <MR_Interested

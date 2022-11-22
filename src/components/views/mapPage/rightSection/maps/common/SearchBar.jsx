@@ -38,7 +38,6 @@ function SearchBar(props) {
           if (prekeyword1) {
             let lat = Number(data[0].y);
             let result = String(lat + 0.0000000001);
-            console.log(lat);
             props.setState({
               center: {
                 lat: result,
