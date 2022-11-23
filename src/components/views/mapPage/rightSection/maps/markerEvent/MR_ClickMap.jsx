@@ -12,7 +12,7 @@ function MR_ClickMap(props) {
         position: "absolute",
       }}
     >
-      <DefaultWindow />
+      <DefaultWindow setOnPosition={props.setOnPosition} />
     </div>
   );
 }

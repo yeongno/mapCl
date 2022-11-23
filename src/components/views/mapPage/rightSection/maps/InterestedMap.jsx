@@ -171,7 +171,12 @@ const InterestedMap = () => {
           //검색 마커
           {keyMarkers && <MR_Search keyMarkers={keyMarkers} />}
           //지도 클릭
-          {onPosition && <MR_ClickMap onPosition={onPosition} />}
+          {onPosition && (
+            <MR_ClickMap
+              onPosition={onPosition}
+              setOnPosition={setOnPosition}
+            />
+          )}
           {markers.map((marker, index) => (
             <div key={index}>
               <MR_Interested

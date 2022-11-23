@@ -2,10 +2,10 @@ import React from "react";
 import FavoriteSection from "./FavoriteSection";
 import "../../../../../styles/mapPage/infoWindow/default/DefaultWindow.scss";
 
-function DefaultWindow() {
+function DefaultWindow(props) {
   return (
     <div className="default-container">
-      <FavoriteSection />
+      <FavoriteSection setOnPosition={props.setOnPosition} />
     </div>
   );
 }
