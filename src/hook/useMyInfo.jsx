@@ -18,3 +18,11 @@ export function useLocationInfo() {
 
   return location;
 }
+
+export function useMyPriority() {
+  const location = useSelector(
+    (state) => state?.user?.userData?.user[0].priority
+  );
+
+  return location;
+}
