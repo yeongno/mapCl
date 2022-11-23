@@ -16,3 +16,5 @@ export const DELETE_TOKEN = "delete_token";
 export const PRIORITY_MAP = "priority_map";
 export const LOCATION_MAP = "location_map";
 export const FAVORITE_DEV = "favorite_dev";
+export const GROUP_DEV = "group_dev";
+export const POST_DEV = "post_dev";

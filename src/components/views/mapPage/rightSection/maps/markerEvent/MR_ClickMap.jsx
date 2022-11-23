@@ -10,7 +10,10 @@ function MR_ClickMap(props) {
         zIndex: "30",
       }}
     >
-      <DefaultWindow setOnPosition={props.setOnPosition} />
+      <DefaultWindow
+        onPosition={props.onPosition}
+        setOnPosition={props.setOnPosition}
+      />
     </div>
   );
 }
