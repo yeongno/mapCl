@@ -1,0 +1,5 @@
+@import "./mixins";
+
+.landingPage-container {
+  @include inner_container_pc();
+}

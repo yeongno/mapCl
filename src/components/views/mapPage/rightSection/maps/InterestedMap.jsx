@@ -10,6 +10,7 @@ import MR_Search from "./markerEvent/MR_Search";
 import MR_MyLocation from "./markerEvent/MR_MyLocation";
 import MoveMyLocation from "./common/MoveMyLocation";
 import MR_ClickMap from "./markerEvent/MR_ClickMap";
+import MapBlinder from "./common/MapBlinder";
 const InterestedMap = () => {
   const [markers, setMarkers] = useState([]);
   const { latitude, longitude, isLoaded } = useCoords();
@@ -128,11 +129,19 @@ const InterestedMap = () => {
 
   const defaultMap = () => {
     return (
-      <div
-        style={{
-          background: "black",
-        }}
-      >
+      <div>
+        <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
+        <MoveMyLocation setState={setState} />
+        {onPosition && (
+          //지도 클릭
+          <div style={{ width: "53%", height: "30rem", position: "absolute" }}>
+            <MR_ClickMap
+              onPosition={onPosition}
+              setOnPosition={setOnPosition}
+            />
+            <MapBlinder />
+          </div>
+        )}
         <Map // 지도를 표시할 Container
           // id="map"
           center={state.center}
@@ -140,8 +149,8 @@ const InterestedMap = () => {
           style={{
             // 지도의 크기
             width: "100%",
-            height: "450px",
-            position: "absolute",
+            height: "30rem",
+            position: "relative",
           }}
           onClick={(_t, mouseEvent) =>
             setOnPosition({
@@ -160,22 +169,17 @@ const InterestedMap = () => {
             })
           }
         >
-          //내 위치 마커
           {preCenter && (
+            //내 위치 마커
             <MR_MyLocation
               latitude={latitude}
               longitude={longitude}
               setState={setState}
             />
           )}
-          //검색 마커
-          {keyMarkers && <MR_Search keyMarkers={keyMarkers} />}
-          //지도 클릭
-          {onPosition && (
-            <MR_ClickMap
-              onPosition={onPosition}
-              setOnPosition={setOnPosition}
-            />
+          {keyMarkers && (
+            //검색 마커
+            <MR_Search keyMarkers={keyMarkers} />
           )}
           {markers.map((marker, index) => (
             <div key={index}>
@@ -198,13 +202,7 @@ const InterestedMap = () => {
       </div>
     );
   };
-  return (
-    <div>
-      {defaultMap()}
-      <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
-      <MoveMyLocation setState={setState} />
-    </div>
-  );
+  return <div>{defaultMap()}</div>;
 };
 
 export default InterestedMap;

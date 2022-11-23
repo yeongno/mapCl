@@ -6,6 +6,7 @@ import reply from "./reply_reducer";
 import token from "./token_reducer";
 import priorityMap from "./mapNav/priority_reducer";
 import location from "./mapNav/location_reducer";
+import dev from "./dev/Dev_Info_reducer";
 
 const rootReducer = combineReducers({
   user,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   token,
   priorityMap,
   location,
+  dev,
 });
 
 export default rootReducer;

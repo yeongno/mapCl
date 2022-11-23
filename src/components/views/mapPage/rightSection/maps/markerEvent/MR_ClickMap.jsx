@@ -7,9 +7,7 @@ function MR_ClickMap(props) {
   return (
     <div
       style={{
-        background: "black",
         zIndex: "30",
-        position: "absolute",
       }}
     >
       <DefaultWindow setOnPosition={props.setOnPosition} />

@@ -21,6 +21,7 @@ import Map5 from "./reactMap/Map5";
 import Map6 from "./reactMap/Map6";
 import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
+import "../styles/LandingPage.scss";
 
 function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ function LandingPage({ handleLogin }) {
   }, []);
 
   return (
-    <div>
+    <div className="landingPage-container">
       {/* <Marker /> */}
       {/* <Marker2 /> */}
       {/* <Marker3 /> */}
