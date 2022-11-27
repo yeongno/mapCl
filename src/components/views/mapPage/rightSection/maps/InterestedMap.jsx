@@ -134,7 +134,9 @@ const InterestedMap = () => {
         <MoveMyLocation setState={setState} />
         {onPosition && (
           //지도 클릭
-          <div style={{ width: "53%", height: "30rem", position: "absolute" }}>
+          <div
+            style={{ width: "65.7%", height: "30rem", position: "absolute" }}
+          >
             <MR_ClickMap
               onPosition={onPosition}
               setOnPosition={setOnPosition}
