@@ -17,6 +17,7 @@ import Hello from "./views/header/LoginPage/Hello";
 import { DELETE_TOKEN, SET_TOKEN } from "../redux/_actions/types";
 import axios from "axios";
 import InterestedMap from "./views/mapPage/rightSection/maps/InterestedMap";
+import MainPage from "./views/mainPage/MainPage";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -71,6 +72,7 @@ function App() {
             <Route path="/mapPage/nearMap" element={<NearByUsersMap />} />
             <Route path="/mapPage/interestedMap" element={<InterestedMap />} />
           </Route>
+          <Route path="/mainPage" element={<MainPage />}></Route>
         </Route>
         <Route
           path="/login"

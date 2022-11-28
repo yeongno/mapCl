@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useGeolocated } from "react-geolocated";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { GET_MYUSERINFO } from "../../config/tempClientConfig";
 import { tmpLogin } from "../../redux/_actions/user_action";
@@ -22,18 +22,46 @@ import Map6 from "./reactMap/Map6";
 import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
 import "../styles/LandingPage.scss";
+import ManuBar from "./manuBar/ManuBar";
+import { turnMenu } from "../../redux/_actions/turn_action";
 
 function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const menu = useSelector((state) => state?.turn?.turnMenu);
+
   useEffect(() => {
-    navigate("/mapPage");
+    navigate("/mainPage");
   }, []);
   useEffect(() => {
     dispatch(tmpLogin()).then((response) => {
       console.log("ss", response);
     });
   }, []);
+  useEffect(() => {
+    //상위 컴퍼넌트가 네비게이션을 쓰며 했으므로 setTimer로 이벤트 동작 시킴
+    executeMenu("MAIN_MENU");
+    dispatch(turnMenu("MAIN_MENU"));
+  }, []);
+  useEffect(() => {
+    executeMenu(menu);
+  }, [menu]);
+  const MenuValue = {
+    //기본 맵
+    MAIN_MENU() {
+      navigate("/mainPage");
+    },
+    //프로필 맵
+    MAP_MENU() {
+      navigate("/mapPage");
+    },
+  };
+
+  //해당 맵 스위치 코드
+  const executeMenu = (MenuType) => {
+    //not a function 오류가 뜸으로 if 걸어둠
+    if (menu) MenuValue[MenuType]();
+  };
 
   return (
     <div className="landingPage-container">
@@ -53,6 +81,7 @@ function LandingPage({ handleLogin }) {
       {/* <Map7 /> */}
       {/* <Sample /> */}
       <Header />
+      <ManuBar />
       <Outlet />
     </div>
   );
