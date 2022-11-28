@@ -17,21 +17,27 @@ export function postGo(dataToSubmit1) {
  * @param {topic:"string"}
  * @returns posts
  */
-export function getPost(dataToSubmit1) {
-  const request = axios
-    .post("/api/posts/getPost", dataToSubmit1)
-    .then((response) => response.data);
+export function getPost() {
+  // const request = axios
+  //   .post("/api/posts/getPost", dataToSubmit1)
+  //   .then((response) => response.data);
 
+  // const request = axios.get("/dummy/Post.json").then((res) => res.data);
+  const request = axios
+    .get("/dummy/Post.json")
+    .then((response) => response.data);
   return {
     type: POST_GET,
     payload: request,
   };
 }
 export function getNotice(dataToSubmit1) {
+  // const request = axios
+  //   .post("/api/posts/getPost", dataToSubmit1)
+  //   .then((response) => response.data);
   const request = axios
-    .post("/api/posts/getPost", dataToSubmit1)
+    .get("/dummy/NoticePost.json")
     .then((response) => response.data);
-
   return {
     type: POSTNOTICE_GET,
     payload: request,

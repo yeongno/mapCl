@@ -7,21 +7,22 @@ const useMenuSelector = () => {
   const dispatch = useDispatch();
   const menu = useSelector((state) => state?.turn?.turnMenu);
   useEffect(() => {
-    executeMenu("MAIN_MENU");
-    dispatch(turnMenu("MAIN_MENU"));
+    // executeMenu("MAIN_MENU");
+    // dispatch(turnMenu("MAIN_MENU"));
   }, []);
   useEffect(() => {
     executeMenu(menu);
   }, [menu]);
   const MenuValue = {
-    //메인 페이지
-    MAIN_MENU() {
-      navigate("/mainPage");
-    },
     //맵 페이지
     MAP_MENU() {
       navigate("/mapPage");
     },
+    //메인 페이지
+    MAIN_MENU() {
+      navigate("/mainPage");
+    },
+
     //맵 페이지
     COMMUNITY_MENU() {
       navigate("/communityPage");

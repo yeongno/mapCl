@@ -22,7 +22,7 @@ import Map6 from "./reactMap/Map6";
 import Map7 from "./reactMap/Map7";
 import Sample from "./reactMap/Sample";
 import "../styles/LandingPage.scss";
-import ManuBar from "./manuBar/ManuBar";
+import MenuBar from "./manuBar/MenuBar";
 import { turnMenu } from "../../redux/_actions/turn_action";
 import useMenuSelector from "../../hook/navSelector/useMenuSelector";
 
@@ -44,7 +44,7 @@ function LandingPage({ handleLogin }) {
   return (
     <div className="landingPage-container">
       <Header />
-      <ManuBar />
+      <MenuBar />
       <Outlet />
     </div>
   );

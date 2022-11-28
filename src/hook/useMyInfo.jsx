@@ -26,3 +26,15 @@ export function useMyPriority() {
 
   return location;
 }
+
+export function usePost() {
+  const post = useSelector((state) => state?.post?.posts);
+
+  return post;
+}
+
+export function useNoticePost() {
+  const post = useSelector((state) => state?.post?.postsNotice);
+
+  return post;
+}

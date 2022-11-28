@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { getNotice, getPost } from "../../../../redux/_actions/post_action";
 import { turnForum } from "../../../../redux/_actions/turn_action";
 
 function MenuBar_Com() {
@@ -9,6 +10,7 @@ function MenuBar_Com() {
       <button
         onClick={() => {
           dispatch(turnForum("GENERAL_FORUM"));
+          dispatch(getPost());
         }}
       >
         자유게시판
@@ -16,6 +18,7 @@ function MenuBar_Com() {
       <button
         onClick={() => {
           dispatch(turnForum("NOTICE_FORUM"));
+          dispatch(getNotice());
         }}
       >
         건의
