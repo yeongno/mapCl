@@ -1,4 +1,4 @@
-import { TURNMAP, TURNMENU } from "./types";
+import { TURNFORUM, TURNMAP, TURNMENU } from "./types";
 
 /**
  * 지도 바꾸기 DEFAULT_MAP, REL_MAP, NEAR_MAP, TEST_MAP, INTERESTED_MAP
@@ -13,13 +13,25 @@ export function turnMap(dataToSubmit) {
 }
 
 /**
- * 지도 바꾸기 DEFAULT_MAP, REL_MAP, NEAR_MAP, TEST_MAP, INTERESTED_MAP
+ * 메뉴 바꾸기 MAIN_MENU, MAP_MENU, GENERALFORUM_MENU, TEST_MAP, INTERESTED_MAP
  * @param {string "DEFAULT_MAP"} dataToSubmit
  * @returns
  */
 export function turnMenu(dataToSubmit) {
   return {
     type: TURNMENU,
+    value: dataToSubmit,
+  };
+}
+
+/**
+ * 게시판 포럼 바꾸기 GENERAL_FORUM, NOTICE_FORUM
+ * @param {string "DEFAULT_MAP"} dataToSubmit
+ * @returns
+ */
+export function turnForum(dataToSubmit) {
+  return {
+    type: TURNFORUM,
     value: dataToSubmit,
   };
 }

@@ -20,6 +20,13 @@ function ManuBar() {
       >
         MapPage
       </button>
+      <button
+        onClick={() => {
+          dispatch(turnMenu("COMMUNITY_MENU"));
+        }}
+      >
+        커뮤니티
+      </button>
     </div>
   );
 }

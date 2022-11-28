@@ -18,6 +18,9 @@ import { DELETE_TOKEN, SET_TOKEN } from "../redux/_actions/types";
 import axios from "axios";
 import InterestedMap from "./views/mapPage/rightSection/maps/InterestedMap";
 import MainPage from "./views/mainPage/MainPage";
+import CommunityPage from "./views/commnunity/CommunityPage";
+import General from "./views/commnunity/General";
+import Notice from "./views/commnunity/Notice";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -73,6 +76,10 @@ function App() {
             <Route path="/mapPage/interestedMap" element={<InterestedMap />} />
           </Route>
           <Route path="/mainPage" element={<MainPage />}></Route>
+          <Route path="/communityPage" element={<CommunityPage />}>
+            <Route path="/communityPage/general" element={<General />} />
+            <Route path="/communityPage/notice" element={<Notice />} />
+          </Route>
         </Route>
         <Route
           path="/login"

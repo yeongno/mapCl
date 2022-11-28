@@ -24,11 +24,13 @@ import Sample from "./reactMap/Sample";
 import "../styles/LandingPage.scss";
 import ManuBar from "./manuBar/ManuBar";
 import { turnMenu } from "../../redux/_actions/turn_action";
+import useMenuSelector from "../../hook/navSelector/useMenuSelector";
 
 function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const menu = useSelector((state) => state?.turn?.turnMenu);
+  //MenuBar hook
+  useMenuSelector();
 
   useEffect(() => {
     navigate("/mainPage");
@@ -38,48 +40,9 @@ function LandingPage({ handleLogin }) {
       console.log("ss", response);
     });
   }, []);
-  useEffect(() => {
-    //상위 컴퍼넌트가 네비게이션을 쓰며 했으므로 setTimer로 이벤트 동작 시킴
-    executeMenu("MAIN_MENU");
-    dispatch(turnMenu("MAIN_MENU"));
-  }, []);
-  useEffect(() => {
-    executeMenu(menu);
-  }, [menu]);
-  const MenuValue = {
-    //기본 맵
-    MAIN_MENU() {
-      navigate("/mainPage");
-    },
-    //프로필 맵
-    MAP_MENU() {
-      navigate("/mapPage");
-    },
-  };
-
-  //해당 맵 스위치 코드
-  const executeMenu = (MenuType) => {
-    //not a function 오류가 뜸으로 if 걸어둠
-    if (menu) MenuValue[MenuType]();
-  };
 
   return (
     <div className="landingPage-container">
-      {/* <Marker /> */}
-      {/* <Marker2 /> */}
-      {/* <Marker3 /> */}
-      {/* <Marker4 /> */}
-      {/* <Marker5 /> */}
-      {/* <Nomal /> */}
-      {/* <MarkerCluster /> */}
-      {/* <Map1 /> */}
-      {/* <Map2 /> */}
-      {/* <Map3 /> */}
-      {/* <Map4 /> */}
-      {/* <Map5 /> */}
-      {/* <Map6 /> */}
-      {/* <Map7 /> */}
-      {/* <Sample /> */}
       <Header />
       <ManuBar />
       <Outlet />

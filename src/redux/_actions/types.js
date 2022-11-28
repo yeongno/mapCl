@@ -19,3 +19,4 @@ export const FAVORITE_DEV = "favorite_dev";
 export const GROUP_DEV = "group_dev";
 export const POST_DEV = "post_dev";
 export const TURNMENU = "turn_menu";
+export const TURNFORUM = "turn_forum";
