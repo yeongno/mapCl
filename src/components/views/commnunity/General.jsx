@@ -14,9 +14,10 @@ function General() {
   const [LastIndex, setLastIndex] = useState(0);
   const [ThisPaging, setThisPaging] = useState(1);
   const [ThisTopic, setThisTopic] = useState("public");
+
   useEffect(() => {
     setLastIndex(Post?.length);
-  }, []);
+  }, [Post]);
   const renderCards = Post?.map((posts, index) => {
     if (ThisPaging * 30 < index + 1 || index < ThisPaging * 30 - 30) {
       return;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { turnMenu } from "../../../redux/_actions/turn_action";
+import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
 
 function ManuBar() {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ function ManuBar() {
       <button
         onClick={() => {
           dispatch(turnMenu("COMMUNITY_MENU"));
+          dispatch(turnForum("GENERAL_FORUM"));
         }}
       >
         커뮤니티

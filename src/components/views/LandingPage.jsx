@@ -36,9 +36,7 @@ function LandingPage({ handleLogin }) {
     navigate("/mainPage");
   }, []);
   useEffect(() => {
-    dispatch(tmpLogin()).then((response) => {
-      console.log("ss", response);
-    });
+    dispatch(tmpLogin()).then((response) => {});
   }, []);
 
   return (

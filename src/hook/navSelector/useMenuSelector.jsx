@@ -25,7 +25,8 @@ const useMenuSelector = () => {
 
     //맵 페이지
     COMMUNITY_MENU() {
-      navigate("/communityPage");
+      //우선 기본 페이지가 올 수 있게 설정
+      navigate("/communityPage/general");
     },
   };
 
