@@ -58,15 +58,6 @@ function SearchBar(props) {
       });
     }
   }, [keyword1, key]);
-  useEffect(() => {
-    setTimeout(() => {
-      let lat = latitude + 0.00000001;
-      props.setState({
-        center: { lat: lat, lng: longitude },
-        isPanto: false,
-      });
-    }, 1000);
-  }, []);
 
   const onKeyword = (e) => {
     setKeyword(e.target.Value);

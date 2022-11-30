@@ -11,7 +11,7 @@ import MR_MyLocation from "./markerEvent/MR_MyLocation";
 import MoveMyLocation from "./common/MoveMyLocation";
 import MR_ClickMap from "./markerEvent/MR_ClickMap";
 import MapBlinder from "./common/MapBlinder";
-const InterestedMap = () => {
+const InterestedMap = (props) => {
   const [markers, setMarkers] = useState([]);
   const { latitude, longitude, isLoaded } = useCoords();
 
@@ -25,10 +25,17 @@ const InterestedMap = () => {
   //지도의 위치
   const [state, setState] = useState({
     // 지도의 초기 중심 위치
-    center: { lat: latitude, lng: longitude },
+    center: { lat: "33.450936", lng: "126.569477" },
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: false,
   });
+  useEffect(() => {
+    setState({
+      center: { lat: props.latitude1, lng: props.longitude1 },
+      // 지도 위치 변경시 panto를 이용할지에 대해서 정의
+      isPanto: false,
+    });
+  }, [props.latitude1]);
 
   //현재 맵 중심 정보
   const [preCenter, setPreCenter] = useState({
@@ -63,6 +70,12 @@ const InterestedMap = () => {
     if (!latitude) {
       setState({
         center: { lat: latitude + 0.000001, lng: longitude },
+        isPanto: false,
+      });
+    } else {
+      setState({
+        center: { lat: props.latitude1, lng: props.longitude1 },
+        // 지도 위치 변경시 panto를 이용할지에 대해서 정의
         isPanto: false,
       });
     }
@@ -114,8 +127,7 @@ const InterestedMap = () => {
     let markers = [];
     //더미데이터 markers에 등록
     axios.get(GET_MYUSERINFO).then((res) => {
-      for (var i = 0; i < res.data.user[0].priority.length; i++) {
-        // @ts-ignore
+      for (var i = 0; i < res.data.user[0].priority.length - 1; i++) {
         markers.push({
           position: {
             lat: res.data.user[0].priority[i].lat,
@@ -126,83 +138,76 @@ const InterestedMap = () => {
       setMarkers(markers);
     });
   }, [onChanged]);
-
-  const defaultMap = () => {
-    return (
-      <div>
-        <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
-        <MoveMyLocation setState={setState} />
-        {onPosition && (
-          //지도 클릭
-          <div style={{ width: "53%", height: "30rem", position: "absolute" }}>
-            <MR_ClickMap
-              onPosition={onPosition}
-              setOnPosition={setOnPosition}
-            />
-            <MapBlinder />
-          </div>
+  return (
+    <div>
+      <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
+      <MoveMyLocation setState={setState} />
+      {onPosition && (
+        //지도 클릭
+        <div style={{ width: "53%", height: "30rem", position: "absolute" }}>
+          <MR_ClickMap onPosition={onPosition} setOnPosition={setOnPosition} />
+          <MapBlinder />
+        </div>
+      )}
+      <Map // 지도를 표시할 Container
+        // id="map"
+        center={state.center}
+        // isPanto={state.isPanto}
+        style={{
+          // 지도의 크기
+          width: "100%",
+          height: "30rem",
+          position: "relative",
+        }}
+        // onClick={(_t, mouseEvent) =>
+        //   setOnPosition({
+        //     lat: mouseEvent.latLng.getLat(),
+        //     lng: mouseEvent.latLng.getLng(),
+        //   })
+        // }
+        level={3} // 지도의 확대 레벨
+        // onCenterChanged={(map) =>
+        //   setPreCenter({
+        //     level: map.getLevel(),
+        //     center: {
+        //       lat: map.getCenter().getLat(),
+        //       lng: map.getCenter().getLng(),
+        //     },
+        //   })
+        // }
+      >
+        {preCenter && (
+          //내 위치 마커
+          <MR_MyLocation
+            latitude={latitude}
+            longitude={longitude}
+            setState={setState}
+          />
         )}
-        <Map // 지도를 표시할 Container
-          // id="map"
-          center={state.center}
-          isPanto={state.isPanto}
-          style={{
-            // 지도의 크기
-            width: "100%",
-            height: "30rem",
-            position: "relative",
-          }}
-          onClick={(_t, mouseEvent) =>
-            setOnPosition({
-              lat: mouseEvent.latLng.getLat(),
-              lng: mouseEvent.latLng.getLng(),
-            })
-          }
-          level={4} // 지도의 확대 레벨
-          onCenterChanged={(map) =>
-            setPreCenter({
-              level: map.getLevel(),
-              center: {
-                lat: map.getCenter().getLat(),
-                lng: map.getCenter().getLng(),
-              },
-            })
-          }
-        >
-          {preCenter && (
-            //내 위치 마커
-            <MR_MyLocation
-              latitude={latitude}
-              longitude={longitude}
-              setState={setState}
+        {keyMarkers && (
+          //검색 마커
+          <MR_Search keyMarkers={keyMarkers} />
+        )}
+        {markers.map((marker, index) => (
+          <div key={index}>
+            <MR_Interested
+              key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
+              position={marker.position}
+              index={index}
+              content={marker.content}
             />
-          )}
-          {keyMarkers && (
-            //검색 마커
-            <MR_Search keyMarkers={keyMarkers} />
-          )}
-          {markers.map((marker, index) => (
-            <div key={index}>
-              <MR_Interested
-                key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
-                position={marker.position}
-                index={index}
-                content={marker.content}
-              />
 
-              {/* 마크 위치에 바로 요소 띄우기 */}
-              <CustomOverlayMap position={marker.position}>
-                <div className="label" style={{ color: "black" }}>
-                  <div>{index + 1}</div>
-                </div>
-              </CustomOverlayMap>
-            </div>
-          ))}
-        </Map>
-      </div>
-    );
-  };
-  return <div>{defaultMap()}</div>;
+            {/* 마크 위치에 바로 요소 띄우기 */}
+            <CustomOverlayMap position={marker.position}>
+              <div className="label" style={{ color: "black" }}>
+                <div>{index + 1}</div>
+              </div>
+            </CustomOverlayMap>
+          </div>
+        ))}
+      </Map>
+    </div>
+  );
 };
 
 export default InterestedMap;
