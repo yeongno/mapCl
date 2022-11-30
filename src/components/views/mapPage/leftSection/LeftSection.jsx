@@ -28,7 +28,7 @@ function LeftSection() {
   return (
     <div className="leftSection-container">
       <div className="leftSection-btnContainer">
-        <button className="btn__right--default" onClick={onDefault}>
+        {/* <button className="btn__right--default" onClick={onDefault}>
           기본
         </button>
         <button className="btn__right--chat" onClick={onRelation}>
@@ -42,7 +42,7 @@ function LeftSection() {
         </button>
         <button className="btn__right--test" onClick={onInterested}>
           Interested Spot
-        </button>
+        </button> */}
         <FavoriteGroup />
       </div>
     </div>

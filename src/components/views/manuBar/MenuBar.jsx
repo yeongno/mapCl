@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
+import {
+  turnForum,
+  turnMap,
+  turnMenu,
+} from "../../../redux/_actions/turn_action";
 
 function ManuBar() {
   const dispatch = useDispatch();
@@ -16,6 +20,7 @@ function ManuBar() {
       <button
         onClick={() => {
           dispatch(turnMenu("MAP_MENU"));
+          dispatch(turnMap("INTERESTED_MAP"));
         }}
       >
         MapPage
