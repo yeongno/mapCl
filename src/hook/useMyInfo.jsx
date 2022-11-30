@@ -38,3 +38,9 @@ export function useNoticePost() {
 
   return post;
 }
+
+export function useInquiryPost() {
+  const post = useSelector((state) => state?.post?.postsInquiry);
+
+  return post;
+}

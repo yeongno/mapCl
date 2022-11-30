@@ -1,4 +1,5 @@
 import {
+  POSTINQUIRY_GET,
   POSTNOTICE_GET,
   POST_GET,
   POST_GO,
@@ -15,6 +16,9 @@ export default function (state = {}, action) {
       break;
     case POSTNOTICE_GET:
       return { ...state, postsNotice: action.payload.posts };
+      break;
+    case POSTINQUIRY_GET:
+      return { ...state, postsInquiry: action.payload.posts };
       break;
     case POST_ONEGET:
       return {

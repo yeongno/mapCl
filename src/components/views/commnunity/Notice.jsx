@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNoticePost, usePost } from "../../../hook/useMyInfo";
 import Footer from "./common/Footer";
 import "../../styles/community/notice/Notice.scss";
+import { Link } from "react-router-dom";
 
 function Notice() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function Notice() {
   const [ThisTopic, setThisTopic] = useState("public");
   useEffect(() => {
     setLastIndex(Post?.length);
-  }, []);
+  }, [Post]);
   const renderCards = Post?.map((posts, index) => {
     if (ThisPaging * 30 < index + 1 || index < ThisPaging * 30 - 30) {
       return;
@@ -29,7 +30,14 @@ function Notice() {
           }}
           // to={`/community/${Post[index]?._id}`}
         >
-          {Post[index]?.title}
+          <Link
+            style={{
+              color: "gray",
+            }}
+            to={`/communityPage/${Post[index]?.content}`}
+          >
+            {Post[index]?.title}
+          </Link>
         </p>
         <p> 글쓴이</p>
         {/* <p>{moment(Post[index]?.createdAt).format("YY[/]M[/]D")}</p> */}

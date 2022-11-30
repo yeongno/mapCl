@@ -21,6 +21,8 @@ import MainPage from "./views/mainPage/MainPage";
 import CommunityPage from "./views/commnunity/CommunityPage";
 import General from "./views/commnunity/General";
 import Notice from "./views/commnunity/Notice";
+import DetailPost from "./views/commnunity/DetailPost/DetailPost";
+import Inquiry from "./views/commnunity/Inquiry";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -77,8 +79,10 @@ function App() {
           </Route>
           <Route path="/mainPage" element={<MainPage />}></Route>
           <Route path="/communityPage" element={<CommunityPage />}>
+            <Route path="/communityPage/:postId" element={<DetailPost />} />
             <Route path="/communityPage/general" element={<General />} />
             <Route path="/communityPage/notice" element={<Notice />} />
+            <Route path="/communityPage/inquiry" element={<Inquiry />} />
           </Route>
         </Route>
         <Route

@@ -1,21 +1,17 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { usePost } from "../../../hook/useMyInfo";
-import { getPost } from "../../../redux/_actions/post_action";
+import { useInquiryPost } from "../../../hook/useMyInfo";
 import Footer from "./common/Footer";
-import "../../styles/community/general/General.scss";
+import "../../styles/community/notice/Notice.scss";
+import { Link } from "react-router-dom";
 
-function General() {
+function Inquiry() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const Post = usePost();
+  const Post = useInquiryPost();
   const [LastIndex, setLastIndex] = useState(0);
   const [ThisPaging, setThisPaging] = useState(1);
   const [ThisTopic, setThisTopic] = useState("public");
-
   useEffect(() => {
     setLastIndex(Post?.length);
   }, [Post]);
@@ -65,4 +61,4 @@ function General() {
   );
 }
 
-export default General;
+export default Inquiry;

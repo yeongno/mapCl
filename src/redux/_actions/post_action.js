@@ -1,5 +1,16 @@
 import axios from "axios";
-import { POSTNOTICE_GET, POST_GET, POST_GO, POST_ONEGET } from "./types";
+import {
+  GET_INQUIRYPOSTS,
+  GET_NOTICEPOSTS,
+  GET_POSTS,
+} from "../../config/clientConfig";
+import {
+  POSTINQUIRY_GET,
+  POSTNOTICE_GET,
+  POST_GET,
+  POST_GO,
+  POST_ONEGET,
+} from "./types";
 
 export function postGo(dataToSubmit1) {
   const request = axios
@@ -23,9 +34,7 @@ export function getPost() {
   //   .then((response) => response.data);
 
   // const request = axios.get("/dummy/Post.json").then((res) => res.data);
-  const request = axios
-    .get("/dummy/Post.json")
-    .then((response) => response.data);
+  const request = axios.get(GET_POSTS).then((response) => response.data);
   return {
     type: POST_GET,
     payload: request,
@@ -35,11 +44,19 @@ export function getNotice(dataToSubmit1) {
   // const request = axios
   //   .post("/api/posts/getPost", dataToSubmit1)
   //   .then((response) => response.data);
-  const request = axios
-    .get("/dummy/NoticePost.json")
-    .then((response) => response.data);
+  const request = axios.get(GET_NOTICEPOSTS).then((response) => response.data);
   return {
     type: POSTNOTICE_GET,
+    payload: request,
+  };
+}
+export function getInquiry(dataToSubmit1) {
+  // const request = axios
+  //   .post("/api/posts/getPost", dataToSubmit1)
+  //   .then((response) => response.data);
+  const request = axios.get(GET_INQUIRYPOSTS).then((response) => response.data);
+  return {
+    type: POSTINQUIRY_GET,
     payload: request,
   };
 }

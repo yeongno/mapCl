@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { getNotice, getPost } from "../../../../redux/_actions/post_action";
+import {
+  getInquiry,
+  getNotice,
+  getPost,
+} from "../../../../redux/_actions/post_action";
 import { turnForum } from "../../../../redux/_actions/turn_action";
 
 function MenuBar_Com() {
@@ -21,7 +25,15 @@ function MenuBar_Com() {
           dispatch(getNotice());
         }}
       >
-        건의
+        공지사항
+      </button>
+      <button
+        onClick={() => {
+          dispatch(turnForum("INQUIRY_FORUM"));
+          dispatch(getInquiry());
+        }}
+      >
+        문의하기
       </button>
     </div>
   );

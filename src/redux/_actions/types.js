@@ -6,6 +6,7 @@ export const POST_GO = "post_go";
 export const POST_GET = "post_get";
 export const POST_ONEGET = "post_oneget";
 export const POSTNOTICE_GET = "postNotice_get";
+export const POSTINQUIRY_GET = "postInquiry_get";
 export const REPLY_SET = "reply_set";
 export const REPLY_GET = "reply_get";
 

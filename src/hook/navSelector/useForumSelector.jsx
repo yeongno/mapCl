@@ -18,6 +18,10 @@ const useForumSelector = () => {
     GENERAL_FORUM() {
       navigate("/communityPage/general");
     },
+    //문의 페이지
+    INQUIRY_FORUM() {
+      navigate("/communityPage/inquiry");
+    },
     //메인 페이지
     NOTICE_FORUM() {
       navigate("/communityPage/notice");
