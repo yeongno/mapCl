@@ -159,22 +159,22 @@ const InterestedMap = (props) => {
           height: "30rem",
           position: "relative",
         }}
-        // onClick={(_t, mouseEvent) =>
-        //   setOnPosition({
-        //     lat: mouseEvent.latLng.getLat(),
-        //     lng: mouseEvent.latLng.getLng(),
-        //   })
-        // }
+        onClick={(_t, mouseEvent) =>
+          setOnPosition({
+            lat: mouseEvent.latLng.getLat(),
+            lng: mouseEvent.latLng.getLng(),
+          })
+        }
         level={3} // 지도의 확대 레벨
-        // onCenterChanged={(map) =>
-        //   setPreCenter({
-        //     level: map.getLevel(),
-        //     center: {
-        //       lat: map.getCenter().getLat(),
-        //       lng: map.getCenter().getLng(),
-        //     },
-        //   })
-        // }
+        onCenterChanged={(map) =>
+          setPreCenter({
+            level: map.getLevel(),
+            center: {
+              lat: map.getCenter().getLat(),
+              lng: map.getCenter().getLng(),
+            },
+          })
+        }
       >
         {preCenter && (
           //내 위치 마커
