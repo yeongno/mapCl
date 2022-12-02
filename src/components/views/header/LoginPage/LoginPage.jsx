@@ -32,6 +32,16 @@ function LoginPage({ handleLogin }) {
       console.log(res);
     });
   }
+  const onSubmit = () => {
+    const data = {
+      email: id,
+      password: pw,
+    };
+    disptach(loginUser(data)).then((res) => {
+      console.log(res);
+      navigate("/mainpage");
+    });
+  };
 
   return (
     <div className="loginPage-container">
@@ -77,7 +87,7 @@ function LoginPage({ handleLogin }) {
               )}{" "}
               로그인 상태 유지
             </div>
-            <div className="form__btn--submit" onClick={handleSubmit}>
+            <div className="form__btn--submit" onClick={onSubmit}>
               <span>LOGIN</span>
             </div>
             <div className="form__btn--other" onClick={handleSubmit}>
