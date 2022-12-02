@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { dev_Group } from "../../../../../../redux/_actions/dev/Dev_Info_action";
 
-function Group() {
+function Group(props) {
   const [topic, setTopic] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

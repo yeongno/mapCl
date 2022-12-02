@@ -11,8 +11,8 @@ function DefaultWindow(props) {
     <div className="default-container">
       <FavoriteSection setOnPosition={props.setOnPosition} />
       <NavMode setMode={setMode} />
-      {mode === "Group" && <Group onPosition={props.onPoistion} />}
-      {mode === "Write" && <Posting onPosition={props.onPoistion} />}
+      {mode === "Group" && <Group />}
+      {mode === "Write" && <Posting />}
     </div>
   );
 }

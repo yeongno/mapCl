@@ -85,10 +85,7 @@ function App() {
             <Route path="/communityPage/inquiry" element={<Inquiry />} />
           </Route>
         </Route>
-        <Route
-          path="/login"
-          element={<LoginPage handleLogin={handleLogin} />}
-        />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/hello" element={<Hello handleLogout={handleLogout} />} />
       </Routes>
     </BrowserRouter>

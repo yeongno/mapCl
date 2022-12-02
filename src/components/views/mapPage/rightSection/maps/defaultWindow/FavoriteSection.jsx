@@ -1,6 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import axios from "axios";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Axios from "../../../../../../axios/Axios";
 import { useMyPriority } from "../../../../../../hook/useMyInfo";
 import { dev_favorite } from "../../../../../../redux/_actions/dev/Dev_Info_action";
 
@@ -8,10 +9,19 @@ function FavoriteSection(props) {
   const myPriroty = useMyPriority();
   const [nickName, setNickName] = useState();
   const dispatch = useDispatch();
+  const location = useSelector((state) => state.location.onlocation);
   const onNickName = (e) => {
     setNickName(e.target.value);
   };
-
+  console.log(`${location?.lat}, ${location?.lng}`);
+  console.log(location);
+  const onSubmit = () => {
+    Axios.post("/place", {
+      location: `${location?.lat}, ${location?.lng}`,
+    }).then((res) => {
+      console.log(res);
+    });
+  };
   return (
     <div>
       <div
@@ -41,6 +51,7 @@ function FavoriteSection(props) {
           3:false
         </span>
       )}
+      <button onClick={onSubmit}>OK</button>
     </div>
   );
 }

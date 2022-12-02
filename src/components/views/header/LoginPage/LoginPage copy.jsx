@@ -42,26 +42,23 @@ function LoginPage({ handleLogin }) {
     disptach(loginUser(data)).then((res) => {
       console.log(res);
     });
+
+    axios
+      .post("/place", {
+        location: "36, 127.12",
+      })
+      .then((res) => console.log("res", res));
   }
 
   return (
-    <div className="loginPage-container">
-      {/* 홈 로고 섹션 */}
-      <div className="topLogo-container"></div>
-      {/* 여러 형식의 입력 방식 */}
-      <div className="navForm-container"></div>
-      {/* 로그인 폼 */}
-      <div className="form-container">
-        <form>
-          <input type="text" name="id" onChange={handleOnChangeId} />
-          <input type="password" name="password" onChange={handleOnChangePW} />
-          <button type="submit" onClick={handleSubmit}>
-            LOGIN
-          </button>
-        </form>
-      </div>
-      {/* 다른 소셜 계정 로그인 */}
-      <div className="navLogin-container"></div>
+    <div>
+      <form>
+        <input type="text" name="id" onChange={handleOnChangeId} />
+        <input type="password" name="password" onChange={handleOnChangePW} />
+        <button type="submit" onClick={handleSubmit}>
+          LOGIN
+        </button>
+      </form>
     </div>
   );
 }

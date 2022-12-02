@@ -16,6 +16,10 @@ function RightSection() {
   useEffect(() => {
     setlatitude1(latitude);
     setlongitude1(longitude);
+  }, []);
+  useEffect(() => {
+    setlatitude1(latitude);
+    setlongitude1(longitude);
   }, [latitude]);
 
   return (

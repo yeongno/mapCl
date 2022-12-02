@@ -2,10 +2,17 @@ import axios from "axios";
 import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
 import { USER_SERVER } from "../../config/ServerConfig";
 import { GET_MYUSERINFO } from "../../config/tempClientConfig";
+import Axios from "../../axios/Axios";
 export function loginUser(dataToSubmit) {
-  const request = axios
-    .post(`${USER_SERVER}/login`, dataToSubmit)
-    .then((response) => response.data);
+  const request = Axios.post(`${USER_SERVER}/login`, dataToSubmit).then(
+    (response) => {
+      Axios.defaults.headers.common[
+        "jwt_access_token"
+      ] = `${response.data.data.accessToken}`;
+      localStorage.setItem("token", response.data.data.accessToken);
+      return response.data.data;
+    }
+  );
 
   return {
     type: LOGIN_USER,

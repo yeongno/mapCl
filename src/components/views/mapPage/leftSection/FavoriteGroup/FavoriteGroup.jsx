@@ -16,9 +16,7 @@ function FavoriteGroup() {
   const [thirdPriority, setThird] = useState(null);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch();
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (MyInfo) {
