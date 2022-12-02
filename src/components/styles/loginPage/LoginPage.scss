@@ -1,0 +1,66 @@
+.loginPage-container {
+  .loginPage-wrapper {
+    margin: auto;
+    width: 50rem;
+    align-items: flex-end;
+    justify-content: end;
+    .topLogo-container {
+      margin: auto;
+    }
+    .navForm-container {
+    }
+    .form-container {
+      overflow: hidden;
+      width: 50rem;
+      margin: auto;
+      .form--common {
+        margin: auto;
+        input {
+          width: 99%;
+          height: 4rem;
+          margin-bottom: 1rem;
+          background: rgb(204, 227, 255);
+          border: solid 1px rgb(254, 217, 225);
+          //id
+          &:nth-child(1) {
+          }
+          //pw
+          &:nth-child(2) {
+          }
+        }
+        .form-container__checkBox {
+          margin-bottom: 1rem;
+        }
+        .form__btn--submit {
+          margin-bottom: 0.5rem;
+          width: 100%;
+          padding-right: 10px;
+          background: black;
+          text-align: center;
+          cursor: pointer;
+          transition: 0.5s;
+          padding-top: 0.3rem;
+          padding-bottom: 0.3rem;
+          span {
+            font-size: 3em;
+            color: white;
+          }
+          &:hover {
+            background: blue;
+          }
+        }
+        .form__btn--other {
+          span {
+            cursor: pointer;
+            margin-right: 1rem;
+          }
+          span:hover {
+            color: blue;
+          }
+        }
+      }
+    }
+    .navLogin-container {
+    }
+  }
+}
