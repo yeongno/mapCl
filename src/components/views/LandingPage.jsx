@@ -25,6 +25,8 @@ import "../styles/LandingPage.scss";
 import MenuBar from "./manuBar/MenuBar";
 import { turnMenu } from "../../redux/_actions/turn_action";
 import useMenuSelector from "../../hook/navSelector/useMenuSelector";
+import Axios from "../../axios/Axios";
+import Test from "./test/Test";
 
 function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
@@ -41,6 +43,7 @@ function LandingPage({ handleLogin }) {
 
   return (
     <div className="landingPage-container">
+      <Test />
       <Header />
       <MenuBar />
       <Outlet />

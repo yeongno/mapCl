@@ -13,6 +13,12 @@ function useMyInfo() {
 
 export default useMyInfo;
 
+export function useMyFavoriteLocation() {
+  const location = useSelector((state) => state.location.location);
+
+  return location;
+}
+
 export function useLocationInfo() {
   const location = useSelector((state) => state.location.location);
 
