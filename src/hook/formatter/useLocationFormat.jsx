@@ -7,7 +7,7 @@ import { useState } from "react";
  * @param {location="POINT(36.23231 12.24233)"}
  * @returns {[lat, lon]}
  */
-function useDividePoint(location) {
+function useLocationFormat(location) {
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
   const [result, setResult] = useState([]);
@@ -26,4 +26,4 @@ function useDividePoint(location) {
   return result;
 }
 
-export default useDividePoint;
+export default useLocationFormat;

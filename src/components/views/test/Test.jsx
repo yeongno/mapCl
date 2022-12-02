@@ -3,7 +3,7 @@ import { slice } from "lodash";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Axios from "../../../axios/Axios";
-import useDividePoint from "../../../hook/common/useDividePoint";
+import useLocationFormat from "../../../hook/formatter/useLocationFormat";
 
 function Test() {
   const [location, setLocation] = useState();
@@ -33,12 +33,12 @@ function Test() {
     }).then((res) => setLocation(res.data.data.location));
   }, []);
 
-  const location2 = useDividePoint(location);
+  const location2 = useLocationFormat(location);
   console.log(location2[0]);
 
   return (
     <div>
-      {lat},{lon},{location}
+      {location2[0]},{location2[1]},{location}
     </div>
   );
 }
