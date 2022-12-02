@@ -23,6 +23,7 @@ import General from "./views/commnunity/General";
 import Notice from "./views/commnunity/Notice";
 import DetailPost from "./views/commnunity/DetailPost/DetailPost";
 import Inquiry from "./views/commnunity/Inquiry";
+import RegisterPage from "./views/header/RegisterPage/RegisterPage";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -86,6 +87,7 @@ function App() {
           </Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/hello" element={<Hello handleLogout={handleLogout} />} />
       </Routes>
     </BrowserRouter>

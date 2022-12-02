@@ -3,6 +3,7 @@ import { Checkbox } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../../redux/_actions/user_action";
 import "../../../styles/loginPage/LoginPage.scss";
 
@@ -11,6 +12,7 @@ function LoginPage({ handleLogin }) {
   const [pw, setPW] = useState();
   const [keepLogin, setKeepLogin] = useState(false);
   const disptach = useDispatch();
+  const navigate = useNavigate();
   const handleOnChangeId = (e) => {
     setId(e.target.value);
   };
@@ -35,7 +37,15 @@ function LoginPage({ handleLogin }) {
     <div className="loginPage-container">
       <div className="loginPage-wrapper">
         {/* 홈 로고 섹션 */}
-        <div className="topLogo-container"></div>
+        <div className="topLogo-container">
+          <span
+            onClick={() => {
+              navigate("/mainpage");
+            }}
+          >
+            CHACHAGO
+          </span>
+        </div>
         {/* 여러 형식의 입력 방식 */}
         <div className="navForm-container"></div>
         {/* 로그인 폼 */}
@@ -72,12 +82,25 @@ function LoginPage({ handleLogin }) {
             </div>
             <div className="form__btn--other" onClick={handleSubmit}>
               <span>ID 찾기</span> <span>비밀번호 찾기</span>
-              <span>회원가입</span>
+              <span
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                회원가입
+              </span>
             </div>
           </form>
         </div>
         {/* 다른 소셜 계정 로그인 */}
-        <div className="navLogin-container"></div>
+        <div className="navLogin-container">
+          <img src="/assets/logos/naver.png" alt="" />
+          <img src="/assets/logos/kakao.png" alt="" />
+          <div className="login-conatiner--google">
+            <img src="/assets/logos/google.svg" alt="" />
+            <span>Google 로그인</span>
+          </div>
+        </div>
       </div>
     </div>
   );
