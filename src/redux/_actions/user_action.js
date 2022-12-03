@@ -4,15 +4,22 @@ import { USER_SERVER } from "../../config/ServerConfig";
 import { GET_MYUSERINFO } from "../../config/tempClientConfig";
 import Axios from "../../axios/Axios";
 export function loginUser(dataToSubmit) {
-  const request = Axios.post(`${USER_SERVER}/login`, dataToSubmit).then(
-    (response) => {
-      Axios.defaults.headers.common[
-        "jwt_access_token"
-      ] = `${response.data.data.accessToken}`;
-      localStorage.setItem("token", response.data.data.accessToken);
-      return response.data.data;
-    }
-  );
+  const request = axios
+    .post("user/login", dataToSubmit)
+    .then((response) => {
+      if (response?.data.data.accessToken) {
+        console.log(response);
+
+        Axios.defaults.headers.common[
+          "jwt_access_token"
+        ] = `${response.data.data.accessToken}`;
+        localStorage.setItem("token", response.data.data.accessToken);
+        return response.data.data;
+      }
+    })
+    .catch((error) => {
+      alert(`${error.response.data.message}`);
+    });
 
   return {
     type: LOGIN_USER,

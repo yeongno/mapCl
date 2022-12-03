@@ -38,8 +38,12 @@ function LoginPage({ handleLogin }) {
       password: pw,
     };
     disptach(loginUser(data)).then((res) => {
-      console.log(res);
-      navigate("/mainpage");
+      if (res.payload?.accessToken) {
+        navigate("/mainpage");
+        alert(`${res.payload.user.username}님 환영합니다.`);
+      } else {
+        alert("정보를 다시 확인해 주십시오.");
+      }
     });
   };
 

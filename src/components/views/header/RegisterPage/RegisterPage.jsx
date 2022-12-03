@@ -81,12 +81,16 @@ function RegisterPage() {
     } else {
       //todo 404오류 잡기
       //register api
-      axios.post("/user", body);
-      dispatch(loginUser(body)).then((res) => {
-        if (res.payload.accessToken) {
-          console.log("res", res);
-          alert("가입을 축하드립니다.");
-        }
+      axios.post("/user", body).then(() => {
+        dispatch(loginUser(body)).then((res) => {
+          if (res.payload.accessToken) {
+            console.log("res", res);
+            navigate("/mainpage");
+            alert("가입을 축하드립니다.");
+          } else {
+            alert("다시 정보를 확인해 주십시오.");
+          }
+        });
       });
     }
   };
