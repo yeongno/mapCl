@@ -13,9 +13,9 @@ function RegisterPage() {
   const idCheck_Ref = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [nickName, setNickName] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [nickName, setNickName] = useState("");
   const [confirmPW, setConfirmPW] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
   const [checkMatchPW, setMatchPW] = useState(false);
@@ -78,7 +78,7 @@ function RegisterPage() {
     if (!checkPassword || !checkEmail || !checkMatchPW || !nickName) {
       //   message.success("정보를 다시 확인해 주십시요.");
       alert("정보를 다시 확인해 주십시오.");
-    } else {
+    } else if (email) {
       //todo 404오류 잡기
       //register api
       axios.post("/user", body).then(() => {

@@ -94,7 +94,7 @@ function LoginPage({ handleLogin }) {
             <div className="form__btn--submit" onClick={onSubmit}>
               <span>LOGIN</span>
             </div>
-            <div className="form__btn--other" onClick={handleSubmit}>
+            <div className="form__btn--other">
               <span>ID 찾기</span> <span>비밀번호 찾기</span>
               <span
                 onClick={() => {
