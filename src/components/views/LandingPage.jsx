@@ -43,7 +43,6 @@ function LandingPage({ handleLogin }) {
 
   return (
     <div className="landingPage-container">
-      <Test />
       <Header />
       <MenuBar />
       <Outlet />

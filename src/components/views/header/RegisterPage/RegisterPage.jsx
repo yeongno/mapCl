@@ -79,9 +79,9 @@ function RegisterPage() {
       //   message.success("정보를 다시 확인해 주십시요.");
       alert("정보를 다시 확인해 주십시오.");
     } else if (email) {
-      //todo 404오류 잡기
-      //register api
       axios.post("/user", body).then(() => {
+        //todo
+        //register redux 만들고 에러 코드 잡기(이메일 중첩 등)
         dispatch(loginUser(body)).then((res) => {
           if (res.payload.accessToken) {
             console.log("res", res);

@@ -9,7 +9,11 @@ import {
 export default function (state = {}, action) {
   switch (action.type) {
     case LOGIN_USER:
-      return { ...state, userData: action.payload };
+      return {
+        ...state,
+        userInfo: action.payload.user,
+        accessToken: action.payload.accessToken,
+      };
       break;
     case REGISTER_USER:
       return { ...state, register: action.payload };
@@ -18,9 +22,8 @@ export default function (state = {}, action) {
       return {
         ...state,
         userData: action.payload,
-        name: action.payload.name,
-        isAdmin: action.payload.isAdmin,
-        isAuth: action.payload.isAuth,
+        isAuth: action.isAuth,
+        expireToken: action.expireToken,
       };
       break;
     case LOGOUT_USER:

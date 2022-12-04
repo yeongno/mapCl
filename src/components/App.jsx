@@ -24,6 +24,7 @@ import Notice from "./views/commnunity/Notice";
 import DetailPost from "./views/commnunity/DetailPost/DetailPost";
 import Inquiry from "./views/commnunity/Inquiry";
 import RegisterPage from "./views/header/RegisterPage/RegisterPage";
+import Test from "./views/test/Test";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -31,7 +32,6 @@ function App() {
   // axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
   const token = getAccessToken();
-
   function handleLogin(id, password) {
     let token = login(id, password);
     if (token) {
@@ -79,6 +79,7 @@ function App() {
             <Route path="/mapPage/interestedMap" element={<InterestedMap />} />
           </Route>
           <Route path="/mainPage" element={<MainPage />}></Route>
+          <Route path="/test" element={<Test />}></Route>
           <Route path="/communityPage" element={<CommunityPage />}>
             <Route path="/communityPage/:postId" element={<DetailPost />} />
             <Route path="/communityPage/general" element={<General />} />

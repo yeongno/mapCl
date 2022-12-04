@@ -28,6 +28,11 @@ const useMenuSelector = () => {
       //우선 기본 페이지가 올 수 있게 설정
       navigate("/communityPage/general");
     },
+    //Test 페이지
+    TEST_MENU() {
+      //우선 기본 페이지가 올 수 있게 설정
+      navigate("/test");
+    },
   };
 
   //해당 맵 스위치 코드

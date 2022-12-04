@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from "../../../../../../axios/Axios";
+import useLocationFormat from "../../../../../../hook/formatter/useLocationFormat";
 import { useMyPriority } from "../../../../../../hook/useMyInfo";
 import { dev_favorite } from "../../../../../../redux/_actions/dev/Dev_Info_action";
 
@@ -16,10 +17,28 @@ function FavoriteSection(props) {
   console.log(`${location?.lat}, ${location?.lng}`);
   console.log(location);
   const onSubmit = () => {
-    Axios.post("/place", {
-      location: `${location?.lat}, ${location?.lng}`,
-    }).then((res) => {
+    Axios.post(
+      "/place",
+      {
+        location: `${location?.lat}, ${location?.lng}`,
+      },
+      {
+        headers: {
+          jwt_access_token: localStorage.getItem("token"),
+        },
+      }
+    ).then((res) => {
       console.log(res);
+      // useLocationFormat();
+      axios
+        .post("/place/list", {
+          location: `${location?.lat}, ${location?.lng}`,
+          numPoints: 2,
+          radius: 1000,
+        })
+        .then((res) => {
+          console.log(res);
+        });
     });
   };
   return (

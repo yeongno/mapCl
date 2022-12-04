@@ -1,4 +1,4 @@
-import { TURNFORUM, TURNMAP, TURNMENU } from "./types";
+import { TURNFORUM, TURNMAP, TURNMENU, TURNTEST } from "./types";
 
 /**
  * 지도 바꾸기 DEFAULT_MAP, REL_MAP, NEAR_MAP, TEST_MAP, INTERESTED_MAP
@@ -32,6 +32,18 @@ export function turnMenu(dataToSubmit) {
 export function turnForum(dataToSubmit) {
   return {
     type: TURNFORUM,
+    value: dataToSubmit,
+  };
+}
+
+/**
+ * Test 메뉴 바꾸기
+ * @param {string "DEFAULT_MAP"} dataToSubmit
+ * @returns
+ */
+export function turnTest(dataToSubmit) {
+  return {
+    type: TURNTEST,
     value: dataToSubmit,
   };
 }

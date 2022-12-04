@@ -37,16 +37,27 @@ export function registerUser(dataToSubmit) {
   };
 }
 
-// export function auth() {
-//   const request = axios
-//     .get(`${USER_SERVER}/auth`)
-//     .then((response) => response.data);
+export function auth() {
+  const isAuth = false;
+  const expireToken = false;
 
-//   return {
-//     type: AUTH_USER,
-//     payload: request,
-//   };
-// }
+  const request = Axios.get("/user")
+    .then((response) => response.data)
+    .catch((error) => {
+      alert(`${error.response.data.message}`);
+      return {
+        type: AUTH_USER,
+        expireToken: true,
+      };
+    });
+
+  return {
+    type: AUTH_USER,
+    payload: request,
+    isAuth,
+    expireToken,
+  };
+}
 
 //나의 유저 정보 일단 jwt로 값을 못가져오기에 임의로 설정
 export function tmpLogin() {

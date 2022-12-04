@@ -1,4 +1,4 @@
-import { TURNFORUM, TURNMAP, TURNMENU } from "../_actions/types";
+import { TURNFORUM, TURNMAP, TURNMENU, TURNTEST } from "../_actions/types";
 
 export default function turn(state = {}, action) {
   switch (action.type) {
@@ -8,7 +8,8 @@ export default function turn(state = {}, action) {
       return { ...state, turnMenu: action.value };
     case TURNFORUM:
       return { ...state, turnForum: action.value };
-
+    case TURNTEST:
+      return { ...state, turnTest: action.value };
     default:
       return state;
   }

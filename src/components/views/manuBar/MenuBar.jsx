@@ -34,6 +34,13 @@ function ManuBar() {
       >
         커뮤니티
       </button>
+      <button
+        onClick={() => {
+          dispatch(turnMenu("TEST_MENU"));
+        }}
+      >
+        Test
+      </button>
     </div>
   );
 }

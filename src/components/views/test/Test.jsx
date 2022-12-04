@@ -6,7 +6,7 @@ import Axios from "../../../axios/Axios";
 import useLocationFormat from "../../../hook/formatter/useLocationFormat";
 
 function Test() {
-  return <div></div>;
+  return <div>test</div>;
 }
 
 export default Test;
