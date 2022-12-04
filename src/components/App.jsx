@@ -25,6 +25,8 @@ import DetailPost from "./views/commnunity/DetailPost/DetailPost";
 import Inquiry from "./views/commnunity/Inquiry";
 import RegisterPage from "./views/header/RegisterPage/RegisterPage";
 import Test from "./views/test/Test";
+import Test1 from "./views/test/menuBar_Test/Test1";
+import Test2 from "./views/test/menuBar_Test/Test2";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -79,7 +81,10 @@ function App() {
             <Route path="/mapPage/interestedMap" element={<InterestedMap />} />
           </Route>
           <Route path="/mainPage" element={<MainPage />}></Route>
-          <Route path="/test" element={<Test />}></Route>
+          <Route path="/test" element={<Test />}>
+            <Route path="/test/test1" element={<Test1 />} />
+            <Route path="/test/test2" element={<Test2 />} />
+          </Route>
           <Route path="/communityPage" element={<CommunityPage />}>
             <Route path="/communityPage/:postId" element={<DetailPost />} />
             <Route path="/communityPage/general" element={<General />} />
