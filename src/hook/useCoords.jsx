@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setPreLocation } from "../redux/_actions/mapNav/location_action";
 
 /**
  * 현재 위치를 리턴 해주는 훅
@@ -25,6 +27,7 @@ const useCoords = () => {
     longitude: null,
     isLoaded: false,
   });
+  const dispatch = useDispatch();
 
   const onSuccess = ({ coords: { latitude, longitude } }) => {
     setCoords({ latitude, longitude });
@@ -33,7 +36,9 @@ const useCoords = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(onSuccess);
   }, []);
-
+  useEffect(() => {
+    dispatch(setPreLocation(coords));
+  }, [coords]);
   return coords;
 };
 export default useCoords;

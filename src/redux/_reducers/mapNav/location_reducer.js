@@ -1,4 +1,8 @@
-import { LOCATION_MAP, ONLOCATION_MAP } from "../../_actions/types";
+import {
+  LOCATION_MAP,
+  ONLOCATION_MAP,
+  PRELOCATION_MAP,
+} from "../../_actions/types";
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -6,6 +10,8 @@ export default function (state = {}, action) {
       return { ...state, location: action.payload };
     case ONLOCATION_MAP:
       return { ...state, onlocation: action.payload };
+    case PRELOCATION_MAP:
+      return { ...state, prelocation: action.payload };
     default:
       return state;
   }
