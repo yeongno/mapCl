@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import useCoords from "../../../../hook/useCoords";
+import { setCenterLocation } from "../../../../redux/_actions/mapNav/location_action";
 import { turnMap } from "../../../../redux/_actions/turn_action";
 import InterestedMap from "./maps/InterestedMap";
 

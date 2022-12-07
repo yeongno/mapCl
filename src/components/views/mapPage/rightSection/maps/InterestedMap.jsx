@@ -11,10 +11,20 @@ import MR_MyLocation from "./markerEvent/MR_MyLocation";
 import MoveMyLocation from "./common/MoveMyLocation";
 import MR_ClickMap from "./markerEvent/MR_ClickMap";
 import MapBlinder from "./common/MapBlinder";
+import { useDispatch, useSelector } from "react-redux";
+import { setCenterLocation } from "../../../../../redux/_actions/mapNav/location_action";
+import useNearByUsers from "../../../../../hook/useNearByUsers";
+import useLocationFormat from "../../../../../hook/formatter/useLocationFormat";
+import MR_NearByUsers from "./markerEvent/MR_NearByUsers";
 const InterestedMap = (props) => {
+  const dispatch = useDispatch();
   const [markers, setMarkers] = useState([]);
-  const { latitude, longitude, isLoaded } = useCoords();
 
+  const nearUser = useNearByUsers();
+
+  //nerByUsers
+  const [userMarkers, setUserMarkers] = useState([]);
+  const { latitude, longitude, isLoaded } = useCoords();
   //키워드 마커
   const [keyMarkers, setKeyMarkers] = useState();
   const [onPosition, setOnPosition] = useState();
@@ -30,6 +40,11 @@ const InterestedMap = (props) => {
     isPanto: false,
   });
   useEffect(() => {
+    console.log(props.latitude1, props.longitude1);
+    dispatch(
+      setCenterLocation({ lat: props.latitude1, lng: props.longitude1 })
+    );
+
     setState({
       center: { lat: props.latitude1, lng: props.longitude1 },
       // 지도 위치 변경시 panto를 이용할지에 대해서 정의
@@ -112,7 +127,9 @@ const InterestedMap = (props) => {
       preCenter.center.lng >= tmpCenter.center.lng + mem ||
       preCenter.center.lng <= tmpCenter.center.lng - mem
     ) {
+      dispatch(setCenterLocation(tmpCenter));
       setOnChanged(onChanged + 1);
+      console.log(onChanged);
       setTmpCenter({
         center: {
           lat: preCenter.center.lat,
@@ -137,7 +154,42 @@ const InterestedMap = (props) => {
       }
       setMarkers(markers);
     });
+
+    let userMarkers = [];
+    //더미데이터 markers에 등록
+
+    if (nearUser) {
+      for (var i = 0; i < nearUser?.data?.length - 1; i++) {
+        if (nearUser.data === null) {
+          console.log(nearUser.data, "i nope");
+          userMarkers.push({
+            position: {
+              lat: null,
+              lng: null,
+            },
+          });
+          setUserMarkers(userMarkers);
+        } else {
+          console.log(nearUser.data[i], "i");
+          var [left, right] = nearUser.data[i].location.split("(");
+          var [left1, right1] = right.split(")");
+          var [left2, right2] = left1.split(" ");
+          userMarkers.push({
+            position: {
+              lat: left2,
+              lng: right2,
+            },
+          });
+          setUserMarkers(userMarkers);
+          console.log(nearUser, "nearUser");
+        }
+      }
+      console.log(nearUser, "nearaaaa");
+    } else {
+      console.log(nearUser, "userMarkers");
+    }
   }, [onChanged]);
+
   return (
     <div>
       <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
@@ -201,6 +253,22 @@ const InterestedMap = (props) => {
             <CustomOverlayMap position={marker.position}>
               <div className="label" style={{ color: "black" }}>
                 <div>{index + 1}</div>
+              </div>
+            </CustomOverlayMap>
+          </div>
+        ))}
+        {userMarkers.map((userMarkers, index) => (
+          <div key={index}>
+            <MR_NearByUsers
+              // key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
+              position={userMarkers?.position}
+              index={index}
+            />
+
+            {/* 마크 위치에 바로 요소 띄우기 */}
+            <CustomOverlayMap position={userMarkers?.position}>
+              <div className="label" style={{ color: "black" }}>
+                <div>near{index + 1}</div>
               </div>
             </CustomOverlayMap>
           </div>

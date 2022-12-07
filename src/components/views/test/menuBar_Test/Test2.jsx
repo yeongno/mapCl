@@ -8,18 +8,21 @@ import useCoords from "../../../../hook/useCoords";
 
 function Test2() {
   useCoords();
-  const location = useSelector((state) => state?.location?.prelocation);
+  const location = useSelector(
+    (state) => state?.location?.centerlocation?.center
+  );
   const [location1, setlocation1] = useState();
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setlocation1(`${location?.latitude}, ${location?.longitude}`);
+    setlocation1(`${location?.lat}, ${location?.lng}`);
   }, [location]);
   const onList = () => {
-    console.log(location1, "1");
+    console.log("location1", location1);
     axios
       .post("/place/list", {
         location: location1,
+        numPoints: 2,
         radius: 1000,
       })
       .then((res) => {
@@ -31,7 +34,7 @@ function Test2() {
       });
   };
   const rendermap = data.map((data, index) => {
-    return <div>{data.location}</div>;
+    return <div key={index}>{data.location}</div>;
   });
 
   return (

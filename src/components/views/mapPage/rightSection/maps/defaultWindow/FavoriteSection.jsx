@@ -37,7 +37,7 @@ function FavoriteSection(props) {
           radius: 1000,
         })
         .then((res) => {
-          console.log(res);
+          console.log("res", res);
         });
     });
   };

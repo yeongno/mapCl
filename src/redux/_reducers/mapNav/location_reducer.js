@@ -1,4 +1,5 @@
 import {
+  CENTERLOCATION_MAP,
   LOCATION_MAP,
   ONLOCATION_MAP,
   PRELOCATION_MAP,
@@ -10,8 +11,8 @@ export default function (state = {}, action) {
       return { ...state, location: action.payload };
     case ONLOCATION_MAP:
       return { ...state, onlocation: action.payload };
-    case PRELOCATION_MAP:
-      return { ...state, prelocation: action.payload };
+    case CENTERLOCATION_MAP:
+      return { ...state, centerlocation: action.payload };
     default:
       return state;
   }
