@@ -157,11 +157,11 @@ const InterestedMap = (props) => {
 
     let userMarkers = [];
     //더미데이터 markers에 등록
-
+    //nearUser?.data?.length - 1
     if (nearUser) {
-      for (var i = 0; i < nearUser?.data?.length - 1; i++) {
+      for (var i = 0; i < 5; i++) {
         if (nearUser.data === null) {
-          console.log(nearUser.data, "i nope");
+          console.log(nearUser?.data, "i nope");
           userMarkers.push({
             position: {
               lat: null,
@@ -170,16 +170,29 @@ const InterestedMap = (props) => {
           });
           setUserMarkers(userMarkers);
         } else {
-          console.log(nearUser.data[i], "i");
-          var [left, right] = nearUser.data[i].location.split("(");
-          var [left1, right1] = right.split(")");
-          var [left2, right2] = left1.split(" ");
-          userMarkers.push({
-            position: {
-              lat: left2,
-              lng: right2,
-            },
-          });
+          console.log(nearUser.data?.[i], "i");
+
+          if (nearUser.data?.[i]?.location) {
+            var [left, right] = nearUser.data?.[i]?.location.split("(");
+            var [left1, right1] = right.split(")");
+            var [left2, right2] = left1.split(" ");
+            // console.log(nearUser.data[i], "abcd");
+            userMarkers.push({
+              position: {
+                lat: left2,
+                lng: right2,
+              },
+            });
+          } else {
+            console.log("abcdnull");
+            userMarkers.push({
+              position: {
+                lat: null,
+                lng: null,
+              },
+            });
+          }
+
           setUserMarkers(userMarkers);
           console.log(nearUser, "nearUser");
         }
