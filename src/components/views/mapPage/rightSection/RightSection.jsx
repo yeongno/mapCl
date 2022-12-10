@@ -4,7 +4,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import useCoords from "../../../../hook/useCoords";
-import { setCenterLocation } from "../../../../redux/_actions/mapNav/location_action";
+import {
+  setCenterLocation,
+  setMainLocation,
+} from "../../../../redux/_actions/mapNav/location_action";
 import { turnMap } from "../../../../redux/_actions/turn_action";
 import InterestedMap from "./maps/InterestedMap";
 
@@ -14,9 +17,13 @@ function RightSection() {
   const { latitude, longitude, isLoaded } = useCoords();
   const [latitude1, setlatitude1] = useState();
   const [longitude1, setlongitude1] = useState();
+
   useEffect(() => {
     setlatitude1(latitude);
     setlongitude1(longitude);
+    dispatch(
+      setMainLocation({ center: { lat: "33.450936", lng: "126.569477" } })
+    );
   }, []);
   useEffect(() => {
     setlatitude1(latitude);

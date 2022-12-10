@@ -32,6 +32,21 @@ export function useMyPriority() {
 
   return location;
 }
+export function usePreCenter() {
+  const location = useSelector((state) => state.location.prelocation);
+
+  return location;
+}
+export function useMainLocation() {
+  const location = useSelector((state) => state.location.mainlocation);
+
+  return location;
+}
+export function useGeoLocation() {
+  const location = useSelector((state) => state.location.geolocation);
+
+  return location;
+}
 
 export function usePost() {
   const post = useSelector((state) => state?.post?.posts);

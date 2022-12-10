@@ -1,6 +1,8 @@
 import {
   CENTERLOCATION_MAP,
+  GEOLOCATION_MAP,
   LOCATION_MAP,
+  MAINLOCATION_MAP,
   ONLOCATION_MAP,
   PRELOCATION_MAP,
 } from "../types";
@@ -27,6 +29,19 @@ export function setPreLocation(data) {
 export function setCenterLocation(data) {
   return {
     type: CENTERLOCATION_MAP,
+    payload: data,
+  };
+}
+export function setMainLocation(data) {
+  return {
+    type: MAINLOCATION_MAP,
+    payload: data,
+  };
+}
+
+export function setGeoLocation(data) {
+  return {
+    type: GEOLOCATION_MAP,
     payload: data,
   };
 }

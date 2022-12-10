@@ -4,10 +4,7 @@ import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 import useCoords from "../../../../../hook/useCoords";
 import { GET_MYUSERINFO } from "./../../../../../config/tempClientConfig";
 import MR_Interested from "./common/MR_Interested";
-import useMyInfo, {
-  useLocationInfo,
-  useMainLocation,
-} from "../../../../../hook/useMyInfo";
+import useMyInfo, { useLocationInfo } from "../../../../../hook/useMyInfo";
 import SearchBar from "./common/SearchBar";
 import MR_Search from "./markerEvent/MR_Search";
 import MR_MyLocation from "./markerEvent/MR_MyLocation";
@@ -15,23 +12,25 @@ import MoveMyLocation from "./common/MoveMyLocation";
 import MR_ClickMap from "./markerEvent/MR_ClickMap";
 import MapBlinder from "./common/MapBlinder";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setCenterLocation,
-  setPreLocation,
-} from "../../../../../redux/_actions/mapNav/location_action";
+import { setCenterLocation } from "../../../../../redux/_actions/mapNav/location_action";
 import useNearByUsers from "../../../../../hook/useNearByUsers";
 import useLocationFormat from "../../../../../hook/formatter/useLocationFormat";
 import MR_NearByUsers from "./markerEvent/MR_NearByUsers";
-import useTmpCenter from "../../../../../hook/common/useTmpCenter";
 const InterestedMap = (props) => {
-  const getMarkers = useTmpCenter();
   const dispatch = useDispatch();
+  const [markers, setMarkers] = useState([]);
+
+  const nearUser = useNearByUsers();
+
+  //nerByUsers
+  const [userMarkers, setUserMarkers] = useState([]);
   const { latitude, longitude, isLoaded } = useCoords();
   //키워드 마커
   const [keyMarkers, setKeyMarkers] = useState();
   const [onPosition, setOnPosition] = useState();
   //현재 실제 위치
   const location = useLocationInfo();
+  const MyInfo = useMyInfo();
 
   //지도의 위치
   const [state, setState] = useState({
@@ -42,6 +41,9 @@ const InterestedMap = (props) => {
   });
   useEffect(() => {
     console.log(props.latitude1, props.longitude1);
+    dispatch(
+      setCenterLocation({ lat: props.latitude1, lng: props.longitude1 })
+    );
 
     setState({
       center: { lat: props.latitude1, lng: props.longitude1 },
@@ -49,12 +51,6 @@ const InterestedMap = (props) => {
       isPanto: false,
     });
   }, [props.latitude1]);
-
-  //이벤트 발생 마다 현재 위치 값 셋팅 해줌
-  const mainLocation = useMainLocation();
-  useEffect(() => {
-    setState(mainLocation);
-  }, [mainLocation]);
 
   //현재 맵 중심 정보
   const [preCenter, setPreCenter] = useState({
@@ -64,10 +60,15 @@ const InterestedMap = (props) => {
     },
   });
 
-  //현재 중심 값 리덕스 세팅
-  useEffect(() => {
-    dispatch(setPreLocation(preCenter));
-  }, [preCenter]);
+  //지도 중심좌표가 움직인 정도를 알기 위한 값
+  const [tmpCenter, setTmpCenter] = useState({
+    center: {
+      lat: latitude,
+      lng: longitude,
+    },
+  });
+  //설정 값만큼 움직였을 경우 데이터를 불러오기 위한 플래그 값
+  const [onChanged, setOnChanged] = useState(0);
 
   //  선호 지역 클릭 시 현재 위치 이동
   useEffect(() => {
@@ -94,6 +95,93 @@ const InterestedMap = (props) => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (onChanged === 0 && latitude) {
+      setTmpCenter({
+        center: {
+          lat: latitude,
+          lng: longitude,
+        },
+      });
+      setOnChanged(onChanged + 1);
+    }
+    //약 150미터
+    let mem = 0.00165628926738;
+
+    //위도 변경 약 400미터 마다 업데이트
+    if (
+      preCenter.center.lat >= tmpCenter.center.lat + mem ||
+      preCenter.center.lat <= tmpCenter.center.lat - mem
+    ) {
+      setOnChanged(onChanged + 1);
+      setTmpCenter({
+        center: {
+          lat: preCenter.center.lat,
+          lng: preCenter.center.lng,
+        },
+      });
+    }
+    //경도 변경 약 400미터 마다 업데이트
+    if (
+      preCenter.center.lng >= tmpCenter.center.lng + mem ||
+      preCenter.center.lng <= tmpCenter.center.lng - mem
+    ) {
+      dispatch(setCenterLocation(tmpCenter));
+      setOnChanged(onChanged + 1);
+      console.log(onChanged);
+      setTmpCenter({
+        center: {
+          lat: preCenter.center.lat,
+          lng: preCenter.center.lng,
+        },
+      });
+    }
+  }, [latitude, preCenter]);
+
+  //tmpCenter 업데이트 되면 선호 지역 데이터 불러옴
+  useEffect(() => {
+    let markers = [];
+    //더미데이터 markers에 등록
+    axios.get(GET_MYUSERINFO).then((res) => {
+      for (var i = 0; i < res.data.user[0].priority.length - 1; i++) {
+        markers.push({
+          position: {
+            lat: res.data.user[0].priority[i].lat,
+            lng: res.data.user[0].priority[i].lng,
+          },
+        });
+      }
+      setMarkers(markers);
+    });
+
+    let userMarkers = [];
+    //더미데이터 markers에 등록
+    if (nearUser) {
+      for (var i = 0; i < 5; i++) {
+        if (nearUser.data?.[i]?.location) {
+          var [left, right] = nearUser.data?.[i]?.location.split("(");
+          var [left1, right1] = right.split(")");
+          var [left2, right2] = left1.split(" ");
+          userMarkers.push({
+            position: {
+              lat: left2,
+              lng: right2,
+            },
+          });
+        } else {
+          userMarkers.push({
+            position: {
+              lat: null,
+              lng: null,
+            },
+          });
+        }
+
+        setUserMarkers(userMarkers);
+      }
+    }
+  }, [onChanged]);
 
   return (
     <div>
@@ -145,7 +233,7 @@ const InterestedMap = (props) => {
           //검색 마커
           <MR_Search keyMarkers={keyMarkers} />
         )}
-        {getMarkers.markers.map((marker, index) => (
+        {markers.map((marker, index) => (
           <div key={index}>
             <MR_Interested
               key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
@@ -162,7 +250,7 @@ const InterestedMap = (props) => {
             </CustomOverlayMap>
           </div>
         ))}
-        {getMarkers.userMarkers.map((userMarkers, index) => (
+        {userMarkers.map((userMarkers, index) => (
           <div key={index}>
             <MR_NearByUsers
               // key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}

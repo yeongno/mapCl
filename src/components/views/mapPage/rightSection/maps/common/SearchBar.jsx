@@ -1,9 +1,14 @@
 /*global kakao*/
 
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import useCoords from "../../../../../../hook/useCoords";
+import { useMainLocation } from "../../../../../../hook/useMyInfo";
+import { setMainLocation } from "../../../../../../redux/_actions/mapNav/location_action";
 
 function SearchBar(props) {
+  const dispatch = useDispatch();
+  const mainLocation_reducer = useMainLocation();
   const { latitude, longitude, isLoaded } = useCoords();
 
   //키 change 하는 실시간 값
@@ -38,20 +43,23 @@ function SearchBar(props) {
           if (prekeyword1) {
             let lat = Number(data[0].y);
             let result = String(lat + 0.0000000001);
-            props.setState({
-              center: {
-                lat: result,
-                lng: data[0].x,
-              },
-              isPanto: false,
-            });
+            dispatch(
+              setMainLocation({
+                center: {
+                  lat: result,
+                  lng: data[0].x,
+                },
+              })
+            );
             setpreKeyword1(null);
           } else {
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-            props.setState({
-              center: { lat: data[0].y, lng: data[0].x },
-              isPanto: false,
-            });
+            dispatch(
+              setMainLocation({
+                center: { lat: data[0].y, lng: data[0].x },
+                isPanto: false,
+              })
+            );
             setpreKeyword1(keyword1);
           }
         }

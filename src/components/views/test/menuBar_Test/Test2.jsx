@@ -5,9 +5,12 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Axios from "../../../../axios/Axios";
 import useCoords from "../../../../hook/useCoords";
+import { useMainLocation } from "../../../../hook/useMyInfo";
 
 function Test2() {
   useCoords();
+  const mainlocation = useMainLocation();
+  console.log("use", mainlocation);
   const location = useSelector(
     (state) => state?.location?.centerlocation?.center
   );

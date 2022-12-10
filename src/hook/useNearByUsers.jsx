@@ -29,7 +29,7 @@ function useNearByUsers() {
         .post("/place/list", {
           location: PreLocation_Format,
           numPoints: 5,
-          radius: 10,
+          radius: 5,
         })
         .then((res) => {
           setPreLocation_Data(res.data);
