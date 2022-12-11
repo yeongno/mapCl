@@ -24,6 +24,7 @@ import useLocationFormat from "../../../../../hook/formatter/useLocationFormat";
 import MR_NearByUsers from "./markerEvent/MR_NearByUsers";
 import useTmpCenter from "../../../../../hook/common/useTmpCenter";
 const InterestedMap = (props) => {
+  //위치 이동 시 이벤트 호출 및 마커 생성
   const getMarkers = useTmpCenter();
   const dispatch = useDispatch();
   const { latitude, longitude, isLoaded } = useCoords();
@@ -41,8 +42,6 @@ const InterestedMap = (props) => {
     isPanto: false,
   });
   useEffect(() => {
-    console.log(props.latitude1, props.longitude1);
-
     setState({
       center: { lat: props.latitude1, lng: props.longitude1 },
       // 지도 위치 변경시 panto를 이용할지에 대해서 정의

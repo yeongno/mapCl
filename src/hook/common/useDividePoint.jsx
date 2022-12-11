@@ -9,7 +9,6 @@ function useDividePoInt(props) {
   const location = props.location;
   const location1 = String(location);
 
-  console.log("prop", props);
   useEffect(() => {
     var [left, right] = location1.split("(");
     var [left1, right1] = right.split(")");

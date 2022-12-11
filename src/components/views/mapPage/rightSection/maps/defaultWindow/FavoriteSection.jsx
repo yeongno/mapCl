@@ -14,8 +14,6 @@ function FavoriteSection(props) {
   const onNickName = (e) => {
     setNickName(e.target.value);
   };
-  console.log(`${location?.lat}, ${location?.lng}`);
-  console.log(location);
   const onSubmit = () => {
     Axios.post(
       "/place",
@@ -28,7 +26,6 @@ function FavoriteSection(props) {
         },
       }
     ).then((res) => {
-      console.log(res);
       // useLocationFormat();
       axios
         .post("/place/list", {
@@ -36,9 +33,7 @@ function FavoriteSection(props) {
           numPoints: 2,
           radius: 1000,
         })
-        .then((res) => {
-          console.log("res", res);
-        });
+        .then((res) => {});
     });
   };
   return (

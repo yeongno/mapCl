@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,8 @@ import {
 } from "../../../../redux/_actions/mapNav/location_action";
 import { turnMap } from "../../../../redux/_actions/turn_action";
 import InterestedMap from "./maps/InterestedMap";
+import "../../../styles/mapPage/RightSection.scss";
+import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 
 function RightSection() {
   const navigate = useNavigate();
@@ -17,7 +19,9 @@ function RightSection() {
   const { latitude, longitude, isLoaded } = useCoords();
   const [latitude1, setlatitude1] = useState();
   const [longitude1, setlongitude1] = useState();
-
+  //accordian check activing
+  const [onAcc, setOnAcc] = useState(false);
+  const Map_Ref = useRef();
   useEffect(() => {
     setlatitude1(latitude);
     setlongitude1(longitude);
@@ -29,10 +33,24 @@ function RightSection() {
     setlatitude1(latitude);
     setlongitude1(longitude);
   }, [latitude]);
-
+  const onTurn = () => {
+    const Ref_style = window.getComputedStyle(Map_Ref.current);
+    if (Ref_style.getPropertyValue("display") === "block") {
+      Map_Ref.current.style.display = "none";
+      setOnAcc(true);
+    } else {
+      setOnAcc(false);
+      Map_Ref.current.style.display = "block";
+    }
+  };
   return (
-    <div>
-      <InterestedMap latitude1={latitude1} longitude1={longitude1} />
+    <div className="RightSection-container">
+      <div className="map-container" ref={Map_Ref}>
+        <InterestedMap latitude1={latitude1} longitude1={longitude1} />
+      </div>
+      <div className="accordian-container--map" onClick={onTurn}>
+        {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
+      </div>
     </div>
   );
 }

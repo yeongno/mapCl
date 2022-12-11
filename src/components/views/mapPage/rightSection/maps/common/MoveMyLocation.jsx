@@ -11,7 +11,6 @@ function MoveMyLocation(props) {
   const [preState, setPreState] = useState(false);
 
   const onMyLocation = () => {
-    console.log("1");
     if (preState) {
       let lat = Number(latitude);
       let noLat = String(lat + 0.00000001);

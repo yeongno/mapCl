@@ -1,0 +1,17 @@
+.RightSection-container {
+  .map-container {
+    transition: all 2s;
+  }
+  .accordian-container--map {
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    transition: 0.5s;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    &:hover {
+      background: blue;
+    }
+  }
+}

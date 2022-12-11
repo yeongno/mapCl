@@ -8,8 +8,6 @@ export function loginUser(dataToSubmit) {
     .post("user/login", dataToSubmit)
     .then((response) => {
       if (response?.data.data.accessToken) {
-        console.log(response);
-
         Axios.defaults.headers.common[
           "jwt_access_token"
         ] = `${response.data.data.accessToken}`;

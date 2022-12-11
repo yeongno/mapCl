@@ -1,3 +1,5 @@
+//위치 이동 시 이벤트 호출 및 마커 생성
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +12,6 @@ import useNearByUsers from "../useNearByUsers";
 function useTmpCenter(props) {
   const preCenter_reducer = usePreCenter();
   const { latitude, longitude, isLoaded } = useCoords();
-  console.log(preCenter_reducer);
 
   const nearUser = useNearByUsers();
   const [markers, setMarkers] = useState([]);
@@ -60,7 +61,6 @@ function useTmpCenter(props) {
     ) {
       dispatch(setCenterLocation(tmpCenter));
       setOnChanged(onChanged + 1);
-      console.log(onChanged);
       setTmpCenter({
         center: {
           lat: preCenter_reducer?.center.lat,
@@ -87,7 +87,6 @@ function useTmpCenter(props) {
 
     let userMarkers = [];
     //더미데이터 markers에 등록
-    console.log(nearUser, "near");
 
     if (nearUser) {
       for (var i = 0; i < 5; i++) {
@@ -102,8 +101,6 @@ function useTmpCenter(props) {
             },
           });
         } else {
-          console.log(nearUser, "nope");
-
           userMarkers.push({
             position: {
               lat: null,

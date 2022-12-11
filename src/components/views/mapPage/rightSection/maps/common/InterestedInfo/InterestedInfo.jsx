@@ -4,9 +4,7 @@ import useMyInfo from "../../../../../../../hook/useMyInfo";
 
 function InterestedInfo() {
   const myInfo = useMyInfo();
-  useEffect(() => {
-    console.log("myUserInfo", myInfo);
-  }, []);
+  useEffect(() => {}, []);
 
   return <div>123</div>;
 }
