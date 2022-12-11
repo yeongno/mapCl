@@ -1,22 +1,77 @@
 .favoriteGroup-accordian {
+  .favoriteGroup-accordian__btn--turn {
+    background: black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
   .favoriteGroup-panel {
     display: block;
     max-height: 0px;
     overflow: hidden;
-    .firstPriority-section {
+    border: solid 1px black;
+    .Priority-labelSection {
+    }
+    .Priority-section {
+      display: table;
+
+      .nameLabel {
+        display: table-cell;
+        vertical-align: middle;
+        height: 2rem;
+        padding: 3px;
+        background: blue;
+        color: white;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      .Priority-nickSection {
+        display: table-cell;
+        color: white;
+        vertical-align: middle;
+        height: 2rem;
+        width: 23rem;
+        background: rgb(103, 186, 214);
+        padding-left: 10px;
+      }
+      .move__btn {
+        display: table-cell;
+        vertical-align: middle;
+        height: 2rem;
+        width: 2rem;
+        padding: 3px;
+        background: rgb(174, 219, 235);
+        color: white;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          color: black;
+          background: blue;
+        }
+      }
+    }
+    .ctrSection {
+      border-bottom: solid 1px black;
       display: flex;
-      .firstPriority-icoSection {
+      color: white;
+      .ctrSection__btn--delete {
+        margin: auto;
+        text-align: center;
+        border-radius: 5px;
+        background-color: red;
+        width: 30%;
+        border: none;
       }
-      .firstPriority-nickSection {
-      }
-      .firstPriority-ctrSection {
-        display: flex;
-        .firstPriority-ctrSection__btn--add {
-        }
-        .firstPriority-ctrSection__btn--delete {
-        }
-        .firstPriority-ctrSection__btn--modify {
-        }
+      .ctrSection__btn--modify {
+        width: 30%;
+        margin: auto;
+        background-color: red;
+        border-radius: 5px;
+        text-align: center;
+        border: none;
       }
     }
   }

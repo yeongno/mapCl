@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { turnMap } from "../../../../redux/_actions/turn_action";
 import FavoriteGroup from "./FavoriteGroup/FavoriteGroup";
+import "../../../styles/mapPage/leftSection/LeftSection.scss";
 
 function LeftSection() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function LeftSection() {
   };
   return (
     <div className="leftSection-container">
+      <div className="left-roof">OPTIONS</div>
       <div className="leftSection-btnContainer">
         {/* <button className="btn__right--default" onClick={onDefault}>
           기본
@@ -43,7 +45,9 @@ function LeftSection() {
         <button className="btn__right--test" onClick={onInterested}>
           Interested Spot
         </button> */}
-        <FavoriteGroup />
+        <div className="favoriteGroup-container">
+          <FavoriteGroup />
+        </div>
       </div>
     </div>
   );

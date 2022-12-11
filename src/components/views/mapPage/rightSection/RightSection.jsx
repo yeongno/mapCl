@@ -45,6 +45,7 @@ function RightSection() {
   };
   return (
     <div className="RightSection-container">
+      <div className="map-roof">My Map</div>
       <div className="map-container" ref={Map_Ref}>
         <InterestedMap latitude1={latitude1} longitude1={longitude1} />
       </div>

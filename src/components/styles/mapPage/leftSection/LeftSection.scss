@@ -1,0 +1,32 @@
+.leftSection-container {
+  border-left: dashed 7px black;
+  border-right: dashed 7px black;
+  min-height: 500px;
+  .left-roof {
+    background: blue;
+    color: white;
+    font-size: 2em;
+    padding-left: 1rem;
+    border-bottom-right-radius: 10px;
+  }
+  .leftSection-btnContainer {
+    display: grid;
+    .btn__right--default {
+      width: 5rem;
+    }
+    .btn__right--chat {
+      width: 5rem;
+    }
+    .favoriteGroup-accordian {
+      border-top: dashed 7px black;
+    }
+  }
+}
+.leftSection-bottom {
+  cursor: pointer;
+  background: black;
+  color: white;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
