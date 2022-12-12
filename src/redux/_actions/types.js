@@ -26,4 +26,5 @@ export const GROUP_DEV = "group_dev";
 export const POST_DEV = "post_dev";
 export const TURNMENU = "turn_menu";
 export const TURNFORUM = "turn_forum";
+export const TURNMO = "turn_mo";
 export const TURNTEST = "trun_test";

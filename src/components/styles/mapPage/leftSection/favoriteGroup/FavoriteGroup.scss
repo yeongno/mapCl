@@ -5,7 +5,6 @@
     text-align: center;
     cursor: pointer;
     border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
   }
   .favoriteGroup-panel {
     display: block;
@@ -13,6 +12,7 @@
     overflow: hidden;
     border: solid 1px black;
     .Priority-labelSection {
+      font-weight: bold;
     }
     .Priority-section {
       display: table;

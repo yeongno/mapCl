@@ -2,13 +2,32 @@
   border-left: dashed 7px black;
   border-right: dashed 7px black;
   min-height: 500px;
-  .left-roof {
-    background: blue;
-    color: white;
-    font-size: 2em;
-    padding-left: 1rem;
-    border-bottom-right-radius: 10px;
+  .roof-container {
+    display: flex;
+    .left-roof {
+      background: black;
+      color: white;
+      width: 33%;
+      font-size: 2em;
+      padding-left: 1rem;
+    }
+    .middle-roof {
+      background: blue;
+      color: white;
+      width: 33%;
+      font-size: 2em;
+      padding-left: 1rem;
+    }
+    .right-roof {
+      text-align: center;
+      background: blue;
+      color: white;
+      width: 33%;
+      font-size: 2em;
+      padding-left: 1rem;
+    }
   }
+
   .leftSection-btnContainer {
     display: grid;
     .btn__right--default {
@@ -18,7 +37,6 @@
       width: 5rem;
     }
     .favoriteGroup-accordian {
-      border-top: dashed 7px black;
     }
   }
 }

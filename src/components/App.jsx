@@ -27,6 +27,9 @@ import RegisterPage from "./views/header/RegisterPage/RegisterPage";
 import Test from "./views/test/Test";
 import Test1 from "./views/test/menuBar_Test/Test1";
 import Test2 from "./views/test/menuBar_Test/Test2";
+import MineMO from "./views/mapPage/leftSection/mineMO/MineMO";
+import OtherMO from "./views/mapPage/leftSection/otherMO/OtherMO";
+import NearMO1 from "./views/mapPage/leftSection/nearMO/NearMO1";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -79,6 +82,9 @@ function App() {
             <Route path="/mapPage/testMap" element={<SampleMap />} />
             <Route path="/mapPage/nearMap" element={<NearByUsersMap />} />
             <Route path="/mapPage/interestedMap" element={<InterestedMap />} />
+            <Route path="/mapPage/mineMO" element={<MineMO />} />
+            <Route path="/mapPage/nearMO" element={<NearMO1 />} />
+            <Route path="/mapPage/otherMO" element={<OtherMO />} />
           </Route>
           <Route path="/mainPage" element={<MainPage />}></Route>
           <Route path="/test" element={<Test />}>

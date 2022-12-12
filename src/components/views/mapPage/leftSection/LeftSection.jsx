@@ -1,54 +1,53 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
-import { turnMap } from "../../../../redux/_actions/turn_action";
+import { turnMap, turnMO } from "../../../../redux/_actions/turn_action";
 import FavoriteGroup from "./FavoriteGroup/FavoriteGroup";
 import "../../../styles/mapPage/leftSection/LeftSection.scss";
+import useMOSelector from "../../../../hook/navSelector/useMOSelector";
 
 function LeftSection() {
+  const MO = useSelector((state) => state?.turn?.turnMo);
+  const Left_Ref = useRef();
+  const Near_Ref = useRef();
+  const Other_Ref = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => {}, []);
-  const onDefault = () => {
-    dispatch(turnMap("DEFAULT_MAP"));
-  };
-  const onRelation = () => {
-    dispatch(turnMap("REL_MAP"));
-  };
-  const onTest = () => {
-    dispatch(turnMap("TEST_MAP"));
+  const onMine = () => {
+    dispatch(turnMO("MINE_MO"));
+    Left_Ref.current.style.background = "black";
+    Near_Ref.current.style.background = "blue";
+    Other_Ref.current.style.background = "blue";
   };
   const onNear = () => {
-    dispatch(turnMap("NEAR_MAP"));
+    dispatch(turnMO("NEAR_MO"));
+    Near_Ref.current.style.background = "black";
+    Left_Ref.current.style.background = "blue";
+    Other_Ref.current.style.background = "blue";
   };
-
-  const onInterested = () => {
-    dispatch(turnMap("INTERESTED_MAP"));
+  const onOther = () => {
+    dispatch(turnMO("OTHER_MO"));
+    Other_Ref.current.style.background = "black";
+    Near_Ref.current.style.background = "blue";
+    Left_Ref.current.style.background = "blue";
   };
+  useMOSelector();
   return (
     <div className="leftSection-container">
-      <div className="left-roof">OPTIONS</div>
-      <div className="leftSection-btnContainer">
-        {/* <button className="btn__right--default" onClick={onDefault}>
-          기본
-        </button>
-        <button className="btn__right--chat" onClick={onRelation}>
-          주변인
-        </button>
-        <button className="btn__right--test" onClick={onTest}>
-          TEST
-        </button>
-        <button className="btn__right--test" onClick={onNear}>
-          Near
-        </button>
-        <button className="btn__right--test" onClick={onInterested}>
-          Interested Spot
-        </button> */}
-        <div className="favoriteGroup-container">
-          <FavoriteGroup />
+      <div className="roof-container">
+        <div className="left-roof" onClick={onMine} ref={Left_Ref}>
+          내 마크
+        </div>
+        <div className="middle-roof" onClick={onNear} ref={Near_Ref}>
+          주변 마크
+        </div>
+        <div className="right-roof" onClick={onOther} ref={Other_Ref}>
+          기타
         </div>
       </div>
+
+      <Outlet />
     </div>
   );
 }
