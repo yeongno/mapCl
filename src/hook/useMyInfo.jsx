@@ -65,3 +65,8 @@ export function useInquiryPost() {
 
   return post;
 }
+export function useMapList() {
+  const post = useSelector((state) => state?.mapList?.mapList?.data);
+
+  return post;
+}

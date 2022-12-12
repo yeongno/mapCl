@@ -28,3 +28,5 @@ export const TURNMENU = "turn_menu";
 export const TURNFORUM = "turn_forum";
 export const TURNMO = "turn_mo";
 export const TURNTEST = "trun_test";
+
+export const SETMAPLIST_LIST = "setmaplist_list";

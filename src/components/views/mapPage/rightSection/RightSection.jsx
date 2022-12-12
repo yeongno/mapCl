@@ -11,7 +11,14 @@ import {
 import { turnMap } from "../../../../redux/_actions/turn_action";
 import InterestedMap from "./maps/InterestedMap";
 import "../../../styles/mapPage/RightSection.scss";
-import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
+import {
+  ArrowDownOutlined,
+  ArrowUpOutlined,
+  RedoOutlined,
+} from "@ant-design/icons";
+import useTmpCenter from "../../../../hook/common/useTmpCenter";
+import UserList from "./list/UserList";
+import CtrBar from "./ctrBar/CtrBar";
 
 function RightSection() {
   const navigate = useNavigate();
@@ -22,6 +29,9 @@ function RightSection() {
   //accordian check activing
   const [onAcc, setOnAcc] = useState(false);
   const Map_Ref = useRef();
+
+  const getMarkers = useTmpCenter();
+
   useEffect(() => {
     setlatitude1(latitude);
     setlongitude1(longitude);
@@ -45,12 +55,21 @@ function RightSection() {
   };
   return (
     <div className="RightSection-container">
-      <div className="map-roof">My Map</div>
-      <div className="map-container" ref={Map_Ref}>
-        <InterestedMap latitude1={latitude1} longitude1={longitude1} />
+      <div className="test">
+        <div className="map-roof">My Map</div>
+        <div className="map-container" ref={Map_Ref}>
+          <InterestedMap latitude1={latitude1} longitude1={longitude1} />
+        </div>
+        <div className="accordian-container--map" onClick={onTurn}>
+          {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
+        </div>
       </div>
-      <div className="accordian-container--map" onClick={onTurn}>
-        {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
+
+      <div className="mapList-container">
+        <CtrBar />
+        <div className="list-container">
+          <UserList />
+        </div>
       </div>
     </div>
   );
