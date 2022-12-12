@@ -19,6 +19,7 @@ import {
 import useTmpCenter from "../../../../hook/common/useTmpCenter";
 import UserList from "./list/UserList";
 import CtrBar from "./ctrBar/CtrBar";
+import Btn__TopTogle from "../../commnunity/common/Btn__TopTogle";
 
 function RightSection() {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ function RightSection() {
   };
   return (
     <div className="RightSection-container">
+      <Btn__TopTogle />
       <div className="test">
         <div className="map-roof">My Map</div>
         <div className="map-container" ref={Map_Ref}>
