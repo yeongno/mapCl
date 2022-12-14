@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useMapList } from "../../../../../hook/useMyInfo";
+import { useMapList } from "../../../../../../hook/useMyInfo";
 
 function UserList() {
   const mapList = useMapList();

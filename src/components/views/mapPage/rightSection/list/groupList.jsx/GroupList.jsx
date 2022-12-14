@@ -1,13 +1,10 @@
 import { ProfileOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";
 import React, { useState } from "react";
-import useTmpCenter from "../../../../hook/common/useTmpCenter";
-import { useMapList } from "../../../../hook/useMyInfo";
-import useNearByUsersList from "../../../../hook/useNearByUsersList";
-import Btn_comment from "../../commnunity/common/Btn_comment";
-import Btn__Like from "../../commnunity/common/Btn__Like";
+import Btn_comment from "../../../../commnunity/common/Btn_comment";
+import Btn__Like from "../../../../commnunity/common/Btn__Like";
 
-function Test1() {
+function GroupList() {
   const postFrom = "a";
   const [PostImg, setPostImg] = useState(1);
   const [PostTitle, setPostTitle] = useState(1);
@@ -220,4 +217,4 @@ function Test1() {
   );
 }
 
-export default Test1;
+export default GroupList;

@@ -1,21 +1,21 @@
 .leftSection-container {
-  border-left: dashed 7px black;
-  border-right: dashed 7px black;
   min-height: 500px;
   .roof-container {
     display: flex;
     .left-roof {
+      text-align: center;
       background: black;
       color: white;
       width: 33%;
-      font-size: 2em;
+      font-size: 1em;
       padding-left: 1rem;
     }
     .middle-roof {
+      text-align: center;
       background: blue;
       color: white;
       width: 33%;
-      font-size: 2em;
+      font-size: 1em;
       padding-left: 1rem;
     }
     .right-roof {
@@ -23,7 +23,7 @@
       background: blue;
       color: white;
       width: 33%;
-      font-size: 2em;
+      font-size: 1em;
       padding-left: 1rem;
     }
   }

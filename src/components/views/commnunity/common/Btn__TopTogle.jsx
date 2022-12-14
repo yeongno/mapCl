@@ -13,7 +13,7 @@ function Btn__TopTogle() {
       onClick={onTop}
       style={{
         position: "fixed",
-        marginLeft: "50vw",
+        marginLeft: "60vw",
         marginTop: "80vh",
         fontSize: "3em",
         cursor: "pointer",

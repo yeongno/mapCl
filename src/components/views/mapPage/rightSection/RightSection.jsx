@@ -17,9 +17,10 @@ import {
   RedoOutlined,
 } from "@ant-design/icons";
 import useTmpCenter from "../../../../hook/common/useTmpCenter";
-import UserList from "./list/UserList";
+import UserList from "./list/UserList/UserList";
 import CtrBar from "./ctrBar/CtrBar";
 import Btn__TopTogle from "../../commnunity/common/Btn__TopTogle";
+import GroupList from "./list/groupList.jsx/GroupList";
 
 function RightSection() {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ function RightSection() {
         <CtrBar />
         <div className="list-container">
           <UserList />
+          <GroupList />
         </div>
       </div>
     </div>
