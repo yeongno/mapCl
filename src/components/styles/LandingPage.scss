@@ -2,4 +2,5 @@
 
 .landingPage-container {
   @include inner_container_pc();
+  height: 100%;
 }

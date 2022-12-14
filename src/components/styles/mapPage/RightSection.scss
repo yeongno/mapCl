@@ -1,4 +1,5 @@
 .RightSection-container {
+  height: 100%;
   .map-roof {
     font-size: 2em;
     background: black;
@@ -22,5 +23,7 @@
   }
 }
 .test {
-  position: sticky !important;
+  z-index: 100;
+  top: 0;
+  position: sticky;
 }

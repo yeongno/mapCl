@@ -1,9 +1,10 @@
 import { ProfileOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown } from "antd";
+import moment from "moment";
 import React, { useState } from "react";
 import Btn_comment from "../../../../commnunity/common/Btn_comment";
 import Btn__Like from "../../../../commnunity/common/Btn__Like";
-
+import "moment/locale/ko";
 function GroupList() {
   const postFrom = "a";
   const [PostImg, setPostImg] = useState(1);
@@ -18,7 +19,26 @@ function GroupList() {
 
   //DropDown_ compared userId
   const [Compare, steCompare] = useState(false);
-  const Test = ["z", "b", "c"];
+  const Test = [
+    {
+      userName: "test1",
+      createAt: "2022-12-14T20:35:33.000Z",
+      title: "야구경기 보러 갈 사람 모집합니다.",
+      content: "아무나 가능 합니다!!",
+    },
+    {
+      userName: "test2",
+      createAt: "2022-11-19T20:35:33.000Z",
+      title: "축구경기 보러 갈 사람 모집합니다.",
+      content: "아무나 가능 합니다!!",
+    },
+    {
+      userName: "test3",
+      createAt: "2021-11-14T20:35:33.000Z",
+      title: "경기도 보러 갈 사람 모집합니다.",
+      content: "아무나 가능 합니다!!",
+    },
+  ];
   return (
     <div>
       <div>
@@ -89,7 +109,7 @@ function GroupList() {
                           marginTop: "4px",
                         }}
                       >
-                        {Name}
+                        {mapList.userName}
                       </span>
                       <span
                         style={{
@@ -100,7 +120,7 @@ function GroupList() {
                           border: "none",
                         }}
                       >
-                        {/* {moment(PostCreatedAt).format("M[월] D[일]")} */}
+                        {moment(mapList.createAt).fromNow()}
                       </span>
                     </div>
                     <div
@@ -132,7 +152,7 @@ function GroupList() {
                         marginLeft: "1%",
                       }}
                     >
-                      {PostTitle}
+                      {mapList.title}
                     </span>
                   </div>
                   <div
@@ -141,7 +161,7 @@ function GroupList() {
                       marginLeft: "7%",
                     }}
                   >
-                    {PostImg && (
+                    {/* {PostImg && (
                       <img
                         style={{
                           maxWidth: "50%",
@@ -150,7 +170,7 @@ function GroupList() {
                         // src={`http://localhost:5000/${PostImg}`}
                         alt="FileImg"
                       />
-                    )}
+                    )} */}
                   </div>
                   <span
                     style={{
@@ -161,7 +181,7 @@ function GroupList() {
                       marginLeft: "1%",
                     }}
                   >
-                    {PostContent}
+                    {mapList.content}
                   </span>
                   <div
                     style={{

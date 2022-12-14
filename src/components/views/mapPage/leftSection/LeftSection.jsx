@@ -35,19 +35,21 @@ function LeftSection() {
   useMOSelector();
   return (
     <div className="leftSection-container">
-      <div className="roof-container">
-        <div className="left-roof" onClick={onMine} ref={Left_Ref}>
-          내 마크
+      <div className="leftSection-wrapper">
+        <div className="roof-container">
+          <div className="left-roof" onClick={onMine} ref={Left_Ref}>
+            내 마크
+          </div>
+          <div className="middle-roof" onClick={onNear} ref={Near_Ref}>
+            주변 마크
+          </div>
+          <div className="right-roof" onClick={onOther} ref={Other_Ref}>
+            기타
+          </div>
         </div>
-        <div className="middle-roof" onClick={onNear} ref={Near_Ref}>
-          주변 마크
-        </div>
-        <div className="right-roof" onClick={onOther} ref={Other_Ref}>
-          기타
-        </div>
-      </div>
 
-      <Outlet />
+        <Outlet />
+      </div>
     </div>
   );
 }

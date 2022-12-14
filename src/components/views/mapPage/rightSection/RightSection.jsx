@@ -73,6 +73,8 @@ function RightSection() {
         <div className="list-container">
           <UserList />
           <GroupList />
+          <GroupList />
+          <GroupList />
         </div>
       </div>
     </div>

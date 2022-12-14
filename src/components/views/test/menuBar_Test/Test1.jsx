@@ -135,7 +135,7 @@ function Test1() {
                         marginLeft: "1%",
                       }}
                     >
-                      {PostTitle}
+                      제목
                     </span>
                   </div>
                   <div
@@ -164,7 +164,7 @@ function Test1() {
                       marginLeft: "1%",
                     }}
                   >
-                    {PostContent}
+                    내용
                   </span>
                   <div
                     style={{
