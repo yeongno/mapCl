@@ -1,5 +1,6 @@
 .RightSection-container {
   height: 100%;
+
   .map-roof {
     font-size: 2em;
     background: black;
@@ -19,6 +20,13 @@
     cursor: pointer;
     &:hover {
       background: blue;
+    }
+  }
+  .mapList-container {
+    height: 100vh;
+
+    .list-container {
+      padding: 10px;
     }
   }
 }

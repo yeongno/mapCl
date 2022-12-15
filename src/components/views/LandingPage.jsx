@@ -42,10 +42,12 @@ function LandingPage({ handleLogin }) {
   }, []);
 
   return (
-    <div className="landingPage-container">
+    <div>
       <Header />
       <MenuBar />
-      <Outlet />
+      <div className="landingPage-container">
+        <Outlet />
+      </div>
     </div>
   );
 }

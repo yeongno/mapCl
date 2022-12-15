@@ -30,6 +30,8 @@ import Test2 from "./views/test/menuBar_Test/Test2";
 import MineMO from "./views/mapPage/leftSection/mineMO/MineMO";
 import OtherMO from "./views/mapPage/leftSection/otherMO/OtherMO";
 import NearMO1 from "./views/mapPage/leftSection/nearMO/NearMO1";
+import { createGlobalStyle } from "styled-components";
+import GlobalStyles from "./views/GlobalStyles ";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -74,6 +76,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <GlobalStyles />
       <Routes>
         <Route path="/" element={<LandingPage />}>
           <Route path="/mapPage" element={<MapPage />}>

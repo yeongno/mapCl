@@ -1,7 +1,8 @@
 .leftSection-container {
-  min-height: 500px;
   height: 100vw;
-
+  border: double 4px black;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   .leftSection-wrapper {
     top: 0;
     position: sticky;
@@ -9,6 +10,7 @@
   .roof-container {
     display: flex;
     .left-roof {
+      border-top-left-radius: 15px;
       text-align: center;
       background: black;
       color: white;

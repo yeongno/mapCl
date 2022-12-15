@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import App from "./components/App";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
+import { Reset } from "styled-reset";
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
   ReduxThunk
@@ -14,6 +15,7 @@ const createStoreWithMiddleware = applyMiddleware(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Reset />
     <Provider
       store={createStoreWithMiddleware(
         Reducer,

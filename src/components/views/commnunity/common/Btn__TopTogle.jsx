@@ -17,6 +17,7 @@ function Btn__TopTogle() {
         marginTop: "80vh",
         fontSize: "3em",
         cursor: "pointer",
+        zIndex: "110",
       }}
     >
       <UpSquareOutlined />

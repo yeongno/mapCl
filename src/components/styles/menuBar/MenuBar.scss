@@ -1,0 +1,30 @@
+@import "../mixins";
+
+.menuBar-container {
+  width: 100%;
+  background: rgba($color: #dfcaca40, $alpha: 1);
+  .menuBar-wrapper {
+    @include inner_container_pc();
+    padding: 0.6rem;
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      .btn-wrapper {
+        button {
+          margin-right: 2rem;
+          background: white;
+        }
+        .panel-container {
+          display: none;
+        }
+        &:hover {
+          .panel-container {
+            display: block;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

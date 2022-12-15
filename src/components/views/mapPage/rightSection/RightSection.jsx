@@ -10,7 +10,7 @@ import {
 } from "../../../../redux/_actions/mapNav/location_action";
 import { turnMap } from "../../../../redux/_actions/turn_action";
 import InterestedMap from "./maps/InterestedMap";
-import "../../../styles/mapPage/RightSection.scss";
+import "../../../styles/mapPage/rightSection/RightSection.scss";
 import {
   ArrowDownOutlined,
   ArrowUpOutlined,
@@ -66,10 +66,10 @@ function RightSection() {
         <div className="accordian-container--map" onClick={onTurn}>
           {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
         </div>
+        <CtrBar />
       </div>
 
       <div className="mapList-container">
-        <CtrBar />
         <div className="list-container">
           <UserList />
           <GroupList />
