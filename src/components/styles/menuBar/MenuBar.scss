@@ -11,14 +11,22 @@
       display: flex;
       justify-content: center;
       .btn-wrapper {
+        padding: 1rem 1rem 1rem;
+        border-radius: 15px;
         button {
-          margin-right: 2rem;
+          border: none;
+          padding: 0.4rem;
           background: white;
+          font-weight: bold;
         }
         .panel-container {
           display: none;
         }
         &:hover {
+          background: yellow;
+          button {
+            background: rgba($color: #f3e3e3ce, $alpha: 1);
+          }
           .panel-container {
             display: block;
             color: white;
