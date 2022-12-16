@@ -5,7 +5,7 @@ import Axios from "../../../../../../axios/Axios";
 import useLocationFormat from "../../../../../../hook/formatter/useLocationFormat";
 import { useMyPriority } from "../../../../../../hook/useMyInfo";
 import { dev_favorite } from "../../../../../../redux/_actions/dev/Dev_Info_action";
-
+import "../../../../../styles/mapPage/infoWindow/default/FavoriteSection.scss";
 function FavoriteSection(props) {
   const myPriroty = useMyPriority();
   const [nickName, setNickName] = useState();
@@ -37,14 +37,7 @@ function FavoriteSection(props) {
     });
   };
   return (
-    <div>
-      <div
-        onClick={() => {
-          props.setOnPosition(null);
-        }}
-      >
-        x
-      </div>
+    <div className="favoriteSection-container">
       <input onChange={onNickName} />
       {(myPriroty[0].nickName && <>1: true</>) || (
         <div

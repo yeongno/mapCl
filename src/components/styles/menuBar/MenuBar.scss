@@ -23,7 +23,7 @@
           display: none;
         }
         &:hover {
-          background: yellow;
+          background: rgba($color: #87787872, $alpha: 1);
           button {
             background: rgba($color: #f3e3e3ce, $alpha: 1);
           }

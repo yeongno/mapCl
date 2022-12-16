@@ -1,9 +1,25 @@
 .default-container {
   background: white;
-  margin-top: 1rem;
-  margin-left: 10rem;
-  width: 45rem;
-  height: 27rem;
+  margin-top: 0.5rem;
+  width: 95%;
+  margin-left: 2.5%;
+  height: 95%;
   z-index: 30;
   position: absolute;
+  .topLabel-container {
+    background: rgba($color: #817878, $alpha: 1);
+    width: 100%;
+    display: flex;
+    .label-container {
+      font-weight: bold;
+      font-size: 1.5em;
+      color: white;
+    }
+    .btn--close {
+      margin-left: auto;
+      font-size: 1.5em;
+      color: red;
+      border: solid 2px red;
+    }
+  }
 }

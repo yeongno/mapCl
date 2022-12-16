@@ -1,0 +1,24 @@
+.navMode-container {
+  background: rgba($color: #938888c8, $alpha: 1);
+  padding-top: 1rem;
+  .navMode-wrapper {
+    width: 40%;
+    display: flex;
+    margin-left: 1rem;
+    justify-content: space-between;
+    button {
+      font-size: 1.3em;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn--activity {
+      font-size: 1.3em;
+      background: none;
+      border: solid 3px white;
+      border-bottom: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+}
