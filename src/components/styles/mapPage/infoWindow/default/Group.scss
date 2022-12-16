@@ -1,0 +1,78 @@
+.group-container {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  .topic-container {
+    margin-bottom: 1rem;
+    &::before {
+      content: "주제";
+      margin-right: 1rem;
+      font-size: 1.5em;
+    }
+    &::after {
+      content: "*주요 키워드를 입력해주세요 ex)축구관전";
+      color: rgba(207, 194, 194, 0.751);
+      margin-left: 1rem;
+    }
+    textarea {
+      vertical-align: middle;
+
+      width: 30rem;
+      font-size: 2em;
+      height: 1.5em;
+      resize: none;
+    }
+  }
+  .title-container {
+    margin-bottom: 1rem;
+    &::before {
+      content: "제목";
+      font-size: 1.5em;
+      margin-right: 1rem;
+    }
+    textarea {
+      vertical-align: middle;
+
+      width: 30rem;
+      font-size: 2em;
+      height: 1.5em;
+      resize: none;
+    }
+  }
+  .content-container {
+    margin-bottom: 1rem;
+    &::before {
+      content: "내용";
+      font-size: 1.5em;
+      margin-right: 1rem;
+    }
+    textarea {
+      vertical-align: top;
+
+      width: 50rem;
+      font-size: 2em;
+      height: 8rem;
+      resize: none;
+    }
+  }
+  .place-container {
+    &::before {
+      content: "집합 장소";
+      font-size: 1.5em;
+      margin-right: 1rem;
+    }
+    &::after {
+      content: "*집합 하실 지명 또는 건물 명을 쓰시오.";
+      color: rgba(207, 194, 194, 0.751);
+      margin-left: 1rem;
+    }
+    textarea {
+      vertical-align: top;
+      width: 20rem;
+      font-size: 2em;
+      height: 1.5em;
+      resize: none;
+    }
+  }
+  .submit-container {
+  }
+}

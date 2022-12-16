@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../../../../../styles/mapPage/infoWindow/default/NavMode.scss";
 function NavMode(props) {
-  const [active, setActive] = useState("Write");
+  const [active, setActive] = useState("Group");
   const onWrite = () => {
     props.setMode("Write");
     setActive("Write");
