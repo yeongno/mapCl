@@ -39,7 +39,8 @@ function useTmpCenter(props) {
       setOnChanged(onChanged + 1);
     }
     //약 150미터
-    let mem = 0.00165628926738;
+    // let mem = 0.00165628926738;
+    let mem = 0.00265628926738;
 
     //위도 변경 약 400미터 마다 업데이트
     if (
@@ -69,6 +70,7 @@ function useTmpCenter(props) {
       });
     }
   }, [latitude, preCenter_reducer]);
+
   //tmpCenter 업데이트 되면 선호 지역 데이터 불러옴
   useEffect(() => {
     let markers = [];

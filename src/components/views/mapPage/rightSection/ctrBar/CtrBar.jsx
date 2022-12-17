@@ -9,7 +9,6 @@ import "../../../../styles/mapPage/rightSection/CtrBar.scss";
 function CtrBar() {
   const NearByUsers = useNearByUsersList();
   const dispatch = useDispatch();
-  console.log(NearByUsers, "near");
   const onList = () => {
     dispatch(setMapList(NearByUsers));
   };

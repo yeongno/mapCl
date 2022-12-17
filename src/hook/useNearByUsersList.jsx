@@ -12,7 +12,6 @@ function useNearByUsersList() {
   const [PreLocation_Format, setPreLocation_Format] = useState("232, 233");
   const [ok, setOk] = useState(false);
   useEffect(() => {
-    console.log(reducer_PreLocation, "21");
     setPreLocation_Format(
       `${reducer_PreLocation?.center?.lat}, ${reducer_PreLocation?.center?.lng}`
     );
@@ -22,7 +21,6 @@ function useNearByUsersList() {
       setOk(true);
     }
   }, [reducer_PreLocation]);
-
   useEffect(() => {
     if (ok) {
       axios
@@ -42,9 +40,30 @@ function useNearByUsersList() {
           console.log(error);
         });
     } else {
-      console.log("ok");
+      // console.log("ok");
     }
-  }, [reducer_PreLocation]);
+  }, []);
+  useEffect(() => {
+    if (ok) {
+      axios
+        .post("/place/list", {
+          location: PreLocation_Format,
+          numPoints: 1000,
+          radius: 10,
+        })
+        .then((res) => {
+          setPreLocation_Data(res.data);
+
+          setOk(false);
+
+          return res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+    }
+  }, [reducer_PreLocation, PreLocation_Format]);
 
   return PreLocation_Data;
 }

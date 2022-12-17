@@ -1,6 +1,15 @@
 .group-container {
   margin-top: 1rem;
   margin-left: 1rem;
+
+  textarea {
+    vertical-align: middle;
+    overflow: hidden;
+    width: 30rem;
+    font-size: 2em;
+    height: 1.5em;
+    resize: none;
+  }
   .topic-container {
     margin-bottom: 1rem;
     &::before {
@@ -14,28 +23,50 @@
       margin-left: 1rem;
     }
     textarea {
-      vertical-align: middle;
-
-      width: 30rem;
-      font-size: 2em;
-      height: 1.5em;
-      resize: none;
     }
   }
   .title-container {
+    display: flex;
     margin-bottom: 1rem;
     &::before {
       content: "제목";
       font-size: 1.5em;
       margin-right: 1rem;
     }
-    textarea {
-      vertical-align: middle;
 
-      width: 30rem;
-      font-size: 2em;
-      height: 1.5em;
-      resize: none;
+    .site-calendar-demo-card {
+      .calendal-wrapper {
+        .range-wrapper {
+          display: flex;
+          &::before {
+            width: 7rem;
+            content: "모집 기한";
+            font-size: 1.5em;
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+          .ant-picker-range {
+            width: 15rem;
+          }
+        }
+        .date-wrapper {
+          display: flex;
+          &::before {
+            margin-top: 0.2rem;
+            width: 7rem;
+            content: "집합 날짜";
+            font-size: 1.5em;
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+          .ant-picker {
+            margin-top: 0.3rem;
+            width: 15rem;
+          }
+        }
+      }
+    }
+    textarea {
     }
   }
   .content-container {
@@ -47,7 +78,6 @@
     }
     textarea {
       vertical-align: top;
-
       width: 50rem;
       font-size: 2em;
       height: 8rem;
@@ -55,24 +85,35 @@
     }
   }
   .place-container {
+    display: flex;
     &::before {
       content: "집합 장소";
       font-size: 1.5em;
       margin-right: 1rem;
     }
-    &::after {
-      content: "*집합 하실 지명 또는 건물 명을 쓰시오.";
-      color: rgba(207, 194, 194, 0.751);
-      margin-left: 1rem;
-    }
+
     textarea {
-      vertical-align: top;
       width: 20rem;
-      font-size: 2em;
-      height: 1.5em;
-      resize: none;
     }
-  }
-  .submit-container {
+    .submit-container {
+      &::before {
+        content: "*집합 하실 지명 또는 건물 명을 쓰시오.";
+        color: rgba(207, 194, 194, 0.751);
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+      button {
+        width: 4rem;
+        height: 3rem;
+        border: double 2px white;
+        color: white;
+        background: rgba($color: #b4d2ef11, $alpha: 1);
+        font-size: 1.5em;
+        cursor: pointer;
+        &:hover {
+          background: rgba($color: #99c5ee11, $alpha: 1);
+        }
+      }
+    }
   }
 }

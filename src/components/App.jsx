@@ -32,6 +32,7 @@ import OtherMO from "./views/mapPage/leftSection/otherMO/OtherMO";
 import NearMO1 from "./views/mapPage/leftSection/nearMO/NearMO1";
 import { createGlobalStyle } from "styled-components";
 import GlobalStyles from "./views/GlobalStyles ";
+import "antd/dist/antd.css";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
