@@ -5,6 +5,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import ReplyRendering from "./ReplyRendering";
 // import ReplyRendering from "./ReplyRendering";
 
 function ReplySection(props) {
@@ -45,42 +46,42 @@ function ReplySection(props) {
     fetchUserList();
   }, []);
   const fetchUserList = () => {
-    axios
-      .post("/api/users/getProFile", {
-        userFrom: userId,
-      })
-      .then((response) => {
-        if (response.data.success) {
-          setFilePath(response.data.userInfo[0].proFileImg);
-        } else {
-          alert("유저 정보를 가져오는데 실패하였습니다.");
-        }
-      });
-
-    axios
-      .post("/api/reply/getReply", {
-        postFrom: props.postFrom,
-      })
-      .then((response) => {
-        // if (response.data.req[0]) {
-        if (1) {
-          setUserImg(response.data.req[0].proFileImg);
-          setUserName(response.data.req[0].userName);
-          setUserFrom(response.data.req[0].userFrom);
-          setReply(response.data.req);
-          setOnReply(true);
-        } else {
-          setOnReply(false);
-        }
-      });
+    // axios
+    //   .post("/api/users/getProFile", {
+    //     userFrom: userId,
+    //   })
+    //   .then((response) => {
+    //     if (response.data.success) {
+    //       setFilePath(response.data.userInfo[0].proFileImg);
+    //     } else {
+    //       alert("유저 정보를 가져오는데 실패하였습니다.");
+    //     }
+    //   });
+    // axios
+    //   .post("/api/reply/getReply", {
+    //     postFrom: props.postFrom,
+    //   })
+    //   .then((response) => {
+    //     if (response.data.req[0]) {
+    //       setUserImg(response.data.req[0].proFileImg);
+    //       setUserName(response.data.req[0].userName);
+    //       setUserFrom(response.data.req[0].userFrom);
+    //       setReply(response.data.req);
+    //       setOnReply(true);
+    //     } else {
+    //       setOnReply(false);
+    //     }
+    //   });
   };
-  const renderCards = Reply.map((reply, index) => {
-    return (
-      <Col key={index}>
-        <div>{/* <ReplyRendering reply={reply} index={index} /> */}</div>
-      </Col>
-    );
-  });
+  // const renderCards = Reply.map((reply, index) => {
+  //   return (
+  //     <Col key={index}>
+  //       <div>
+  //         <ReplyRendering reply={reply} index={index} />
+  //       </div>
+  //     </Col>
+  //   );
+  // });
 
   return (
     <div
@@ -96,7 +97,10 @@ function ReplySection(props) {
     >
       <div style={{ height: "86%" }}>
         {/* reply rendering zone */}
-        <div>{OnReply && <div>{renderCards}</div>}</div>
+        {/* <div>{OnReply && <div>{renderCards}</div>}</div> */}
+        <div>
+          <ReplyRendering />
+        </div>
       </div>
       <div
         style={{
