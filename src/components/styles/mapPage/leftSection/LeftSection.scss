@@ -8,9 +8,10 @@
     position: sticky;
   }
   .roof-container {
+    cursor: pointer;
     display: flex;
     .left-roof {
-      border-top-left-radius: 15px;
+      border-top-left-radius: 11px;
       text-align: center;
       background: black;
       color: white;
@@ -30,7 +31,7 @@
       text-align: center;
       background: blue;
       color: white;
-      width: 33%;
+      width: 35%;
       font-size: 1em;
       padding-left: 1rem;
     }

@@ -1,6 +1,7 @@
 import {
   TURNFORUM,
   TURNMAP,
+  TURNMAPCOVER,
   TURNMENU,
   TURNMO,
   TURNTEST,
@@ -18,6 +19,8 @@ export default function turn(state = {}, action) {
       return { ...state, turnTest: action.value };
     case TURNMO:
       return { ...state, turnMo: action.value };
+    case TURNMAPCOVER:
+      return { ...state, turnMapCover: action.value };
     default:
       return state;
   }

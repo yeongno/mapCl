@@ -7,6 +7,7 @@ import MR_Interested from "./common/MR_Interested";
 import useMyInfo, {
   useLocationInfo,
   useMainLocation,
+  useMapCover,
 } from "../../../../../hook/useMyInfo";
 import SearchBar from "./common/SearchBar";
 import MR_Search from "./markerEvent/MR_Search";
@@ -23,6 +24,7 @@ import useNearByUsers from "../../../../../hook/useNearByUsers";
 import useLocationFormat from "../../../../../hook/formatter/useLocationFormat";
 import MR_NearByUsers from "./markerEvent/MR_NearByUsers";
 import useTmpCenter from "../../../../../hook/common/useTmpCenter";
+import MapCover from "./common/MapCover";
 const InterestedMap = (props) => {
   //위치 이동 시 이벤트 호출 및 마커 생성
   const getMarkers = useTmpCenter();
@@ -33,6 +35,9 @@ const InterestedMap = (props) => {
   const [onPosition, setOnPosition] = useState();
   //현재 실제 위치
   const location = useLocationInfo();
+
+  //맵 커버 온오프하며 useTmpCenter의 onChanged 값으로 값 지정
+  const mapCover = useMapCover();
 
   //지도의 위치
   const [state, setState] = useState({
@@ -98,6 +103,7 @@ const InterestedMap = (props) => {
     <div>
       <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
       <MoveMyLocation setState={setState} />
+      {mapCover && <MapCover />}
       {onPosition && (
         //지도 클릭
         <div style={{ width: "100%", height: "30rem", position: "absolute" }}>
@@ -105,6 +111,7 @@ const InterestedMap = (props) => {
           <MapBlinder />
         </div>
       )}
+
       <Map // 지도를 표시할 Container
         // id="map"
         center={state.center}
@@ -121,7 +128,7 @@ const InterestedMap = (props) => {
             lng: mouseEvent.latLng.getLng(),
           })
         }
-        level={3} // 지도의 확대 레벨
+        level={4} // 지도의 확대 레벨
         onCenterChanged={(map) =>
           setPreCenter({
             level: map.getLevel(),

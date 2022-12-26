@@ -6,44 +6,22 @@ import { useSelector } from "react-redux";
 import Axios from "../../../../axios/Axios";
 import useCoords from "../../../../hook/useCoords";
 import { useMainLocation } from "../../../../hook/useMyInfo";
-
+import "../../../styles/mapPage/infoWindow/default/cover/MapCover.scss";
 function Test2() {
-  useCoords();
-  const mainlocation = useMainLocation();
-  console.log("use", mainlocation);
-  const location = useSelector(
-    (state) => state?.location?.centerlocation?.center
-  );
-  const [location1, setlocation1] = useState();
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    setlocation1(`${location?.lat}, ${location?.lng}`);
-  }, [location]);
-  const onList = () => {
-    console.log("location1", location1);
-    axios
-      .post("/place/list", {
-        location: location1,
-        numPoints: 2,
-        radius: 1000,
-      })
-      .then((res) => {
-        console.log(res);
-        setData(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const [test1, setTest1] = useState();
+  const onTest = () => {
+    alert("aa");
   };
-  const rendermap = data.map((data, index) => {
-    return <div key={index}>{data.location}</div>;
-  });
-
   return (
     <div>
-      <button onClick={onList}>list</button>
-      {rendermap}
+      <div onClick={onTest} style={{ position: "absolute" }}>
+        button
+      </div>
+      <div className="mapCover-container">
+        <div className="image-container">
+          <img src="/assets/mouse/movingCursor.png" alt="" />
+        </div>
+      </div>
     </div>
   );
 }

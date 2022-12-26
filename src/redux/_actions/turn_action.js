@@ -1,4 +1,11 @@
-import { TURNFORUM, TURNMAP, TURNMENU, TURNMO, TURNTEST } from "./types";
+import {
+  TURNFORUM,
+  TURNMAP,
+  TURNMAPCOVER,
+  TURNMENU,
+  TURNMO,
+  TURNTEST,
+} from "./types";
 
 /**
  * 지도 바꾸기 DEFAULT_MAP, REL_MAP, NEAR_MAP, TEST_MAP, INTERESTED_MAP
@@ -43,6 +50,18 @@ export function turnForum(dataToSubmit) {
 export function turnMO(dataToSubmit) {
   return {
     type: TURNMO,
+    value: dataToSubmit,
+  };
+}
+
+/**
+ * map의 커버를 OnOff
+ * @param {boolean true} dataToSubmit
+ * @returns
+ */
+export function turnMapCover(dataToSubmit) {
+  return {
+    type: TURNMAPCOVER,
     value: dataToSubmit,
   };
 }

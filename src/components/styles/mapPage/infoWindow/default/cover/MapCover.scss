@@ -1,0 +1,26 @@
+.mapCover-container {
+  position: absolute;
+  opacity: 0.6;
+  background: gray;
+  width: 100%;
+  height: 30rem;
+  z-index: 300;
+  pointer-events: none;
+  &::after {
+    position: absolute;
+    content: "화면을 스크롤 하여 움직이십시오.";
+    color: black;
+    top: 19rem;
+    left: 24.5rem;
+    font-weight: bold;
+  }
+  .image-container {
+    position: absolute;
+    top: 15rem;
+    left: 30rem;
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}

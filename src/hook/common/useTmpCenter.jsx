@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_MYUSERINFO } from "../../config/tempClientConfig";
 import { setCenterLocation } from "../../redux/_actions/mapNav/location_action";
+import { turnMapCover } from "../../redux/_actions/turn_action";
 import useCoords from "../useCoords";
 import { usePreCenter } from "../useMyInfo";
 import useNearByUsers from "../useNearByUsers";
@@ -17,6 +18,8 @@ function useTmpCenter(props) {
   const [markers, setMarkers] = useState([]);
   const [userMarkers, setUserMarkers] = useState([]);
   const dispatch = useDispatch();
+
+  console.log(userMarkers);
 
   //지도 중심좌표가 움직인 정도를 알기 위한 값
   const [tmpCenter, setTmpCenter] = useState({
@@ -115,6 +118,16 @@ function useTmpCenter(props) {
       }
     }
   }, [onChanged]);
+
+  //MapCover의 OnOff를 위한 함수
+  useEffect(() => {
+    if (onChanged > 3) {
+      dispatch(turnMapCover(false));
+    } else {
+      dispatch(turnMapCover(true));
+    }
+  }, [onChanged]);
+
   return { markers, userMarkers };
 }
 
