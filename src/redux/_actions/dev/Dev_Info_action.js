@@ -7,16 +7,24 @@ export function dev_favorite(nickName, priorityNumber) {
   };
 }
 
-export function dev_Post(title, content) {
+export function dev_Post(content, title, topic, location) {
   return {
     type: POST_DEV,
-    payload: { title, content },
+    payload: { title, content, topic, location },
   };
 }
 
-export function dev_Group(topic, title, content) {
+export function dev_Group(
+  topic,
+  title,
+  content,
+  place,
+  pickDate,
+  pickRange,
+  location
+) {
   return {
     type: GROUP_DEV,
-    payload: { topic, title, content },
+    payload: { topic, title, content, place, pickDate, pickRange, location },
   };
 }

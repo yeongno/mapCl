@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { dev_Group } from "../../../../../../redux/_actions/dev/Dev_Info_action";
+import { useDispatch, useSelector } from "react-redux";
+import { dev_Post } from "../../../../../../redux/_actions/dev/Dev_Info_action";
 import "../../../../../styles/mapPage/infoWindow/default/Write.scss";
 function Posting(props) {
   const [topic, setTopic] = useState("");
@@ -9,6 +9,7 @@ function Posting(props) {
   const [place, setPlace] = useState("");
   const [pickDate, setPickDate] = useState("");
   const [pickRange, setPickRange] = useState([]);
+  const location = useSelector((state) => state.location.onlocation);
   const dispatch = useDispatch();
 
   const onTopic = (e) => {
@@ -20,12 +21,18 @@ function Posting(props) {
   const onContent = (e) => {
     setContent(e.target.value);
   };
-  const onPlace = (e) => {
-    setPlace(e.target.value);
-  };
   const onSubmit = () => {
-    dispatch(dev_Group(topic, title, content, place, pickDate, pickRange));
-    alert(topic + title + content + place + pickDate + pickRange);
+    dispatch(
+      dev_Post(
+        { topic },
+        { title },
+        { content },
+        {
+          location: `${location?.lat}, ${location?.lng}`,
+        }
+      )
+    );
+    alert(topic + title + content + location);
   };
   return (
     <div className="group-container">

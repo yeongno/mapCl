@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dev_Group } from "../../../../../../redux/_actions/dev/Dev_Info_action";
 import "../../../../../styles/mapPage/infoWindow/default/Group.scss";
 import Calendar1 from "../../../../common/Calendar1";
@@ -9,7 +9,8 @@ function Group(props) {
   const [content, setContent] = useState("");
   const [place, setPlace] = useState("");
   const [pickDate, setPickDate] = useState("");
-  const [pickRange, setPickRange] = useState([]);
+  const [pickRange, setPickRange] = useState();
+  const location = useSelector((state) => state.location.onlocation);
   const dispatch = useDispatch();
 
   const onTopic = (e) => {
@@ -25,7 +26,19 @@ function Group(props) {
     setPlace(e.target.value);
   };
   const onSubmit = () => {
-    dispatch(dev_Group(topic, title, content, place, pickDate, pickRange));
+    dispatch(
+      dev_Group(
+        { topic },
+        { title },
+        { content },
+        { place },
+        { pickDate },
+        { pickRange },
+        {
+          location: `${location?.lat}, ${location?.lng}`,
+        }
+      )
+    );
     alert(topic + title + content + place + pickDate + pickRange);
   };
   return (

@@ -26,7 +26,7 @@ const Calendar1 = (props) => {
     console.log(dateString);
   };
   const onRange = (date, dateString) => {
-    props.setPickDate(dateString);
+    props.setPickRange(dateString);
     console.log(dateString);
   };
   return (
