@@ -8,12 +8,14 @@ function MapPage() {
   useEffect(() => {}, []);
 
   return (
-    <div className="body-container">
-      <div className="body-leftSection">
-        <LeftSection />
-      </div>
-      <div className="body-rightSection">
-        <RightSection />
+    <div className="landingPage-container">
+      <div className="body-container">
+        <div className="body-leftSection">
+          <LeftSection />
+        </div>
+        <div className="body-rightSection">
+          <RightSection />
+        </div>
       </div>
     </div>
   );

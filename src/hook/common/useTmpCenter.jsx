@@ -19,8 +19,6 @@ function useTmpCenter(props) {
   const [userMarkers, setUserMarkers] = useState([]);
   const dispatch = useDispatch();
 
-  console.log(userMarkers);
-
   //지도 중심좌표가 움직인 정도를 알기 위한 값
   const [tmpCenter, setTmpCenter] = useState({
     center: {

@@ -1,5 +1,10 @@
 @import "./mixins";
-
+body {
+  //  -ms-overflow-style: none;
+  overflow-x: hidden;
+}
+.landingPage-container {
+}
 .landingPage-container {
   @include inner_container_pc();
   height: 100%;

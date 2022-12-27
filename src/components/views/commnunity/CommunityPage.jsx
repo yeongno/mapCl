@@ -15,8 +15,10 @@ function CommunityPage() {
 
   return (
     <div>
-      <MenuBar_Com />
-      <Outlet />
+      <div className="landingPage-container">
+        <MenuBar_Com />
+        <Outlet />
+      </div>
     </div>
   );
 }

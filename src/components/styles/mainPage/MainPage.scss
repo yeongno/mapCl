@@ -1,0 +1,34 @@
+.MainPage-container {
+  object-fit: cover;
+  .background1-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: repeat;
+    position: absolute;
+    z-index: -100;
+    // background-image: url("/assets/background/pattern/crossline-dots.webp");
+  }
+  .background-introduceTop {
+    width: 100vw;
+    height: 30rem;
+    background-size: 100vw 30rem;
+    position: absolute;
+    z-index: -99;
+  }
+  .introduce-comment {
+    width: 100vw;
+    height: 30rem;
+    transition: 1s;
+    text-shadow: 6px 2px 2px rgb(187, 229, 227);
+    color: white;
+    font-weight: bold;
+    font-size: 4em;
+    .firstLine-wrapper {
+      padding-top: 10rem;
+      padding-left: 20rem;
+    }
+    .secondLine-wrapper {
+      padding-left: 25rem;
+    }
+  }
+}
