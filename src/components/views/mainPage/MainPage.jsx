@@ -7,6 +7,7 @@ import "../../styles/mainPage/MainPage.scss";
 import IntroduceTop from "./introduceTop/IntroduceTop";
 import IntroduceLabel from "./introduceTop/IntroduceLabel";
 import IntroduceEx from "./introduceTop/IntroduceEx";
+import PageLabel from "../common/pageLabel/PageLabel";
 
 function MainPage() {
   return (
@@ -17,21 +18,7 @@ function MainPage() {
           backgroundImage: "url(assets/background/images/together.jpg)",
         }}
       > */}
-      <div className="landingPage-container">
-        <div
-          style={{
-            position: "absolute",
-            marginTop: "-1.2rem",
-            fontSize: "2em",
-            color: "white",
-            fontWeight: "bold",
-            zIndex: "1000",
-            marginLeft: "8rem",
-          }}
-        >
-          MainPage
-        </div>
-      </div>
+      <PageLabel />
       <img
         className="background1-wrapper"
         src="assets/background/images/together.jpg"
