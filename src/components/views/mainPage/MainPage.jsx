@@ -6,6 +6,7 @@ import HotTopic from "./rankBaord/HotTopic";
 import "../../styles/mainPage/MainPage.scss";
 import IntroduceTop from "./introduceTop/IntroduceTop";
 import IntroduceLabel from "./introduceTop/IntroduceLabel";
+import IntroduceEx from "./introduceTop/IntroduceEx";
 
 function MainPage() {
   return (
@@ -30,14 +31,11 @@ function MainPage() {
           <IntroduceTop />
         </div>
       </div>
+      <div className="introduceEx-wrapper">
+        <IntroduceEx />
+      </div>
       <div className="introduceLabel-wrapper">
         <IntroduceLabel />
-      </div>
-      <div className="landingPage-container">
-        <Notice />
-        <HotPlace />
-        <HotPost />
-        <HotTopic />
       </div>
     </div>
   );

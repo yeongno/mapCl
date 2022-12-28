@@ -1,0 +1,33 @@
+.introduce-Ex {
+  width: 100vw;
+  transition: 1s;
+  text-shadow: 6px 2px 2px rgb(187, 229, 227);
+  color: black;
+  font-weight: bold;
+  font-size: 4em;
+  z-index: 100;
+  .firstLine-wrapper {
+    position: absolute;
+    padding-top: 4rem;
+    padding-left: 20rem;
+  }
+  .secondLine-wrapper {
+    position: absolute;
+    font-size: 0.5em;
+    padding-top: 3rem;
+    padding-left: 46rem;
+  }
+  .thirdLine-wrapper {
+    color: rgb(55, 59, 59);
+    position: absolute;
+    font-size: 0.4em;
+    padding-top: 5.5rem;
+    padding-left: 46rem;
+  }
+  .fourLine-wrapper {
+    position: absolute;
+    font-size: 0.3em;
+    padding-top: 7.7rem;
+    padding-left: 46rem;
+  }
+}
