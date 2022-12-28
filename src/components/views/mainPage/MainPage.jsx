@@ -4,50 +4,34 @@ import HotPlace from "./rankBaord/HotPlace";
 import HotPost from "./rankBaord/HotPost";
 import HotTopic from "./rankBaord/HotTopic";
 import "../../styles/mainPage/MainPage.scss";
+import IntroduceTop from "./introduceTop/IntroduceTop";
+import IntroduceLabel from "./introduceTop/IntroduceLabel";
 
 function MainPage() {
-  const Comment_Ref = useRef();
-  // 스크롤이 50px 이상 내려올경우 true값을 넣어줄 useState
-  const [scroll, setScroll] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll); //clean up
-    };
-  }, []);
-
-  const handleScroll = () => {
-    // 스크롤이 Top에서 50px 이상 내려오면 true값을 useState에 넣어줌
-    if (window.scrollY <= 50) {
-      setScroll(true);
-      Comment_Ref.current.style.opacity = "1";
-
-      console.log(scroll);
-    } else {
-      // 스크롤이 50px 미만일경우 false를 넣어줌
-      Comment_Ref.current.style.opacity = "0";
-
-      setScroll(false);
-    }
-  };
   return (
     <div className="MainPage-container">
-      <div
+      {/* <div
         className="background1-wrapper"
         style={{
-          backgroundImage: "url(assets/background/pattern/crossline-dots.webp)",
+          backgroundImage: "url(assets/background/images/together.jpg)",
         }}
-      />
-      <div
-        className="background-introduceTop"
-        style={{
-          backgroundImage: "url(assets/background/images/join1.jpg)",
-        }}
-      ></div>
-      <div className="introduce-comment" ref={Comment_Ref}>
-        <div className="firstLine-wrapper">새로운 인연과</div>
-        <div className="secondLine-wrapper">새로운 나를 찾아서</div>
+      > */}
+      <img
+        className="background1-wrapper"
+        src="assets/background/images/together.jpg"
+      />{" "}
+      <div className="introduceTop-wrapper">
+        <div
+          className="background-introduceTop"
+          style={{
+            backgroundImage: "url(assets/background/images/join1.jpg)",
+          }}
+        >
+          <IntroduceTop />
+        </div>
+      </div>
+      <div className="introduceLabel-wrapper">
+        <IntroduceLabel />
       </div>
       <div className="landingPage-container">
         <Notice />

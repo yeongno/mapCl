@@ -1,0 +1,14 @@
+.introduce-label {
+  width: 100vw;
+  height: 30rem;
+  transition: 1s;
+  text-shadow: 6px 2px 2px rgb(187, 229, 227);
+  color: white;
+  font-weight: bold;
+  font-size: 4em;
+  z-index: 100;
+  .firstLine-wrapper {
+    padding-top: 10rem;
+    padding-left: 20rem;
+  }
+}
