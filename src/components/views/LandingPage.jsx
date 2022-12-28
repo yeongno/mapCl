@@ -44,7 +44,6 @@ function LandingPage({ handleLogin }) {
   return (
     <div className="LandingPage-container">
       <Header />
-      <MenuBar />
       <div className="basicBackground-container">
         <Outlet />
       </div>

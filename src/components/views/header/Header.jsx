@@ -2,11 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/header/Header.scss";
 import Logo from "./Logo";
-
+import MenuBar from "../manuBar/MenuBar";
 function Header() {
   const navigate = useNavigate();
   return (
-    <div className="header-container">
+    <div
+      className="header-container"
+      style={{
+        backgroundImage: "url(assets/background/images/metalBluePaint.jpg)",
+      }}
+    >
       <div className="header-wraper">
         <Logo />
         <div className="btn-container">
@@ -36,6 +41,7 @@ function Header() {
           </button>
         </div>
       </div>
+      <MenuBar />
     </div>
   );
 }
