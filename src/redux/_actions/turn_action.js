@@ -20,7 +20,7 @@ export function turnMap(dataToSubmit) {
 }
 
 /**
- * 메뉴 바꾸기 MAIN_MENU, MAP_MENU, GENERALFORUM_MENU, TEST_MAP, INTERESTED_MAP
+ * 메뉴 바꾸기 MAIN_MENU, MAP_MENU, COMMUNITY_MENU, TEST_MAP, INTERESTED_MAP
  * @param {string "DEFAULT_MAP"} dataToSubmit
  * @returns
  */

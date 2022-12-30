@@ -4,8 +4,13 @@ import LeftSection from "./leftSection/LeftSection";
 import RightSection from "./rightSection/RightSection";
 import "../../styles/mapPage/MapPage.scss";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { turnMenu } from "../../../redux/_actions/turn_action";
 function MapPage() {
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(turnMenu("MAP_MENU"));
+  }, []);
 
   return (
     <div className="landingPage-container">

@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import MainPageLabel from "./MainPageLabel";
+import MapPageLabel from "./MapPageLabel";
 
 function PageLabel() {
+  const menu = useSelector((state) => state?.turn?.turnMenu);
+
   //todo hook selector로 전환하여 컴포넌트 반환 할 수 있게 할 것
   return (
-    <div className="landingPage-container">
-      <div
-        style={{
-          position: "absolute",
-          marginTop: "-1.2rem",
-          fontSize: "2em",
-          color: "white",
-          fontWeight: "bold",
-          zIndex: "1000",
-          marginLeft: "8rem",
-        }}
-      >
-        MainPage
-      </div>
+    <div>
+      {(menu == "MAIN_MENU" && <MainPageLabel />) || <></>}
+      {(menu == "MAP_MENU" && <MapPageLabel />) || <></>}
+      {(menu == "COMMUNITY_MENU" && <MainPageLabel />) || <></>}
     </div>
   );
 }

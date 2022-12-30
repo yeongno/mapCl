@@ -1,6 +1,8 @@
 @import "../mixins";
 .header-container {
-  background: rgba($color: #e7dcdc40, $alpha: 1);
+  background: url(../../../../public/assets/background/images/metalBluePaint.jpg);
+  height: 100%;
+  z-index: 5;
   .header-wraper {
     @include inner_container_pc();
     padding: 0.4rem;

@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import Notice from "./notice/Notice";
-import HotPlace from "./rankBaord/HotPlace";
-import HotPost from "./rankBaord/HotPost";
-import HotTopic from "./rankBaord/HotTopic";
 import "../../styles/mainPage/MainPage.scss";
 import IntroduceTop from "./introduceTop/IntroduceTop";
 import IntroduceLabel from "./introduceTop/IntroduceLabel";
 import IntroduceEx from "./introduceTop/IntroduceEx";
-import PageLabel from "../common/pageLabel/PageLabel";
+import { useDispatch } from "react-redux";
+import { turnMenu } from "../../../redux/_actions/turn_action";
 
 function MainPage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(turnMenu("MAIN_MENU"));
+  }, []);
+
   return (
     <div className="MainPage-container">
       {/* <div
@@ -18,7 +20,6 @@ function MainPage() {
           backgroundImage: "url(assets/background/images/together.jpg)",
         }}
       > */}
-      <PageLabel />
       <img
         className="background1-wrapper"
         src="assets/background/images/together.jpg"

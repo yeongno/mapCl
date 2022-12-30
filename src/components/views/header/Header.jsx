@@ -3,15 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/header/Header.scss";
 import Logo from "./Logo";
 import MenuBar from "../manuBar/MenuBar";
+import PageLabel from "../common/pageLabel/PageLabel";
 function Header() {
   const navigate = useNavigate();
   return (
-    <div
-      className="header-container"
-      style={{
-        backgroundImage: "url(assets/background/images/metalBluePaint.jpg)",
-      }}
-    >
+    <div className="header-container">
       <div className="header-wraper">
         <Logo />
         <div className="btn-container">
@@ -42,6 +38,7 @@ function Header() {
         </div>
       </div>
       <MenuBar />
+      <PageLabel />
     </div>
   );
 }
