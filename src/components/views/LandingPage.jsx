@@ -27,6 +27,7 @@ import { turnMenu } from "../../redux/_actions/turn_action";
 import useMenuSelector from "../../hook/navSelector/useMenuSelector";
 import Axios from "../../axios/Axios";
 import Test from "./test/Test";
+import PageLabel from "./common/pageLabel/PageLabel";
 
 function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ function LandingPage({ handleLogin }) {
   return (
     <div className="LandingPage-container">
       <Header />
+      <PageLabel />
       <div className="basicBackground-container">
         <Outlet />
       </div>

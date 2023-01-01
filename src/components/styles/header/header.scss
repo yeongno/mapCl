@@ -2,7 +2,9 @@
 .header-container {
   background: url(../../../../public/assets/background/images/metalBluePaint.jpg);
   height: 100%;
-  z-index: 5;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
   .header-wraper {
     @include inner_container_pc();
     padding: 0.4rem;

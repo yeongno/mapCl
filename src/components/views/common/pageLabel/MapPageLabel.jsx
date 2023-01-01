@@ -1,22 +1,16 @@
 import React from "react";
+import "../../../styles/header/pageLabel/MapPageLabel.scss";
 
 function MapPageLabel() {
   return (
-    <div style={{ width: "100vw", height: "20rem", background: "red" }}>
+    <div className="MapPageLabel-container">
       {" "}
       <div className="landingPage-container">
-        <div
-          style={{
-            position: "absolute",
-            marginTop: "-1.2rem",
-            fontSize: "2em",
-            color: "white",
-            fontWeight: "bold",
-            zIndex: "1000",
-            marginLeft: "8rem",
-          }}
-        >
-          MapPage
+        <div className="MapPageLabel-wrapper">MapPage</div>
+        <div className="firstCommend-line">
+          <span>Let's connect you to everyThing!</span>
+          <br />
+          <span>주변의 사람들과 인연들 만들고 당신만의 취미를 발견하세요.</span>
         </div>
       </div>
     </div>
