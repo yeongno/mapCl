@@ -28,6 +28,7 @@ import useMenuSelector from "../../hook/navSelector/useMenuSelector";
 import Axios from "../../axios/Axios";
 import Test from "./test/Test";
 import PageLabel from "./common/pageLabel/PageLabel";
+import DrawerHeader from "./header/DrawerHeader";
 
 function LandingPage({ handleLogin }) {
   const navigate = useNavigate();
@@ -44,8 +45,9 @@ function LandingPage({ handleLogin }) {
 
   return (
     <div className="LandingPage-container">
+      <DrawerHeader />
       <Header />
-      <PageLabel />
+
       <div className="basicBackground-container">
         <Outlet />
       </div>

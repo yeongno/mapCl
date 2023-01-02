@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../../../styles/mainPage/IntroduceComment.scss";
-function IntroduceTop() {
-  const Comment_Ref = useRef();
+
+function DrawerHeader() {
+  const Test_Ref = useRef();
+
   // 스크롤이 50px 이상 내려올경우 true값을 넣어줄 useState
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    console.log(window.scrollY);
     return () => {
       window.removeEventListener("scroll", handleScroll); //clean up
     };
@@ -14,24 +16,32 @@ function IntroduceTop() {
 
   const handleScroll = () => {
     // 스크롤이 Top에서 50px 이상 내려오면 true값을 useState에 넣어줌
-    if (window.scrollY < 200) {
+    if (window.scrollY > 230) {
       setScroll(true);
-      Comment_Ref.current.style.opacity = "1";
-    } else {
+      Test_Ref.current.style.position = "sticky";
+    } else if (window.scrollY < 200) {
       // 스크롤이 50px 미만일경우 false를 넣어줌
-      Comment_Ref.current.style.opacity = "0";
-
       setScroll(false);
+      Test_Ref.current.style.position = "absolute";
+      //   Test_Ref.current.style.maxHeight = "100%";
     }
   };
   return (
-    <div className="landingPage-container">
-      <div className="introduce-comment" ref={Comment_Ref}>
-        <div className="firstLine-wrapper">새로운 인연과</div>
-        <div className="secondLine-wrapper">새로운 나를 찾아서</div>
-      </div>
+    <div
+      className="test1"
+      style={{
+        position: "absolute",
+        width: "100vw",
+        height: "2rem",
+        background: "yellow",
+        top: "0",
+        zIndex: "900",
+      }}
+      ref={Test_Ref}
+    >
+      a
     </div>
   );
 }
 
-export default IntroduceTop;
+export default DrawerHeader;
