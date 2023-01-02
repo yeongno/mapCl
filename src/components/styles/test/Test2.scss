@@ -1,0 +1,9 @@
+.test_btn {
+  width: 4rem;
+  .Hover_Btn--BarBlack {
+    transform: translate(10%, 0em);
+    transition-property: all;
+    transition-duration: 1s;
+    transition-delay: 1s;
+  }
+}

@@ -1,0 +1,16 @@
+.BarBlack_btn {
+  width: 100%;
+  .Hover_Btn--BarBlack {
+    background: linear-gradient(
+      to left,
+      transparent,
+      rgb(175, 155, 155),
+      rgb(91, 40, 40)
+    );
+    margin-top: 0.4rem;
+    height: 0.3rem;
+    width: 0;
+    transition-property: all;
+    transition-duration: 1s;
+  }
+}

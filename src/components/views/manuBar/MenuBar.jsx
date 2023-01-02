@@ -7,6 +7,7 @@ import {
   turnMenu,
 } from "../../../redux/_actions/turn_action";
 import "../../styles/menuBar/MenuBar.scss";
+import BarBlack from "../common/button/BarBlack";
 import Header from "../header/Header";
 function ManuBar() {
   const dispatch = useDispatch();
@@ -16,42 +17,36 @@ function ManuBar() {
         <div className="menuBar-wrapper">
           <div className="btn-container">
             <div className="btn-wrapper">
-              <button
+              <BarBlack
                 onClick={() => {
                   dispatch(turnMenu("MAIN_MENU"));
                 }}
-              >
-                MainPage
-              </button>
+                value="MainPage"
+              />
             </div>
             <div className="btn-wrapper">
-              <button
+              <BarBlack
                 onClick={() => {
-                  dispatch(turnMenu("MAP_MENU"));
-                  dispatch(turnMap("INTERESTED_MAP"));
+                  dispatch(turnMenu("MAIN_MENU"));
                 }}
-              >
-                MapPage
-              </button>{" "}
+                value="MapPage"
+              ></BarBlack>
             </div>
             <div className="btn-wrapper">
-              <button
+              <BarBlack
                 onClick={() => {
-                  dispatch(turnMenu("COMMUNITY_MENU"));
-                  dispatch(turnForum("GENERAL_FORUM"));
+                  dispatch(turnMenu("MAIN_MENU"));
                 }}
-              >
-                커뮤니티
-              </button>
+                value="Community"
+              ></BarBlack>
             </div>
             <div className="btn-wrapper">
-              <button
+              <BarBlack
                 onClick={() => {
-                  dispatch(turnMenu("TEST_MENU"));
+                  dispatch(turnMenu("MAIN_MENU"));
                 }}
-              >
-                Test
-              </button>
+                value="Test"
+              ></BarBlack>
               <div className="panel-container">
                 <li>aa</li>
                 <li>bb</li>
