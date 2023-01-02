@@ -40,26 +40,18 @@ function Header() {
           <Logo />
         </div>
         <div className="btn-container" ref={HeaderBtn_Ref}>
-          <BarBlack
-            className="header__btn"
-            onClick={() => navigate("/login")}
-            value="알림"
-          ></BarBlack>
-          <BarBlack
-            className="header__btn"
-            onClick={() => navigate("/login")}
-            value="내 정보 변경"
-          ></BarBlack>
-          <BarBlack
-            className="header__btn"
-            onClick={() => navigate("/login")}
-            value="login"
-          ></BarBlack>
-          <BarBlack
-            className="header__btn"
-            onClick={() => navigate("/hello")}
-            value="hello"
-          ></BarBlack>
+          <div className="header__btn" onClick={() => navigate("/login")}>
+            <BarBlack value="알림"></BarBlack>
+          </div>
+          <div className="header__btn" onClick={() => navigate("/login")}>
+            <BarBlack value="내 정보 변경"></BarBlack>
+          </div>
+          <div className="header__btn" onClick={() => navigate("/login")}>
+            <BarBlack value="login"></BarBlack>
+          </div>
+          <div className="header__btn" onClick={() => navigate("/hello")}>
+            <BarBlack value="hello"></BarBlack>
+          </div>
         </div>
       </div>
       <div ref={MenuBar_Ref}>
