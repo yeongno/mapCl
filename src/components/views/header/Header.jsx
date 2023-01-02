@@ -5,6 +5,7 @@ import Logo from "./Logo";
 import MenuBar from "../manuBar/MenuBar";
 import PageLabel from "../common/pageLabel/PageLabel";
 import DrawerHeader from "./DrawerHeader";
+import BarBlack from "../common/button/BarBlack";
 function Header() {
   const TopHeader_Ref = useRef();
   const HeaderLogo_Ref = useRef();
@@ -39,30 +40,26 @@ function Header() {
           <Logo />
         </div>
         <div className="btn-container" ref={HeaderBtn_Ref}>
-          <button
-            className="header__btn--login"
+          <BarBlack
+            className="header__btn"
             onClick={() => navigate("/login")}
-          >
-            알림
-          </button>
-          <button
-            className="header__btn--login"
+            value="알림"
+          ></BarBlack>
+          <BarBlack
+            className="header__btn"
             onClick={() => navigate("/login")}
-          >
-            내 정보 변경
-          </button>
-          <button
-            className="header__btn--login"
+            value="내 정보 변경"
+          ></BarBlack>
+          <BarBlack
+            className="header__btn"
             onClick={() => navigate("/login")}
-          >
-            login
-          </button>
-          <button
-            className="header__btn--hello"
+            value="login"
+          ></BarBlack>
+          <BarBlack
+            className="header__btn"
             onClick={() => navigate("/hello")}
-          >
-            hello
-          </button>
+            value="hello"
+          ></BarBlack>
         </div>
       </div>
       <div ref={MenuBar_Ref}>

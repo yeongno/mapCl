@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import useForumSelector from "../../../hook/navSelector/useForumSelector";
 import { getPost } from "../../../redux/_actions/post_action";
-import { turnMenu } from "../../../redux/_actions/turn_action";
+import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
 import MenuBar_Com from "./menuBar_Com/MenuBar_Com";
 
 function CommunityPage() {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   getInquiry,
@@ -9,6 +9,7 @@ import { turnForum } from "../../../../redux/_actions/turn_action";
 
 function MenuBar_Com() {
   const dispatch = useDispatch();
+
   return (
     <div>
       <button

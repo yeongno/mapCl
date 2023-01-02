@@ -8,24 +8,20 @@
   .header-wraper {
     @include inner_container_pc();
     padding: 0.4rem;
+    width: 100%;
+    height: 100%;
     .btn-container {
       display: flex;
       justify-content: flex-end;
-      button {
-        background: black;
+
+      .header__btn {
         color: white;
-        margin-left: 1rem;
+
         height: 2rem;
         border: none;
         border-radius: 3px;
-        &:hover {
-          background: rgba(118, 176, 173, 0.874);
-          color: black;
-        }
-      }
-      .header__btn--login {
-      }
-      .header__btn--hello {
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
     }
   }

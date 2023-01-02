@@ -12,52 +12,48 @@ import Header from "../header/Header";
 function ManuBar() {
   const dispatch = useDispatch();
   return (
-    <>
-      <div className="menuBar-container">
-        <div className="menuBar-wrapper">
-          <div className="btn-container">
-            <div className="btn-wrapper">
-              <BarBlack
-                onClick={() => {
-                  dispatch(turnMenu("MAIN_MENU"));
-                }}
-                value="MainPage"
-              />
+    <div className="menuBar-container">
+      <div className="menuBar-wrapper">
+        <div className="btn-container">
+          <div
+            className="btn-wrapper"
+            onClick={() => {
+              dispatch(turnMenu("MAIN_MENU"));
+            }}
+          >
+            <BarBlack value="MainPage" />
+          </div>
+          <div
+            className="btn-wrapper"
+            onClick={() => {
+              dispatch(turnMenu("MAP_MENU"));
+            }}
+          >
+            <BarBlack value="MapPage"></BarBlack>
+          </div>
+          <div
+            className="btn-wrapper"
+            onClick={() => {
+              dispatch(turnMenu("COMMUNITY_MENU"));
+            }}
+          >
+            <BarBlack value="Community"></BarBlack>
+          </div>
+          <div
+            className="btn-wrapper"
+            onClick={() => {
+              dispatch(turnMenu("TEST_MENU"));
+            }}
+          >
+            <BarBlack value="Test"></BarBlack>
+            <div className="panel-container">
+              <li>aa</li>
+              <li>bb</li>
             </div>
-            <div className="btn-wrapper">
-              <BarBlack
-                onClick={() => {
-                  dispatch(turnMenu("MAIN_MENU"));
-                }}
-                value="MapPage"
-              ></BarBlack>
-            </div>
-            <div className="btn-wrapper">
-              <BarBlack
-                onClick={() => {
-                  dispatch(turnMenu("MAIN_MENU"));
-                }}
-                value="Community"
-              ></BarBlack>
-            </div>
-            <div className="btn-wrapper">
-              <BarBlack
-                onClick={() => {
-                  dispatch(turnMenu("MAIN_MENU"));
-                }}
-                value="Test"
-              ></BarBlack>
-              <div className="panel-container">
-                <li>aa</li>
-                <li>bb</li>
-              </div>
-            </div>
-
-            <br />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
