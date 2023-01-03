@@ -66,9 +66,11 @@ function DrawerHeader() {
   return (
     <div className="headerDrawer-container" ref={Container_Ref}>
       <div className="headerDrawer-wrapper" ref={Menu_Ref}>
-        <div className="headerDrawer__btn" onClick={onMenu}>
+        <span className="headerDrawer-logo">chachago</span>
+        <span className="headerDrawer__btn" onClick={onMenu}>
           <MenuOutlined />
-        </div>
+        </span>
+        <div></div>
       </div>
       <div className="drawer-container" ref={Drawer_Ref}>
         <div className="drawer-padding" onClick={offMenu}></div>
