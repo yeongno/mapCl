@@ -9,16 +9,20 @@
   .headerDrawer-wrapper {
     display: flex;
     justify-content: flex-end;
+    .headerDrawer__btn {
+      cursor: pointer;
+    }
   }
   .drawer-container {
+    margin-top: 0.4rem;
     transition-property: all;
-    transition-duration: 0.3s;
+    transition-duration: 0.18s;
     position: fixed;
     display: flex;
     .drawer-padding {
-      width: 40vw;
+      width: 70vw;
       height: 100vh;
-      z-index: 10000;
+      z-index: 9999;
       background: linear-gradient(
         to right,
         transparent,
@@ -28,10 +32,34 @@
       //   background: rgba(128, 169, 201, 0.662);
     }
     .drawer-main {
-      width: 60vw;
+      width: 40vw;
       height: 100vh;
       z-index: 10000;
       background: rgb(117, 165, 202);
+      &::after {
+        content: "왼쪽 여백을 클릭 시 메뉴창이 닫힙니다.";
+        color: rgba(97, 92, 92, 0.608);
+        margin-top: 1rem;
+      }
+      ol {
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        font-size: 2em;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        &:hover {
+          color: black;
+        }
+      }
+      li {
+        cursor: pointer;
+        font-size: 1.3em;
+        margin-bottom: 0.5rem;
+        &:hover {
+          color: white;
+        }
+      }
     }
   }
 }
