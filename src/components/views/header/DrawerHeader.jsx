@@ -70,7 +70,6 @@ function DrawerHeader() {
         <span className="headerDrawer__btn" onClick={onMenu}>
           <MenuOutlined />
         </span>
-        <div></div>
       </div>
       <div className="drawer-container" ref={Drawer_Ref}>
         <div className="drawer-padding" onClick={offMenu}></div>
