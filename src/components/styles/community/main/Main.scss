@@ -1,0 +1,18 @@
+.communityMain-container {
+  height: 100rem;
+  display: flex;
+  .communityMain-left {
+    height: 100%;
+    width: 60%;
+    overflow: hidden;
+  }
+  .communityMain-right {
+    overflow: hidden;
+    height: 100%;
+    width: 40%;
+    .menuTool-container {
+      overflow: hidden;
+      position: relative;
+    }
+  }
+}

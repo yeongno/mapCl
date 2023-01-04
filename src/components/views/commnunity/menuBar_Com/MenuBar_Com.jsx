@@ -14,6 +14,14 @@ function MenuBar_Com() {
     <div>
       <button
         onClick={() => {
+          dispatch(turnForum("MAIN_FORUM"));
+          // dispatch(getPost());
+        }}
+      >
+        자유게시판
+      </button>
+      <button
+        onClick={() => {
           dispatch(turnForum("GENERAL_FORUM"));
           dispatch(getPost());
         }}

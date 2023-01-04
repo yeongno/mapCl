@@ -7,14 +7,18 @@ const useForumSelector = () => {
   const dispatch = useDispatch();
   const forum = useSelector((state) => state?.turn?.turnForum);
   useEffect(() => {
-    executeForum("GENERAL_FORUM");
-    dispatch(turnForum("GENERAL_FORUM"));
+    executeForum("MAIN_FORUM");
+    dispatch(turnForum("MAIN_FORUM"));
   }, []);
   useEffect(() => {
     executeForum(forum);
   }, [forum]);
   const ForumValue = {
     //메인 페이지
+    MAIN_FORUM() {
+      navigate("/communityPage/main");
+    },
+    //제너럴 페이지
     GENERAL_FORUM() {
       navigate("/communityPage/general");
     },

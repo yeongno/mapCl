@@ -33,6 +33,7 @@ import NearMO1 from "./views/mapPage/leftSection/nearMO/NearMO1";
 import { createGlobalStyle } from "styled-components";
 import GlobalStyles from "./views/GlobalStyles ";
 import "antd/dist/antd.css";
+import Main from "./views/commnunity/Main";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -97,6 +98,7 @@ function App() {
           </Route>
           <Route path="/communityPage" element={<CommunityPage />}>
             <Route path="/communityPage/:postId" element={<DetailPost />} />
+            <Route path="/communityPage/main" element={<Main />} />
             <Route path="/communityPage/general" element={<General />} />
             <Route path="/communityPage/notice" element={<Notice />} />
             <Route path="/communityPage/inquiry" element={<Inquiry />} />

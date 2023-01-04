@@ -49,15 +49,12 @@
         margin-top: 1rem;
       }
       ol {
-        cursor: pointer;
+        cursor: default;
         color: white;
         font-weight: bold;
         font-size: 2em;
         margin-bottom: 1rem;
         margin-top: 1rem;
-        &:hover {
-          color: black;
-        }
       }
       li {
         cursor: pointer;
