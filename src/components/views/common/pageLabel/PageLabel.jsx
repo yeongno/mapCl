@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import CommunityPageLabel from "./CommunityPageLabel";
 import MainPageLabel from "./MainPageLabel";
 import MapPageLabel from "./MapPageLabel";
 
@@ -11,7 +12,7 @@ function PageLabel() {
     <div>
       {(menu == "MAIN_MENU" && <MainPageLabel />) || <></>}
       {(menu == "MAP_MENU" && <MapPageLabel />) || <></>}
-      {(menu == "COMMUNITY_MENU" && <MainPageLabel />) || <></>}
+      {(menu == "COMMUNITY_MENU" && <CommunityPageLabel />) || <></>}
     </div>
   );
 }
