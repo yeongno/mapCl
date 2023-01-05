@@ -7,7 +7,7 @@ function MenuBox() {
   //general 아코디언 비/활성화
   const actGener = () => {
     console.log("aa");
-    if (onGener) {
+    if (onGener == true) {
       setOnGener(false);
     } else {
       setOnGener(true);
@@ -26,7 +26,7 @@ function MenuBox() {
                 <div className="generalLabel-container">
                   <span>general</span>
                   <span onClick={actGener}>
-                    {(onGener && <UpOutlined />) || <DownOutlined />}
+                    {(onGener == true && <DownOutlined />) || <UpOutlined />}
                   </span>
                 </div>
                 <div className="generalDetail-container">

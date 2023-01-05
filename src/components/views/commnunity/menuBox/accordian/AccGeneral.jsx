@@ -5,7 +5,7 @@ function AccGeneral(props) {
   const General_Ref = useRef();
 
   useEffect(() => {
-    if (props.onGener) {
+    if (props.onGener == true) {
       General_Ref.current.style.maxHeight = "30rem";
       General_Ref.current.style.height = "30rem";
       General_Ref.current.style.transition = "all 2s";
