@@ -1,0 +1,13 @@
+.accMenu-container {
+  height: 2rem;
+  .accMenu-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5rem;
+    color: rgb(127, 214, 212);
+    span:nth-child(1) {
+      cursor: pointer;
+      margin-right: 1rem;
+    }
+  }
+}

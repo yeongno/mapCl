@@ -1,0 +1,43 @@
+.menuBox-container {
+  padding: 1rem;
+  .menuBox-wrapper {
+    background: rgba($color: #c6eef1bb, $alpha: 1);
+    border-radius: 6px;
+    border: none;
+    .label-container {
+      background: linear-gradient(
+        to top,
+        transparent,
+        rgba($color: #b0e9edbb, $alpha: 1)
+      );
+      height: 2rem;
+      .label-wrapper {
+        position: absolute;
+        margin-left: 40%;
+        padding: 0.5rem;
+      }
+    }
+  }
+  .forum-container {
+    padding: 1rem;
+    .forum-wrapper {
+      .general-container {
+        margin-bottom: 1rem;
+        background: rgba($color: white, $alpha: 1);
+        .general-wrapper {
+          .generalLabel-container {
+            padding: 1rem;
+            span:nth-child(1) {
+              color: rgb(127, 214, 212);
+            }
+            span:nth-child(2) {
+              cursor: pointer;
+              margin-left: 83%;
+              color: rgb(166, 239, 237);
+            }
+          }
+        }
+      }
+    }
+  }
+}

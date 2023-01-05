@@ -7,11 +7,9 @@
     overflow: hidden;
   }
   .communityMain-right {
-    overflow: hidden;
-    height: 100%;
     width: 40%;
     .menuTool-container {
-      overflow: hidden;
+      height: 100vh;
       position: relative;
     }
   }
