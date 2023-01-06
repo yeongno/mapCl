@@ -1,30 +1,47 @@
 .miniGeneral-container {
-  height: 30rem;
-  width: 100%;
+  width: 95%;
   margin-top: 1rem;
   border: none;
   border-radius: 6px;
-  padding: 1rem;
-
+  box-shadow: 16px 12px 10px rgba(67, 103, 149, 0.667);
   background: rgba($color: #425fdf, $alpha: 1);
   .miniGeneral-wrapper {
-    background: white;
+    border-radius: 6px;
+    padding-bottom: 1rem;
+    background: #d0d6f2;
     height: 100%;
     width: 100%;
-    .generalLabel-container {
-      padding-top: 0.8rem;
+    .miniGeneralLabel-container {
+      border-radius: 6px;
+      padding-top: 1.4rem;
       color: white;
-      height: 3rem;
+      height: 4rem;
       background: linear-gradient(to top, transparent, #425fdf);
       span:nth-child(1) {
         font-size: 1.3em;
         margin-left: 1rem;
         font-weight: bold;
+        cursor: default;
       }
       span:nth-child(2) {
-        cursor: pointer;
         float: right;
         margin-right: 1rem;
+        svg {
+          cursor: pointer;
+        }
+      }
+    }
+    .miniGeneralList-container {
+      border-radius: 6px;
+      background: white;
+      margin: auto;
+      width: 95%;
+      margin-top: 1rem;
+      span:nth-child(1) {
+        font-weight: bold;
+      }
+      span:nth-child(3) {
+        margin-left: 1rem;
       }
     }
   }
