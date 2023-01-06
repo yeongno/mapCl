@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../../styles/community/main/Main.scss";
+import MiniGeneral from "./main/MiniGeneral";
 import MenuBox from "./menuBox/MenuBox";
 function Main() {
   const MenuTool_Ref = useRef();
@@ -35,7 +36,9 @@ function Main() {
   };
   return (
     <div className="communityMain-container">
-      <div className="communityMain-left"></div>
+      <div className="communityMain-left">
+        <MiniGeneral />
+      </div>
       <div className="communityMain-right">
         <div className="menuTool-container" ref={MenuTool_Ref}>
           <MenuBox />

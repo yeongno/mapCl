@@ -1,0 +1,31 @@
+.miniGeneral-container {
+  height: 30rem;
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem;
+
+  background: rgba($color: #425fdf, $alpha: 1);
+  .miniGeneral-wrapper {
+    background: white;
+    height: 100%;
+    width: 100%;
+    .generalLabel-container {
+      padding-top: 0.8rem;
+      color: white;
+      height: 3rem;
+      background: linear-gradient(to top, transparent, #425fdf);
+      span:nth-child(1) {
+        font-size: 1.3em;
+        margin-left: 1rem;
+        font-weight: bold;
+      }
+      span:nth-child(2) {
+        cursor: pointer;
+        float: right;
+        margin-right: 1rem;
+      }
+    }
+  }
+}
