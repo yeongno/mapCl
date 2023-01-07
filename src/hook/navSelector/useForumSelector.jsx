@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {
+  getInquiry,
+  getNotice,
+  getPost,
+} from "../../redux/_actions/post_action";
 import { turnForum, turnMenu } from "../../redux/_actions/turn_action";
 const useForumSelector = () => {
   const navigate = useNavigate();
@@ -20,14 +25,17 @@ const useForumSelector = () => {
     },
     //제너럴 페이지
     GENERAL_FORUM() {
+      // dispatch(getPost());
       navigate("/communityPage/general");
     },
     //문의 페이지
     INQUIRY_FORUM() {
+      // dispatch(getInquiry());
       navigate("/communityPage/inquiry");
     },
     //메인 페이지
     NOTICE_FORUM() {
+      // dispatch(getNotice());
       navigate("/communityPage/notice");
     },
   };

@@ -1,4 +1,4 @@
-.miniGeneral-container {
+.miniNotice-container {
   margin-bottom: 2.5rem;
   width: 95%;
   margin-top: 1rem;
@@ -6,13 +6,13 @@
   border-radius: 6px;
   box-shadow: 16px 12px 10px rgba(67, 103, 149, 0.667);
   background: rgba($color: #425fdf, $alpha: 1);
-  .miniGeneral-wrapper {
+  .miniNotice-wrapper {
     border-radius: 6px;
     padding-bottom: 1rem;
     background: #d0d6f2;
     height: 100%;
     width: 100%;
-    .miniGeneralLabel-container {
+    .miniNoticeLabel-container {
       border-radius: 6px;
       padding-top: 1.4rem;
       color: white;
@@ -34,7 +34,7 @@
         }
       }
     }
-    .miniGeneralList-container {
+    .miniNoticeList-container {
       border-radius: 6px;
       background: white;
       margin: auto;

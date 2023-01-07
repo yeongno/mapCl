@@ -17,6 +17,10 @@ function General() {
   const [ThisTopic, setThisTopic] = useState("public");
 
   useEffect(() => {
+    dispatch(getPost());
+  }, []);
+
+  useEffect(() => {
     setLastIndex(Post?.length);
   }, [Post]);
   const renderCards = Post?.map((posts, index) => {

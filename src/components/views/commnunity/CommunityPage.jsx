@@ -8,7 +8,6 @@ import MenuBar_Com from "./menuBar_Com/MenuBar_Com";
 
 function CommunityPage() {
   const dispatch = useDispatch();
-  useEffect(() => {}, []);
   useForumSelector();
   useEffect(() => {
     dispatch(turnMenu("COMMUNITY_MENU"));
@@ -18,7 +17,7 @@ function CommunityPage() {
   return (
     <div>
       <div className="landingPage-container">
-        <MenuBar_Com />
+        {/* <MenuBar_Com /> */}
         <Outlet />
       </div>
     </div>

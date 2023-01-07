@@ -5,17 +5,22 @@ import { useInquiryPost } from "../../../hook/useMyInfo";
 import Footer from "./common/Footer";
 import "../../styles/community/notice/Notice.scss";
 import { Link } from "react-router-dom";
+import { getInquiry } from "../../../redux/_actions/post_action";
 
 function Inquiry() {
   const dispatch = useDispatch();
   const Post = useInquiryPost();
   const [LastIndex, setLastIndex] = useState(0);
   const [ThisPaging, setThisPaging] = useState(1);
-  const [ThisTopic, setThisTopic] = useState("public");
+  const [ThisTopic, setThisTopic] = useState("Inquiry");
+  useEffect(() => {
+    dispatch(getInquiry());
+  }, []);
+
   useEffect(() => {
     setLastIndex(Post?.length);
   }, [Post]);
-  const renderCards = Post?.map((posts, index) => {
+  const InquiryCards = Post?.map((posts, index) => {
     if (ThisPaging * 30 < index + 1 || index < ThisPaging * 30 - 30) {
       return;
     }
@@ -49,7 +54,7 @@ function Inquiry() {
   });
   return (
     <div>
-      {renderCards}
+      {InquiryCards}
       {LastIndex > 1 && (
         <Footer
           LastIndex={LastIndex}

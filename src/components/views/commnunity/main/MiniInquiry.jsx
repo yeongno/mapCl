@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { DoubleRightOutlined } from "@ant-design/icons";
-import "../../../styles/community/main/MiniGeneral.scss";
+import "../../../styles/community/main/MiniInquiry.scss";
 import { usePost } from "../../../../hook/useMyInfo";
 import { turnForum } from "../../../../redux/_actions/turn_action";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-function MiniGeneral() {
+function MiniInquiry() {
   const dispatch = useDispatch();
   const Post = usePost();
   const [generalList, setGeneralList] = useState([]);
   const renderCards = generalList.map((Post, index) => {
     return (
-      <div className="miniGeneralList-container" key={index}>
+      <div className="miniInquiryList-container" key={index}>
         <span>제목 {Post?.title}</span>
         <br />
         <span>내용 {Post?.content}</span>
@@ -28,11 +28,11 @@ function MiniGeneral() {
     }
   }, [Post]);
   return (
-    <div className="miniGeneral-container">
-      <div className="miniGeneral-wrapper">
-        <div className="miniGeneralLabel-container">
-          <span>인기 자유 게시글</span>
-          <Link to="/communityPage/general">
+    <div className="miniInquiry-container">
+      <div className="miniInquiry-wrapper">
+        <div className="miniInquiryLabel-container">
+          <span>문의 게시글</span>
+          <Link to={"/communityPage/inquiry"}>
             <DoubleRightOutlined />
           </Link>
         </div>
@@ -42,4 +42,4 @@ function MiniGeneral() {
   );
 }
 
-export default MiniGeneral;
+export default MiniInquiry;

@@ -5,6 +5,7 @@ import { useNoticePost, usePost } from "../../../hook/useMyInfo";
 import Footer from "./common/Footer";
 import "../../styles/community/notice/Notice.scss";
 import { Link } from "react-router-dom";
+import { getNotice } from "../../../redux/_actions/post_action";
 
 function Notice() {
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ function Notice() {
   const [LastIndex, setLastIndex] = useState(0);
   const [ThisPaging, setThisPaging] = useState(1);
   const [ThisTopic, setThisTopic] = useState("public");
+  useEffect(() => {
+    dispatch(getNotice());
+  }, []);
+
   useEffect(() => {
     setLastIndex(Post?.length);
   }, [Post]);
