@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { Suspense, useEffect, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -34,6 +34,8 @@ import { createGlobalStyle } from "styled-components";
 import GlobalStyles from "./views/GlobalStyles ";
 import "antd/dist/antd.css";
 import Main from "./views/commnunity/Main";
+import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
+import DetailsComponent from "./views/test/Test copy 2";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -78,7 +80,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <GlobalStyles />
+      <GlobalStyles />{" "}
       <Routes>
         <Route path="/" element={<LandingPage />}>
           <Route path="/mapPage" element={<MapPage />}>

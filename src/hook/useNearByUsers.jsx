@@ -44,7 +44,7 @@ function useNearByUsers() {
           console.log(error);
         });
     } else {
-      console.log("ok");
+      // console.log("ok");
     }
   }, []);
   useEffect(() => {

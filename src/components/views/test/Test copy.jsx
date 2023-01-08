@@ -10,7 +10,6 @@ import useTestSelector from "../../../hook/navSelector/useTestSelector";
 import { turnMenu } from "../../../redux/_actions/turn_action";
 import Loading from "../commnunity/loading/Loading";
 import MenuBar_Test from "./menuBar_Test/MenuBar_Test";
-import DetailsComponent from "./Test copy 2";
 
 function Test() {
   const dispatch = useDispatch();
@@ -62,16 +61,15 @@ function Test() {
 
   // 로딩 시 Spinner 띄움
   if (loading)
-    // return <Loading type="spin" color="#123123" message={"login 중"} />;
+    return <Loading type="spin" color="#123123" message={"login 중"} />;
 
-    return (
-      <div>
-        <DetailsComponent />
-        {/* {loading && <Loading />} */}
-        {/* <MenuBar_Test /> */}
-        {/* <Outlet /> */}
-      </div>
-    );
+  return (
+    <div>
+      {loading && <Loading />}
+      {/* <MenuBar_Test /> */}
+      {/* <Outlet /> */}
+    </div>
+  );
 }
 
 export default Test;

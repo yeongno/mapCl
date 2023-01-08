@@ -60,7 +60,6 @@ export function auth() {
 //나의 유저 정보 일단 jwt로 값을 못가져오기에 임의로 설정
 export function tmpLogin() {
   const request = axios.get(GET_MYUSERINFO).then((response) => response.data);
-
   return {
     type: AUTH_USER,
     payload: request,

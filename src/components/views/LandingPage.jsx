@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useGeolocated } from "react-geolocated";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -29,8 +29,12 @@ import Axios from "../../axios/Axios";
 import Test from "./test/Test";
 import PageLabel from "./common/pageLabel/PageLabel";
 import DrawerHeader from "./header/DrawerHeader";
+import DetailsComponent from "./test/Test copy 2";
+import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
+import Loading from "./commnunity/loading/Loading";
 
 function LandingPage({ handleLogin }) {
+  const renderLoader = () => <Loading />;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //MenuBar hook
@@ -47,10 +51,11 @@ function LandingPage({ handleLogin }) {
     <div className="LandingPage-container">
       <DrawerHeader />
       <Header />
-
-      <div className="basicBackground-container">
-        <Outlet />
-      </div>
+      <Suspense fallback={renderLoader()}>
+        <div className="basicBackground-container">
+          <Outlet />
+        </div>
+      </Suspense>
     </div>
   );
 }
