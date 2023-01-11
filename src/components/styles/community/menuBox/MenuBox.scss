@@ -28,11 +28,13 @@
           .generalLabel-container {
             padding: 1rem;
             span:nth-child(1) {
+              font-size: 1.4em;
+              cursor: pointer;
               color: rgb(127, 214, 212);
             }
             span:nth-child(2) {
               cursor: pointer;
-              margin-left: 83%;
+              margin-left: 78%;
               color: rgb(166, 239, 237);
             }
           }

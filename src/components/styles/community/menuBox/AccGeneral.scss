@@ -3,4 +3,57 @@
   max-height: 0;
   height: 0;
   overflow: hidden;
+  .myPosterList-container {
+    height: 30rem;
+    width: 100%;
+    padding: 1rem;
+    .myPosterList-wrapper {
+      height: 100%;
+      width: 100%;
+      background: rgba($color: #c6eef1bb, $alpha: 1);
+      .myListLabel-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        div:nth-child(1) {
+          cursor: default;
+          font-weight: bold;
+          color: rgb(172, 150, 237);
+        }
+        div:nth-child(2) {
+          cursor: pointer;
+          font-size: 0.8em;
+          font-weight: bold;
+        }
+      }
+      .myList-wrapper {
+        padding: 1rem;
+        .post-section {
+          display: flex;
+          justify-content: flex-end;
+          justify-content: space-between;
+          padding-bottom: 0.3rem;
+
+          .title-section {
+            font-weight: bold;
+            width: 40%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .content-section {
+            width: 30%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .date-section {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
 }

@@ -2,7 +2,9 @@ import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import AccGeneral from "./accordian/AccGeneral";
 import "../../../styles/community/menuBox/MenuBox.scss";
+import { useNavigate } from "react-router-dom";
 function MenuBox() {
+  const navigate = useNavigate();
   const [onGener, setOnGener] = useState("false");
   //general 아코디언 비/활성화
   const actGener = () => {
@@ -24,7 +26,13 @@ function MenuBox() {
             <div className="general-container">
               <div className="general-wrapper">
                 <div className="generalLabel-container">
-                  <span>general</span>
+                  <span
+                    onClick={() => {
+                      navigate("/communityPage/general");
+                    }}
+                  >
+                    General
+                  </span>
                   <span onClick={actGener}>
                     {(onGener == true && <DownOutlined />) || <UpOutlined />}
                   </span>
