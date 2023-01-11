@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { usePost } from "../../../../../hook/useMyInfo";
 import "../../../../styles/community/menuBox/AccGeneral.scss";
 import AccMenu_Menu from "./accordian_menu/AccMenu_Menu";
 function AccGeneral(props) {
@@ -15,6 +16,28 @@ function AccGeneral(props) {
       General_Ref.current.style.transition = "all 0s";
     }
   }, [props.onGener]);
+  const Post = usePost();
+  const [generalList, setGeneralList] = useState([]);
+  const renderCards = generalList.map((Post, index) => {
+    return (
+      <div className="post-section">
+        <div className="title-section">{Post.title}</div>
+        <div className="content-section">{Post.content}</div>
+        <div className="date-section">
+          <span>2011-02-12</span>
+        </div>
+      </div>
+    );
+  });
+  //generalList 세팅
+  useEffect(() => {
+    if (Post) {
+      for (let a = 0; a < 15; a++) {
+        generalList[a] = Post[a];
+        setGeneralList(generalList);
+      }
+    }
+  }, [Post]);
 
   return (
     <div className="accGeneral-container" ref={General_Ref}>
@@ -25,21 +48,20 @@ function AccGeneral(props) {
             <div>My Posters</div>
             <div>더 보기</div>
           </div>
+
           <div className="myList-wrapper">
             <div className="post-section">
-              <div className="title-section">aaaaaaaaaaaaaaaaaaaaaaaa</div>
-              <div className="content-section">
-                aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              <div className="title-section">
+                title title title title title title title title
               </div>
-              <div className="date-section">2011-02-12</div>
-            </div>
-            <div className="post-section">
-              <div className="title-section">aaaaaaa</div>
-              <div className="content-section">aaaaa</div>
+              <div className="content-section">
+                content content content content content content content content
+              </div>
               <div className="date-section">
                 <span>2011-02-12</span>
               </div>
             </div>
+            {renderCards}
           </div>
         </div>
       </div>

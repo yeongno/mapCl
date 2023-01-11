@@ -4,7 +4,7 @@
   height: 0;
   overflow: hidden;
   .myPosterList-container {
-    height: 30rem;
+    height: 100%;
     width: 100%;
     padding: 1rem;
     .myPosterList-wrapper {
@@ -35,6 +35,7 @@
           padding-bottom: 0.3rem;
 
           .title-section {
+            cursor: pointer;
             font-weight: bold;
             width: 40%;
             white-space: nowrap;
@@ -42,12 +43,14 @@
             text-overflow: ellipsis;
           }
           .content-section {
+            cursor: pointer;
             width: 30%;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
           }
           .date-section {
+            cursor: default;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
