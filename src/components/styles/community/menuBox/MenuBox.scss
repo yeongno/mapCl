@@ -1,4 +1,8 @@
+body {
+  overflow-y: scroll !important;
+}
 .menuBox-container {
+  height: 100vh;
   padding: 1rem;
   .menuBox-wrapper {
     background: rgba($color: #c6eef1bb, $alpha: 1);
@@ -24,8 +28,11 @@
       .general-container {
         margin-bottom: 1rem;
         background: rgba($color: white, $alpha: 1);
+
         .general-wrapper {
           .generalLabel-container {
+            display: flex;
+            justify-content: space-between;
             padding: 1rem;
             span:nth-child(1) {
               font-size: 1.4em;
@@ -34,7 +41,7 @@
             }
             span:nth-child(2) {
               cursor: pointer;
-              margin-left: 78%;
+              // margin-left: 78%;
               color: rgb(166, 239, 237);
             }
           }
