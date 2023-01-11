@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { usePost } from "../../../../../hook/useMyInfo";
 import "../../../../styles/community/menuBox/AccGeneral.scss";
 import AccMenu_Menu from "./accordian_menu/AccMenu_Menu";
-function AccGeneral(props) {
+function AccInquiry(props) {
   const General_Ref = useRef();
   const Title_Ref = useRef();
   const Content_Ref = useRef();
 
   useEffect(() => {
-    if (props.onGener == true) {
+    if (props.onInquiry == true) {
       General_Ref.current.style.maxHeight = "100%";
       General_Ref.current.style.height = "100%";
       General_Ref.current.style.transition = "all 2s";
@@ -17,7 +17,7 @@ function AccGeneral(props) {
       General_Ref.current.style.height = "0";
       General_Ref.current.style.transition = "all 0s";
     }
-  }, [props.onGener]);
+  }, [props.onInquiry]);
   const Post = usePost();
   const [generalList, setGeneralList] = useState([]);
   const renderCards = generalList.map((Post, index) => {
@@ -97,4 +97,4 @@ function AccGeneral(props) {
   );
 }
 
-export default AccGeneral;
+export default AccInquiry;
