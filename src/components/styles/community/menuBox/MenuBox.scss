@@ -1,8 +1,6 @@
-body {
-  overflow-y: scroll !important;
-}
 .menuBox-container {
-  height: 100vh;
+  position: sticky;
+  top: 3rem;
   padding: 1rem;
   .menuBox-wrapper {
     background: rgba($color: #c6eef1bb, $alpha: 1);

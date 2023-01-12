@@ -25,11 +25,11 @@ function Header() {
     // 스크롤이 Top에서 50px 이상 내려오면 true값을 useState에 넣어줌
     if (window.scrollY > 250) {
       setScroll(true);
-      TopHeader_Ref.current.style.position = "";
+      // TopHeader_Ref.current.style.position = "";
     } else if (window.scrollY < 100) {
       // 스크롤이 50px 미만일경우 false를 넣어줌
       setScroll(false);
-      TopHeader_Ref.current.style.position = "";
+      // TopHeader_Ref.current.style.position = "";
     }
   };
   const navigate = useNavigate();

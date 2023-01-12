@@ -10,6 +10,7 @@ function DrawerHeader() {
   const Container_Ref = useRef();
   const Drawer_Ref = useRef();
   const Content_Ref = useRef();
+  const Pad_Ref = useRef();
   const Menu_Ref = useRef();
   const [onDrawer, setOnDrawer] = useState(false);
   // 스크롤이 50px 이상 내려올경우 true값을 넣어줄 useState
@@ -55,11 +56,13 @@ function DrawerHeader() {
       setScroll(true);
       Container_Ref.current.style.position = "sticky";
       Container_Ref.current.style.zIndex = "9000";
+      Pad_Ref.current.style.position = "relative";
     } else if (window.scrollY < 200) {
       // 스크롤이 50px 미만일경우 false를 넣어줌
       setScroll(false);
       Container_Ref.current.style.position = "absolute";
       Container_Ref.current.style.zIndex = "0";
+      Pad_Ref.current.style.position = "absolute";
       //   Test_Ref.current.style.maxHeight = "100%";
     }
   };
@@ -71,6 +74,7 @@ function DrawerHeader() {
           <MenuOutlined />
         </span>
       </div>
+      <div className="headerDrawer-padding" ref={Pad_Ref}></div>
       <div className="drawer-container" ref={Drawer_Ref}>
         <div className="drawer-padding" onClick={offMenu}></div>
         <div className="drawer-main" ref={Content_Ref}>
