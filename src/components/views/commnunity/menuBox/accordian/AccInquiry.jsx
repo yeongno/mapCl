@@ -22,7 +22,7 @@ function AccInquiry(props) {
   const [generalList, setGeneralList] = useState([]);
   const renderCards = generalList.map((Post, index) => {
     return (
-      <div className="post-section">
+      <div className="post-section" key={index}>
         <div className="title-section">{Post.title}</div>
         <div className="content-section">{Post.content}</div>
         <div className="date-section">

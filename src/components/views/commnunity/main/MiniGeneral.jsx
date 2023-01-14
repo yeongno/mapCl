@@ -12,9 +12,11 @@ function MiniGeneral() {
   const renderCards = generalList.map((Post, index) => {
     return (
       <div className="miniGeneralList-container" key={index}>
-        <span>제목 {Post?.title}</span>
+        <Link to={`/communityPage/${Post?.title}`}>제목 {Post?.title} </Link>
         <br />
-        <span>내용 {Post?.content}</span>
+        <Link to={`/communityPage/${Post?.content}`}>
+          내용 {Post?.content}{" "}
+        </Link>
       </div>
     );
   });

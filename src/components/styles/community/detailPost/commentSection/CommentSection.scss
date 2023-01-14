@@ -1,0 +1,35 @@
+.commentSection_container {
+  height: 100%;
+  .partition {
+    background: rgb(219, 214, 214);
+    width: 95%;
+    height: 1px;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .commentSection_container {
+    padding: 1rem 1rem 0;
+    .topSection_container {
+      display: flex;
+      .topLeftSection_container {
+        div {
+          height: 3rem;
+          width: 3rem;
+          border: solid 1px gray;
+        }
+      }
+      .topRightSection_container {
+        padding: 0.6rem 0.5rem 0;
+      }
+    }
+    .middleSection_container {
+      margin-top: 0.4rem;
+    }
+    .bottomSection_container {
+      .bottomLeftSection_container {
+      }
+      .bottomRightsection_container {
+      }
+    }
+  }
+}

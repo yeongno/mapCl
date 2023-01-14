@@ -1,0 +1,16 @@
+.detailPost_container {
+  width: 100%;
+  height: 50rem;
+  margin-top: 1rem;
+  border: solid 1px rgb(230, 213, 213);
+  border-radius: 15px;
+  .detailPost_wrapper {
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+    .postSection_container {
+    }
+    .commentSection_container {
+    }
+  }
+}

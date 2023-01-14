@@ -1,0 +1,38 @@
+.postSection_container {
+  .topSection_container {
+    display: flex;
+    height: 5rem;
+    .topLeftSection_container {
+      width: 5rem;
+      div {
+        height: 5rem;
+        width: 5rem;
+        border: solid 1px gray;
+      }
+    }
+    .topRightSection_container {
+      padding: 1rem 1rem;
+      span:nth-child(1) {
+      }
+      span:nth-child(3) {
+        line-height: 3rem;
+      }
+    }
+  }
+  .bottomSection_container {
+    .titleSection_container {
+      height: 3rem;
+      padding: 0.6rem 0 0;
+      span {
+        font-size: 2em;
+      }
+    }
+    .content_container {
+      height: 20rem;
+      padding: 1rem 1rem 0;
+      span {
+        font-size: 1.3em;
+      }
+    }
+  }
+}
