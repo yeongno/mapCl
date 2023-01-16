@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { DoubleRightOutlined } from "@ant-design/icons";
-import "../../../styles/community/main/MiniNotice.scss";
+import "../../../styles/community/main/MiniPost.scss";
+
 import { usePost } from "../../../../hook/useMyInfo";
 import { turnForum } from "../../../../redux/_actions/turn_action";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import RenderCards from "./RenderCards";
 function MiniNotice() {
   const dispatch = useDispatch();
   const Post = usePost();
   const [generalList, setGeneralList] = useState([]);
-  const renderCards = generalList.map((Post, index) => {
-    return (
-      <div className="miniNoticeList-container" key={index}>
-        <Link to={`/communityPage/${Post?.title}`}>제목 {Post?.title} </Link>
 
-        <br />
-        <Link to={`/communityPage/${Post?.content}`}>
-          내용 {Post?.content}{" "}
-        </Link>
-      </div>
-    );
-  });
   //generalList 세팅
   useEffect(() => {
     if (Post) {
@@ -30,16 +21,17 @@ function MiniNotice() {
       }
     }
   }, [Post]);
+
   return (
-    <div className="miniNotice-container">
-      <div className="miniNotice-wrapper">
-        <div className="miniNoticeLabel-container">
+    <div className="miniPost-container">
+      <div className="miniPost-wrapper">
+        <div className="miniPostLabel-container">
           <span>공지 사항</span>
           <Link to="/communityPage/Notice">
             <DoubleRightOutlined />
           </Link>
         </div>
-        {renderCards}
+        <RenderCards generalList={generalList} />
       </div>
     </div>
   );

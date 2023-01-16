@@ -18,9 +18,7 @@ function CommunityPage() {
     <div>
       <div className="landingPage-container">
         {/* <MenuBar_Com /> */}
-        <div className="div" style={{ width: "100%" }}>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </div>
   );
