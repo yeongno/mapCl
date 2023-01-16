@@ -2,8 +2,9 @@ import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import AccGeneral from "./accordian/AccGeneral";
 import "../../../styles/community/menuBox/MenuBox.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AccInquiry from "./accordian/AccInquiry";
+import BarBlack from "../../common/button/BarBlack";
 function MenuBox() {
   const navigate = useNavigate();
   const [onGener, setOnGener] = useState("false");
@@ -31,6 +32,30 @@ function MenuBox() {
       <div className="menuBox-wrapper">
         <div className="label-container">
           <div className="label-wrapper">MENU_BOX</div>
+        </div>
+        <div className="selectMenu_container">
+          <div className="selectMenu-wrapper">
+            <div className="main_btn">
+              <Link to="/communityPage/main">
+                <BarBlack value="메인"></BarBlack>
+              </Link>
+            </div>
+            <div className="general_btn">
+              <Link to="/communityPage/general">
+                <BarBlack value="자유"></BarBlack>
+              </Link>
+            </div>
+            <div className="notice_btn">
+              <Link to="/communityPage/notice">
+                <BarBlack value="공지"></BarBlack>
+              </Link>
+            </div>
+            <div className="inquiry_btn">
+              <Link to="/communityPage/inquiry">
+                <BarBlack value="문의"></BarBlack>
+              </Link>
+            </div>
+          </div>
         </div>
         <div className="forum-container">
           <div className="forum-wrapper">

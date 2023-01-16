@@ -12,35 +12,63 @@
         transparent,
         rgba($color: #b0e9edbb, $alpha: 1)
       );
-      height: 2rem;
+      height: 3rem;
       .label-wrapper {
+        cursor: default;
+        text-shadow: 4px 1px 1px rgb(255, 255, 255);
+        margin-top: 0.5rem;
+        font-weight: bold;
+        font-size: 1.3em;
         position: absolute;
-        margin-left: 40%;
+        margin-left: 36%;
         padding: 0.5rem;
       }
     }
-  }
-  .forum-container {
-    padding: 1rem;
-    .forum-wrapper {
-      .general-container {
-        margin-bottom: 1rem;
-        background: rgba($color: white, $alpha: 1);
+    .selectMenu_container {
+      padding: 0.3rem;
+      .selectMenu-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem;
+        div {
+          text-shadow: 4px 1px 1px rgb(255, 255, 255);
+          font-size: 1.18em;
+          font-weight: bold;
+          color: rgb(115, 119, 112);
+          cursor: pointer;
+        }
+        .main_btn {
+        }
+        .general_btn {
+        }
+        .notice_btn {
+        }
+        .inquiry_btn {
+        }
+      }
+    }
+    .forum-container {
+      padding: 1rem;
+      .forum-wrapper {
+        .general-container {
+          margin-bottom: 1rem;
+          background: rgba($color: white, $alpha: 1);
 
-        .general-wrapper {
-          .generalLabel-container {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem;
-            span:nth-child(1) {
-              font-size: 1.4em;
-              cursor: pointer;
-              color: rgb(127, 214, 212);
-            }
-            span:nth-child(2) {
-              cursor: pointer;
-              // margin-left: 78%;
-              color: rgb(166, 239, 237);
+          .general-wrapper {
+            .generalLabel-container {
+              display: flex;
+              justify-content: space-between;
+              padding: 1rem;
+              span:nth-child(1) {
+                font-size: 1.4em;
+                cursor: pointer;
+                color: rgb(127, 214, 212);
+              }
+              span:nth-child(2) {
+                cursor: pointer;
+                // margin-left: 78%;
+                color: rgb(166, 239, 237);
+              }
             }
           }
         }
