@@ -7,6 +7,7 @@ import { usePost } from "../../../hook/useMyInfo";
 import { getPost } from "../../../redux/_actions/post_action";
 import Footer from "./common/Footer";
 import "../../styles/community/general/General.scss";
+import MenuBox from "./menuBox/MenuBox";
 
 function General() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function General() {
     }
 
     return (
-      <div className="ListContainer_ListSection" key={index}>
+      <div className="generalList_ListSection" key={index}>
         <p> {Post[index]?.topic}</p>
 
         <p
@@ -56,15 +57,22 @@ function General() {
     );
   });
   return (
-    <div>
-      {renderCards}
-      {LastIndex > 1 && (
-        <Footer
-          LastIndex={LastIndex}
-          setThisPaging={setThisPaging}
-          ThisTopic={ThisTopic}
-        />
-      )}
+    <div className="general_container">
+      <div className="generalList_container">
+        {renderCards}
+        {LastIndex > 1 && (
+          <Footer
+            LastIndex={LastIndex}
+            setThisPaging={setThisPaging}
+            ThisTopic={ThisTopic}
+          />
+        )}
+      </div>
+      <div className="menuBox_container">
+        <div className="menuBox_wrapper">
+          <MenuBox />
+        </div>
+      </div>
     </div>
   );
 }

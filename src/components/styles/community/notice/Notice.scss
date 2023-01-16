@@ -14,42 +14,42 @@
 //   @include basicPartition();
 // }
 
-.ListContainer_ListSection {
-  flex-wrap: wrap;
-  display: flex;
-  padding-bottom: -10px;
+// .ListContainer_ListSection {
+//   flex-wrap: wrap;
+//   display: flex;
+//   padding-bottom: -10px;
 
-  p {
-    padding: 0.5rem;
-    width: 100%;
+//   p {
+//     padding: 0.5rem;
+//     width: 100%;
 
-    color: black;
-    align-self: center;
-    text-align: center;
-    margin: 0;
-    font-size: 0.8em;
+//     color: black;
+//     align-self: center;
+//     text-align: center;
+//     margin: 0;
+//     font-size: 0.8em;
 
-    &:nth-child(1) {
-      color: gray;
+//     &:nth-child(1) {
+//       color: gray;
 
-      width: 10%;
-    }
-    &:nth-child(2) {
-      text-align: left;
+//       width: 10%;
+//     }
+//     &:nth-child(2) {
+//       text-align: left;
 
-      width: 40%;
-    }
-    &:nth-child(3) {
-      width: 20%;
-    }
-    &:nth-child(4) {
-      width: 10%;
-    }
-    &:nth-child(5) {
-      width: 10%;
-    }
-    &:nth-child(6) {
-      width: auto;
-    }
-  }
-}
+//       width: 40%;
+//     }
+//     &:nth-child(3) {
+//       width: 20%;
+//     }
+//     &:nth-child(4) {
+//       width: 10%;
+//     }
+//     &:nth-child(5) {
+//       width: 10%;
+//     }
+//     &:nth-child(6) {
+//       width: auto;
+//     }
+//   }
+// }
