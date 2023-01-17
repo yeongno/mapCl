@@ -14,6 +14,8 @@ function CommunityPage() {
   useEffect(() => {
     // dispatch(turnMenu("COMMUNITY_MENU"));
     dispatch(getPost());
+
+    dispatch(turnMenu("SETCOMMUNITY_MENU"));
     //첫 CommunityPage 컴포넌트 진입시 메인으로 잡고
     //그 이후는 자식 포럼 컴포넌트에서 첫 마운트 시 해당 컴포넌트로 새로고침 해도 고정 될 수 있게 turnForum사용
     navigate("/communityPage/main");

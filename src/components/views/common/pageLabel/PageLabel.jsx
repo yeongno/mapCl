@@ -12,7 +12,9 @@ function PageLabel() {
     <div>
       {(menu == "MAIN_MENU" && <MainPageLabel />) || <></>}
       {(menu == "MAP_MENU" && <MapPageLabel />) || <></>}
-      {(menu == "COMMUNITY_MENU" && <CommunityPageLabel />) || <></>}
+      {/* {(menu == "COMMUNITY_MENU" && <CommunityPageLabel />) || <></>} */}
+      {(menu == "SETCOMMUNITY_MENU" && <CommunityPageLabel />) ||
+        (menu == "COMMUNITY_MENU" && <CommunityPageLabel />) || <></>}
     </div>
   );
 }

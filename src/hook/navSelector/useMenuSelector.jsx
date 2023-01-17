@@ -23,10 +23,16 @@ const useMenuSelector = () => {
       navigate("/mainPage");
     },
 
-    //맵 페이지
+    //커뮤니티 페이지
     COMMUNITY_MENU() {
       //우선 기본 페이지가 올 수 있게 설정
       navigate("/communityPage");
+    },
+    //커뮤니티 기본 픽 페이지
+    SETCOMMUNITY_MENU() {
+      //클릭 하였을 때는 위의 코드 실행
+      //기본 마운트 dispatch코드로 해당 빈 코드 실행
+      //하여 pageLabel 나올 수 있게 함
     },
     //Test 페이지
     TEST_MENU() {
