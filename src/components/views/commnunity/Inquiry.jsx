@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useInquiryPost } from "../../../hook/useMyInfo";
 import Footer from "./common/Footer";
-import "../../styles/community/notice/Notice.scss";
+import "../../styles/community/inquiry/Inquiry.scss";
 import { Link } from "react-router-dom";
 import { getInquiry } from "../../../redux/_actions/post_action";
 
@@ -26,7 +26,7 @@ function Inquiry() {
     }
 
     return (
-      <div className="ListContainer_ListSection" key={index}>
+      <div className="inquiryList_ListSection" key={index}>
         <p> {Post[index]?.topic}</p>
 
         <p

@@ -26,7 +26,7 @@ function Notice() {
     }
 
     return (
-      <div className="ListContainer_ListSection" key={index}>
+      <div className="noticeList_ListSection" key={index}>
         <p> {Post[index]?.topic}</p>
 
         <p
