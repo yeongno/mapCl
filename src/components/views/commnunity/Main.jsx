@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
 import "../../styles/community/main/Main.scss";
 import MiniGeneral from "./main/MiniGeneral";
 import MiniInquiry from "./main/MiniInquiry";
 import MiniNotice from "./main/MiniNotice";
 import MenuBox from "./menuBox/MenuBox";
+import LabelBar from "./labelBar/LabelBar";
+
 function Main() {
+  const forum = useSelector((state) => state?.turn?.turnForum);
+
   // 스크롤이 50px 이상 내려올경우 true값을 넣어줄 useState
   // const [scroll, setScroll] = useState(false);
 
@@ -42,6 +46,7 @@ function Main() {
   return (
     <div className="communityMain-container">
       <div className="communityMain-left">
+        <LabelBar forum={forum} />
         <MiniNotice />
         <MiniGeneral />
         <MiniInquiry />

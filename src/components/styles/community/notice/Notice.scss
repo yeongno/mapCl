@@ -1,55 +1,60 @@
 @import "../../_colors.scss";
 @import "../../mixins.scss";
-.topPartition_ListSection {
-  height: 0.2rem;
-  //   background: $basic-color;
-  width: 100%;
-}
-.partitionList_ListSection {
-  height: 1px;
-  background: gray;
-  width: 100%;
-}
-.partitionListSection_LeftSection {
-  @include basicPartition();
-}
 
-.noticeList_ListSection {
-  flex-wrap: wrap;
+.notice_container {
   display: flex;
-  padding-bottom: -10px;
+  width: 100%;
+  .noticeList_container {
+    width: 60%;
+    .noticeList_ListSection {
+      flex-wrap: wrap;
+      display: flex;
+      padding-bottom: -10px;
+      // background: black;
 
-  p {
-    padding: 0.5rem;
-    width: 100%;
+      p {
+        padding: 0.5rem;
+        // width: 100%;
+        color: black;
+        align-self: center;
+        text-align: center;
+        margin: 0;
+        font-size: 0.8em;
 
-    color: black;
-    align-self: center;
-    text-align: center;
-    margin: 0;
-    font-size: 0.8em;
+        &:nth-child(1) {
+          color: gray;
 
-    &:nth-child(1) {
-      color: gray;
+          width: 10%;
+        }
+        &:nth-child(2) {
+          text-align: left;
 
-      width: 10%;
+          width: 40%;
+        }
+        &:nth-child(3) {
+          width: 20%;
+        }
+        &:nth-child(4) {
+          width: 10%;
+        }
+        &:nth-child(5) {
+          width: 10%;
+        }
+        &:nth-child(6) {
+          width: auto;
+        }
+      }
+      .partitionList_ListSection {
+        height: 1px;
+        background: gray;
+        // width: 100%;
+      }
     }
-    &:nth-child(2) {
-      text-align: left;
-
-      width: 40%;
-    }
-    &:nth-child(3) {
-      width: 20%;
-    }
-    &:nth-child(4) {
-      width: 10%;
-    }
-    &:nth-child(5) {
-      width: 10%;
-    }
-    &:nth-child(6) {
-      width: auto;
+  }
+  .menuBox_container {
+    width: 40%;
+    .menuBox_wrapper {
+      height: 100rem;
     }
   }
 }

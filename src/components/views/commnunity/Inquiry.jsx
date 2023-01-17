@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useInquiryPost } from "../../../hook/useMyInfo";
 import Footer from "./common/Footer";
 import "../../styles/community/inquiry/Inquiry.scss";
 import { Link } from "react-router-dom";
 import { getInquiry } from "../../../redux/_actions/post_action";
 import { turnForum } from "../../../redux/_actions/turn_action";
+import LabelBar from "./labelBar/LabelBar";
+import MenuBox from "./menuBox/MenuBox";
 
 function Inquiry() {
+  const forum = useSelector((state) => state?.turn?.turnForum);
   const dispatch = useDispatch();
   const Post = useInquiryPost();
   const [LastIndex, setLastIndex] = useState(0);
@@ -55,15 +58,24 @@ function Inquiry() {
     );
   });
   return (
-    <div>
-      {InquiryCards}
-      {LastIndex > 1 && (
-        <Footer
-          LastIndex={LastIndex}
-          setThisPaging={setThisPaging}
-          ThisTopic={ThisTopic}
-        />
-      )}
+    <div className="inquiry_container">
+      <div className="inquiryList_container">
+        <LabelBar forum={forum} />
+        {InquiryCards}
+        {LastIndex > 1 && (
+          <Footer
+            LastIndex={LastIndex}
+            setThisPaging={setThisPaging}
+            ThisTopic={ThisTopic}
+          />
+        )}
+      </div>
+      <div className="menuBox_container">
+        <div className="menuBox_wrapper">
+          {" "}
+          <MenuBox />
+        </div>
+      </div>
     </div>
   );
 }

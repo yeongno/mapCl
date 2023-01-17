@@ -1,0 +1,24 @@
+.communityLabelBar_container {
+  height: 3rem;
+  padding: 1rem 0 1rem;
+
+  .communityLabelBar_wrapper {
+    span {
+      color: rgb(17, 103, 147);
+      text-shadow: 6px 2px 2px rgba(157, 238, 218, 0.668);
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .communityLabelBar__partition {
+      margin-top: 0.5rem;
+      width: 95%;
+      height: 2px;
+      //   background: black;
+      background: linear-gradient(
+        to left,
+        transparent,
+        rgba($color: #b0e9edbb, $alpha: 1)
+      );
+    }
+  }
+}

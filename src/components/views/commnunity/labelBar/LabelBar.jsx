@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { turnForum } from "../../../../redux/_actions/turn_action";
-
+import "../../../styles/community/labelBar/LabelBar.scss";
 function LabelBar(prop) {
   const dispatch = useDispatch();
 
@@ -11,22 +11,50 @@ function LabelBar(prop) {
   const ForumValue = {
     //메인 페이지
     MAIN_FORUM() {
-      <div>a</div>;
-      return <div>a</div>;
+      return (
+        <div className="communityLabelBar_container">
+          <div className="communityLabelBar_wrapper">
+            <span>메인 게시글</span>
+            <div className="communityLabelBar__partition" />
+          </div>
+        </div>
+      );
     },
     //제너럴 페이지
     GENERAL_FORUM() {
       // dispatch(getPost());
-      <div>a</div>;
-      return <div>a1</div>;
+      return (
+        <div className="communityLabelBar_container">
+          <div className="communityLabelBar_wrapper">
+            <span>자유 게시글</span>
+            <div className="communityLabelBar__partition" />
+          </div>
+        </div>
+      );
     },
     //문의 페이지
     INQUIRY_FORUM() {
       // dispatch(getInquiry());
+      return (
+        <div className="communityLabelBar_container">
+          <div className="communityLabelBar_wrapper">
+            <span>문의 게시글</span>
+            <div className="communityLabelBar__partition" />
+          </div>
+        </div>
+      );
     },
     //메인 페이지
     NOTICE_FORUM() {
       // dispatch(getNotice());
+      return (
+        <div className="communityLabelBar_container">
+          <div className="communityLabelBar_wrapper">
+            <span>공지 게시글</span>
+            <div className="communityLabelBar__partition" />
+          </div>
+        </div>
+      );
     },
   };
 
