@@ -12,8 +12,8 @@ const useForumSelector = () => {
   const dispatch = useDispatch();
   const forum = useSelector((state) => state?.turn?.turnForum);
   useEffect(() => {
-    executeForum("MAIN_FORUM");
-    dispatch(turnForum("MAIN_FORUM"));
+    // executeForum("MAIN_FORUM");
+    // dispatch(turnForum("MAIN_FORUM"));
   }, []);
   useEffect(() => {
     executeForum(forum);

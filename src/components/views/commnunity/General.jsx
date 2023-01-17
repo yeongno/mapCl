@@ -1,15 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { usePost } from "../../../hook/useMyInfo";
 import { getPost } from "../../../redux/_actions/post_action";
 import Footer from "./common/Footer";
 import "../../styles/community/general/General.scss";
 import MenuBox from "./menuBox/MenuBox";
+import LabelBar from "./labelBar/LabelBar";
+import { turnForum } from "../../../redux/_actions/turn_action";
 
 function General() {
+  const forum = useSelector((state) => state?.turn?.turnForum);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const Post = usePost();
@@ -19,6 +22,7 @@ function General() {
 
   useEffect(() => {
     dispatch(getPost());
+    dispatch(turnForum("GENERAL_FORUM"));
   }, []);
 
   useEffect(() => {
@@ -59,6 +63,7 @@ function General() {
   return (
     <div className="general_container">
       <div className="generalList_container">
+        <LabelBar forum={forum} />
         {renderCards}
         {LastIndex > 1 && (
           <Footer

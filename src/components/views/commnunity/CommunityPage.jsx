@@ -10,7 +10,7 @@ function CommunityPage() {
   const dispatch = useDispatch();
   useForumSelector();
   useEffect(() => {
-    dispatch(turnMenu("COMMUNITY_MENU"));
+    // dispatch(turnMenu("COMMUNITY_MENU"));
     dispatch(getPost());
   }, []);
 
