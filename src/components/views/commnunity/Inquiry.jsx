@@ -6,6 +6,7 @@ import Footer from "./common/Footer";
 import "../../styles/community/inquiry/Inquiry.scss";
 import { Link } from "react-router-dom";
 import { getInquiry } from "../../../redux/_actions/post_action";
+import { turnForum } from "../../../redux/_actions/turn_action";
 
 function Inquiry() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Inquiry() {
   const [ThisTopic, setThisTopic] = useState("Inquiry");
   useEffect(() => {
     dispatch(getInquiry());
+    dispatch(turnForum("INQUIRY_FORUM"));
   }, []);
 
   useEffect(() => {

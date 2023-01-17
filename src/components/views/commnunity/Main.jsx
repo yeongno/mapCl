@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
 import "../../styles/community/main/Main.scss";
 import MiniGeneral from "./main/MiniGeneral";
 import MiniInquiry from "./main/MiniInquiry";
@@ -32,6 +34,11 @@ function Main() {
   //     setScroll(false);
   //   }
   // };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(turnForum("MAIN_FORUM"));
+  }, []);
+
   return (
     <div className="communityMain-container">
       <div className="communityMain-left">

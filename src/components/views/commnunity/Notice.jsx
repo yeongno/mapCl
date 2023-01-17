@@ -6,6 +6,7 @@ import Footer from "./common/Footer";
 import "../../styles/community/notice/Notice.scss";
 import { Link } from "react-router-dom";
 import { getNotice } from "../../../redux/_actions/post_action";
+import { turnForum } from "../../../redux/_actions/turn_action";
 
 function Notice() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Notice() {
   const [ThisTopic, setThisTopic] = useState("public");
   useEffect(() => {
     dispatch(getNotice());
+    dispatch(turnForum("NOTICE_FORUM"));
   }, []);
 
   useEffect(() => {
