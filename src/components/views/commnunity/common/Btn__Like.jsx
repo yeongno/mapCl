@@ -2,10 +2,9 @@ import { LikeFilled, LikeOutlined, SmileOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
 function Btn__Like(props) {
-  const [Favorited, setFavorited] = useState("true");
-  const [FavoriteNumber, setFavoriteNumber] = useState("0");
+  const [Favorited, setFavorited] = useState("false");
+  const [FavoriteNumber, setFavoriteNumber] = useState("2");
   useEffect(() => {
     // fetchPostList();
   }, []);
@@ -68,34 +67,13 @@ function Btn__Like(props) {
     //   });
   };
   return (
-    <div>
-      <div
-        style={{
-          marginLeft: "2%",
-          marginBottom: "1%",
-          marginTop: "1%",
-        }}
-      >
-        <SmileOutlined /> {FavoriteNumber}
-      </div>
-      <div style={{ marginLeft: "2%" }}>
-        <div
-          style={{
-            background: "#cccccc",
-            height: "1px",
-            width: "100%",
-          }}
-        />
-      </div>
-
-      <div style={{ width: "100%", display: "flex" }}>
-        {Favorited && (
-          <Button style={{ width: "100%", border: "none" }} onClick={onLiked}>
-            <LikeFilled />
-            좋아요
-          </Button>
-        )}
-      </div>
+    <div className="like__container">
+      {Favorited && (
+        <Button onClick={onLiked}>
+          <LikeFilled />
+          좋아요
+        </Button>
+      )}
       <div>
         {!Favorited && (
           <Button style={{ width: "100%", border: "none" }} onClick={onLike}>

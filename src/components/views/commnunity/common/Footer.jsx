@@ -4,9 +4,15 @@ import React, { useEffect, useState } from "react";
 import "../../../styles/community/common/Footer.scss";
 function Footer(props) {
   const [Paging, setPaging] = useState(0);
+
+  //페이지의 10의 자리 값
   const [nowPaging, setNowPaging] = useState(0);
+
   const [PagingArray, setPagingArray] = useState([]);
+
   const [Result, setResult] = useState();
+
+  //현재 페이지의 1의 자리 값
   const [NowIndex, setNowIndex] = useState(0);
 
   const onThisPaging = (index, nowPaging) => {
@@ -42,12 +48,16 @@ function Footer(props) {
     setNowIndex(0);
   };
 
+  //포럼이 바뀔 때 마다 페이지 값 초기화
   useEffect(() => {
     setNowIndex(0);
     setNowPaging(0);
-    setPaging(ceil(props.LastIndex / 30));
+
+    // 총 페이지 수를 체크 하기 위함.
+    // 해당 페이지의 게시물 수 만큼 나눠서 총 페이지 값을 측정
+    setPaging(ceil(props.LastIndex / 10));
     for (let i = 0; i < props.LastIndex; i++) {
-      PagingArray[i] = i;
+      PagingArray[i] = 0;
       if (i === props.LastIndex - 1) {
         setPagingArray(PagingArray);
       }

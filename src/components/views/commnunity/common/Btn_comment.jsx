@@ -10,16 +10,8 @@ function Btn_comment(props) {
     setreplyOpen(true);
   };
   return (
-    <div
-      style={{
-        width: "100%",
-        position: "relative",
-      }}
-    >
-      <Button
-        style={{ width: "100%", border: "none", position: "relative" }}
-        onClick={onReply}
-      >
+    <div>
+      <Button onClick={onReply}>
         <MessageOutlined />
         댓글 달기
       </Button>
