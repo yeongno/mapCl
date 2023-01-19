@@ -5,6 +5,8 @@ import useForumSelector from "../../../hook/navSelector/useForumSelector";
 import { getPost } from "../../../redux/_actions/post_action";
 import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
 import MenuBar_Com from "./menuBar_Com/MenuBar_Com";
+import MenuBox from "./menuBox/MenuBox";
+import "../../styles/community/CommunityPage.scss";
 
 function CommunityPage() {
   //todo 커뮤니티 페이지 turnMenu 기본 셋팅은 main이지만 다른 포럼으로 들어갔을 때 해당 값 고정 할 수 있게 새로고침 시 변경 없이 수정
@@ -25,7 +27,14 @@ function CommunityPage() {
     <div>
       <div className="landingPage-container">
         {/* <MenuBar_Com /> */}
-        <Outlet />
+        <div className="communityPage_container">
+          <div className="main_section">
+            <Outlet />
+          </div>
+          <div className="menubox_section">
+            <MenuBox />
+          </div>
+        </div>
       </div>
     </div>
   );

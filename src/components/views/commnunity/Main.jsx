@@ -51,11 +51,6 @@ function Main() {
         <MiniGeneral />
         <MiniInquiry />
       </div>
-      <div className="communityMain-right">
-        <div className="menuTool-container">
-          <MenuBox />
-        </div>
-      </div>
     </div>
   );
 }

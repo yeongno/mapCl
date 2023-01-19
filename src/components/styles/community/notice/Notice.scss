@@ -2,10 +2,7 @@
 @import "../../mixins.scss";
 
 .notice_container {
-  display: flex;
-  width: 100%;
   .noticeList_container {
-    width: 60%;
     .noticeList_ListSection {
       flex-wrap: wrap;
       display: flex;
@@ -49,12 +46,6 @@
         background: gray;
         // width: 100%;
       }
-    }
-  }
-  .menuBox_container {
-    width: 40%;
-    .menuBox_wrapper {
-      height: 100rem;
     }
   }
 }

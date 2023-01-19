@@ -73,12 +73,6 @@ function General() {
           />
         )}
       </div>
-      <div className="menuBox_container">
-        <div className="menuBox_wrapper">
-          {" "}
-          <MenuBox />
-        </div>
-      </div>
     </div>
   );
 }

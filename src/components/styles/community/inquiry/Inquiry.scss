@@ -2,10 +2,7 @@
 @import "../../mixins.scss";
 
 .inquiry_container {
-  display: flex;
-  width: 100%;
   .inquiryList_container {
-    width: 60%;
     .inquiryList_ListSection {
       flex-wrap: wrap;
       display: flex;
@@ -49,12 +46,6 @@
         background: gray;
         // width: 100%;
       }
-    }
-  }
-  .menuBox_container {
-    width: 40%;
-    .menuBox_wrapper {
-      height: 100rem;
     }
   }
 }
