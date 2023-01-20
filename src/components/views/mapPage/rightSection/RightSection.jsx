@@ -21,6 +21,7 @@ import UserList from "./list/UserList/UserList";
 import CtrBar from "./ctrBar/CtrBar";
 import Btn__TopTogle from "../../commnunity/common/Btn__TopTogle";
 import GroupList from "./list/groupList.jsx/GroupList";
+import GenerList from "../../commnunity/common/renderList/GenerList";
 
 function RightSection() {
   const navigate = useNavigate();
@@ -72,9 +73,10 @@ function RightSection() {
       <div className="mapList-container">
         <div className="list-container">
           <UserList />
+          <GenerList />
+          {/* <GroupList />
           <GroupList />
-          <GroupList />
-          <GroupList />
+          <GroupList /> */}
         </div>
       </div>
     </div>

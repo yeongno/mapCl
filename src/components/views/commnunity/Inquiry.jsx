@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInquiryPost } from "../../../hook/useMyInfo";
-import Footer from "./common/Footer";
 import "../../styles/community/inquiry/Inquiry.scss";
 import { Link } from "react-router-dom";
 import { getInquiry } from "../../../redux/_actions/post_action";
 import { turnForum } from "../../../redux/_actions/turn_action";
 import LabelBar from "./labelBar/LabelBar";
 import MenuBox from "./menuBox/MenuBox";
+import DefaultFooter from "./common/DefaultFooter";
 
 function Inquiry() {
   const forum = useSelector((state) => state?.turn?.turnForum);
@@ -63,7 +63,7 @@ function Inquiry() {
         <LabelBar forum={forum} />
         {InquiryCards}
         {LastIndex > 1 && (
-          <Footer
+          <DefaultFooter
             LastIndex={LastIndex}
             setThisPaging={setThisPaging}
             ThisTopic={ThisTopic}

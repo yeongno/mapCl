@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNoticePost, usePost } from "../../../hook/useMyInfo";
-import Footer from "./common/Footer";
 import "../../styles/community/notice/Notice.scss";
 import { Link } from "react-router-dom";
 import { getNotice } from "../../../redux/_actions/post_action";
 import { turnForum } from "../../../redux/_actions/turn_action";
 import LabelBar from "./labelBar/LabelBar";
 import MenuBox from "./menuBox/MenuBox";
+import DefaultFooter from "./common/DefaultFooter";
 
 function Notice() {
   const forum = useSelector((state) => state?.turn?.turnForum);
@@ -63,7 +63,7 @@ function Notice() {
         <LabelBar forum={forum} />
         {renderCards}
         {LastIndex > 1 && (
-          <Footer
+          <DefaultFooter
             LastIndex={LastIndex}
             setThisPaging={setThisPaging}
             ThisTopic={ThisTopic}
