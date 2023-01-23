@@ -6,6 +6,7 @@ import "../../styles/mapPage/MapPage.scss";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { turnMenu } from "../../../redux/_actions/turn_action";
+import Btn__TopTogle from "../commnunity/common/Btn__TopTogle";
 function MapPage() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -14,6 +15,7 @@ function MapPage() {
 
   return (
     <div className="landingPage-container">
+      <Btn__TopTogle />
       <div className="body-container">
         <div className="body-leftSection">
           <LeftSection />

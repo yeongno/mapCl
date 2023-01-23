@@ -58,7 +58,7 @@ function RightSection() {
   };
   return (
     <div className="RightSection-container">
-      <Btn__TopTogle />
+      {/* <Btn__TopTogle /> */}
       <div className="test">
         <div className="map-roof">My Map</div>
         <div className="map-container" ref={Map_Ref}>
