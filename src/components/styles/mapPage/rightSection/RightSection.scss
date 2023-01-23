@@ -2,6 +2,7 @@
   height: 100%;
 
   .map-roof {
+    height: 3rem;
     font-size: 2em;
     background: black;
     color: white;
@@ -32,6 +33,6 @@
 }
 .test {
   z-index: 100;
-  top: 2.3rem;
+  top: 2rem;
   position: sticky;
 }
