@@ -5,8 +5,11 @@ import IntroduceLabel from "./introduceTop/IntroduceLabel";
 import IntroduceEx from "./introduceTop/IntroduceEx";
 import { useDispatch } from "react-redux";
 import { turnMenu } from "../../../redux/_actions/turn_action";
+import useStartingtoUP from "../../../hook/common/useStartingtoUP";
 
 function MainPage() {
+  useStartingtoUP();
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(turnMenu("MAIN_MENU"));

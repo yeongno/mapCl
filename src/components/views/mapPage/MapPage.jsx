@@ -7,7 +7,15 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { turnMenu } from "../../../redux/_actions/turn_action";
 import Btn__TopTogle from "../commnunity/common/Btn__TopTogle";
+import useStartingtoUP from "../../../hook/common/useStartingtoUP.jsx";
 function MapPage() {
+  useStartingtoUP();
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //   });
+  // }, []);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(turnMenu("MAP_MENU"));

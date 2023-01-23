@@ -7,9 +7,11 @@ import { turnForum, turnMenu } from "../../../redux/_actions/turn_action";
 import MenuBar_Com from "./menuBar_Com/MenuBar_Com";
 import MenuBox from "./menuBox/MenuBox";
 import "../../styles/community/CommunityPage.scss";
+import useStartingtoUP from "../../../hook/common/useStartingtoUP";
 
 function CommunityPage() {
-  //todo 커뮤니티 페이지 turnMenu 기본 셋팅은 main이지만 다른 포럼으로 들어갔을 때 해당 값 고정 할 수 있게 새로고침 시 변경 없이 수정
+  useStartingtoUP();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useForumSelector();
