@@ -1,8 +1,8 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { ceil, floor, result } from "lodash";
 import React, { useEffect, useState } from "react";
-import "../../../styles/community/common/Footer.scss";
-function Footer(props) {
+import "../../../styles/community/common/GeneralFooter.scss";
+function GeneralFooter(props) {
   const [Paging, setPaging] = useState(0);
 
   //페이지의 10의 자리 값
@@ -68,18 +68,22 @@ function Footer(props) {
     if (index >= Paging - nowPaging * 10) {
       return;
     }
+
+    //페이지 넘버 10의 자리가 0일 때의 pagination
     if (nowPaging === 0) {
       for (index; index < 10; index++) {
-        // 해당 pagination 누르면 스타일 변경
+        // 해당 pagination 누르면 스타일 변경(선택 페이지 넘버)
         if (NowIndex === index) {
           return (
-            <p key={index} style={{ color: "yellow" }}>
-              did
+            <p key={index} className="pickedNumber__btn">
+              {index + 1}
             </p>
           );
         }
         return (
+          //현재 페이지 값 외의 값들
           <p
+            className="otherNumber__btn"
             key={index}
             onClick={() => {
               onThisPaging(index, nowPaging);
@@ -90,16 +94,18 @@ function Footer(props) {
         );
       }
     }
+    //10의 자리가 있을 때의 pagination
     if (nowPaging) {
       for (index; index < 10; index++) {
         //해당 pagination 누르면 스타일 변경
         if (NowIndex === index) {
           return (
-            <p key={index} style={{ color: "yellow" }}>
-              did
+            <p key={index} className="pickedNumber__btn">
+              {nowPaging * 10 + index + 1}
             </p>
           );
         }
+        //행의 마지막 pagination은 십의 자리가 바뀌므로 해당 구현 코드.
         if (index === 9 && nowPaging !== floor(Paging / 10)) {
           return (
             <p
@@ -107,10 +113,13 @@ function Footer(props) {
               onClick={() => {
                 onThisPaging(index, nowPaging);
               }}
+              className="otherNumber__btn"
             >
               {nowPaging + 1}0
             </p>
           );
+
+          //마지막 pagination이 아닌 나머지 구현 코드.
         } else if (index !== 9 || nowPaging === floor(Paging / 10)) {
           if (index >= Paging - nowPaging * 10) {
             return;
@@ -121,6 +130,7 @@ function Footer(props) {
               onClick={() => {
                 onThisPaging(index, nowPaging);
               }}
+              className="otherNumber__btn"
             >
               {nowPaging}
               {index + 1}
@@ -142,4 +152,4 @@ function Footer(props) {
   );
 }
 
-export default Footer;
+export default GeneralFooter;

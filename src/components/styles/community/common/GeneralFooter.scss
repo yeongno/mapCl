@@ -3,11 +3,17 @@
   padding-top: 1rem;
   display: flex;
   flex-wrap: wrap;
+  .pickedNumber__btn {
+    border: solid 1px black;
+  }
+  .otherNumber__btn {
+  }
   .paginationSection_LeftSection {
     width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
+
     p {
       margin: auto;
       margin-left: 0;
@@ -19,6 +25,7 @@
     }
     .paginationBar_LeftSection {
       display: flex;
+
       p {
         margin: auto;
         align-self: center;

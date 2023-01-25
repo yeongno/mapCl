@@ -74,7 +74,7 @@ function DefaultFooter(props) {
         if (NowIndex === index) {
           return (
             <p key={index} style={{ color: "yellow" }}>
-              did
+              {index + 1}
             </p>
           );
         }
@@ -96,7 +96,7 @@ function DefaultFooter(props) {
         if (NowIndex === index) {
           return (
             <p key={index} style={{ color: "yellow" }}>
-              did
+              {nowPaging}
             </p>
           );
         }

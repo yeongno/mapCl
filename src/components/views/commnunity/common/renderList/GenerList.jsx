@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 import Btn__Like from "../Btn__Like";
 import Btn_comment from "../Btn_comment";
 import { usePost } from "../../../../../hook/useMyInfo";
-import Footer from "../Footer";
 import "../../../../styles/community/common/renderList/GeneralList.scss";
+import GeneralFooter from "../GeneralFooter";
 
 function GenerList() {
   const Post = usePost();
@@ -141,7 +141,7 @@ function GenerList() {
     <div>
       {renderList}
       {LastIndex > 1 && (
-        <Footer
+        <GeneralFooter
           LastIndex={LastIndex}
           setThisPaging={setThisPaging}
           ThisTopic={ThisTopic}
