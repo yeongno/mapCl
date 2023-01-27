@@ -8,6 +8,7 @@ function GeneralFooter(props) {
   //페이지의 10의 자리 값
   const [nowPaging, setNowPaging] = useState(0);
 
+  //총 page 수
   const [PagingArray, setPagingArray] = useState([]);
 
   const [Result, setResult] = useState();
