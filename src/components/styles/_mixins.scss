@@ -14,3 +14,28 @@
   background: rgb(165, 240, 115);
   border-bottom: solid 0.05rem white;
 }
+
+@import "./variables";
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-desktop - 1px}) {
+    width: 768px;
+    background: yellow !important;
+    @content;
+  }
+}
+
+// @mixin tablet {
+//   @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+//     @content;
+//   }
+// }
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-mobile}) {
+    margin: 0 auto;
+    // width: 56.5rem;
+    width: 90.5rem;
+    @content;
+  }
+}

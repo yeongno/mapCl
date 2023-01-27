@@ -6,6 +6,8 @@ body {
 .landingPage-container {
 }
 .landingPage-container {
-  @include inner_container_pc();
+  // @include inner_container_pc();
+  @include desktop();
+  // @include mobile();
   height: 100%;
 }

@@ -3,7 +3,9 @@
 .menuBar-container {
   width: 100%;
   .menuBar-wrapper {
-    @include inner_container_pc();
+    // @include mobile();
+    // @include inner_container_pc();
+    @include desktop();
     padding: 0.6rem;
 
     .btn-container {
