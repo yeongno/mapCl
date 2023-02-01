@@ -32,8 +32,19 @@ import DrawerHeader from "./header/DrawerHeader";
 import DetailsComponent from "./test/Test copy 2";
 import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
 import Loading from "./commnunity/loading/Loading";
+import { useMediaQuery } from "react-responsive";
+import Default from "./mobile/Default";
 
 function LandingPage({ handleLogin }) {
+  const isDesktopOrLaptop = useMediaQuery(
+    { minDeviceWidth: 1024 }
+    // { deviceWidth: 1600 } // `device` prop
+  );
+  const isMobileOrTablet = useMediaQuery(
+    { minDeviceWidth: 100 },
+    { maxDeviceWidth: 1023 }
+    // { deviceWidth: 1023 } // `device` prop
+  );
   const renderLoader = () => <Loading />;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,13 +60,22 @@ function LandingPage({ handleLogin }) {
 
   return (
     <div className="LandingPage-container">
-      <DrawerHeader />
-      <Header />
-      <Suspense fallback={renderLoader()}>
-        <div className="basicBackground-container">
-          <Outlet />
-        </div>
-      </Suspense>
+      {isDesktopOrLaptop && (
+        <>
+          <DrawerHeader />
+          <Header />
+          <Suspense fallback={renderLoader()}>
+            <div className="basicBackground-container">
+              <Outlet />
+            </div>
+          </Suspense>
+        </>
+      )}
+      {isMobileOrTablet && (
+        <>
+          <Default />
+        </>
+      )}
     </div>
   );
 }
