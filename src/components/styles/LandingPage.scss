@@ -3,11 +3,10 @@ body {
   //  -ms-overflow-style: none;
   overflow-x: hidden;
 }
-.landingPage-container {
-}
+
 .landingPage-container {
   // @include inner_container_pc();
   @include desktop();
-  // @include mobile();
-  height: 100%;
-}
+  @include mobile();
+  //todo 현재 되어있는 41개의 style
+  //전부 모바일 버전으로 바꾸고 사용 안 할 것은 display:none?

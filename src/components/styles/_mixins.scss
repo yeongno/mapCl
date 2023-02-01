@@ -19,7 +19,8 @@
 
 @mixin mobile {
   @media (max-width: #{$breakpoint-desktop - 1px}) {
-    width: 768px;
+    // width: 768px;
+    width: 100vw;
     background: yellow !important;
     @content;
   }
