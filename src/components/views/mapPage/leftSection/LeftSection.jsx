@@ -33,6 +33,10 @@ function LeftSection() {
     Left_Ref.current.style.background = "blue";
   };
   useMOSelector();
+  useEffect(() => {
+    dispatch(turnMO("MINE_MO"));
+  }, []);
+
   return (
     <div className="leftSection-container">
       <div className="leftSection-wrapper">
