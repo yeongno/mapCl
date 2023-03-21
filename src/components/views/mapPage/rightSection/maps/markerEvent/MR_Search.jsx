@@ -11,7 +11,7 @@ function MR_Search(props) {
     <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
       position={props?.keyMarkers[0]?.position}
       image={{
-        src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
+        src: "https://cdn-icons-png.flaticon.com/512/1301/1301421.png", // 마커이미지의 주소입니다
         size: {
           width: 24,
           height: 35,

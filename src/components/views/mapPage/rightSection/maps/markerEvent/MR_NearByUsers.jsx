@@ -19,7 +19,7 @@ const MR_NearByUsers = ({ position, index }) => {
       <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
         position={position}
         image={{
-          src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
+          src: "https://cdn-icons-png.flaticon.com/512/9971/9971083.png", // 마커이미지의 주소입니다
           size: {
             width: 24,
             height: 35,

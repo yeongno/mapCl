@@ -1,5 +1,3 @@
-/*global kakao*/
-
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import useCoords from "../../../../../../hook/useCoords";
@@ -7,6 +5,7 @@ import { useMainLocation } from "../../../../../../hook/useMyInfo";
 import { setMainLocation } from "../../../../../../redux/_actions/mapNav/location_action";
 
 function SearchBar(props) {
+  /*global kakao*/
   const dispatch = useDispatch();
   const mainLocation_reducer = useMainLocation();
   const { latitude, longitude, isLoaded } = useCoords();
