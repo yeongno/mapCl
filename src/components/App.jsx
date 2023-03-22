@@ -4,18 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import LandingPage from "./views/LandingPage";
 import MapPage from "./views/mapPage/MapPage";
-import DefaultMap from "./views/mapPage/rightSection/maps/common/DefaultMap";
-import NearByUsersMap from "./views/mapPage/rightSection/maps/NearByUsersMap";
-import RelationMap from "./views/mapPage/rightSection/maps/RelationMap";
-import SampleMap from "./views/mapPage/rightSection/maps/SampleMap";
 
 import { getAccessToken, login, setRefreshTokenToCookie } from "../auth/auth";
-import token_reducer from "../redux/_reducers/token_reducer";
 import { deleteToken, setToken } from "../redux/_actions/token_action";
 import LoginPage from "./views/header/LoginPage/LoginPage";
 import Hello from "./views/header/LoginPage/Hello";
-import { DELETE_TOKEN, SET_TOKEN } from "../redux/_actions/types";
-import axios from "axios";
 import InterestedMap from "./views/mapPage/rightSection/maps/InterestedMap";
 import MainPage from "./views/mainPage/MainPage";
 import CommunityPage from "./views/commnunity/CommunityPage";
@@ -30,12 +23,9 @@ import Test2 from "./views/test/menuBar_Test/Test2";
 import MineMO from "./views/mapPage/leftSection/mineMO/MineMO";
 import OtherMO from "./views/mapPage/leftSection/otherMO/OtherMO";
 import NearMO1 from "./views/mapPage/leftSection/nearMO/NearMO1";
-import { createGlobalStyle } from "styled-components";
 import GlobalStyles from "./views/GlobalStyles ";
 import "antd/dist/antd.css";
 import Main from "./views/commnunity/Main";
-import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
-import DetailsComponent from "./views/test/Test copy 2";
 
 function App() {
   // const isAuth = useSelector((state) => state.user.isAuth);
@@ -84,10 +74,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />}>
           <Route path="/mapPage" element={<MapPage />}>
-            <Route path="/mapPage/defaultMap" element={<DefaultMap />} />
-            <Route path="/mapPage/relationMap" element={<RelationMap />} />
-            <Route path="/mapPage/testMap" element={<SampleMap />} />
-            <Route path="/mapPage/nearMap" element={<NearByUsersMap />} />
             <Route path="/mapPage/interestedMap" element={<InterestedMap />} />
             <Route path="/mapPage/mineMO" element={<MineMO />} />
             <Route path="/mapPage/nearMO" element={<NearMO1 />} />

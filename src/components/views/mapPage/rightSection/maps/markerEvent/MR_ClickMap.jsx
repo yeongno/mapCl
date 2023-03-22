@@ -1,3 +1,5 @@
+//infowindow 띄우는 최상위 컴포넌트
+
 import React, { useEffect } from "react";
 import { CustomOverlayMap, MapMarker } from "react-kakao-maps-sdk";
 import { useDispatch } from "react-redux";

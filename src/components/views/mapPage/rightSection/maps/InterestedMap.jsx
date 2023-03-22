@@ -104,12 +104,14 @@ const InterestedMap = (props) => {
       <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
       <MoveMyLocation setState={setState} />
       {mapCover && <MapCover />}
-      {onPosition && (
+      {onPosition && mapCover == false ? (
         //지도 클릭
         <div style={{ width: "100%", height: "30rem", position: "absolute" }}>
-          <MR_ClickMap onPosition={onPosition} setOnPosition={setOnPosition} />
           <MapBlinder />
+          <MR_ClickMap onPosition={onPosition} setOnPosition={setOnPosition} />
         </div>
+      ) : (
+        <></>
       )}
 
       <Map // 지도를 표시할 Container
