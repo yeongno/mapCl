@@ -1,5 +1,5 @@
-.favoriteGroup-accordian {
-  .favoriteGroup-accordian__btn--turn {
+.adGroup-accordian {
+  .adGroup-accordian__btn--turn {
     background: black;
     color: white;
     text-align: center;
@@ -9,7 +9,7 @@
     align-items: center;
     cursor: pointer;
   }
-  .favoriteGroup-panel {
+  .adGroup-panel {
     display: block;
     max-height: 0px;
     overflow: hidden;
@@ -99,7 +99,7 @@
       }
     }
   }
-  .favoriteGroup-bottom {
+  .adGroup-bottom {
     margin-bottom: 1rem;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.81);

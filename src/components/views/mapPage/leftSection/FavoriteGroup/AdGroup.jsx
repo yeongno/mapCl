@@ -10,9 +10,9 @@ import { useDispatch } from "react-redux";
 import useMyInfo from "../../../../../hook/useMyInfo";
 import { setLocation } from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
-import "../../../../styles/mapPage/leftSection/favoriteGroup/FavoriteGroup.scss";
+import "../../../../styles/mapPage/leftSection/adGroup/AdGroup.scss";
 
-function FavoriteGroup() {
+function AdGroup() {
   const [onAcc, setOnAcc] = useState(true);
   const panel_Ref = useRef();
   const btn_Ref = useRef();
@@ -43,15 +43,15 @@ function FavoriteGroup() {
   };
 
   return (
-    <div className="favoriteGroup-accordian">
+    <div className="adGroup-accordian">
       <div
-        className="favoriteGroup-accordian__btn--turn"
+        className="adGroup-accordian__btn--turn"
         ref={btn_Ref}
         onClick={onActive}
       >
-        내 선호지역
+        나의 모집 글
       </div>
-      <div className="favoriteGroup-panel" ref={panel_Ref}>
+      <div className="adGroup-panel" ref={panel_Ref}>
         {/* <div className="Priority-labelSection">1번 선호지역</div> */}
         <div className="Priority-section">
           <div className="nameLabel">1st</div>
@@ -108,11 +108,11 @@ function FavoriteGroup() {
           <div className="ctrSection__btn--modify">Modify</div>
         </div>
       </div>
-      <div className="favoriteGroup-bottom" onClick={onActive}>
+      <div className="adGroup-bottom" onClick={onActive}>
         {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
       </div>
     </div>
   );
 }
 
-export default FavoriteGroup;
+export default AdGroup;

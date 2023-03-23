@@ -1,12 +1,14 @@
 import React from "react";
+import AdGroup from "../FavoriteGroup/AdGroup";
 import FavoriteGroup from "../FavoriteGroup/FavoriteGroup";
+import PostGroup from "../FavoriteGroup/PostGroup";
 
 function MineMO() {
   return (
     <div className="leftSection-btnContainer">
-      <div className="favoriteGroup-container">
-        <FavoriteGroup />
-      </div>
+      <FavoriteGroup />
+      <PostGroup />
+      <AdGroup />
     </div>
   );
 }
