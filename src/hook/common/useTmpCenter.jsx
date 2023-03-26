@@ -3,7 +3,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_MYUSERINFO } from "../../config/tempClientConfig";
+import { GET_MYPOSTSINFO, GET_MYUSERINFO } from "../../config/tempClientConfig";
 import { setCenterLocation } from "../../redux/_actions/mapNav/location_action";
 import { turnMapCover } from "../../redux/_actions/turn_action";
 import useCoords from "../useCoords";
@@ -17,6 +17,8 @@ function useTmpCenter(props) {
   const nearUser = useNearByUsers();
   const [markers, setMarkers] = useState([]);
   const [userMarkers, setUserMarkers] = useState([]);
+  const [myPostsMarkers, setMyPostsMarkers] = useState([]);
+
   const dispatch = useDispatch();
 
   //지도 중심좌표가 움직인 정도를 알기 위한 값
@@ -87,7 +89,21 @@ function useTmpCenter(props) {
       }
       setMarkers(markers);
     });
-
+    let myPostsMarkers = [];
+    //더미데이터 markers에 등록
+    axios.get(GET_MYPOSTSINFO).then((res) => {
+      console.log("post", res.data);
+      for (var i = 0; i < res.data.myPosts.length - 1; i++) {
+        console.log("post", res.data.myPosts[i].lat);
+        myPostsMarkers.push({
+          position: {
+            lat: res.data.myPosts[i].lat,
+            lng: res.data.myPosts[i].lng,
+          },
+        });
+      }
+      setMyPostsMarkers(myPostsMarkers);
+    });
     let userMarkers = [];
     //더미데이터 markers에 등록
 
@@ -126,7 +142,7 @@ function useTmpCenter(props) {
     }
   }, [onChanged]);
 
-  return { markers, userMarkers };
+  return { markers, userMarkers, myPostsMarkers };
 }
 
 export default useTmpCenter;

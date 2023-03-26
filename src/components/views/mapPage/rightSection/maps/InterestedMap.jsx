@@ -25,6 +25,7 @@ import useLocationFormat from "../../../../../hook/formatter/useLocationFormat";
 import MR_NearByUsers from "./markerEvent/MR_NearByUsers";
 import useTmpCenter from "../../../../../hook/common/useTmpCenter";
 import MapCover from "./common/MapCover";
+import MR_MyPosts from "./markerEvent/MR_MyPosts";
 const InterestedMap = (props) => {
   //위치 이동 시 이벤트 호출 및 마커 생성
   const getMarkers = useTmpCenter();
@@ -153,6 +154,24 @@ const InterestedMap = (props) => {
           //검색 마커
           <MR_Search keyMarkers={keyMarkers} />
         )}
+        {/* 나의 글  */}
+        {getMarkers.myPostsMarkers.map((myPostsMarkers, index) => (
+          <div key={index}>
+            <MR_MyPosts
+              key={`EventMarkerContainer-${myPostsMarkers.position.lat}-${myPostsMarkers.position.lng}`}
+              position={myPostsMarkers.position}
+              index={index}
+              content={myPostsMarkers.content}
+            />
+
+            {/* 마크 위치에 바로 요소 띄우기 */}
+            <CustomOverlayMap position={myPostsMarkers.position}>
+              <div className="label" style={{ color: "black" }}>
+                <div>{index + 11}</div>
+              </div>
+            </CustomOverlayMap>
+          </div>
+        ))}
         {getMarkers.markers.map((marker, index) => (
           <div key={index}>
             <MR_Interested
@@ -170,6 +189,7 @@ const InterestedMap = (props) => {
             </CustomOverlayMap>
           </div>
         ))}
+
         {getMarkers.userMarkers.map((userMarkers, index) => (
           <div key={index}>
             <MR_NearByUsers

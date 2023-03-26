@@ -13,6 +13,12 @@ function useMyInfo() {
 
 export default useMyInfo;
 
+export function useMyPosts() {
+  const myPosts = useSelector((state) => state?.user?.userData?.user);
+
+  return myPosts;
+}
+
 export function useMyFavoriteLocation() {
   const location = useSelector((state) => state.location.location);
 
