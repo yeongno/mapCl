@@ -3,7 +3,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_MYPOSTSINFO, GET_MYUSERINFO } from "../../config/tempClientConfig";
+import {
+  GET_MYADS,
+  GET_MYPOSTSINFO,
+  GET_MYUSERINFO,
+} from "../../config/tempClientConfig";
 import { setCenterLocation } from "../../redux/_actions/mapNav/location_action";
 import { turnMapCover } from "../../redux/_actions/turn_action";
 import useCoords from "../useCoords";
@@ -18,6 +22,7 @@ function useTmpCenter(props) {
   const [markers, setMarkers] = useState([]);
   const [userMarkers, setUserMarkers] = useState([]);
   const [myPostsMarkers, setMyPostsMarkers] = useState([]);
+  const [myAdsMarkers, setMyAdsMarkers] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -90,7 +95,7 @@ function useTmpCenter(props) {
       setMarkers(markers);
     });
     let myPostsMarkers = [];
-    //더미데이터 markers에 등록
+    //더미데이터 myPostsMarkers 등록
     axios.get(GET_MYPOSTSINFO).then((res) => {
       for (var i = 0; i < res.data.myPosts.length - 1; i++) {
         myPostsMarkers.push({
@@ -101,6 +106,19 @@ function useTmpCenter(props) {
         });
       }
       setMyPostsMarkers(myPostsMarkers);
+    });
+    let myAdsMarkers = [];
+    //더미데이터 myPostsMarkers 등록
+    axios.get(GET_MYADS).then((res) => {
+      for (var i = 0; i < res.data.myAds.length - 1; i++) {
+        myAdsMarkers.push({
+          position: {
+            lat: res.data.myAds[i].lat,
+            lng: res.data.myAds[i].lng,
+          },
+        });
+      }
+      setMyAdsMarkers(myAdsMarkers);
     });
     let userMarkers = [];
     //더미데이터 markers에 등록
@@ -140,7 +158,7 @@ function useTmpCenter(props) {
     }
   }, [onChanged]);
 
-  return { markers, userMarkers, myPostsMarkers };
+  return { markers, userMarkers, myPostsMarkers, myAdsMarkers };
 }
 
 export default useTmpCenter;

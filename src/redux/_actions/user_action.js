@@ -7,7 +7,11 @@ import {
   MYPOSTS_USER,
 } from "./types";
 import { USER_SERVER } from "../../config/ServerConfig";
-import { GET_MYPOSTSINFO, GET_MYUSERINFO } from "../../config/tempClientConfig";
+import {
+  GET_MYADS,
+  GET_MYPOSTSINFO,
+  GET_MYUSERINFO,
+} from "../../config/tempClientConfig";
 import Axios from "../../axios/Axios";
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -76,6 +80,14 @@ export function GetmyPosts() {
   const request = axios.get(GET_MYPOSTSINFO).then((response) => response.data);
   return {
     type: MYPOSTS_USER,
+    payload: request,
+  };
+}
+
+export function GetMyAds() {
+  const request = axios.get(GET_MYADS).then((response) => response.data);
+  return {
+    type: MYADS_USER,
     payload: request,
   };
 }

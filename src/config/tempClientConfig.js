@@ -5,4 +5,7 @@ export const POST_NEARBYUSERS = "/dummy/IUserInfo.json"; //post api/uri/nearByUs
 export const GET_MYUSERINFO = "/dummy/IMyInfo.json";
 
 //나의 글 정보
-export const GET_MYPOSTSINFO = "/dummy/myMarks/MyMarksGroup.json";
+export const GET_MYPOSTSINFO = "/dummy/myMarks/MyPostGroup.json";
+
+//나의 글 정보
+export const GET_MYADS = "/dummy/myMarks/MyAdGroup.json";

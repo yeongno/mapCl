@@ -26,6 +26,7 @@ import MR_NearByUsers from "./markerEvent/MR_NearByUsers";
 import useTmpCenter from "../../../../../hook/common/useTmpCenter";
 import MapCover from "./common/MapCover";
 import MR_MyPosts from "./markerEvent/MR_MyPosts";
+import MR_MyAds from "./markerEvent/MR_MyAds";
 const InterestedMap = (props) => {
   //위치 이동 시 이벤트 호출 및 마커 생성
   const getMarkers = useTmpCenter();
@@ -166,6 +167,24 @@ const InterestedMap = (props) => {
 
             {/* 마크 위치에 바로 요소 띄우기 */}
             <CustomOverlayMap position={myPostsMarkers.position}>
+              <div className="label" style={{ color: "black" }}>
+                <div>{index + 11}</div>
+              </div>
+            </CustomOverlayMap>
+          </div>
+        ))}
+        {/* 나의 글  */}
+        {getMarkers.myAdsMarkers.map((myAdsMarkers, index) => (
+          <div key={index}>
+            <MR_MyAds
+              key={`EventMarkerContainer-${myAdsMarkers.position.lat}-${myAdsMarkers.position.lng}`}
+              position={myAdsMarkers.position}
+              index={index}
+              content={myAdsMarkers.content}
+            />
+
+            {/* 마크 위치에 바로 요소 띄우기 */}
+            <CustomOverlayMap position={myAdsMarkers.position}>
               <div className="label" style={{ color: "black" }}>
                 <div>{index + 11}</div>
               </div>

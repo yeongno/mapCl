@@ -33,6 +33,12 @@ export default function (state = {}, action) {
         myPosts: action.payload,
       };
       break;
+    case MYPOSTS_USER:
+      return {
+        ...state,
+        myAds: action.payload,
+      };
+      break;
     case LOGOUT_USER:
       return {
         ...state,
