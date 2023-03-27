@@ -5,6 +5,7 @@ import {
   AUTH_USER,
   LOGOUT_USER,
   MYPOSTS_USER,
+  MYADS_USER,
 } from "./types";
 import { USER_SERVER } from "../../config/ServerConfig";
 import {

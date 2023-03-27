@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { turnMap, turnMO } from "../../../../redux/_actions/turn_action";
-import FavoriteGroup from "./FavoriteGroup/FavoriteGroup";
+import FavoriteGroup from "./mineMO/FavoriteGroup";
 import "../../../styles/mapPage/leftSection/LeftSection.scss";
 import useMOSelector from "../../../../hook/navSelector/useMOSelector";
 

@@ -1,4 +1,5 @@
 .adGroup-accordian {
+  width: 100%;
   .adGroup-accordian__btn--turn {
     background: black;
     color: white;
@@ -10,6 +11,7 @@
     cursor: pointer;
   }
   .adGroup-panel {
+    width: 100%;
     display: block;
     max-height: 0px;
     overflow: hidden;
@@ -20,53 +22,58 @@
     //   }
     //   font-weight: bold;
     // }
-    .Priority-section {
-      display: table;
-      .nameLabel {
-        display: table-cell;
-        vertical-align: middle;
+    .postList-section {
+      width: 100%;
+      .title-section {
+        // display: table-cell;
+        // vertical-align: middle;
+        overflow: hidden;
         height: 2rem;
-        width: 2.5rem;
         padding: 3px;
         background: rgba(3, 93, 111, 0.567);
         color: white;
         // border-top-left-radius: 5px;
         // border-bottom-left-radius: 5px;
       }
-      .Priority-nickSection {
-        display: table-cell;
-        color: white;
-        vertical-align: middle;
-        height: 2rem;
-        width: 23rem;
-        background: rgb(103, 186, 214);
-        padding-left: 10px;
-      }
-      .move__btn {
-        display: table-cell;
-        vertical-align: middle;
-        height: 2rem;
-        width: 2rem;
-        padding: 3px;
-        background: rgb(174, 219, 235);
-        color: white;
-        // border-top-right-radius: 5px;
-        // border-bottom-right-radius: 5px;
-        cursor: pointer;
-        &:hover {
-          color: black;
-          background: blue;
+      .middler-container {
+        display: flex;
+        .content-section {
+          cursor: default;
+          padding-top: 0.4rem;
+          padding-bottom: 0.5rem;
+          width: 24.5rem;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: white;
+          background: rgb(103, 186, 214);
+          padding-left: 5px;
+        }
+        .move__btn {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          width: 2rem;
+          padding: 3px;
+          background: rgb(174, 219, 235);
+          color: white;
+          // border-top-right-radius: 5px;
+          // border-bottom-right-radius: 5px;
+          cursor: pointer;
+          &:hover {
+            color: black;
+            background: blue;
+          }
         }
       }
     }
     .ctrSection {
-      margin-bottom: 1rem;
       border-bottom: solid 1px black;
       display: flex;
       color: white;
+      margin-bottom: 1rem;
 
       &:last-child {
-        margin-bottom: 0;
       }
       .ctrSection__btn--delete {
         cursor: pointer;
@@ -108,7 +115,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     &:hover {
       background: rgba(0, 0, 0, 0.195);
       transition: background-color 0.5s ease-in-out;

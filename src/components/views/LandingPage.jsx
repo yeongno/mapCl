@@ -4,7 +4,11 @@ import { useGeolocated } from "react-geolocated";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { GET_MYUSERINFO } from "../../config/tempClientConfig";
-import { GetmyPosts, tmpLogin } from "../../redux/_actions/user_action";
+import {
+  GetMyAds,
+  GetmyPosts,
+  tmpLogin,
+} from "../../redux/_actions/user_action";
 import Header from "./header/Header";
 import "../styles/LandingPage.scss";
 import useMenuSelector from "../../hook/navSelector/useMenuSelector";
@@ -25,6 +29,7 @@ function LandingPage({ handleLogin }) {
   useEffect(() => {
     dispatch(tmpLogin()).then((response) => {});
     dispatch(GetmyPosts()).then((response) => {});
+    dispatch(GetMyAds()).then((response) => {});
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
-import AdGroup from "../FavoriteGroup/AdGroup";
-import FavoriteGroup from "../FavoriteGroup/FavoriteGroup";
-import PostGroup from "../FavoriteGroup/PostGroup";
+import AdGroup from "./AdGroup";
+import FavoriteGroup from "./FavoriteGroup";
+import PostGroup from "./PostGroup";
 
 function MineMO() {
   return (

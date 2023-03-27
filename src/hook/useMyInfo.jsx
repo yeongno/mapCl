@@ -18,6 +18,11 @@ export function useMyPosts() {
 
   return myPosts;
 }
+export function useMyAds() {
+  const useMyAds = useSelector((state) => state?.user?.myAds);
+
+  return useMyAds;
+}
 
 export function useMyFavoriteLocation() {
   const location = useSelector((state) => state.location.location);

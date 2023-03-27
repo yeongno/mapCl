@@ -2,6 +2,7 @@ import {
   AUTH_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  MYADS_USER,
   MYPOSTS_USER,
   REGISTER_USER,
 } from "../_actions/types";
@@ -33,7 +34,7 @@ export default function (state = {}, action) {
         myPosts: action.payload,
       };
       break;
-    case MYPOSTS_USER:
+    case MYADS_USER:
       return {
         ...state,
         myAds: action.payload,
