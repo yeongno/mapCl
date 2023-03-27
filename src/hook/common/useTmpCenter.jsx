@@ -92,9 +92,7 @@ function useTmpCenter(props) {
     let myPostsMarkers = [];
     //더미데이터 markers에 등록
     axios.get(GET_MYPOSTSINFO).then((res) => {
-      console.log("post", res.data);
       for (var i = 0; i < res.data.myPosts.length - 1; i++) {
-        console.log("post", res.data.myPosts[i].lat);
         myPostsMarkers.push({
           position: {
             lat: res.data.myPosts[i].lat,

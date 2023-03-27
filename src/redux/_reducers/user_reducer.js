@@ -2,6 +2,7 @@ import {
   AUTH_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  MYPOSTS_USER,
   REGISTER_USER,
 } from "../_actions/types";
 //s
@@ -24,6 +25,12 @@ export default function (state = {}, action) {
         userData: action.payload,
         isAuth: action.isAuth,
         expireToken: action.expireToken,
+      };
+      break;
+    case MYPOSTS_USER:
+      return {
+        ...state,
+        myPosts: action.payload,
       };
       break;
     case LOGOUT_USER:

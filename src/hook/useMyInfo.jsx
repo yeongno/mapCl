@@ -14,7 +14,7 @@ function useMyInfo() {
 export default useMyInfo;
 
 export function useMyPosts() {
-  const myPosts = useSelector((state) => state?.user?.userData?.user);
+  const myPosts = useSelector((state) => state?.user?.myPosts);
 
   return myPosts;
 }

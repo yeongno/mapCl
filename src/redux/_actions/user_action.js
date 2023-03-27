@@ -1,7 +1,13 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  LOGOUT_USER,
+  MYPOSTS_USER,
+} from "./types";
 import { USER_SERVER } from "../../config/ServerConfig";
-import { GET_MYUSERINFO } from "../../config/tempClientConfig";
+import { GET_MYPOSTSINFO, GET_MYUSERINFO } from "../../config/tempClientConfig";
 import Axios from "../../axios/Axios";
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -62,6 +68,14 @@ export function tmpLogin() {
   const request = axios.get(GET_MYUSERINFO).then((response) => response.data);
   return {
     type: AUTH_USER,
+    payload: request,
+  };
+}
+
+export function GetmyPosts() {
+  const request = axios.get(GET_MYPOSTSINFO).then((response) => response.data);
+  return {
+    type: MYPOSTS_USER,
     payload: request,
   };
 }
