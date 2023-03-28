@@ -17,6 +17,9 @@ function AdGroup() {
   const Title_Ref = useRef([]);
   const Content_Ref = useRef([]);
 
+  const [onContent, setOnContent] = useState(false);
+  const [preContentIndex, setPreContentIndex] = useState();
+  const [preTitleIndex, setPreTitleIndex] = useState();
   const [onAcc, setOnAcc] = useState(true);
   const panel_Ref = useRef();
   const btn_Ref = useRef([]);
@@ -26,33 +29,31 @@ function AdGroup() {
   const [thirdPriority, setThird] = useState(null);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("psopso", MyAds);
-    if (MyAds) {
-      Posts.map((posts, index) => {});
-
-      // setSecond(MyPosts[0].priority[1]);
-      // setThird(MyPosts[0].priority[2]);
+  //title 열고 닫는 플러그 함수
+  const onTitleView = (index) => {
+    Title_Ref.current[index].style.textOverflow = "unset";
+    Title_Ref.current[index].style.whiteSpace = "unset";
+    //전에 클릭했던 index를 다시 닫는다.
+    if (preTitleIndex) {
+      Title_Ref.current[preTitleIndex].style.textOverflow = "ellipsis";
+      Title_Ref.current[preTitleIndex].style.whiteSpace = "nowrap";
     }
-  }, [MyAds]);
+    setPreTitleIndex(index);
+  };
 
-  //텍스트 hover 효과 (ellipsis해제)
-  // const onTitleOver = (index) => {
-  //   Title_Ref.current[index].style.textOverflow = "unset";
-  //   Title_Ref.current[index].style.whiteSpace = "unset";
-  // };
-  // const onTitleDown = (index) => {
-  //   Title_Ref.current[index].style.textOverflow = "ellipsis";
-  //   Title_Ref.current[index].style.whiteSpace = "nowrap";
-  // };
-  const onContentOver = (index) => {
+  //content 열고 닫는 플러그 함수
+  const onContentView = (index) => {
     Content_Ref.current[index].style.textOverflow = "unset";
     Content_Ref.current[index].style.whiteSpace = "unset";
+    //전에 클릭했던 index를 다시 닫는다.
+    if (preContentIndex) {
+      console.log("pre", preContentIndex);
+      Content_Ref.current[preContentIndex].style.textOverflow = "ellipsis";
+      Content_Ref.current[preContentIndex].style.whiteSpace = "nowrap";
+    }
+    setPreContentIndex(index);
   };
-  const onContentDown = (index) => {
-    Content_Ref.current[index].style.textOverflow = "ellipsis";
-    Content_Ref.current[index].style.whiteSpace = "nowrap";
-  };
+
   const Posts = MyAds?.myAds;
   const renderingPosts = Posts?.map((posts, index) => {
     return (
@@ -62,12 +63,9 @@ function AdGroup() {
           <div
             className="title-section"
             ref={(el) => (Title_Ref.current[index] = el)}
-            // onMouseOver={() => {
-            //   onTitleOver(index);
-            // }}
-            // onMouseOut={() => {
-            //   onTitleDown(index);
-            // }}
+            onClick={() => {
+              onTitleView(index);
+            }}
           >
             {posts?.title}
           </div>
@@ -75,11 +73,8 @@ function AdGroup() {
             <div
               className="content-section"
               ref={(el) => (Content_Ref.current[index] = el)}
-              onMouseOver={() => {
-                onContentOver(index);
-              }}
-              onMouseOut={() => {
-                onContentDown(index);
+              onClick={() => {
+                onContentView(index);
               }}
             >
               <span>{posts?.content}</span>
