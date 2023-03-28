@@ -5,9 +5,11 @@ import useCoords from "../../../../../hook/useCoords";
 import { GET_MYUSERINFO } from "./../../../../../config/tempClientConfig";
 import MR_Interested from "./common/MR_Interested";
 import useMyInfo, {
+  useAdLoacationInfo,
   useLocationInfo,
   useMainLocation,
   useMapCover,
+  usePostLocationInfo,
 } from "../../../../../hook/useMyInfo";
 import SearchBar from "./common/SearchBar";
 import MR_Search from "./markerEvent/MR_Search";
@@ -35,8 +37,15 @@ const InterestedMap = (props) => {
   //키워드 마커
   const [keyMarkers, setKeyMarkers] = useState();
   const [onPosition, setOnPosition] = useState();
-  //현재 실제 위치
+
+  //MapNav favoriteGroup 마크 위치
   const location = useLocationInfo();
+
+  //MapNav postGroup 마크 위치
+  const postLocation = usePostLocationInfo();
+
+  //MapNav adGroup 마크 위치
+  const adLoacation = useAdLoacationInfo();
 
   //맵 커버 온오프하며 useTmpCenter의 onChanged 값으로 값 지정
   const mapCover = useMapCover();
@@ -84,6 +93,26 @@ const InterestedMap = (props) => {
       },
     });
   }, [location]);
+
+  // postGroup 클릭 시 현재 위치 이동
+  useEffect(() => {
+    setState({
+      center: {
+        lat: postLocation?.lat,
+        lng: postLocation?.lng,
+      },
+    });
+  }, [postLocation]);
+
+  // adGroup 클릭 시 현재 위치 이동
+  useEffect(() => {
+    setState({
+      center: {
+        lat: adLoacation?.lat,
+        lng: adLoacation?.lng,
+      },
+    });
+  }, [adLoacation]);
 
   //todo 추후에 redux로 내 위치 값 가져와서 지정 usecoords 훅 사용 예정
   useEffect(() => {

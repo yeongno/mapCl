@@ -1,9 +1,11 @@
 import {
+  ADLOCATION_MAP,
   CENTERLOCATION_MAP,
   GEOLOCATION_MAP,
   LOCATION_MAP,
   MAINLOCATION_MAP,
   ONLOCATION_MAP,
+  POSTLOCATION_MAP,
   PRELOCATION_MAP,
 } from "../../_actions/types";
 
@@ -21,6 +23,10 @@ export default function (state = {}, action) {
       return { ...state, mainlocation: action.payload };
     case GEOLOCATION_MAP:
       return { ...state, geolocation: action.payload };
+    case POSTLOCATION_MAP:
+      return { ...state, postlocation: action.payload };
+    case ADLOCATION_MAP:
+      return { ...state, adlocation: action.payload };
     default:
       return state;
   }

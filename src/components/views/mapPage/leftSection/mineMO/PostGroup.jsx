@@ -9,7 +9,10 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import useMyInfo, { useMyPosts } from "../../../../../hook/useMyInfo";
-import { setLocation } from "../../../../../redux/_actions/mapNav/location_action";
+import {
+  setLocation,
+  setPostLocation,
+} from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
 import "../../../../styles/mapPage/leftSection/postGroup/PostGroup.scss";
 
@@ -87,9 +90,9 @@ function PostGroup() {
             </div>
             <div
               className="move__btn"
-              // onClick={() => {
-              //   dispatch(setLocation(firstPriority?.lat, firstPriority?.lng));
-              // }}
+              onClick={() => {
+                dispatch(setPostLocation(Posts[index]?.lat, Posts[index]?.lng));
+              }}
             >
               <ArrowRightOutlined />
             </div>

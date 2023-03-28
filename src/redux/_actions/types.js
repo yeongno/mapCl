@@ -17,8 +17,12 @@ export const TURNMAP = "turn_map";
 
 export const SET_TOKEN = "set_token";
 export const DELETE_TOKEN = "delete_token";
+
 export const PRIORITY_MAP = "priority_map";
 export const LOCATION_MAP = "location_map";
+export const POSTLOCATION_MAP = "postLocation_map";
+export const ADLOCATION_MAP = "adLocation_map";
+
 export const MAINLOCATION_MAP = "mainlocation_map";
 export const GEOLOCATION_MAP = "geolocation_map";
 export const ONLOCATION_MAP = "onlocation_map";

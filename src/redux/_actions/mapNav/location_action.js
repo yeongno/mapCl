@@ -1,15 +1,31 @@
 import {
+  ADLOCATION_MAP,
   CENTERLOCATION_MAP,
   GEOLOCATION_MAP,
   LOCATION_MAP,
   MAINLOCATION_MAP,
   ONLOCATION_MAP,
+  POSTLOCATION_MAP,
   PRELOCATION_MAP,
 } from "../types";
 
 export function setLocation(lat, lng) {
   return {
     type: LOCATION_MAP,
+    payload: { lat, lng },
+  };
+}
+//mapNav의 post 마크 값
+export function setPostLocation(lat, lng) {
+  return {
+    type: POSTLOCATION_MAP,
+    payload: { lat, lng },
+  };
+}
+//mapNav의 AD 마크 값
+export function setAdLoacation(lat, lng) {
+  return {
+    type: ADLOCATION_MAP,
     payload: { lat, lng },
   };
 }

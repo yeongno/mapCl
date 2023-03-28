@@ -8,7 +8,10 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import useMyInfo, { useMyAds } from "../../../../../hook/useMyInfo";
-import { setLocation } from "../../../../../redux/_actions/mapNav/location_action";
+import {
+  setAdLoacation,
+  setLocation,
+} from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
 import "../../../../styles/mapPage/leftSection/adGroup/AdGroup.scss";
 
@@ -47,7 +50,6 @@ function AdGroup() {
     Content_Ref.current[index].style.whiteSpace = "unset";
     //전에 클릭했던 index를 다시 닫는다.
     if (preContentIndex) {
-      console.log("pre", preContentIndex);
       Content_Ref.current[preContentIndex].style.textOverflow = "ellipsis";
       Content_Ref.current[preContentIndex].style.whiteSpace = "nowrap";
     }
@@ -81,9 +83,9 @@ function AdGroup() {
             </div>
             <div
               className="move__btn"
-              // onClick={() => {
-              //   dispatch(setLocation(firstPriority?.lat, firstPriority?.lng));
-              // }}
+              onClick={() => {
+                dispatch(setAdLoacation(Posts[index]?.lat, Posts[index]?.lng));
+              }}
             >
               <ArrowRightOutlined />
             </div>

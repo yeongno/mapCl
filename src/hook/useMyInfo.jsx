@@ -35,7 +35,18 @@ export function useLocationInfo() {
 
   return location;
 }
+//mapNav의 postGroup 마크 reducer 경로
+export function usePostLocationInfo() {
+  const postLocation = useSelector((state) => state.location.postlocation);
 
+  return postLocation;
+}
+//mapNav의 AdGroup 마크 reducer 경로
+export function useAdLoacationInfo() {
+  const adLocation = useSelector((state) => state.location.adlocation);
+
+  return adLocation;
+}
 export function useMyPriority() {
   const location = useSelector(
     (state) => state?.user?.userData?.user[0].priority
