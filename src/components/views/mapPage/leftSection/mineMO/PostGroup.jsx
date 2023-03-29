@@ -24,41 +24,43 @@ function PostGroup({ setAccActive, accActive }) {
   //mineMo의 다른 그룹 Acc가 열릴경우 해당 값 true로 변경
   const [otherAcc, setOtehrAcc] = useState(false);
 
+  //textOverFlow- 이전에 열었던 텍스트 닫기 위한 값
+  const [preContentIndex, setPreContentIndex] = useState();
+  //textOverFlow- 이전에 열었던 텍스트 닫기 위한 값
+  const [preTitleIndex, setPreTitleIndex] = useState();
+
+  //하단의 아코디언이 열리고 닫는 표시인 arrow마크 관리 값
   const [onAcc, setOnAcc] = useState(true);
   const panel_Ref = useRef();
   const btn_Ref = useRef([]);
   const MyPosts = useMyPosts();
-  const [firstPriority, setFirst] = useState(null);
-  const [secondPriority, setSecond] = useState(null);
-  const [thirdPriority, setThird] = useState(null);
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (MyPosts) {
-      Posts.map((posts, index) => {});
-
-      // setSecond(MyPosts[0].priority[1]);
-      // setThird(MyPosts[0].priority[2]);
+  //title 열고 닫는 플러그 함수
+  const onTitleView = (index) => {
+    Title_Ref.current[index].style.textOverflow = "unset";
+    Title_Ref.current[index].style.whiteSpace = "unset";
+    //전에 클릭했던 index를 다시 닫는다.
+    if (preTitleIndex || preContentIndex == 0) {
+      Title_Ref.current[preTitleIndex].style.textOverflow = "ellipsis";
+      Title_Ref.current[preTitleIndex].style.whiteSpace = "nowrap";
     }
-  }, [MyPosts]);
+    setPreTitleIndex(index);
+  };
 
-  //텍스트 hover 효과 (ellipsis해제)
-  // const onTitleOver = (index) => {
-  //   Title_Ref.current[index].style.textOverflow = "unset";
-  //   Title_Ref.current[index].style.whiteSpace = "unset";
-  // };
-  // const onTitleDown = (index) => {
-  //   Title_Ref.current[index].style.textOverflow = "ellipsis";
-  //   Title_Ref.current[index].style.whiteSpace = "nowrap";
-  // };
-  const onContentOver = (index) => {
+  //content 열고 닫는 플러그 함수
+  const onContentView = (index) => {
     Content_Ref.current[index].style.textOverflow = "unset";
     Content_Ref.current[index].style.whiteSpace = "unset";
+    //전에 클릭했던 index를 다시 닫는다.
+    if (preContentIndex || preContentIndex == 0) {
+      Content_Ref.current[preContentIndex].style.textOverflow = "ellipsis";
+      Content_Ref.current[preContentIndex].style.whiteSpace = "nowrap";
+    }
+    setPreContentIndex(index);
   };
-  const onContentDown = (index) => {
-    Content_Ref.current[index].style.textOverflow = "ellipsis";
-    Content_Ref.current[index].style.whiteSpace = "nowrap";
-  };
+
   const Posts = MyPosts?.myPosts;
   const renderingPosts = Posts?.map((posts, index) => {
     return (
@@ -68,12 +70,9 @@ function PostGroup({ setAccActive, accActive }) {
           <div
             className="title-section"
             ref={(el) => (Title_Ref.current[index] = el)}
-            // onMouseOver={() => {
-            //   onTitleOver(index);
-            // }}
-            // onMouseOut={() => {
-            //   onTitleDown(index);
-            // }}
+            onClick={() => {
+              onTitleView(index);
+            }}
           >
             {posts?.title}
           </div>
@@ -81,11 +80,8 @@ function PostGroup({ setAccActive, accActive }) {
             <div
               className="content-section"
               ref={(el) => (Content_Ref.current[index] = el)}
-              onMouseOver={() => {
-                onContentOver(index);
-              }}
-              onMouseOut={() => {
-                onContentDown(index);
+              onClick={() => {
+                onContentView(index);
               }}
             >
               <span>{posts?.content}</span>
@@ -111,7 +107,6 @@ function PostGroup({ setAccActive, accActive }) {
   //mineMo의 다른 그룹이 열릴 경우 해당 Acc 닫기
   useEffect(() => {
     if (accActive && otherAcc) {
-      console.log(accActive);
       panel_Ref.current.style.maxHeight = "0";
       setOnAcc(true);
     }
