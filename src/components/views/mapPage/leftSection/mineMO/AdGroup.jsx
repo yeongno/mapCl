@@ -15,10 +15,13 @@ import {
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
 import "../../../../styles/mapPage/leftSection/adGroup/AdGroup.scss";
 
-function AdGroup() {
+function AdGroup({ setAccActive, accActive }) {
   //각 Ref는 개별적인 요소 값을 변경하기 위해 배열로 하여 인덱스 값을 전달 받아 처리
   const Title_Ref = useRef([]);
   const Content_Ref = useRef([]);
+
+  //mineMo의 다른 그룹 Acc가 열릴경우 해당 값 true로 변경
+  const [otherAcc, setOtehrAcc] = useState(false);
 
   const [onContent, setOnContent] = useState(false);
   const [preContentIndex, setPreContentIndex] = useState();
@@ -98,10 +101,27 @@ function AdGroup() {
       </div>
     );
   });
+
+  //mineMo의 다른 그룹이 열릴 경우 해당 Acc 닫기
+  useEffect(() => {
+    if (accActive && otherAcc) {
+      console.log(accActive);
+      panel_Ref.current.style.maxHeight = "0";
+      setOnAcc(true);
+    }
+    //다른 그룹에서  accActive값이 바뀌면 otherAcc 값 변경
+    setOtehrAcc(true);
+  }, [accActive]);
+
   const onActive = (index) => {
     const Ref_style = window.getComputedStyle(panel_Ref.current);
+    if (accActive) {
+      panel_Ref.current.style.maxHeight = "0";
+    }
     if (Ref_style.getPropertyValue("max-Height") === "0px") {
       // panel_Ref.current.style.maxHeight = "100rem";
+      setOtehrAcc(false);
+      setAccActive(true);
       panel_Ref.current.style.maxHeight = "fit-Content";
       setOnAcc(false);
     } else {

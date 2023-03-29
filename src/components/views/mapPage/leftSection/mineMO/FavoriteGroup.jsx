@@ -12,7 +12,7 @@ import { setLocation } from "../../../../../redux/_actions/mapNav/location_actio
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
 import "../../../../styles/mapPage/leftSection/favoriteGroup/FavoriteGroup.scss";
 
-function FavoriteGroup() {
+function FavoriteGroup({ setAccActive, accActive }) {
   const [onAcc, setOnAcc] = useState(true);
   const panel_Ref = useRef();
   const btn_Ref = useRef();
@@ -21,6 +21,9 @@ function FavoriteGroup() {
   const [secondPriority, setSecond] = useState(null);
   const [thirdPriority, setThird] = useState(null);
   const dispatch = useDispatch();
+
+  //mineMo의 다른 그룹 Acc가 열릴경우 해당 값 true로 변경
+  const [otherAcc, setOtehrAcc] = useState(false);
 
   useEffect(() => {}, []);
 
@@ -31,9 +34,23 @@ function FavoriteGroup() {
       setThird(MyInfo[0].priority[2]);
     }
   }, [MyInfo]);
+
+  //mineMo의 다른 그룹이 열릴 경우 해당 Acc 닫기
+  useEffect(() => {
+    if (accActive && otherAcc) {
+      console.log(accActive);
+      panel_Ref.current.style.maxHeight = "0";
+      setOnAcc(true);
+    }
+    //다른 그룹에서  accActive값이 바뀌면 otherAcc 값 변경
+    setOtehrAcc(true);
+  }, [accActive]);
+
   const onActive = () => {
     const Ref_style = window.getComputedStyle(panel_Ref.current);
     if (Ref_style.getPropertyValue("max-Height") === "0px") {
+      setOtehrAcc(false);
+      setAccActive(true);
       panel_Ref.current.style.maxHeight = "fit-Content";
       setOnAcc(false);
     } else {
