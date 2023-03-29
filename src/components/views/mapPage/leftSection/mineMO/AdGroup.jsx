@@ -3,6 +3,7 @@ import {
   ArrowRightOutlined,
   ArrowUpOutlined,
 } from "@ant-design/icons";
+import { Pagination } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -30,6 +31,9 @@ function AdGroup({ setAccActive, accActive }) {
 
   //하단의 아코디언이 열리고 닫는 표시인 arrow마크 관리 값
   const [onAcc, setOnAcc] = useState(true);
+
+  //pagination의 현재 페이지 값값
+  const [pagination, setpagination] = useState(1);
 
   const panel_Ref = useRef();
   const btn_Ref = useRef([]);
@@ -64,43 +68,55 @@ function AdGroup({ setAccActive, accActive }) {
   const Posts = MyAds?.myAds;
   const renderingPosts = Posts?.map((posts, index) => {
     return (
-      <div key={index}>
-        {/* <div className="Priority-labelSection">1번 선호지역</div> */}
-        <div className="postList-section">
-          <div
-            className="title-section"
-            ref={(el) => (Title_Ref.current[index] = el)}
-            onClick={() => {
-              onTitleView(index);
-            }}
-          >
-            {posts?.title}
+      <>
+        {" "}
+        {(index >= (pagination - 1) * 5 && index < pagination * 5 && (
+          <div key={index}>
+            {/* <div className="Priority-labelSection">1번 선호지역</div> */}
+            <div className="postList-section">
+              <div
+                className="title-section"
+                ref={(el) => (Title_Ref.current[index] = el)}
+                onClick={() => {
+                  onTitleView(index);
+                }}
+              >
+                {posts?.title}
+              </div>
+              <div className="middler-container">
+                <div
+                  className="content-section"
+                  ref={(el) => (Content_Ref.current[index] = el)}
+                  onClick={() => {
+                    onContentView(index);
+                  }}
+                >
+                  <span>{posts?.content}</span>
+                </div>
+                <div
+                  className="move__btn"
+                  onClick={() => {
+                    dispatch(
+                      setAdLoacation(Posts[index]?.lat, Posts[index]?.lng)
+                    );
+                  }}
+                >
+                  <ArrowRightOutlined />
+                </div>
+              </div>{" "}
+            </div>
+            <div className="ctrSection">
+              <div className="ctrSection__btn--delete">X</div>
+              <div className="ctrSection__btn--modify">Modify</div>
+            </div>
+            {Posts.length == index + 1 ? (
+              <></>
+            ) : (
+              <div className="bottom_padding"></div>
+            )}
           </div>
-          <div className="middler-container">
-            <div
-              className="content-section"
-              ref={(el) => (Content_Ref.current[index] = el)}
-              onClick={() => {
-                onContentView(index);
-              }}
-            >
-              <span>{posts?.content}</span>
-            </div>
-            <div
-              className="move__btn"
-              onClick={() => {
-                dispatch(setAdLoacation(Posts[index]?.lat, Posts[index]?.lng));
-              }}
-            >
-              <ArrowRightOutlined />
-            </div>
-          </div>{" "}
-        </div>
-        <div className="ctrSection">
-          <div className="ctrSection__btn--delete">X</div>
-          <div className="ctrSection__btn--modify">Modify</div>
-        </div>
-      </div>
+        )) || <></>}
+      </>
     );
   });
 
@@ -131,6 +147,11 @@ function AdGroup({ setAccActive, accActive }) {
     }
   };
 
+  //pagination controler
+  const onPagination = (page) => {
+    setpagination(page);
+  };
+
   return (
     <>
       <div className="adGroup-accordian">
@@ -148,6 +169,16 @@ function AdGroup({ setAccActive, accActive }) {
         <div className="adGroup-panel" ref={panel_Ref}>
           {renderingPosts}
         </div>
+        {!onAcc && (
+          <div className="pagination-section">
+            <Pagination
+              current={pagination}
+              onChange={onPagination}
+              total={Posts?.length}
+              pageSize={5}
+            />
+          </div>
+        )}
         <div className="adGroup-bottom" onClick={onActive}>
           {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
         </div>

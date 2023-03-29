@@ -3,7 +3,6 @@ import {
   ArrowRightOutlined,
   ArrowUpOutlined,
 } from "@ant-design/icons";
-import { Pagination } from "antd";
 import { indexOf } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -29,9 +28,6 @@ function PostGroup({ setAccActive, accActive }) {
   const [preContentIndex, setPreContentIndex] = useState();
   //textOverFlow- 이전에 열었던 텍스트 닫기 위한 값
   const [preTitleIndex, setPreTitleIndex] = useState();
-
-  //pagination의 현재 페이지 값값
-  const [pagination, setpagination] = useState(1);
 
   //하단의 아코디언이 열리고 닫는 표시인 arrow마크 관리 값
   const [onAcc, setOnAcc] = useState(true);
@@ -68,52 +64,48 @@ function PostGroup({ setAccActive, accActive }) {
   const Posts = MyPosts?.myPosts;
   const renderingPosts = Posts?.map((posts, index) => {
     return (
-      <>
-        {" "}
-        {(index >= (pagination - 1) * 5 && index < pagination * 5 && (
-          <div key={index}>
-            {/* <div className="Priority-labelSection">1번 선호지역</div> */}
-            <div className="postList-section">
-              <div
-                className="title-section"
-                ref={(el) => (Title_Ref.current[index] = el)}
-                onClick={() => {
-                  onTitleView(index);
-                }}
-              >
-                {posts?.title}
-              </div>
-              <div className="middler-container">
-                <div
-                  className="content-section"
-                  ref={(el) => (Content_Ref.current[index] = el)}
-                  onClick={() => {
-                    onContentView(index);
-                  }}
-                >
-                  <span>{posts?.content}</span>
-                </div>
-                <div
-                  className="move__btn"
-                  onClick={() => {
-                    dispatch(
-                      setPostLocation(Posts[index]?.lat, Posts[index]?.lng)
-                    );
-                  }}
-                >
-                  <ArrowRightOutlined />
-                </div>
-              </div>{" "}
-            </div>
-            <div className="ctrSection">
-              <div className="ctrSection__btn--delete">X</div>
-              <div className="ctrSection__btn--modify">Modify</div>
-            </div>
-
-            <div className="bottom_padding"></div>
+      <div key={index}>
+        {/* <div className="Priority-labelSection">1번 선호지역</div> */}
+        <div className="postList-section">
+          <div
+            className="title-section"
+            ref={(el) => (Title_Ref.current[index] = el)}
+            onClick={() => {
+              onTitleView(index);
+            }}
+          >
+            {posts?.title}
           </div>
-        )) || <></>}
-      </>
+          <div className="middler-container">
+            <div
+              className="content-section"
+              ref={(el) => (Content_Ref.current[index] = el)}
+              onClick={() => {
+                onContentView(index);
+              }}
+            >
+              <span>{posts?.content}</span>
+            </div>
+            <div
+              className="move__btn"
+              onClick={() => {
+                dispatch(setPostLocation(Posts[index]?.lat, Posts[index]?.lng));
+              }}
+            >
+              <ArrowRightOutlined />
+            </div>
+          </div>{" "}
+        </div>
+        <div className="ctrSection">
+          <div className="ctrSection__btn--delete">X</div>
+          <div className="ctrSection__btn--modify">Modify</div>
+        </div>
+        {Posts.length == index + 1 ? (
+          <></>
+        ) : (
+          <div className="bottom_padding"></div>
+        )}
+      </div>
     );
   });
 
@@ -140,10 +132,6 @@ function PostGroup({ setAccActive, accActive }) {
     }
   };
 
-  //pagination controler
-  const onPagination = (page) => {
-    setpagination(page);
-  };
   return (
     <>
       <div className="postGroup-accordian">
@@ -161,16 +149,6 @@ function PostGroup({ setAccActive, accActive }) {
         <div className="postGroup-panel" ref={panel_Ref}>
           {renderingPosts}
         </div>
-        {!onAcc && (
-          <div className="pagination-section">
-            <Pagination
-              current={pagination}
-              onChange={onPagination}
-              total={Posts?.length}
-              pageSize={5}
-            />
-          </div>
-        )}
         <div className="postGroup-bottom" onClick={onActive}>
           {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
         </div>
