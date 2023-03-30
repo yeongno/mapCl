@@ -9,7 +9,6 @@ function MineMO() {
   const [accActive, setAccActive] = useState(true);
   useEffect(() => {
     setAccActive(false);
-    console.log(accActive);
   }, [accActive]);
 
   return (

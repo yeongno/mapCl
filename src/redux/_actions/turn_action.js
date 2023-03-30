@@ -4,6 +4,7 @@ import {
   TURNMAPCOVER,
   TURNMENU,
   TURNMO,
+  TURNMRFILTER,
   TURNTEST,
 } from "./types";
 
@@ -31,6 +32,17 @@ export function turnMenu(dataToSubmit) {
   };
 }
 
+/**
+ * 메뉴 바꾸기 FAVORITEMR_FILTER, POSTMR_FILTER, ADMR_FILTER
+ * @param {string "FAVORITEMR_FILTER"} dataToSubmit
+ * @returns
+ */
+export function turn_mrFilter(dataToSubmit) {
+  return {
+    type: TURNMRFILTER,
+    value: dataToSubmit,
+  };
+}
 /**
  * 게시판 포럼 바꾸기 GENERAL_FORUM, NOTICE_FORUM, INQUIRY_FORUM
  * @param {string "DEFAULT_MAP"} dataToSubmit

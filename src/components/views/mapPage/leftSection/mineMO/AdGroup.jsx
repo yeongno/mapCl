@@ -68,7 +68,7 @@ function AdGroup({ setAccActive, accActive }) {
   const Posts = MyAds?.myAds;
   const renderingPosts = Posts?.map((posts, index) => {
     return (
-      <>
+      <div key={index}>
         {" "}
         {(index >= (pagination - 1) * 5 && index < pagination * 5 && (
           <div key={index}>
@@ -116,7 +116,7 @@ function AdGroup({ setAccActive, accActive }) {
             )}
           </div>
         )) || <></>}
-      </>
+      </div>
     );
   });
 

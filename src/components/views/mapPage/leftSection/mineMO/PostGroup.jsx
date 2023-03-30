@@ -68,7 +68,7 @@ function PostGroup({ setAccActive, accActive }) {
   const Posts = MyPosts?.myPosts;
   const renderingPosts = Posts?.map((posts, index) => {
     return (
-      <>
+      <div key={index}>
         {" "}
         {(index >= (pagination - 1) * 5 && index < pagination * 5 && (
           <div key={index}>
@@ -113,7 +113,7 @@ function PostGroup({ setAccActive, accActive }) {
             <div className="bottom_padding"></div>
           </div>
         )) || <></>}
-      </>
+      </div>
     );
   });
 

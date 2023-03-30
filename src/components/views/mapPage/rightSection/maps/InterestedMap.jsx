@@ -29,6 +29,8 @@ import useTmpCenter from "../../../../../hook/common/useTmpCenter";
 import MapCover from "./common/MapCover";
 import MR_MyPosts from "./markerEvent/MR_MyPosts";
 import MR_MyAds from "./markerEvent/MR_MyAds";
+import RadioMark from "./common/RadioMark";
+import useMarkFilterSelector from "../../../../../hook/mapPage/useMarkFilterSelector";
 const InterestedMap = (props) => {
   //위치 이동 시 이벤트 호출 및 마커 생성
   const getMarkers = useTmpCenter();
@@ -49,6 +51,10 @@ const InterestedMap = (props) => {
 
   //맵 커버 온오프하며 useTmpCenter의 onChanged 값으로 값 지정
   const mapCover = useMapCover();
+
+  //mark 필터 관리
+  const markFilter = useMarkFilterSelector();
+  const { favorite, post, ad } = markFilter;
 
   //지도의 위치
   const [state, setState] = useState({
@@ -132,6 +138,7 @@ const InterestedMap = (props) => {
 
   return (
     <div>
+      <RadioMark />
       <SearchBar setState={setState} setKeyMarkers={setKeyMarkers} />
       <MoveMyLocation setState={setState} />
       {mapCover && <MapCover />}
@@ -187,57 +194,69 @@ const InterestedMap = (props) => {
         {/* 나의 글  */}
         {getMarkers.myPostsMarkers.map((myPostsMarkers, index) => (
           <div key={index}>
-            <MR_MyPosts
-              key={`EventMarkerContainer-${myPostsMarkers.position.lat}-${myPostsMarkers.position.lng}`}
-              position={myPostsMarkers.position}
-              index={index}
-              content={myPostsMarkers.content}
-            />
+            {post && (
+              <div key={index}>
+                <MR_MyPosts
+                  key={`EventMarkerContainer-${myPostsMarkers.position.lat}-${myPostsMarkers.position.lng}`}
+                  position={myPostsMarkers.position}
+                  index={index}
+                  content={myPostsMarkers.content}
+                />
 
-            {/* 마크 위치에 바로 요소 띄우기 */}
-            <CustomOverlayMap position={myPostsMarkers.position}>
-              <div className="label" style={{ color: "black" }}>
-                <div>{index + 11}</div>
+                {/* 마크 위치에 바로 요소 띄우기 */}
+                <CustomOverlayMap position={myPostsMarkers.position}>
+                  <div className="label" style={{ color: "black" }}>
+                    <div>{index + 11}</div>
+                  </div>
+                </CustomOverlayMap>
               </div>
-            </CustomOverlayMap>
+            )}
           </div>
         ))}
-        {/* 나의 글  */}
+        {/* 나의 모집 글  */}
         {getMarkers.myAdsMarkers.map((myAdsMarkers, index) => (
           <div key={index}>
-            <MR_MyAds
-              key={`EventMarkerContainer-${myAdsMarkers.position.lat}-${myAdsMarkers.position.lng}`}
-              position={myAdsMarkers.position}
-              index={index}
-              content={myAdsMarkers.content}
-            />
+            {ad && (
+              <div key={index}>
+                <MR_MyAds
+                  key={`EventMarkerContainer-${myAdsMarkers.position.lat}-${myAdsMarkers.position.lng}`}
+                  position={myAdsMarkers.position}
+                  index={index}
+                  content={myAdsMarkers.content}
+                />
 
-            {/* 마크 위치에 바로 요소 띄우기 */}
-            <CustomOverlayMap position={myAdsMarkers.position}>
-              <div className="label" style={{ color: "black" }}>
-                <div>{index + 11}</div>
+                {/* 마크 위치에 바로 요소 띄우기 */}
+                <CustomOverlayMap position={myAdsMarkers.position}>
+                  <div className="label" style={{ color: "black" }}>
+                    <div>{index + 11}</div>
+                  </div>
+                </CustomOverlayMap>
               </div>
-            </CustomOverlayMap>
+            )}
           </div>
         ))}
+        {/* 선호 지역 */}
         {getMarkers.markers.map((marker, index) => (
           <div key={index}>
-            <MR_Interested
-              key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
-              position={marker.position}
-              index={index}
-              content={marker.content}
-            />
+            {favorite && (
+              <div key={index}>
+                <MR_Interested
+                  key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
+                  position={marker.position}
+                  index={index}
+                  content={marker.content}
+                />
 
-            {/* 마크 위치에 바로 요소 띄우기 */}
-            <CustomOverlayMap position={marker.position}>
-              <div className="label" style={{ color: "black" }}>
-                <div>{index + 1}</div>
+                {/* 마크 위치에 바로 요소 띄우기 */}
+                <CustomOverlayMap position={marker.position}>
+                  <div className="label" style={{ color: "black" }}>
+                    <div>{index + 1}</div>
+                  </div>
+                </CustomOverlayMap>
               </div>
-            </CustomOverlayMap>
+            )}
           </div>
         ))}
-
         {getMarkers.userMarkers.map((userMarkers, index) => (
           <div key={index}>
             <MR_NearByUsers

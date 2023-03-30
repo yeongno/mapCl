@@ -28,7 +28,6 @@ function DrawerHeader() {
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    console.log(window.scrollY);
     return () => {
       window.removeEventListener("scroll", handleScroll); //clean up
     };
