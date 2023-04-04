@@ -14,6 +14,7 @@ import {
   setLocation,
 } from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
+import { turn_mrFilter } from "../../../../../redux/_actions/turn_action";
 import "../../../../styles/mapPage/leftSection/adGroup/AdGroup.scss";
 
 function AdGroup({ setAccActive, accActive }) {
@@ -99,6 +100,7 @@ function AdGroup({ setAccActive, accActive }) {
                     dispatch(
                       setAdLoacation(Posts[index]?.lat, Posts[index]?.lng)
                     );
+                    dispatch(turn_mrFilter("ADMR_FILTER"));
                   }}
                 >
                   <ArrowRightOutlined />

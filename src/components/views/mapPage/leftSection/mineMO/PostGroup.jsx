@@ -15,6 +15,7 @@ import {
   setPostLocation,
 } from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
+import { turn_mrFilter } from "../../../../../redux/_actions/turn_action";
 import "../../../../styles/mapPage/leftSection/postGroup/PostGroup.scss";
 
 function PostGroup({ setAccActive, accActive }) {
@@ -99,6 +100,7 @@ function PostGroup({ setAccActive, accActive }) {
                     dispatch(
                       setPostLocation(Posts[index]?.lat, Posts[index]?.lng)
                     );
+                    dispatch(turn_mrFilter("POSTMR_FILTER"));
                   }}
                 >
                   <ArrowRightOutlined />
