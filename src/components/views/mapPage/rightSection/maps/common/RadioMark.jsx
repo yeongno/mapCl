@@ -13,21 +13,21 @@ const RadioMark = () => {
   const dispatch = useDispatch();
   const nowFilter = useMarkFilterSelector();
 
-  const [nowValue, setNowValue] = useState("favorite");
+  //   const [nowValue, setNowValue] = useState("favorite");
 
-  useEffect(() => {
-    if (nowFilter.post == true) {
-      setNowValue("post");
+  //   useEffect(() => {
+  //     if (nowFilter.post == true) {
+  //       setNowValue("post");
 
-      console.log("a");
-    } else if (nowFilter.favorite == true) {
-      setNowValue("post");
-      console.log("b");
-    } else if (nowFilter.ad == true) {
-      setNowValue("ad");
-      console.log("c");
-    }
-  }, [nowFilter]);
+  //       console.log("a");
+  //     } else if (nowFilter.favorite == true) {
+  //       setNowValue("favorite");
+  //       console.log("b");
+  //     } else if (nowFilter.ad == true) {
+  //       setNowValue("ad");
+  //       console.log("c");
+  //     }
+  //   }, [nowFilter]);
 
   const onChange = (e) => {
     const value = e.target.value;
@@ -44,16 +44,14 @@ const RadioMark = () => {
       className="radioMark-container"
       style={{ position: "absolute", zIndex: "21", top: "4rem", left: "70%" }}
     >
-      <Radio.Group onChange={onChange} defaultValue={nowValue}>
-        <Radio.Button value="favorite" autoFocus={nowFilter.favorite}>
-          선호 위치
-        </Radio.Button>
-        <Radio.Button value="post" autoFocus={nowFilter.post}>
-          자유 글
-        </Radio.Button>
-        <Radio.Button value="ad" autoFocus={nowFilter.ad}>
-          모집 글
-        </Radio.Button>
+      <Radio.Group
+        onChange={onChange}
+        defaultValue={"favorite"}
+        value={nowFilter.nowValue}
+      >
+        <Radio.Button value="favorite">선호 위치</Radio.Button>
+        <Radio.Button value="post">자유 글</Radio.Button>
+        <Radio.Button value="ad">모집 글</Radio.Button>
       </Radio.Group>
     </div>
   );

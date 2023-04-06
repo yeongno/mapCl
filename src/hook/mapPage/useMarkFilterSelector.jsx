@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const useMarkFilterSelector = () => {
+  const [nowValue, setNowValue] = useState("favorite");
   const [favorite, setFavorite] = useState(true);
   const [post, setPost] = useState(false);
   const [ad, setAd] = useState(false);
@@ -19,18 +20,21 @@ const useMarkFilterSelector = () => {
       setFavorite(true);
       setPost(false);
       setAd(false);
+      setNowValue("favorite");
     },
     //게시글 마크
     POSTMR_FILTER() {
       setFavorite(false);
       setPost(true);
       setAd(false);
+      setNowValue("post");
     },
     //모집글 마크
     ADMR_FILTER() {
       setFavorite(false);
       setPost(false);
       setAd(true);
+      setNowValue("ad");
     },
   };
 
@@ -40,6 +44,6 @@ const useMarkFilterSelector = () => {
     if (filter) FilterValue[FilterType]();
   };
 
-  return { favorite, post, ad };
+  return { favorite, post, ad, nowValue };
 };
 export default useMarkFilterSelector;
