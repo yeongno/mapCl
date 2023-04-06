@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { MapMarker } from "react-kakao-maps-sdk";
+import { useDispatch } from "react-redux";
+import { turnInfoWindow } from "../../../../../../redux/_actions/turn_action";
 
 //마커의 이벤트 처리하기 위한 함수
 const MR_NearByUsers = ({ position, content, index }) => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(null);
   const [isClose, setIsClose] = useState(null);
   const offWindow = (index) => {
     setIsClose(index);
+    dispatch(turnInfoWindow(true));
   };
   const onWindow = (index) => {
     setIsClose(null);
     setIsOpen(index);
+    dispatch(turnInfoWindow(false));
   };
 
   return (

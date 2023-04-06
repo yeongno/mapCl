@@ -122,7 +122,6 @@ function useTmpCenter(props) {
     });
     let userMarkers = [];
     //더미데이터 markers에 등록
-
     if (nearUser) {
       for (var i = 0; i < 5; i++) {
         if (nearUser.data?.[i]?.location) {

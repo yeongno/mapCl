@@ -3,11 +3,11 @@ import {
   ArrowRightOutlined,
   ArrowUpOutlined,
 } from "@ant-design/icons";
-import { Pagination } from "antd";
+import { message, Pagination } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useMyInfo, { useMyAds } from "../../../../../hook/useMyInfo";
 import {
   setAdLoacation,
@@ -21,6 +21,9 @@ function AdGroup({ setAccActive, accActive }) {
   //각 Ref는 개별적인 요소 값을 변경하기 위해 배열로 하여 인덱스 값을 전달 받아 처리
   const Title_Ref = useRef([]);
   const Content_Ref = useRef([]);
+
+  //열려 있는 맵의 infoWindow의 비/활성화 플래그 값
+  const actInfoWindow = useSelector((state) => state.turn.turnInfoWindow);
 
   //mineMo의 다른 그룹 Acc가 열릴경우 해당 값 true로 변경
   const [otherAcc, setOtehrAcc] = useState(false);
@@ -97,6 +100,10 @@ function AdGroup({ setAccActive, accActive }) {
                 <div
                   className="move__btn"
                   onClick={() => {
+                    if (actInfoWindow) {
+                      message.error("열려 있는 작업을 종료 해주세요");
+                      return;
+                    }
                     dispatch(
                       setAdLoacation(Posts[index]?.lat, Posts[index]?.lng)
                     );

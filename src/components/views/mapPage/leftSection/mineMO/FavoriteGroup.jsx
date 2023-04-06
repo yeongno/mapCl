@@ -3,10 +3,11 @@ import {
   ArrowRightOutlined,
   ArrowUpOutlined,
 } from "@ant-design/icons";
+import { message } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useMyInfo from "../../../../../hook/useMyInfo";
 import { setLocation } from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
@@ -22,6 +23,9 @@ function FavoriteGroup({ setAccActive, accActive }) {
   const [secondPriority, setSecond] = useState(null);
   const [thirdPriority, setThird] = useState(null);
   const dispatch = useDispatch();
+
+  //열려 있는 맵의 infoWindow의 비/활성화 플래그 값
+  const actInfoWindow = useSelector((state) => state.turn.turnInfoWindow);
 
   //mineMo의 다른 그룹 Acc가 열릴경우 해당 값 true로 변경
   const [otherAcc, setOtehrAcc] = useState(false);
@@ -96,7 +100,12 @@ function FavoriteGroup({ setAccActive, accActive }) {
           <div
             className="move__btn"
             onClick={() => {
+              if (actInfoWindow) {
+                message.error("열려 있는 작업을 종료 해주세요");
+                return;
+              }
               dispatch(setLocation(secondPriority?.lat, secondPriority?.lng));
+              dispatch(turn_mrFilter("FAVORITEMR_FILTER"));
             }}
           >
             <ArrowRightOutlined />
@@ -116,6 +125,7 @@ function FavoriteGroup({ setAccActive, accActive }) {
           <div
             className="move__btn"
             onClick={() => {
+              dispatch(turn_mrFilter("FAVORITEMR_FILTER"));
               dispatch(setLocation(thirdPriority?.lat, thirdPriority?.lng));
             }}
           >

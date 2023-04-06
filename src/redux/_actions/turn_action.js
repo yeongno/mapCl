@@ -6,6 +6,7 @@ import {
   TURNMO,
   TURNMRFILTER,
   TURNTEST,
+  TURN_INFOWINDOW,
 } from "./types";
 
 /**
@@ -85,6 +86,18 @@ export function turnMapCover(dataToSubmit) {
 export function turnTest(dataToSubmit) {
   return {
     type: TURNTEST,
+    value: dataToSubmit,
+  };
+}
+
+/**
+ * infoWindow가 열려 있을 경우 다른 활동으로 영향을 주지 못하게 해주는 플래그 값
+ * @param {boolean true} dataToSubmit
+ * @returns
+ */
+export function turnInfoWindow(dataToSubmit) {
+  return {
+    type: TURN_INFOWINDOW,
     value: dataToSubmit,
   };
 }

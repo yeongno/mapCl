@@ -5,7 +5,11 @@ import RightSection from "./rightSection/RightSection";
 import "../../styles/mapPage/MapPage.scss";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { turnMenu, turnMO } from "../../../redux/_actions/turn_action";
+import {
+  turnInfoWindow,
+  turnMenu,
+  turnMO,
+} from "../../../redux/_actions/turn_action";
 import Btn__TopTogle from "../commnunity/common/Btn__TopTogle";
 import useStartingtoUP from "../../../hook/common/useStartingtoUP.jsx";
 function MapPage() {
@@ -20,6 +24,7 @@ function MapPage() {
   useEffect(() => {
     // dispatch(turnMenu("MAP_MENU"));
     dispatch(turnMO("MINE_MO"));
+    dispatch(turnInfoWindow(false));
   }, []);
 
   return (

@@ -249,7 +249,12 @@ const InterestedMap = (props) => {
 
                 {/* 마크 위치에 바로 요소 띄우기 */}
                 <CustomOverlayMap position={marker.position}>
-                  <div className="label" style={{ color: "black" }}>
+                  <div
+                    className="label"
+                    style={{
+                      color: "black",
+                    }}
+                  >
                     <div>{index + 1}</div>
                   </div>
                 </CustomOverlayMap>
@@ -259,6 +264,9 @@ const InterestedMap = (props) => {
         ))}
         {getMarkers.userMarkers.map((userMarkers, index) => (
           <div key={index}>
+            {/*
+            todo
+            1. 특정 플래그 값을 userMarkers에서 가져와 나의 마크와 전체 마크를 구분 해준다. */}
             <MR_NearByUsers
               // key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
               position={userMarkers?.position}

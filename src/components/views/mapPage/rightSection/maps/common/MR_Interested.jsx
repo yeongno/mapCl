@@ -1,17 +1,23 @@
+import { Alert, message, Space } from "antd";
 import { useState } from "react";
 import { MapMarker } from "react-kakao-maps-sdk";
+import { useDispatch } from "react-redux";
+import { turnInfoWindow } from "../../../../../../redux/_actions/turn_action";
 import InterestedInfo from "./InterestedInfo/InterestedInfo";
 
 //마커의 이벤트 처리하기 위한 함수
 const MR_Interested = ({ position, content, index }) => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(null);
   const [isClose, setIsClose] = useState(null);
   const offWindow = (index) => {
     setIsClose(index);
+    dispatch(turnInfoWindow(false));
   };
   const onWindow = (index) => {
     setIsClose(null);
     setIsOpen(index);
+    dispatch(turnInfoWindow(true));
   };
 
   return (
@@ -30,6 +36,11 @@ const MR_Interested = ({ position, content, index }) => {
         // onClick={() => setIsOpen(true)}
         onClick={() => {
           onWindow(index);
+          return (
+            <Space>
+              <Alert message="Warning" type="warning" showIcon closable />
+            </Space>
+          );
         }}
       >
         {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
