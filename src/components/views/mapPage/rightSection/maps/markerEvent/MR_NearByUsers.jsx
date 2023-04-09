@@ -11,12 +11,12 @@ const MR_NearByUsers = ({ position, index }) => {
   const [isClose, setIsClose] = useState(null);
   const offWindow = (index) => {
     setIsClose(index);
-    dispatch(turnInfoWindow(false));
+    dispatch(turnInfoWindow({ act: false, kind: "" }));
   };
   const onWindow = (index) => {
     setIsClose(null);
     setIsOpen(index);
-    dispatch(turnInfoWindow(true));
+    dispatch(turnInfoWindow({ act: "true", kind: "nearByUser" }));
   };
 
   return (

@@ -24,7 +24,7 @@ function MapPage() {
   useEffect(() => {
     // dispatch(turnMenu("MAP_MENU"));
     dispatch(turnMO("MINE_MO"));
-    dispatch(turnInfoWindow(false));
+    dispatch(turnInfoWindow({ act: false, kind: "" }));
   }, []);
 
   return (

@@ -100,7 +100,7 @@ function PostGroup({ setAccActive, accActive }) {
                 <div
                   className="move__btn"
                   onClick={() => {
-                    if (actInfoWindow) {
+                    if (actInfoWindow.act) {
                       message.error("열려 있는 작업을 종료 해주세요");
                       return;
                     }

@@ -12,16 +12,16 @@ const MR_Interested = ({ position, content, index }) => {
   const [isClose, setIsClose] = useState(null);
   const offWindow = (index) => {
     setIsClose(index);
-    dispatch(turnInfoWindow(false));
+    dispatch(turnInfoWindow({ act: false, kind: "" }));
   };
   const onWindow = (index) => {
     setIsClose(null);
     setIsOpen(index);
-    dispatch(turnInfoWindow(true));
+    dispatch(turnInfoWindow({ act: true, kind: "myInterested" }));
   };
 
   return (
-    <div>
+    <div style={{}}>
       <MapMarker // 인포윈도우를 생성하고 지도에 표시합니다
         position={position}
         image={{
@@ -31,7 +31,6 @@ const MR_Interested = ({ position, content, index }) => {
             height: 35,
           }, // 마커이미지의 크기입니다
         }}
-        zIndex="-1"
         clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
         // onClick={() => setIsOpen(true)}
         onClick={() => {
@@ -46,7 +45,7 @@ const MR_Interested = ({ position, content, index }) => {
         {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
         {/* 인포윈도우에 표출될 내용으로 HTML 문자열이나 React Component가 가능합니다 */}
         {isOpen === index && index !== isClose && (
-          <div style={{ minWidth: "150px" }}>
+          <div style={{ minWidth: "150px", zIndex: "30" }}>
             <img
               alt="close"
               width="14"
