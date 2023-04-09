@@ -116,6 +116,7 @@ function useTmpCenter(props) {
             lat: res.data.myAds[i].lat,
             lng: res.data.myAds[i].lng,
           },
+          content: res.data.myAds[i],
         });
       }
       setMyAdsMarkers(myAdsMarkers);

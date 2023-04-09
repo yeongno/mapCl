@@ -16,7 +16,8 @@ const MR_MyAds = ({ position, content, index }) => {
   const onWindow = (index) => {
     setIsClose(null);
     setIsOpen(index);
-    dispatch(turnInfoWindow({ act: true, kind: "myAd" }));
+    console.log("content", content);
+    dispatch(turnInfoWindow({ act: true, kind: "myAd", content: content }));
   };
 
   return (
