@@ -11,12 +11,11 @@ const MR_MyAds = ({ position, content, index }) => {
   const [isClose, setIsClose] = useState(null);
   const offWindow = (index) => {
     setIsClose(index);
-    dispatch(turnInfoWindow({ act: false, kind: "" }));
+    dispatch(turnInfoWindow({ act: false, kind: "", content: "" }));
   };
   const onWindow = (index) => {
     setIsClose(null);
     setIsOpen(index);
-    console.log("content", content);
     dispatch(turnInfoWindow({ act: true, kind: "myAd", content: content }));
   };
 
@@ -40,7 +39,7 @@ const MR_MyAds = ({ position, content, index }) => {
       >
         {/* MapMarker의 자식을 넣어줌으로 해당 자식이 InfoWindow로 만들어지게 합니다 */}
         {/* 인포윈도우에 표출될 내용으로 HTML 문자열이나 React Component가 가능합니다 */}
-        {isOpen === index && index !== isClose && (
+        {/* {isOpen === index && index !== isClose && (
           <div style={{ minWidth: "150px" }}>
             <img
               alt="close"
@@ -59,7 +58,7 @@ const MR_MyAds = ({ position, content, index }) => {
             />
             <InterestedInfo />
           </div>
-        )}
+        )} */}
       </MapMarker>
     </div>
   );

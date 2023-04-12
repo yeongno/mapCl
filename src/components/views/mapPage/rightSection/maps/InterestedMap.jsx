@@ -32,6 +32,7 @@ import MR_MyAds from "./markerEvent/MR_MyAds";
 import RadioMark from "./common/RadioMark";
 import useMarkFilterSelector from "../../../../../hook/mapPage/useMarkFilterSelector";
 import { turnInfoWindow } from "../../../../../redux/_actions/turn_action";
+import ActWindow from "./actWindow/ActWindow";
 const InterestedMap = (props) => {
   //위치 이동 시 이벤트 호출 및 마커 생성
   const getMarkers = useTmpCenter();
@@ -155,38 +156,7 @@ const InterestedMap = (props) => {
           }}
         >
           <MapBlinder />
-          {actInfoWindow?.kind == "myAd" && (
-            <div
-              style={{
-                position: "absolute",
-                zIndex: "30",
-                height: "95%",
-                width: "95%",
-                background: "white",
-                marginLeft: "2.5%",
-                marginTop: "1%",
-              }}
-            >
-              <div style={{ minWidth: "150px", zIndex: "30" }}>
-                <img
-                  alt="close"
-                  width="14"
-                  height="13"
-                  src="https://t1.daumcdn.net/localimg/localimages/07/mapjsapi/2x/bt_close.gif"
-                  style={{
-                    position: "absolute",
-                    right: "5px",
-                    top: "5px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => {
-                    dispatch(turnInfoWindow({ act: false, kind: "" }));
-                  }}
-                />
-              </div>
-              asd
-            </div>
-          )}
+          <ActWindow />
         </div>
       )}
       {onPosition && mapCover == false ? (
@@ -318,6 +288,7 @@ const InterestedMap = (props) => {
               // key={`EventMarkerContainer-${marker.position.lat}-${marker.position.lng}`}
               position={userMarkers?.position}
               index={index}
+              content={userMarkers?.content}
             />
 
             {/* 마크 위치에 바로 요소 띄우기 */}
