@@ -1,0 +1,79 @@
+.adPost-container {
+  position: absolute;
+  z-index: 30;
+  height: 95%;
+  width: 95%;
+  background: rgb(140, 136, 136);
+  margin-left: 2.5%;
+  margin-top: 1%;
+  border-radius: 15px;
+  .actWindow__btn--close {
+    position: absolute;
+    right: 15px;
+    top: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
+  .adPost-wrapper {
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 90%;
+    background: white;
+    .adPost-topSection {
+      height: 50%;
+      display: flex;
+      .adPost-topLeft {
+        width: 60%;
+        .date-section {
+          height: 20%;
+          span {
+            font-size: 1.5em;
+            &:nth-child(1) {
+              color: rgb(16, 16, 182);
+            }
+            &:nth-child(2) {
+              margin-left: 1rem;
+              font-size: 1.2em;
+              color: rgba(105, 105, 109, 0.91);
+            }
+          }
+        }
+        .title-section {
+          height: 60%;
+          width: 575px;
+          overflow-wrap: break-word;
+          overflow: hidden;
+          display: flex;
+          align-items: center; // 수직 가운데 정렬            align-self: center;
+          span {
+            font-size: 2.5em;
+            white-space: pre-wrap;
+          }
+        }
+        .profile-section {
+          height: 20%;
+        }
+      }
+      .adPost-topRight {
+        width: 40%;
+        margin: auto;
+        .image-section {
+          background: blue;
+          margin: auto;
+          width: 12rem;
+          height: 12rem;
+        }
+      }
+    }
+    .adPost-bottomSection {
+      height: 50%;
+
+      .content-section {
+        span {
+          font-size: 1.4em;
+        }
+      }
+    }
+  }
+}
