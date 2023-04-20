@@ -34,12 +34,34 @@ function AdPost() {
             </div>
             <div className="title-section">
               {/* <span>{content.title}</span> */}
-              <span>가라마다자나다라아타다가라마다자나다라아타다</span>
+              <span>{content.title}</span>
             </div>
-            <div className="profile-section"></div>
+            <div className="profile-section">
+              <div className="left-section">
+                <div className="profileImg-section">
+                  <img
+                    src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="right-section">
+                <div className="nickName-section">
+                  <span>Jennifer Teacher</span>
+                </div>
+                <div className="subInfo-section">
+                  <span>Founder and CEO, Financial Health Network</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="adPost-topRight">
-            <div className="image-section" />
+            <div className="image-section">
+              <img
+                src="https://image.kmib.co.kr/online_image/2017/1128/611311110011938257_1.jpg"
+                alt=""
+              />
+            </div>
           </div>
         </div>
         <div className="adPost-bottomSection">
