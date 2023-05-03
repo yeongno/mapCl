@@ -22,9 +22,12 @@ import CtrBar from "./ctrBar/CtrBar";
 import Btn__TopTogle from "../../commnunity/common/Btn__TopTogle";
 import GroupList from "./list/groupList.jsx/GroupList";
 import GenerList from "../../commnunity/common/renderList/GenerList";
+import AdList from "../../commnunity/common/renderList/AdList";
 
 function RightSection() {
   const navigate = useNavigate();
+  const getTopic = useSelector((state) => state?.turn?.turnTopicCtr);
+
   const dispatch = useDispatch();
   const { latitude, longitude, isLoaded } = useCoords();
   const [latitude1, setlatitude1] = useState();
@@ -73,7 +76,7 @@ function RightSection() {
       <div className="mapList-container">
         <div className="list-container">
           <UserList />
-          <GenerList />
+          {getTopic == false ? <GenerList /> : <AdList />}
           {/* <GroupList />
           <GroupList />
           <GroupList /> */}

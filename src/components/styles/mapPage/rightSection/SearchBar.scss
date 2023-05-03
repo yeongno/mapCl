@@ -1,0 +1,9 @@
+.searchBar-container {
+  input {
+    margin-top: 1rem;
+    margin-left: 2rem;
+  }
+  input::placeholder {
+    padding-left: 5px;
+  }
+}

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import useCoords from "../../../../../../hook/useCoords";
 import { useMainLocation } from "../../../../../../hook/useMyInfo";
 import { setMainLocation } from "../../../../../../redux/_actions/mapNav/location_action";
-
+import "../../../../../styles/mapPage/rightSection/SearchBar.scss";
 function SearchBar(props) {
   /*global kakao*/
   const dispatch = useDispatch();
@@ -82,9 +82,10 @@ function SearchBar(props) {
   };
 
   return (
-    <div>
+    <div className="searchBar-container">
       <input
         type="text"
+        placeholder="Search"
         name=""
         onChange={onKeyword}
         onKeyDown={onKeyword1}

@@ -37,14 +37,14 @@ function MoveMyLocation(props) {
       style={{
         position: "absolute",
         zIndex: "21",
-        marginTop: "2rem",
+        marginTop: "3rem",
+        marginLeft: "2rem",
         fontWeight: "bold",
         color: "red",
       }}
       onClick={onMyLocation}
     >
-      {latitude} {longitude}
-      my{" "}
+      내 위치
     </button>
   );
 }
