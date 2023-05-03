@@ -7,6 +7,7 @@ import {
   TURNMRFILTER,
   TURNTEST,
   TURN_INFOWINDOW,
+  TURN_TOPICCTR,
 } from "./types";
 
 /**
@@ -98,6 +99,19 @@ export function turnTest(dataToSubmit) {
 export function turnInfoWindow(dataToSubmit) {
   return {
     type: TURN_INFOWINDOW,
+    value: dataToSubmit,
+  };
+}
+
+/**
+ * topicCtr의 topic 전환 플래그
+ * true면 AdPosts, false면 general
+ * @param {boolean true} dataToSubmit
+ * @returns
+ */
+export function turnTopicCtr(dataToSubmit) {
+  return {
+    type: TURN_TOPICCTR,
     value: dataToSubmit,
   };
 }

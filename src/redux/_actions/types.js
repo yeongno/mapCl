@@ -38,5 +38,6 @@ export const TURNMAPCOVER = "turn_mapCover";
 export const TURNTEST = "trun_test";
 export const TURNMRFILTER = "trun_mrFilter";
 export const TURN_INFOWINDOW = "tunr_infoWindow";
+export const TURN_TOPICCTR = "turn_TOPICCTR";
 
 export const SETMAPLIST_LIST = "setmaplist_list";

@@ -1,0 +1,27 @@
+.topicCtr-container {
+  .topicCtr-wrapper {
+    display: flex;
+    height: 3rem;
+    width: 98%;
+    margin: auto;
+    cursor: pointer;
+    .general-section {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgb(128, 128, 133);
+      span {
+      }
+    }
+    .adPosts-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      background: blue;
+      span {
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ import useNearByUsers from "../../../../../hook/useNearByUsers";
 import useNearByUsersList from "../../../../../hook/useNearByUsersList";
 import { setMapList } from "../../../../../redux/_actions/mapList/mapList_action";
 import "../../../../styles/mapPage/rightSection/CtrBar.scss";
+import TopicCtr from "./TopicCtr";
 function CtrBar() {
   const NearByUsers = useNearByUsersList();
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ function CtrBar() {
     <div className="ctrBar-container">
       <div className="ctrBar__btn--refresh" onClick={onList}>
         <RedoOutlined />
+      </div>
+      <div className="topicCtr__btn--select">
+        <TopicCtr />
       </div>
     </div>
   );
