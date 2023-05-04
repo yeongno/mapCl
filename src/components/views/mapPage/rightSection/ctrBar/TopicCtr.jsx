@@ -10,6 +10,10 @@ function TopicCtr() {
   const [onAdPosts, setAdPosts] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
+    General_Ref.current.style.background = "blue";
+    General_Ref.current.style.color = "white";
+    AdPosts_Ref.current.style.background = "rgb(128,128,133)";
+    AdPosts_Ref.current.style.color = "black";
     dispatch(turnTopicCtr(false));
   }, []);
   const OnGeneral = () => {
