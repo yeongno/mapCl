@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useMyInfo from "../../../../../hook/useMyInfo";
 import { setLocation } from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
-import { turn_mrFilter } from "../../../../../redux/_actions/turn_action";
+import { turnMapAct, turn_mrFilter } from "../../../../../redux/_actions/turn_action";
 import "../../../../styles/mapPage/leftSection/favoriteGroup/FavoriteGroup.scss";
 
 function FavoriteGroup({ setAccActive, accActive }) {
@@ -82,6 +82,7 @@ function FavoriteGroup({ setAccActive, accActive }) {
           <div
             className="move__btn"
             onClick={() => {
+              dispatch(turnMapAct(true))
               if (actInfoWindow.act) {
                 message.error("열려 있는 작업을 종료 해주세요");
                 return;
@@ -104,6 +105,7 @@ function FavoriteGroup({ setAccActive, accActive }) {
           <div
             className="move__btn"
             onClick={() => {
+              dispatch(turnMapAct(true))
               if (actInfoWindow.act) {
                 message.error("열려 있는 작업을 종료 해주세요");
                 return;
@@ -129,6 +131,7 @@ function FavoriteGroup({ setAccActive, accActive }) {
           <div
             className="move__btn"
             onClick={() => {
+              dispatch(turnMapAct(true))
               if (actInfoWindow.act) {
                 message.error("열려 있는 작업을 종료 해주세요");
                 return;

@@ -7,6 +7,7 @@ import {
   TURNMRFILTER,
   TURNTEST,
   TURN_INFOWINDOW,
+  TURN_MAPACT,
   TURN_TOPICCTR,
 } from "../_actions/types";
 
@@ -30,6 +31,8 @@ export default function turn(state = {}, action) {
       return { ...state, turnInfoWindow: action.value };
     case TURN_TOPICCTR:
       return { ...state, turnTopicCtr: action.value };
+      case TURN_MAPACT:
+        return { ...state, turnMapAct: action.value };
     default:
       return state;
   }

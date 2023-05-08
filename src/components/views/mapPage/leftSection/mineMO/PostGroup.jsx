@@ -15,7 +15,7 @@ import {
   setPostLocation,
 } from "../../../../../redux/_actions/mapNav/location_action";
 import { PriorityMap } from "../../../../../redux/_actions/mapNav/priority_action";
-import { turn_mrFilter } from "../../../../../redux/_actions/turn_action";
+import { turnMapAct, turn_mrFilter } from "../../../../../redux/_actions/turn_action";
 import "../../../../styles/mapPage/leftSection/postGroup/PostGroup.scss";
 
 function PostGroup({ setAccActive, accActive }) {
@@ -100,6 +100,7 @@ function PostGroup({ setAccActive, accActive }) {
                 <div
                   className="move__btn"
                   onClick={() => {
+                    dispatch(turnMapAct(true))
                     if (actInfoWindow.act) {
                       message.error("열려 있는 작업을 종료 해주세요");
                       return;

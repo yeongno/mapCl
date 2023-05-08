@@ -7,6 +7,7 @@ import {
   TURNMRFILTER,
   TURNTEST,
   TURN_INFOWINDOW,
+  TURN_MAPACT,
   TURN_TOPICCTR,
 } from "./types";
 
@@ -112,6 +113,18 @@ export function turnInfoWindow(dataToSubmit) {
 export function turnTopicCtr(dataToSubmit) {
   return {
     type: TURN_TOPICCTR,
+    value: dataToSubmit,
+  };
+}
+
+/**
+ * MapPage의 RightSection에서 MapPage 창의 비/활성화 플래그
+ * @param {boolean true} dataToSubmit
+ * @returns
+ */
+export function turnMapAct(dataToSubmit) {
+  return {
+    type: TURN_MAPACT,
     value: dataToSubmit,
   };
 }

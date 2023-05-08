@@ -8,7 +8,7 @@ import {
   setCenterLocation,
   setMainLocation,
 } from "../../../../redux/_actions/mapNav/location_action";
-import { turnMap } from "../../../../redux/_actions/turn_action";
+import { turnMap, turnMapAct } from "../../../../redux/_actions/turn_action";
 import InterestedMap from "./maps/InterestedMap";
 import "../../../styles/mapPage/rightSection/RightSection.scss";
 import {
@@ -27,6 +27,9 @@ import AdList from "../../commnunity/common/renderList/AdList";
 function RightSection() {
   const navigate = useNavigate();
   const getTopic = useSelector((state) => state?.turn?.turnTopicCtr);
+
+  //MapAct의 reducer 값
+  const mapAct = useSelector((state) => state?.turn?.turnMapAct); 
 
   const dispatch = useDispatch();
   const { latitude, longitude, isLoaded } = useCoords();
@@ -49,14 +52,20 @@ function RightSection() {
     setlatitude1(latitude);
     setlongitude1(longitude);
   }, [latitude]);
+  useEffect(() => {
+    if(mapAct){
+      Map_Ref.current.style.display = "block";
+    }else{
+      Map_Ref.current.style.display = "none";
+    }
+  }, [mapAct])
+  
   const onTurn = () => {
     const Ref_style = window.getComputedStyle(Map_Ref.current);
-    if (Ref_style.getPropertyValue("display") === "block") {
-      Map_Ref.current.style.display = "none";
-      setOnAcc(true);
-    } else {
-      setOnAcc(false);
-      Map_Ref.current.style.display = "block";
+    if(mapAct){
+      dispatch(turnMapAct(false))
+    }else{
+      dispatch(turnMapAct(true))
     }
   };
   return (
@@ -68,7 +77,7 @@ function RightSection() {
           <InterestedMap latitude1={latitude1} longitude1={longitude1} />
         </div>
         <div className="accordian-container--map" onClick={onTurn}>
-          {(onAcc && <ArrowDownOutlined />) || <ArrowUpOutlined />}
+          {(!mapAct && <ArrowDownOutlined />) || <ArrowUpOutlined />}
         </div>
         <CtrBar />
       </div>
