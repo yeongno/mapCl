@@ -10,9 +10,9 @@ export const POST_GET = "post_get";
 export const POST_ONEGET = "post_oneget";
 export const POSTNOTICE_GET = "postNotice_get";
 export const POSTINQUIRY_GET = "postInquiry_get";
+export const ADLIST_GET = "adList_get";
 export const REPLY_SET = "reply_set";
 export const REPLY_GET = "reply_get";
-
 export const TURNMAP = "turn_map";
 
 export const SET_TOKEN = "set_token";

@@ -9,6 +9,7 @@ export const GET_NOTICEPOSTS = "/dummy/NoticePost.json";
 // export const GET_NOTICEPOSTS = "/post/NoticePost";
 export const GET_INQUIRYPOSTS = "/dummy/Inquiry.json";
 // export const GET_NOTICEPOSTS = "/post/NoticePost";
+export const GET_ADLIST = "/dummy/AdList.json";
 
 //login
 export const USER_SERVER = "/user/login";

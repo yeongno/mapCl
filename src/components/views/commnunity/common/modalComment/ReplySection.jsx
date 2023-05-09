@@ -95,7 +95,7 @@ function ReplySection(props) {
         scrollbarWidth: "none",
       }}
     >
-      <div style={{ height: "86%" }}>
+      <div style={{ height: "84%" }}>
         {/* reply rendering zone */}
         {/* <div>{OnReply && <div>{renderCards}</div>}</div> */}
         <div>
@@ -104,6 +104,7 @@ function ReplySection(props) {
       </div>
       <div
         style={{
+          marginLeft:"3%",
           position: "fixed",
           width: "70%",
           background: "#b2bec2",

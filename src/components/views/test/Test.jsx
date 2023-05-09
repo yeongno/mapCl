@@ -2,11 +2,12 @@ import axios from "axios";
 import { slice } from "lodash";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Axios from "../../../axios/Axios";
 import useLocationFormat from "../../../hook/formatter/useLocationFormat";
 import useTestSelector from "../../../hook/navSelector/useTestSelector";
+import { getAdList } from "../../../redux/_actions/post_action";
 import { turnMenu } from "../../../redux/_actions/turn_action";
 import Loading from "../commnunity/loading/Loading";
 import MenuBar_Test from "./menuBar_Test/MenuBar_Test";
@@ -58,7 +59,16 @@ function Test() {
     // 선언한 함수 호출;
     api();
   }, []);
-  useEffect(() => {}, []);
+  const adList = useSelector((state)=>state.post.adList)
+  useEffect(() => {
+    dispatch(getAdList()).then((res)=>{
+      console.log("res",res)
+    })
+  }, [])
+  
+  useEffect(() => {
+    console.log("ab",adList)
+  }, []);
 
   // 로딩 시 Spinner 띄움
   if (loading)
