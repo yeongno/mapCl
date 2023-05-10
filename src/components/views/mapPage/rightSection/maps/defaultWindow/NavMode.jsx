@@ -26,20 +26,20 @@ function NavMode(props) {
           모집
         </button> */}
         {(active === "Group" && (
-          <button className="btn--activity" onClick={onGroup}>
+          <div className="btn--activity" onClick={onGroup}>
             모집
-          </button>
-        )) || <button onClick={onGroup}>모집</button>}
+          </div>
+        )) || <div onClick={onGroup}>모집</div>}
         {(active === "Write" && (
-          <button className="btn--activity" onClick={onWrite}>
+          <div className="btn--activity" onClick={onWrite}>
             글작성
-          </button>
-        )) || <button onClick={onWrite}>글작성</button>}
+          </div>
+        )) || <div onClick={onWrite}>글작성</div>}
         {(active === "Favorite" && (
-          <button className="btn--activity" onClick={onFavorite}>
+          <div className="btn--activity" onClick={onFavorite}>
             선호 지역 등록
-          </button>
-        )) || <button onClick={onFavorite}>선호 지역 등록</button>}
+          </div>
+        )) || <div onClick={onFavorite}>선호 지역 등록</div>}
       </div>
     </div>
   );

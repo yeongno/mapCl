@@ -6,14 +6,17 @@
     display: flex;
     margin-left: 1rem;
     justify-content: space-between;
-    button {
-      font-size: 1.3em;
+    div {
+      font-size: 1.2em;
       background: none;
       border: none;
       cursor: pointer;
     }
     .btn--activity {
-      font-size: 1.3em;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+      padding-top: 0.3rem;
+      font-size: 1.2em;
       background: none;
       border: solid 3px white;
       border-bottom: none;
