@@ -12,7 +12,7 @@ function TopicCtr() {
   useEffect(() => {
     General_Ref.current.style.background = "blue";
     General_Ref.current.style.color = "white";
-    AdPosts_Ref.current.style.background = "rgb(128,128,133)";
+    AdPosts_Ref.current.style.background = "lightgray";
     AdPosts_Ref.current.style.color = "black";
     dispatch(turnTopicCtr(false));
   }, []);
@@ -22,7 +22,7 @@ function TopicCtr() {
     dispatch(turnTopicCtr(false));
     General_Ref.current.style.background = "blue";
     General_Ref.current.style.color = "white";
-    AdPosts_Ref.current.style.background = "rgb(128,128,133)";
+    AdPosts_Ref.current.style.background = "lightgray";
     AdPosts_Ref.current.style.color = "black";
     window.scrollTo({
       top: 300,
@@ -32,7 +32,7 @@ function TopicCtr() {
   const OnAdPosts = () => {
     AdPosts_Ref.current.style.background = "blue";
     AdPosts_Ref.current.style.color = "white";
-    General_Ref.current.style.background = "rgb(128,128,133)";
+    General_Ref.current.style.background = "lightgray";
     General_Ref.current.style.color = "black";
     dispatch(turnTopicCtr(true));
     window.scrollTo({
