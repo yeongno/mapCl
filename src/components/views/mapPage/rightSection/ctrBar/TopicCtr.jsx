@@ -25,7 +25,7 @@ function TopicCtr() {
     AdPosts_Ref.current.style.background = "lightgray";
     AdPosts_Ref.current.style.color = "black";
     window.scrollTo({
-      top: 300,
+      top: 100,
       behavior: "smooth",
     });
   };
@@ -36,7 +36,7 @@ function TopicCtr() {
     General_Ref.current.style.color = "black";
     dispatch(turnTopicCtr(true));
     window.scrollTo({
-      top: 300,
+      top: 100,
       behavior: "smooth",
     });
   };

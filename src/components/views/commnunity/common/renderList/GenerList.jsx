@@ -8,8 +8,12 @@ import Btn_comment from "../Btn_comment";
 import { usePost } from "../../../../../hook/useMyInfo";
 import "../../../../styles/community/common/renderList/GeneralList.scss";
 import GeneralFooter from "../GeneralFooter";
+import { getPost } from "../../../../../redux/_actions/post_action";
+import { useDispatch } from "react-redux";
 
 function GenerList() {
+  const dispatch = useDispatch();
+  
   const Post = usePost();
   const postFrom = "a";
   const [PostImg, setPostImg] = useState(1);
@@ -30,6 +34,8 @@ function GenerList() {
   const [ThisTopic, setThisTopic] = useState("public");
   useEffect(() => {
     setLastIndex(Post?.length);
+    dispatch(getPost());
+
   }, [Post]);
 
   const renderList = Post?.map((posts, index) => {

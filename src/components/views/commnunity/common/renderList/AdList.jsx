@@ -9,9 +9,14 @@ import { usePost } from "../../../../../hook/useMyInfo";
 import "../../../../styles/community/common/renderList/AdList.scss";
 import GeneralFooter from "../GeneralFooter";
 import Btn__Join from "../Btn_Join";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAdList } from "../../../../../redux/_actions/post_action";
 
 function AdList() {
+
+  const dispatch = useDispatch();
+
+  
   const Post = useSelector((state)=>state.post.adList);
   const postFrom = "a";
   const [PostImg, setPostImg] = useState(1);
@@ -32,6 +37,8 @@ function AdList() {
   const [ThisTopic, setThisTopic] = useState("public");
   useEffect(() => {
     setLastIndex(Post?.length);
+    dispatch(getAdList());
+    
   }, [Post]);
 
   const renderList = Post?.map((posts, index) => {
