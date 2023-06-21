@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+## skill
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+front : react.js, scss, redux, kakaoMap(api), antDesign
 
-## Available Scripts
+# Demo video
 
-In the project directory, you can run:
+## 로그인/회원가입 : 정규식을 이용하여 회원가입을 할 수있게 구현
+<img width="80%" src="https://github.com/yeongno/mapCl/assets/71314939/cda1166f-21f8-498e-80ae-255381e2a98d.gif"/>
 
-### `npm start`
+## main화면 : 스크롤 위치에 따라 반응하는 ui 구현
+<img width="80%" src="https://github.com/yeongno/mapCl/assets/71314939/638bc8b2-9c4e-4f87-b588-345e5c39726a.gif"/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## mapPage화면 : kakaoMap을 이용해 위치에 따라 서버에서 마크 데이터 주고 해당 마크들 체크박스 기능 구현  
+<img width="80%" src="https://github.com/yeongno/mapCl/assets/71314939/fbef0263-ea39-4455-9927-d050f53221fc.gif"/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## mapPage화면 : 나의 마크들을 사이드 컨트롤박스에서 관리 및 게시글 구현
+<img width="80%" src="https://github.com/yeongno/mapCl/assets/71314939/c6b1a567-226b-49e9-9492-81753dff5b03.gif"/>
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 상단 바 : 특정 헤더를 스크롤로 넘기면 상단바가 생기고 메뉴 클릭 시 페이지 이동 할 수 있게 구현
